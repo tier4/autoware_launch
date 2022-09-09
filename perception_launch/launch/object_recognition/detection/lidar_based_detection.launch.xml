@@ -20,7 +20,6 @@
       <arg name="container_name" value="$(var container_name)"/>
     </include>
   </group>
-
   <!-- Clustering -->
   <group>
     <push-ros-namespace namespace="clustering"/>

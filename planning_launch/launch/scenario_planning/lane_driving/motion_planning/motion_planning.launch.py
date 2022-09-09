@@ -75,6 +75,7 @@ def generate_launch_description():
         parameters=[
             nearest_search_param,
             obstacle_avoidance_planner_param,
+            {"enable_avoidance": False},
             {"is_showing_debug_info": False},
             {"is_stopping_if_outside_drivable_area": True},
         ],
@@ -273,9 +274,9 @@ def generate_launch_description():
                 "input_path_topic",
                 default_value="/planning/scenario_planning/lane_driving/behavior_planning/path",
             ),
-            DeclareLaunchArgument("use_surround_obstacle_check", default_value="true"),
+            DeclareLaunchArgument("use_surround_obstacle_check", default_value="false"),
             DeclareLaunchArgument(
-                "cruise_planner", default_value="obstacle_stop_planner"
+                "cruise_planner", default_value="obstacle_cruise_planner"
             ),  # select from "obstacle_stop_planner", "obstacle_cruise_planner", "none"
             DeclareLaunchArgument("use_intra_process", default_value="false"),
             DeclareLaunchArgument("use_multithread", default_value="false"),
