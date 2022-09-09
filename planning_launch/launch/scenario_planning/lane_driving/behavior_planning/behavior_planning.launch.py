@@ -32,6 +32,16 @@ import yaml
 
 
 def generate_launch_description():
+    nearest_search_param_path = os.path.join(
+        get_package_share_directory("planning_launch"),
+        "config",
+        "scenario_planning",
+        "common",
+        "nearest_search.param.yaml",
+    )
+    with open(nearest_search_param_path, "r") as f:
+        nearest_search_param = yaml.safe_load(f)["/**"]["ros__parameters"]
+
     # behavior path planner
     side_shift_param_path = os.path.join(
         get_package_share_directory("planning_launch"),
@@ -139,6 +149,7 @@ def generate_launch_description():
             ("~/output/hazard_lights_cmd", "/planning/hazard_lights_cmd"),
         ],
         parameters=[
+            nearest_search_param,
             side_shift_param,
             avoidance_param,
             lane_change_param,
@@ -372,6 +383,7 @@ def generate_launch_description():
         parameters=[
             behavior_velocity_planner_param,
             common_param,
+            nearest_search_param,
             motion_velocity_smoother_param,
             smoother_type_param,
             blind_spot_param,
@@ -411,6 +423,19 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration("use_multithread")),
     )
 
+    # This condition is true if run_out module is enabled and its detection method is Points
+    launch_run_out_with_points_method = PythonExpression(
+        [
+            LaunchConfiguration(
+                "launch_run_out", default=behavior_velocity_planner_param["launch_run_out"]
+            ),
+            " and ",
+            "'",
+            run_out_param["run_out"]["detection_method"],
+            "' == 'Points'",
+        ]
+    )
+
     # load compare map for run out module
     load_compare_map = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -425,19 +450,24 @@ def generate_launch_description():
             "use_multithread": "true",
         }.items(),
         # launch compare map only when run_out module is enabled and detection method is Points
-        condition=IfCondition(
-            PythonExpression(
-                [
-                    LaunchConfiguration(
-                        "launch_run_out", default=behavior_velocity_planner_param["launch_run_out"]
-                    ),
-                    " and ",
-                    "'",
-                    run_out_param["run_out"]["detection_method"],
-                    "' == 'Points'",
-                ]
-            )
+        condition=IfCondition(launch_run_out_with_points_method),
+    )
+
+    load_vector_map_inside_area_filter = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            [
+                FindPackageShare("tier4_planning_launch"),
+                "/launch/scenario_planning/lane_driving/behavior_planning/vector_map_inside_area_filter.launch.py",
+            ]
         ),
+        launch_arguments={
+            "use_pointcloud_container": LaunchConfiguration("use_pointcloud_container"),
+            "container_name": LaunchConfiguration("container_name"),
+            "use_multithread": "true",
+            "polygon_type": "no_obstacle_segmentation_area_for_run_out",
+        }.items(),
+        # launch vector map filter only when run_out module is enabled and detection method is Points
+        condition=IfCondition(launch_run_out_with_points_method),
     )
 
     set_bt_tree_config_path_without_foa = SetLaunchConfiguration(
@@ -466,5 +496,6 @@ def generate_launch_description():
             set_bt_tree_config_path_with_foa,
             container,
             load_compare_map,
+            load_vector_map_inside_area_filter,
         ]
     )
