@@ -141,6 +141,7 @@ def generate_launch_description():
         remappings=[
             ("~/input/trajectory", "obstacle_avoidance_planner/trajectory"),
             ("~/input/odometry", "/localization/kinematic_state"),
+            ("~/input/acceleration", "/localization/acceleration"),
             ("~/input/objects", "/perception/object_recognition/objects"),
             ("~/output/trajectory", "/planning/scenario_planning/lane_driving/trajectory"),
             ("~/output/velocity_limit", "/planning/scenario_planning/max_velocity_candidates"),
@@ -192,6 +193,7 @@ def generate_launch_description():
                 "/planning/scenario_planning/clear_velocity_limit",
             ),
             ("~/output/trajectory", "/planning/scenario_planning/lane_driving/trajectory"),
+            ("~/input/acceleration", "/localization/acceleration"),
             (
                 "~/input/pointcloud",
                 "/perception/obstacle_segmentation/pointcloud",
