@@ -25,7 +25,7 @@
         bus: true
         trailer: true
         motorcycle: true
-        bicycle: false
+        bicycle: true
         pedestrian: false
 
       stop_obstacle_type:

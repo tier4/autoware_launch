@@ -16,6 +16,8 @@
   <arg name="perception/enable_traffic_light" default="false" description="enable traffic light"/>
   <arg name="sensing/visible_range" default="300.0" description="visible range when using dummy perception"/>
   <arg name="scenario_simulation" default="false" description="use scenario simulation"/>
+  <arg name="use_foa" default="false" />
+  <arg name="use_perfect_lane_change" default="true" />
   <!-- Optional parameters for vcu emulation -->
   <arg name="vehicle_simulation" default="true" description="use vehicle simulation"/>
 
@@ -55,7 +57,10 @@
 
   <!-- Planning -->
   <group>
-    <include file="$(find-pkg-share planning_launch)/launch/planning.launch.xml"/>
+    <include file="$(find-pkg-share planning_launch)/launch/planning.launch.xml">
+      <arg name="use_foa" value="$(var use_foa)" />
+      <arg name="use_perfect_lane_change" value="$(var use_perfect_lane_change)" />
+    </include>
   </group>
 
   <!-- Control -->
@@ -65,6 +70,7 @@
       <arg name="lateral_controller_mode" value="mpc_follower" />
       <!-- options for longitudinal_controller_mode: pid -->
       <arg name="longitudinal_controller_mode" value="pid" />
+      <arg name="use_multithread" value="true" />
     </include>
   </group>
 
