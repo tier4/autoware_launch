@@ -5,6 +5,7 @@
   <arg name="sensor_model" description="sensor model name"/>
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)" description="vehicle specific ID"/>
   <arg name="initial_engage_state" default="false" description="/vehicle/engage state after starting Autoware"/>
+  <arg name="socketcan_device" default="canVehicle"/>
 
   <let name="vehicle_model_pkg" value="$(find-pkg-share $(var vehicle_model)_description)"/>
 
@@ -22,6 +23,7 @@
   <group if="$(var launch_vehicle_interface)">
     <include file="$(var vehicle_model_pkg)/launch/vehicle_interface.launch.xml">
       <arg name="vehicle_id" value="$(var vehicle_id)"/>
+      <arg name="socketcan_device" value="$(var socketcan_device)"/>
       <arg name="initial_engage_state" value="$(var initial_engage_state)"/>
     </include>
   </group>
