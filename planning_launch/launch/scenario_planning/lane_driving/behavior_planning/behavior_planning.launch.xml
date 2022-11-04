@@ -15,6 +15,7 @@
     <param from="$(find-pkg-share planning_launch)/config/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/avoidance/avoidance.param.yaml" />
     <param from="$(find-pkg-share planning_launch)/config/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/lane_following/lane_following.param.yaml" />
     <param from="$(find-pkg-share planning_launch)/config/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/lane_change/lane_change.param.yaml" />
+    <param from="$(find-pkg-share planning_launch)/config/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/drivable_area_expansion.param.yaml" />
     <param from="$(find-pkg-share planning_launch)/config/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml" />
     <param name="enable_abort_lane_change" value="$(var use_perfect_lane_change)" />
     <param name="enable_collision_check_at_prepare_phase" value="$(var use_perfect_lane_change)" />
