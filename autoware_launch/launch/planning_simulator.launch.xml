@@ -11,7 +11,7 @@
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
   <arg name="lanelet2_map_file" default="lanelet2_map.osm" description="lanelet2 map file name"/>
   <arg name="pointcloud_map_file" default="pointcloud_map.pcd" description="pointcloud map file name"/>
-  <arg name="cruise_planner_type" default="obstacle_stop_planner" description="type of cruise planner"/>
+  <arg name="cruise_planner_type" default="obstacle_cruise_planner" description="type of cruise planner"/>
   <!-- Optional parameters for scenario simulation -->
   <arg name="initial_engage_state" default="true" description="/vehicle/engage state after starting Autoware"/>
   <arg name="perception/enable_detection_failure" default="true" description="enable to simulate detection failure when using dummy perception"/>
@@ -19,6 +19,8 @@
   <arg name="perception/enable_traffic_light" default="false" description="enable traffic light"/>
   <arg name="sensing/visible_range" default="300.0" description="visible range when using dummy perception"/>
   <arg name="scenario_simulation" default="false" description="use scenario simulation"/>
+  <arg name="use_foa" default="false" />
+  <arg name="use_perfect_lane_change" default="true" />
   <!-- Optional parameters for vcu emulation -->
   <arg name="vehicle_simulation" default="true" description="use vehicle simulation"/>
 
@@ -61,6 +63,8 @@
   <group>
     <include file="$(find-pkg-share planning_launch)/launch/planning.launch.xml">
       <arg name="cruise_planner_type" value="$(var cruise_planner_type)"/>
+      <arg name="use_foa" value="$(var use_foa)" />
+      <arg name="use_perfect_lane_change" value="$(var use_perfect_lane_change)" />
     </include>
   </group>
 
@@ -73,6 +77,7 @@
       <arg name="longitudinal_controller_mode" value="pid" />
       <!-- Options for external emergency stop module. Heartbeat topic is required if this is true. -->
       <arg name="use_external_emergency_stop" value="false" />
+      <arg name="use_multithread" value="true" />
     </include>
   </group>
 

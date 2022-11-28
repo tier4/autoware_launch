@@ -17,6 +17,11 @@
     <param from="$(find-pkg-share planning_launch)/config/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/lane_change/lane_change.param.yaml" />
     <param from="$(find-pkg-share planning_launch)/config/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/drivable_area_expansion.param.yaml" />
     <param from="$(find-pkg-share planning_launch)/config/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml" />
+    <param name="enable_abort_lane_change" value="$(var use_perfect_lane_change)" />
+    <param name="enable_collision_check_at_prepare_phase" value="$(var use_perfect_lane_change)" />
+    <param name="use_predicted_path_outside_lanelet" value="$(var use_perfect_lane_change)" />
+    <param name="use_all_predicted_path" value="$(var use_perfect_lane_change)" />
+    <param name="enable_blocked_by_obstacle" value="$(var use_perfect_lane_change)" />
     <param name="bt_tree_config_path" value="$(find-pkg-share behavior_path_planner)/config/behavior_path_planner_tree.xml"/>
   </node>
 
