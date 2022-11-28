@@ -173,12 +173,18 @@ def generate_launch_description():
             behavior_path_planner_param,
             {
                 "planning_hz": 10.0,
-                "lane_change.enable_abort_lane_change": LaunchConfiguration("use_perfect_lane_change"),
+                "lane_change.enable_abort_lane_change": LaunchConfiguration(
+                    "use_perfect_lane_change"
+                ),
                 "lane_change.enable_collision_check_at_prepare_phase": LaunchConfiguration(
                     "use_perfect_lane_change"
                 ),
-                "lane_change.use_predicted_path_outside_lanelet": LaunchConfiguration("use_perfect_lane_change"),
-                "lane_change.use_all_predicted_path": LaunchConfiguration("use_perfect_lane_change"),
+                "lane_change.use_predicted_path_outside_lanelet": LaunchConfiguration(
+                    "use_perfect_lane_change"
+                ),
+                "lane_change.use_all_predicted_path": LaunchConfiguration(
+                    "use_perfect_lane_change"
+                ),
                 "bt_tree_config_path": LaunchConfiguration("bt_tree_config_path"),
             },
         ],

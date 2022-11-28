@@ -64,7 +64,7 @@
     timeout: 1.0
 
 - module: perception
-  mode: [online]
+  mode: [online, planning_simulation]
   type: launch
   args:
     node_name_suffix: obstacle_segmentation_pointcloud
@@ -90,7 +90,7 @@
     timeout: 1.0
 
 - module: perception
-  mode: [online, planning_simulation]
+  mode: [online]
   type: autonomous
   args:
     node_name_suffix: traffic_light_recognition_objects
