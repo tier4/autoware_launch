@@ -49,7 +49,7 @@
       # if crossing vehicle is decided as target obstacles or not
       crossing_obstacle_velocity_threshold : 3.0 # velocity threshold for crossing obstacle for cruise or stop [m/s]
       crossing_obstacle_traj_angle_threshold : 1.22 # [rad] = 70 [deg], yaw threshold of crossing obstacle against the nearest trajectory point for cruise or stop
-      collision_time_margin : 8.0 # time threshold of collision between obstacle adn ego for cruise or stop [s]
+      collision_time_margin : 4.0 # time threshold of collision between obstacle adn ego for cruise or stop [s]
 
       outside_rough_detection_area_expand_width : 0.5 # rough lateral margin for rough detection area expansion for obstacles outside the trajectory [m]
       outside_obstacle_min_velocity_threshold : 3.5 # minimum velocity threshold of obstacles outside the trajectory to cruise or stop [m/s]
