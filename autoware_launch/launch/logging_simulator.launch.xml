@@ -129,6 +129,6 @@
       args="-d $(find-pkg-share autoware_launch)/rviz/autoware.rviz -s $(find-pkg-share autoware_launch)/rviz/image/autoware.png"
       if="$(var rviz)"
     />
-    <include file="$(find-pkg-share ad_api_adaptors)/launch/rviz_adaptors.launch.xml" if="$(var rviz)"/>
+    <include file="$(find-pkg-share ad_api_adaptors)/launch/rviz_adaptors.launch.xml" />
   </group>
 </launch>
