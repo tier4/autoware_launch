@@ -21,6 +21,7 @@ from launch.actions import SetLaunchConfiguration
 from launch.conditions import IfCondition
 from launch.conditions import UnlessCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import EnvironmentVariable
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import ComposableNodeContainer
 from launch_ros.actions import PushRosNamespace
@@ -295,7 +296,9 @@ def generate_launch_description():
         "lat_controller_param_path",
         [
             FindPackageShare("control_launch"),
-            "/config/trajectory_follower/lateral/mpc.param.yaml",
+            "/config/trajectory_follower/lateral",
+            EnvironmentVariable(name="VEHICLE_ID", default_value="default"),
+            "/mpc.param.yaml",
         ],
         "path to the parameter file of lateral controller. default is `mpc_follower`",
     )
@@ -303,7 +306,9 @@ def generate_launch_description():
         "lon_controller_param_path",
         [
             FindPackageShare("control_launch"),
-            "/config/trajectory_follower/longitudinal/pid.param.yaml",
+            "/config/trajectory_follower/longitudinal/",
+            EnvironmentVariable(name="VEHICLE_ID", default_value="default"),
+            "/pid.param.yaml",
         ],
         "path to the parameter file of longitudinal controller",
     )
