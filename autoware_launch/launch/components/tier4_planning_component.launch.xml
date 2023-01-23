@@ -5,6 +5,7 @@
   <arg name="pointcloud_container_name"/>
   <!-- behavior -->
   <arg name="behavior_path_planner_tree_param_path"/>
+  <arg name="rtc_auto_mode_manager_param_path"/>
   <!-- motion -->
   <arg name="cruise_planner_type" description="options: obstacle_stop_planner, obstacle_cruise_planner, none"/>
   <arg name="use_surround_obstacle_check"/>
@@ -24,7 +25,7 @@
     <!-- rtc -->
     <arg
       name="rtc_auto_mode_manager_param_path"
-      value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager.param.yaml"
+      value="$(var rtc_auto_mode_manager_param_path)"
     />
 
     <!-- behavior path planner -->

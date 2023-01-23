@@ -40,8 +40,8 @@
   <!-- Others -->
   <arg name="use_foa" default="false"/>
 
-    <let name="rtc_auto_mode_manager_param_path" value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager.param.yaml" unless="$(var use_foa)"/>
-    <let name="rtc_auto_mode_manager_param_path" value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager_foa.param.yaml" if="$(var use_foa)"/>
+  <let name="rtc_auto_mode_manager_param_path" value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager.param.yaml" unless="$(var use_foa)"/>
+  <let name="rtc_auto_mode_manager_param_path" value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager_foa.param.yaml" if="$(var use_foa)"/>
 
   <!-- Global parameters -->
   <group scoped="false">
