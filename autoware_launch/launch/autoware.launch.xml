@@ -26,7 +26,7 @@
   <!-- Map -->
   <arg name="lanelet2_map_file" default="lanelet2_map.osm" description="lanelet2 map file name"/>
   <arg name="pointcloud_map_file" default="pointcloud_map.pcd" description="pointcloud map file name"/>
-  <arg name="cruise_planner_type" default="obstacle_stop_planner" description="type of cruise planner"/>
+  <arg name="cruise_planner_type" default="obstacle_cruise_planner" description="type of cruise planner"/>
   <!-- System -->
   <arg name="system_run_mode" default="online" description="run mode in system"/>
   <!-- Tools -->
@@ -35,6 +35,13 @@
   <!-- Perception -->
   <arg name="perception_mode" default="camera_lidar_fusion" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
   <arg name="traffic_light_recognition/enable_fine_detection" default="true" description="enable traffic light fine detection"/>
+  <!-- Planning -->
+  <arg name="use_experimental_lane_change_function" default="false" />
+  <!-- Others -->
+  <arg name="use_foa" default="false"/>
+
+    <let name="rtc_auto_mode_manager_param_path" value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager.param.yaml" unless="$(var use_foa)"/>
+    <let name="rtc_auto_mode_manager_param_path" value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager_foa.param.yaml" if="$(var use_foa)"/>
 
   <!-- Global parameters -->
   <group scoped="false">
@@ -117,10 +124,11 @@
         name="behavior_path_planner_tree_param_path"
         value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner_tree.xml"
       />
-      <arg name="cruise_planner_type" value="obstacle_stop_planner"/>
-      <arg name="use_experimental_lane_change_function" value="false"/>
-      <arg name="use_surround_obstacle_check" value="true"/>
+      <arg name="cruise_planner_type" value="$(var cruise_planner_type)"/>
+      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
+      <arg name="use_surround_obstacle_check" value="false"/>
       <arg name="smoother_type" value="JerkFiltered"/>
+      <arg name="rtc_auto_mode_manager_param_path" value="$(var rtc_auto_mode_manager_param_path)"/>
     </include>
   </group>
 
@@ -132,7 +140,7 @@
       <arg name="enable_obstacle_collision_checker" value="false"/>
       <arg name="lateral_controller_mode" value="mpc"/>
       <arg name="longitudinal_controller_mode" value="pid"/>
-      <arg name="use_individual_control_param" value="false"/>
+      <arg name="use_individual_control_param" value="true"/>
     </include>
   </group>
 

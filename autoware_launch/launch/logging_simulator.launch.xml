@@ -28,6 +28,9 @@
   <arg name="rviz" default="true" description="launch rviz"/>
   <!-- Scenario simulation -->
   <arg name="scenario_simulation" default="false" description="use scenario simulation"/>
+  <!-- Others -->
+  <arg name="use_foa" default="false"/>
+  <arg name="use_experimental_lane_change_function" default="false" />
 
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
@@ -59,6 +62,10 @@
       <arg name="pointcloud_map_file" value="$(var pointcloud_map_file)"/>
       <!-- Sensing -->
       <arg name="launch_sensing_driver" value="false"/>
+      <!-- Planning -->
+      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)" />
+      <!-- Others -->
+      <arg name="use_foa" value="$(var use_foa)"/>
     </include>
   </group>
 </launch>
