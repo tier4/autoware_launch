@@ -27,7 +27,7 @@
       # trajectory total/fixing length
       trajectory_length: 300.0 # total trajectory length[m]
 
-      forward_fixing_min_distance: 1.0 # number of fixing points around ego vehicle [m]
+      forward_fixing_min_distance: 5.0 # number of fixing points around ego vehicle [m]
       forward_fixing_min_time: 0.5 # forward fixing time with current velocity [s]
 
       backward_fixing_distance: 5.0 # backward fixing length from base_link [m]
@@ -40,7 +40,7 @@
       num_fix_points_for_extending: 50 # number of fixing points when extending
       max_dist_for_extending_end_point: 0.0001 # minimum delta dist thres for extending last point [m]
 
-      enable_clipping_fixed_traj: false
+      enable_clipping_fixed_traj: true
       non_fixed_trajectory_length: 5.0 # length of the trajectory merging optimized mpt trajectory to original(not optimized) trajectory
 
     object:  # avoiding object
@@ -91,7 +91,7 @@
         common:
           num_joint_buffer_points: 3 # number of joint buffer points
           num_offset_for_begin_idx: 2 # number of shifting points for beginning non-fix idx
-          delta_arc_length_for_eb: 0.6 # 1.0 # delta arc length when optimizing[m] When the value is around 1.0, overshoot at the corner happens.
+          delta_arc_length_for_eb: 1.0 # delta arc length when optimizing[m] When the value is around 1.0, overshoot at the corner happens.
           num_sampling_points_for_eb: 95 # number of optimizing points # must be longer than mpt points
 
         clearance:
