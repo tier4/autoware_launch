@@ -58,8 +58,8 @@
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
       <!-- Planning -->
-      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)" />
-      <arg name="use_external_lane_change" value="$(var use_external_lane_change)" />
+      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
+      <arg name="use_external_lane_change" value="$(var use_external_lane_change)"/>
       <!-- Others -->
       <arg name="use_foa" value="$(var use_foa)"/>
     </include>
