@@ -1,4 +1,4 @@
-name: sync-awf-latest-xx1
+name: sync-awf-upstream
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync-awf-latest-xx1:
+  sync-awf-upstream:
     runs-on: ubuntu-latest
     steps:
       - name: Generate token
@@ -20,12 +20,12 @@ jobs:
         uses: autowarefoundation/autoware-github-actions/sync-branches@v1
         with:
           token: ${{ steps.generate-token.outputs.token }}
-          base-branch: awf-latest-xx1
-          sync-pr-branch: sync-awf-latest-xx1
+          base-branch: tier4/main
+          sync-pr-branch: sync-awf-upstream
           sync-target-repository: https://github.com/autowarefoundation/autoware_launch.git
           sync-target-branch: main
-          pr-title: "chore: sync awf-latest-xx1"
+          pr-title: "chore: sync awf/autoware_launch"
           pr-labels: |
             bot
-            sync-awf-latest-xx1
+            sync-awf-upstream
           auto-merge-method: merge

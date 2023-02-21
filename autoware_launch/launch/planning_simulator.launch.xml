@@ -9,6 +9,9 @@
   <!-- Map -->
   <arg name="lanelet2_map_file" default="lanelet2_map.osm" description="lanelet2 map file name"/>
   <arg name="pointcloud_map_file" default="pointcloud_map.pcd" description="pointcloud map file name"/>
+  <!-- System -->
+  <arg name="launch_system_monitor" default="false" description="launch system monitor"/>
+  <arg name="launch_dummy_diag_publisher" default="false" description="launch dummy diag publisher"/>
   <!-- Tools -->
   <arg name="rviz" default="true" description="launch rviz"/>
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
@@ -46,6 +49,8 @@
       <arg name="launch_vehicle_interface" value="$(var launch_vehicle_interface)"/>
       <!-- System -->
       <arg name="system_run_mode" value="planning_simulation"/>
+      <arg name="launch_system_monitor" value="$(var launch_system_monitor)"/>
+      <arg name="launch_dummy_diag_publisher" value="$(var launch_dummy_diag_publisher)"/>
       <!-- Map -->
       <arg name="lanelet2_map_file" value="$(var lanelet2_map_file)"/>
       <arg name="pointcloud_map_file" value="$(var pointcloud_map_file)"/>
@@ -53,8 +58,8 @@
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
       <!-- Planning -->
-      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)" />
-      <arg name="use_external_lane_change" value="$(var use_external_lane_change)" />
+      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
+      <arg name="use_external_lane_change" value="$(var use_external_lane_change)"/>
       <!-- Others -->
       <arg name="use_foa" value="$(var use_foa)"/>
     </include>
