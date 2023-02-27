@@ -23,6 +23,9 @@
     <!-- rtc -->
     <arg name="rtc_auto_mode_manager_param_path" value="$(var rtc_auto_mode_manager_param_path)"/>
 
+    <!-- mission planner -->
+    <arg name="mission_planner_param_path" value="$(find-pkg-share autoware_launch)/config/planning/mission_planning/mission_planner/mission_planner.param.yaml"/>
+
     <!-- behavior path planner -->
     <arg
       name="side_shift_param_path"
