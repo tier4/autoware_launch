@@ -1,3 +1,16 @@
+- module: sensing
+  mode: [online]
+  type: launch
+  args:
+    node_name_suffix: imu
+    topic: /sensing/imu/imu_data
+    topic_type: sensor_msgs/msg/Imu
+    best_effort: false
+    transient_local: false
+    warn_rate: 10.0
+    error_rate: 5.0
+    timeout: 1.0
+
 - module: map
   mode: [online, logging_simulation, planning_simulation]
   type: launch
@@ -51,7 +64,7 @@
     timeout: 1.0
 
 - module: perception
-  mode: [online, logging_simulation]
+  mode: [online, logging_simulation, planning_simulation]
   type: launch
   args:
     node_name_suffix: obstacle_segmentation_pointcloud
@@ -59,7 +72,7 @@
     topic_type: sensor_msgs/msg/PointCloud2
     best_effort: true
     transient_local: false
-    warn_rate: 5.0
+    warn_rate: 3.0
     error_rate: 1.0
     timeout: 1.0
 
@@ -72,7 +85,20 @@
     topic_type: autoware_auto_perception_msgs/msg/PredictedObjects
     best_effort: false
     transient_local: false
-    warn_rate: 5.0
+    warn_rate: 3.0
+    error_rate: 1.0
+    timeout: 1.0
+
+- module: perception
+  mode: [online]
+  type: autonomous
+  args:
+    node_name_suffix: traffic_light_recognition_objects
+    topic: /perception/traffic_light_recognition/traffic_signals
+    topic_type: autoware_auto_perception_msgs/msg/TrafficSignalArray
+    best_effort: false
+    transient_local: false
+    warn_rate: 3.0
     error_rate: 1.0
     timeout: 1.0
 
@@ -98,7 +124,7 @@
     topic_type: autoware_auto_planning_msgs/msg/Trajectory
     best_effort: false
     transient_local: false
-    warn_rate: 5.0
+    warn_rate: 3.0
     error_rate: 1.0
     timeout: 1.0
 
