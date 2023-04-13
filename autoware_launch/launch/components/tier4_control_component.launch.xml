@@ -3,7 +3,7 @@
   <!-- optional parameters are written here -->
   <arg name="lateral_controller_mode" default="mpc"/>
   <arg name="longitudinal_controller_mode" default="pid"/>
-  <arg name="use_individual_control_param" default="false"/>
+  <arg name="use_individual_control_param" default="true"/>
   <arg name="enable_autonomous_emergency_braking" default="false"/>
 
   <let name="latlon_controller_param_path_dir" value="$(var vehicle_id)" if="$(var use_individual_control_param)"/>
