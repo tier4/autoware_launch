@@ -69,7 +69,7 @@
       # For target object filtering
       target_filtering:
         # filtering moving objects
-        threshold_speed_object_is_stopped: 3.0          # [m/s]
+        threshold_speed_object_is_stopped: 1.0          # [m/s]
         threshold_time_object_is_moving: 1.0            # [s]
         threshold_time_force_avoidance_for_stopped_vehicle: 10.0 # [s]
         # detection range
