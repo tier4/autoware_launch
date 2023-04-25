@@ -14,6 +14,7 @@
       - "avoidance_right"
       - "pull_over"
       - "pull_out"
+      - "intersection_occlusion"
 
     default_enable_list:
       - "blind_spot"
