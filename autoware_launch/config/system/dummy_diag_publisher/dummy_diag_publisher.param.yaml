@@ -46,4 +46,6 @@
 
       #vehicle
       vehicle_errors: default
+      pacmod_errors: default
+      pacmod_accel_brake_fault: default
       accel_brake_map_calibrator: default
