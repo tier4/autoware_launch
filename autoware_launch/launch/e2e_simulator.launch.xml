@@ -33,6 +33,11 @@
   <arg name="rviz" default="true" description="launch rviz"/>
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
 
+  <!-- XX1 Traffic Light frame_id relay for AWSIM-->
+  <arg name="traffic_light_original_id" default="camera6/camera_optical_link"/>
+  <arg name="traffic_light_topic_id" default="traffic_light_left_camera/camera_optical_link"/>
+  <node pkg="tf2_ros" exec="static_transform_publisher" name="traffic_light_transform_publisher" args="--frame-id $(var traffic_light_original_id) --child-frame-id $(var traffic_light_topic_id)"/>
+
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
       <!-- Common -->
