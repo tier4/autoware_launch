@@ -35,7 +35,7 @@
     converged_param_nearest_voxel_transformation_likelihood: 2.2
 
     # The number of particles to estimate initial pose
-    initial_estimate_particles_num: 100
+    initial_estimate_particles_num: 400
 
     # Tolerance of timestamp difference between initial_pose and sensor pointcloud. [sec]
     initial_pose_timeout_sec: 1.0
