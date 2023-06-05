@@ -21,7 +21,7 @@
     mpc_prediction_dt: 0.1                       # prediction horizon period [s]
     mpc_weight_lat_error: 0.2                    # lateral error weight in matrix Q
     mpc_weight_heading_error: 0.0                # heading error weight in matrix Q
-    mpc_weight_heading_error_squared_vel: 0.03    # heading error * velocity weight in matrix Q
+    mpc_weight_heading_error_squared_vel: 0.03   # heading error * velocity weight in matrix Q
     mpc_weight_steering_input: 1.0               # steering error weight in matrix R
     mpc_weight_steering_input_squared_vel: 1.00  # steering error * velocity weight in matrix R
     mpc_weight_lat_jerk: 0.0                     # lateral jerk weight in matrix R
@@ -29,7 +29,7 @@
     mpc_weight_steer_acc: 0.000001               # steering angular acceleration weight in matrix R
     mpc_low_curvature_weight_lat_error: 0.05                   # lateral error weight in matrix Q in low curvature point
     mpc_low_curvature_weight_heading_error: 0.0                # heading error weight in matrix Q in low curvature point
-    mpc_low_curvature_weight_heading_error_squared_vel: 0.03    # heading error * velocity weight in matrix Q in low curvature point
+    mpc_low_curvature_weight_heading_error_squared_vel: 0.03   # heading error * velocity weight in matrix Q in low curvature point
     mpc_low_curvature_weight_steering_input: 1.0               # steering error weight in matrix R in low curvature point
     mpc_low_curvature_weight_steering_input_squared_vel: 2.00  # steering error * velocity weight in matrix R in low curvature point
     mpc_low_curvature_weight_lat_jerk: 0.0                     # lateral jerk weight in matrix R in low curvature point
@@ -62,6 +62,7 @@
     keep_steer_control_until_converged: true
     new_traj_duration_time: 1.0
     new_traj_end_dist: 0.3
+    mpc_converged_threshold_rps:  0.01 # threshold of mpc convergence check [rad/s]
 
     # steer offset
     steering_offset:
@@ -70,15 +71,3 @@
       update_steer_threshold: 0.035
       average_num: 1000
       steering_offset_limit: 0.02
-
-    # vehicle parameters
-    vehicle:
-      cg_to_front_m: 1.228
-      cg_to_rear_m: 1.5618
-      mass_kg: 2400.0
-      mass_fl: 600.0
-      mass_fr: 600.0
-      mass_rl: 600.0
-      mass_rr: 600.0
-      cf: 155494.663
-      cr: 155494.663
