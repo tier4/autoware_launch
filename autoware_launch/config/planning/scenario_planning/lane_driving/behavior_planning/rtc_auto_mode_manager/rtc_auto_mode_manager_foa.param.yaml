@@ -13,7 +13,7 @@
       - "avoidance_left"
       - "avoidance_right"
       - "goal_planner"
-      - "pull_out"
+      - "start_planner"
       - "intersection_occlusion"
 
     default_enable_list:
