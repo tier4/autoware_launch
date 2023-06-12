@@ -27,7 +27,7 @@
   <!-- Planning -->
   <arg name="use_experimental_lane_change_function" default="true"/>
   <!-- Others -->
-  <arg name="use_foa" default="false"/>
+  <arg name="use_foa" default="$(var scenario_simulation)"/>
 
   <group scoped="false">
     <!-- Vehicle -->
