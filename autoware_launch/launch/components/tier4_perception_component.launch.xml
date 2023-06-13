@@ -24,6 +24,10 @@
     <arg name="objects_validation_method" value="$(var detected_objects_validation_method)"/>
     <arg name="data_path" value="$(var data_path)"/>
     <arg name="use_low_height_cropbox" value="false"/>
+    <arg name="enable_fine_detection" value="$(var traffic_light_recognition/enable_fine_detection)"/>
+    <arg name="centerpoint_model_name" value="aip_x2"/>
+    <arg name="centerpoint_model_path" value="$(find-pkg-share ml_model_provider)/data/lidar_centerpoint"/>
+    <arg name="centerpoint_model_param_path" value="$(find-pkg-share ml_model_provider)/config/lidar_centerpoint/aip_x2.param.yaml"/>
 
     <!-- object recognition -->
     <arg
