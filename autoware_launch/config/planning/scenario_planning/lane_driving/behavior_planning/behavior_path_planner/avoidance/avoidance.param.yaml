@@ -14,7 +14,7 @@
       enable_avoidance_over_same_direction: true
       enable_avoidance_over_opposite_direction: true
       enable_update_path_when_object_is_gone: false
-      enable_force_avoidance_for_stopped_vehicle: false
+      enable_force_avoidance_for_stopped_vehicle: true
       enable_safety_check: true
       enable_yield_maneuver: true
       enable_yield_maneuver_during_shifting: false
@@ -83,9 +83,9 @@
         # filtering moving objects
         threshold_speed_object_is_stopped: 1.0          # [m/s]
         threshold_time_object_is_moving: 1.0            # [s]
-        threshold_time_force_avoidance_for_stopped_vehicle: 10.0 # [s]
+        threshold_time_force_avoidance_for_stopped_vehicle: 1.0 # [s]
         # detection range
-        object_ignore_distance_traffic_light: 30.0      # [m]
+        object_ignore_distance_traffic_light: 70.0      # [m]
         object_ignore_distance_crosswalk_forward: 30.0  # [m]
         object_ignore_distance_crosswalk_backward: 30.0 # [m]
         object_check_forward_distance: 150.0            # [m]

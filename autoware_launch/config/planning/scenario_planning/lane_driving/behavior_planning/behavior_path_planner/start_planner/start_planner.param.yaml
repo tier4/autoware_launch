@@ -9,7 +9,7 @@
       collision_check_distance_from_end: 1.0
       # shift pull out
       enable_shift_pull_out: true
-      shift_pull_out_velocity: 2.0
+      shift_pull_out_velocity: 4.0
       pull_out_sampling_num: 4
       minimum_shift_pull_out_distance: 0.0
       maximum_lateral_jerk: 2.0
