@@ -4,7 +4,7 @@
 /**:
   ros__parameters:
     external_request_lane_change_left:
-      enable_module: true
+      enable_module: false
       enable_rtc: true
       enable_simultaneous_execution_as_approved_module: false
       enable_simultaneous_execution_as_candidate_module: true
@@ -12,7 +12,7 @@
       max_module_size: 1
 
     external_request_lane_change_right:
-      enable_module: true
+      enable_module: false
       enable_rtc: true
       enable_simultaneous_execution_as_approved_module: false
       enable_simultaneous_execution_as_candidate_module: true
