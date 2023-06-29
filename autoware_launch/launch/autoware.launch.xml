@@ -48,6 +48,10 @@
   <!-- Auto mode setting-->
   <arg name="enable_all_modules_auto_mode" default="false" description="enable all module's auto mode"/>
   <arg name="is_simulation" default="false" description="Autoware's behavior will change depending on whether this is a simulation or not."/>
+  <arg name="centerpoint_model_path" default="/opt/autoware/mlmodels/centerpoint" description="path of centerpoint model file"/>
+  <arg name="centerpoint_model_param_path" default="/opt/autoware/mlmodels/centerpoint/aip_x2.param.yaml" description="path of centerpoint parameter file"/>
+  <!-- Localization -->
+  <arg name="localization_mode" default="lidar" description="select localization mode. lidar, camera"/>
 
   <!-- Global parameters -->
   <group scoped="false">
