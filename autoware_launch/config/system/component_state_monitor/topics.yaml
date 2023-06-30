@@ -11,6 +11,97 @@
     error_rate: 5.0
     timeout: 1.0
 
+- module: sensing
+  mode: [online]
+  type: launch
+  args:
+    node_name_suffix: camera0
+    topic: /sensing/camera/camera0/camera_info
+    topic_type: sensor_msgs/msg/CameraInfo
+    best_effort: true
+    transient_local: false
+    warn_rate: 5.0
+    error_rate: 1.0
+    timeout: 1.0
+
+- module: sensing
+  mode: [online]
+  type: launch
+  args:
+    node_name_suffix: camera1
+    topic: /sensing/camera/camera1/camera_info
+    topic_type: sensor_msgs/msg/CameraInfo
+    best_effort: true
+    transient_local: false
+    warn_rate: 5.0
+    error_rate: 1.0
+    timeout: 1.0
+
+- module: sensing
+  mode: [online]
+  type: launch
+  args:
+    node_name_suffix: camera2
+    topic: /sensing/camera/camera2/camera_info
+    topic_type: sensor_msgs/msg/CameraInfo
+    best_effort: true
+    transient_local: false
+    warn_rate: 5.0
+    error_rate: 1.0
+    timeout: 1.0
+
+- module: sensing
+  mode: [online]
+  type: launch
+  args:
+    node_name_suffix: camera3
+    topic: /sensing/camera/camera3/camera_info
+    topic_type: sensor_msgs/msg/CameraInfo
+    best_effort: true
+    transient_local: false
+    warn_rate: 5.0
+    error_rate: 1.0
+    timeout: 1.0
+
+- module: sensing
+  mode: [online]
+  type: launch
+  args:
+    node_name_suffix: camera4
+    topic: /sensing/camera/camera4/camera_info
+    topic_type: sensor_msgs/msg/CameraInfo
+    best_effort: true
+    transient_local: false
+    warn_rate: 5.0
+    error_rate: 1.0
+    timeout: 1.0
+
+- module: sensing
+  mode: [online]
+  type: launch
+  args:
+    node_name_suffix: camera5
+    topic: /sensing/camera/camera5/camera_info
+    topic_type: sensor_msgs/msg/CameraInfo
+    best_effort: true
+    transient_local: false
+    warn_rate: 5.0
+    error_rate: 1.0
+    timeout: 1.0
+
+- module: sensing
+  mode: [online]
+  type: launch
+  args:
+    node_name_suffix: camera6
+    topic: /sensing/camera/camera6/camera_info
+    topic_type: sensor_msgs/msg/CameraInfo
+    best_effort: true
+    transient_local: false
+    warn_rate: 5.0
+    error_rate: 1.0
+    timeout: 1.0
+
 - module: map
   mode: [online, logging_simulation, planning_simulation]
   type: launch
