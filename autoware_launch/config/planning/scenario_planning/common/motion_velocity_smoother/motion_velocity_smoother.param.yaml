@@ -9,7 +9,7 @@
 
     # curve parameters
     max_lateral_accel: 1.0             # max lateral acceleration limit [m/ss]
-    min_curve_velocity: 2.74            # min velocity at lateral acceleration limit and steering angle rate limit [m/s]
+    min_curve_velocity: 1.5            # min velocity at lateral acceleration limit and steering angle rate limit [m/s]
     decel_distance_before_curve: 3.5   # slow speed distance before a curve for lateral acceleration limit
     decel_distance_after_curve: 2.0    # slow speed distance after a curve for lateral acceleration limit
     min_decel_for_lateral_acc_lim_filter: -0.5  # deceleration limit applied in the lateral acceleration filter to avoid sudden braking [m/ss]
@@ -49,7 +49,7 @@
     post_sparse_min_interval_distance: 1.0   # minimum points-interval length for sparse sampling [m]
 
     # steering angle rate limit parameters
-    max_steering_angle_rate: 40.0            # maximum steering angle rate [degree/s]
+    max_steering_angle_rate: 11.5            # maximum steering angle rate [degree/s]
     resample_ds: 0.1                         # distance between trajectory points [m]
     curvature_threshold: 0.02                # if curvature > curvature_threshold, steeringRateLimit is triggered [1/m]
     curvature_calculation_distance: 1.0      # distance of points while curvature is calculating [m]
