@@ -40,13 +40,13 @@
 
   <!-- dummy topic publisher (camera0 ~ camera6)-->
   <!-- temporary until AWSIM supports object recoginition camera -->
-  <arg name="camera0_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera0/camera_info sensor_msgs/msg/CameraInfo '{}'" />
-  <arg name="camera1_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera1/camera_info sensor_msgs/msg/CameraInfo '{}'" />
-  <arg name="camera2_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera2/camera_info sensor_msgs/msg/CameraInfo '{}'" />
-  <arg name="camera3_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera3/camera_info sensor_msgs/msg/CameraInfo '{}'" />
-  <arg name="camera4_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera4/camera_info sensor_msgs/msg/CameraInfo '{}'" />
-  <arg name="camera5_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera5/camera_info sensor_msgs/msg/CameraInfo '{}'" />
-  <arg name="camera6_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera6/camera_info sensor_msgs/msg/CameraInfo '{}'" />
+  <arg name="camera0_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera0/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera1_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera1/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera2_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera2/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera3_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera3/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera4_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera4/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera5_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera5/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera6_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera6/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
 
   <executable cmd="$(var camera0_pub)" name="camera0" shell="true"/>
   <executable cmd="$(var camera1_pub)" name="camera1" shell="true"/>
