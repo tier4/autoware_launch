@@ -21,7 +21,7 @@
       stuck_vehicle_attention_range: 10.0 # [m] the detection area is defined as X meters behind the crosswalk
 
       # param for pass judge logic
-      ego_pass_first_margin: 6.0 # [s] time margin for ego pass first situation (the module judges that ego don't have to stop at TTC + MARGIN < TTV condition)
+      ego_pass_first_margin: 4.0 # [s] time margin for ego pass first situation (the module judges that ego don't have to stop at TTC + MARGIN < TTV condition)
       ego_pass_later_margin: 10.0 # [s] time margin for object pass first situation (the module judges that ego don't have to stop at TTV + MARGIN < TTC condition)
       stop_object_velocity_threshold: 0.28 # [m/s] velocity threshold for the module to judge whether the objects is stopped (0.28 m/s = 1.0 kmph)
       min_object_velocity: 1.39 # [m/s] minimum object velocity (compare the estimated velocity by perception module with this parameter and adopt the larger one to calculate TTV. 1.39 m/s = 5.0 kmph)
@@ -40,5 +40,5 @@
         pedestrian: true # [-] whether to look and stop by PEDESTRIAN objects
 
     walkway:
-      stop_duration_sec: 1.0 # [s] stop time at stop position
+      stop_duration_sec: 0.1 # [s] stop time at stop position
       stop_line_distance: 3.5 # [m] make stop line away from crosswalk when no explicit stop line exists
