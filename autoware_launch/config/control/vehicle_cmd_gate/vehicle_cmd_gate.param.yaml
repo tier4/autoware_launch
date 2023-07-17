@@ -24,3 +24,9 @@
       lat_acc_lim: 2.0
       lat_jerk_lim: 7.0
       actual_steer_diff_lim: 1.0
+    steering_deadzone:
+      enable_compensation: true
+      lpf_gain: 0.0
+      deadzone_threshold: 0.00174
+      deadzone_compensation: 0.00872
+      steering_moving_threshold: 0.01
