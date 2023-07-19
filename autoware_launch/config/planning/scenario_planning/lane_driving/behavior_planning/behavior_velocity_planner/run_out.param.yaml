@@ -67,6 +67,12 @@
         margin_behind: 0.5 # [m] ahead margin for detection area length
         margin_ahead: 1.0  # [m] behind margin for detection area length
 
+      # parameter to avoid sudden stopping
+      slow_down_limit:
+        enable: false
+        max_jerk: -0.7  # [m/s^3] minimum jerk deceleration for safe brake.
+        max_acc : -2.0  # [m/s^2] minimum accel deceleration for safe brake.
+
       # Only used when "detection_method" is set to Points
       # Points in this area are detected even if it is in the no obstacle segmentation area
       # The mandatory area is calculated based on the current velocity and acceleration and "decel_jerk" constraints
