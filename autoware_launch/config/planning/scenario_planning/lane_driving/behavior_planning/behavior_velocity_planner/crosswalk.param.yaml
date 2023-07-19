@@ -40,6 +40,3 @@
         motorcycle: true # [-] whether to look and stop by MOTORCYCLE objects (tmp: currently it is difficult for perception modules to detect bicycles and motorcycles separately.)
         pedestrian: true # [-] whether to look and stop by PEDESTRIAN objects
 
-    walkway:
-      stop_duration_sec: 0.1 # [s] stop time at stop position
-      stop_line_distance: 3.5 # [m] make stop line away from crosswalk when no explicit stop line exists
