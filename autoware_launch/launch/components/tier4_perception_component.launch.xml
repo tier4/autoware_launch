@@ -16,6 +16,7 @@
     <arg name="centerpoint_model_name" value="aip_xx1"/>
     <arg name="centerpoint_model_path" value="$(find-pkg-share ml_model_provider)/data/lidar_centerpoint"/>
     <arg name="centerpoint_model_param_path" value="$(find-pkg-share ml_model_provider)/config/lidar_centerpoint/aip_xx1.param.yaml"/>
+    <arg name="traffic_light_recognition/fusion_only" default="true"/>
     <arg name="remove_unknown" value="false"/>
     <arg name="trust_distance" value="100.0"/>
 
