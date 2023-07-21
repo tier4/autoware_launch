@@ -30,6 +30,8 @@
     <arg name="centerpoint_model_param_path" value="$(var centerpoint_model_param_path)"/>
     <arg name="traffic_light_recognition/fusion_only" value="true"/>
     <arg name="namespace1" value="camera7"/>
+    <arg name="remove_unknown" value="false"/>
+    <arg name="trust_distance" value="100.0"/>
 
     <!-- object recognition -->
     <arg
