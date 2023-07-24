@@ -11,6 +11,14 @@
     <arg name="enable_fine_detection" value="$(var traffic_light_recognition/enable_fine_detection)"/>
     <arg name="occupancy_grid_map_method" value="$(var occupancy_grid_map_method)"/>
     <arg name="occupancy_grid_map_updater" value="$(var occupancy_grid_map_updater)"/>
+    <arg name="input/pointcloud" value="/sensing/lidar/concatenated/pointcloud"/>
+    <arg name="use_traffic_light_recognition" value="$(var use_traffic_light_recognition)"/>
+    <arg name="centerpoint_model_name" value="aip_xx1"/>
+    <arg name="centerpoint_model_path" value="$(find-pkg-share ml_model_provider)/data/lidar_centerpoint"/>
+    <arg name="centerpoint_model_param_path" value="$(find-pkg-share ml_model_provider)/config/lidar_centerpoint/aip_xx1.param.yaml"/>
+    <arg name="traffic_light_recognition/fusion_only" default="true"/>
+    <arg name="remove_unknown" value="false"/>
+    <arg name="trust_distance" value="100.0"/>
 
     <!-- object recognition -->
     <arg name="object_recognition_detection_compare_map_param_path" value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/clustering/compare_map.param.yaml"/>
