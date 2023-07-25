@@ -39,8 +39,8 @@
         min_object_velocity: 1.39 # [m/s] minimum object velocity (compare the estimated velocity by perception module with this parameter and adopt the larger one to calculate TTV. 1.39 m/s = 5.0 kmph)
         ## param for yielding
         disable_stop_for_yield_cancel: false
-        timeout_no_intention_to_walk: 3.0 # [s] if the pedestrian does not move for X seconds after stopping before the crosswalk, the module judge that ego is able to pass first.
-        timeout_ego_stop_for_yield: 3.0 # [s] the amount of time which ego should be stopping to query whether it yields or not
+        timeout_no_intention_to_walk: 1.0 # [s] if the pedestrian does not move for X seconds after stopping before the crosswalk, the module judge that ego is able to pass first.
+        timeout_ego_stop_for_yield: 1.0 # [s] the amount of time which ego should be stopping to query whether it yields or not
 
       # param for target object filtering
       object_filtering:
