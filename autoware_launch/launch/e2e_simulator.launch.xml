@@ -87,6 +87,7 @@
       <arg name="perception_mode" value="lidar"/>
       <arg name="use_traffic_light_recognition" value="true"/>
       <arg name="traffic_light_recognition/enable_fine_detection" value="false"/>
+      <arg name="traffic_light_recognition/fusion_only" value="false"/>
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>

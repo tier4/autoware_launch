@@ -38,8 +38,9 @@
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
   <!-- Perception -->
   <arg name="perception_mode" default="camera_lidar_fusion" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
-  <arg name="use_traffic_light_recognition" default="false"/>
+  <arg name="use_traffic_light_recognition" default="true"/>
   <arg name="traffic_light_recognition/enable_fine_detection" default="true" description="enable traffic light fine detection"/>
+  <arg name="traffic_light_recognition/fusion_only" default="true" description="Whether to start only some of the signal recognition related nodes"/>
   <!-- Planning -->
   <arg name="use_experimental_lane_change_function" default="false"/>
   <!-- Others -->
