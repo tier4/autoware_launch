@@ -186,7 +186,7 @@
   args:
     node_name_suffix: traffic_light_recognition_objects
     topic: /perception/traffic_light_recognition/traffic_signals
-    topic_type: autoware_auto_perception_msgs/msg/TrafficSignalArray
+    topic_type: autoware_perception_msgs/msg/TrafficSignalArray
     best_effort: false
     transient_local: false
     warn_rate: 3.0
