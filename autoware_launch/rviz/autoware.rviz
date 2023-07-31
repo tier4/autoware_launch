@@ -22,6 +22,8 @@ Panels:
     Name: AutowareDateTimePanel
   - Class: rviz_plugins::AutowareStatePanel
     Name: AutowareStatePanel
+  - Class: AutowareScreenCapturePanel
+    Name: AutowareScreenCapturePanel
 Visualization Manager:
   Class: ""
   Displays:
@@ -2535,6 +2537,8 @@ Visualization Manager:
         X: 0
         Y: 0
 Window Geometry:
+  AutowareScreenCapturePanel:
+    collapsed: false
   AutowareStatePanel:
     collapsed: false
   Displays:
