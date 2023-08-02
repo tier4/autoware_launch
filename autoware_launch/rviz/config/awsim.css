@@ -41,3 +41,12 @@ QLabel.value[test="unknown_traffic_light"] {
   border-width: 1px 1px 1px 1px;
   border-style: solid;
 }
+
+QLabel.value[test="none_traffic_light"] {
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+}

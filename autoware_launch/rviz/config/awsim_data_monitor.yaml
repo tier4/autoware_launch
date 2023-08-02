@@ -32,14 +32,15 @@ widgets:
         rules:
           - class: Access
             fails: ERROR-VALUE
-            field: [result, signal, lights, 0, color]
+            field: [elements, 0, color]
           - class: SetFirstIf
             type: text
             list:
               - { eq: 1, value: Red, attrs: { test: red_traffic_light } }
               - { eq: 2, value: Yellow, attrs: { test: yellow_traffic_light } }
               - { eq: 3, value: Green, attrs: { test: green_traffic_light } }
-              - { eq: ERROR-VALUE, value: unknown, attrs: { test: green_traffic_light } }
+              - { eq: 0, value: Unknown, attrs: { test: unknown_traffic_light } }
+              - { eq: ERROR-VALUE, value: None, attrs: { test: none_traffic_light } }
 streams:
   - { class: subscription, label: vehicle_gear, topic: /vehicle/status/gear_status, field: report }
   - class: subscription
