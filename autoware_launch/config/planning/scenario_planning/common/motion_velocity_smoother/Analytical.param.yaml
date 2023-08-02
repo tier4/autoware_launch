@@ -11,9 +11,9 @@
 
     forward:
       max_acc: 1.0
-      min_acc: -1.0
-      max_jerk: 0.3
-      min_jerk: -0.3
+      min_acc: -0.5
+      max_jerk: 1.0
+      min_jerk: -0.5
       kp: 0.3
 
     backward:
