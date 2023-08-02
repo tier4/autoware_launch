@@ -1,0 +1,43 @@
+QLabel.value[test="gear"] {
+  font-size: 24px;
+  color: white;
+  background-color: black;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+}
+
+QLabel.value[test="red_traffic_light"] {
+  font-weight: bold;
+  font-size: 12px;
+  color: black;
+  background-color: red;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+}
+
+QLabel.value[test="green_traffic_light"] {
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  background-color: green;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+}
+
+QLabel.value[test="yellow_traffic_light"] {
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  background-color: yellow;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+}
+
+QLabel.value[test="unknown_traffic_light"] {
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  background-color: gray;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+}

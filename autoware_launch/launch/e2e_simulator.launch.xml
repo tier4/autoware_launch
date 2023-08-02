@@ -31,7 +31,7 @@
   />
   <!-- Tools -->
   <arg name="rviz" default="true" description="launch rviz"/>
-  <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
+  <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/awsim.rviz" description="rviz config"/>
 
   <!-- XX1 Traffic Light frame_id relay for AWSIM-->
   <arg name="traffic_light_original_id" default="camera6/camera_optical_link"/>

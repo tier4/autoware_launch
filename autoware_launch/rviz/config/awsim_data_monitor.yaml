@@ -1,0 +1,56 @@
+version: 2.0
+
+stylesheets:
+  - path: package://multi_data_monitor/css/plugins/titled.css
+    target: Titled
+  - path: package://autoware_launch/rviz/config/awsim.css
+  - path: package://multi_data_monitor/css/colors.css
+
+widgets:
+  - class: Matrix
+    cols: 3
+    items:
+      - class: Titled
+        title: Gear
+        input: vehicle_gear
+        rules:
+          class: SetFirstIf
+          type: uint
+          list:
+            - { eq: 0, value: NONE, attrs: { test: gear } }
+            - { eq: 1, value: N(Neutral range), attrs: { test: gear } }
+            - { eq: 22, value: P(Parking), attrs: { test: gear } }
+            - { eq: 30, value: R(Reverse range), attrs: { test: gear } }
+            - { eq: 2, value: D(Drive range), attrs: { test: gear } }
+            - { eq: 23, value: L(Low range), attrs: { test: gear } }
+      - class: Titled
+        title: NVTL
+        input: nvtl
+      - class: Titled
+        title: Traffic light
+        input: traffic_light_color
+        rules:
+          - class: Access
+            fails: ERROR-VALUE
+            field: [result, signal, lights, 0, color]
+          - class: SetFirstIf
+            type: text
+            list:
+              - { eq: 1, value: Red, attrs: { test: red_traffic_light } }
+              - { eq: 2, value: Yellow, attrs: { test: yellow_traffic_light } }
+              - { eq: 3, value: Green, attrs: { test: green_traffic_light } }
+              - { eq: ERROR-VALUE, value: unknown, attrs: { test: green_traffic_light } }
+streams:
+  - { class: subscription, label: vehicle_gear, topic: /vehicle/status/gear_status, field: report }
+  - class: subscription
+    label: nvtl_raw
+    topic: /localization/pose_estimator/nearest_voxel_transformation_likelihood
+    field: data
+  - { label: nvtl, class: apply, input: nvtl_raw, rules: round_number }
+  - class: subscription
+    label: traffic_light_color
+    topic: /awapi/traffic_light/get/nearest_traffic_signal
+    field: ""
+
+filters:
+  - { class: Precision, label: round_number, digits: 2 }
