@@ -17,8 +17,8 @@
       kp: 0.3
 
     backward:
-      start_jerk: -0.1
-      min_jerk_mild_stop: -0.3
+      start_jerk: -0.3
+      min_jerk_mild_stop: -0.5
       min_jerk: -1.5
       min_acc_mild_stop: -1.0
       min_acc: -2.5
