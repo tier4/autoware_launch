@@ -2,6 +2,8 @@
 <launch>
   <arg name="occupancy_grid_map_method" default="pointcloud_based_occupancy_grid_map" description="options: pointcloud_based_occupancy_grid_map, laserscan_based_occupancy_grid_map"/>
   <arg name="occupancy_grid_map_updater" default="binary_bayes_filter" description="options: binary_bayes_filter"/>
+  <arg name="lidar_detection_model" default="pointpainting" description="options: `centerpoint`, `apollo`, `pointpainting`, `clustering`"/>
+  <arg name="traffic_light_recognition/fusion_only" default="true" description="Whether to start only some of the signal recognition related nodes"/>
 
   <include file="$(find-pkg-share tier4_perception_launch)/launch/perception.launch.xml">
     <arg name="mode" value="$(var perception_mode)"/>
@@ -11,6 +13,15 @@
     <arg name="enable_fine_detection" value="$(var traffic_light_recognition/enable_fine_detection)"/>
     <arg name="occupancy_grid_map_method" value="$(var occupancy_grid_map_method)"/>
     <arg name="occupancy_grid_map_updater" value="$(var occupancy_grid_map_updater)"/>
+    <arg name="input/pointcloud" value="/sensing/lidar/concatenated/pointcloud"/>
+    <arg name="use_traffic_light_recognition" value="$(var use_traffic_light_recognition)"/>
+    <arg name="lidar_detection_model" value="$(var lidar_detection_model)"/>
+    <arg name="object_recognition_detection_lidar_model_param_path" value="$(find-pkg-share ml_model_provider)/config"/>
+    <arg name="centerpoint_model_name" value="centerpoint_xx1"/>
+    <arg name="centerpoint_model_path" value="$(find-pkg-share ml_model_provider)/data"/>
+    <arg name="traffic_light_recognition/fusion_only" value="$(var traffic_light_recognition/fusion_only)"/>
+    <arg name="remove_unknown" value="false"/>
+    <arg name="trust_distance" value="100.0"/>
 
     <!-- object recognition -->
     <arg name="object_recognition_detection_compare_map_param_path" value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/clustering/compare_map.param.yaml"/>
@@ -55,7 +66,7 @@
       name="object_recognition_detection_object_merger_distance_threshold_list_path"
       value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/object_merger/overlapped_judge.param.yaml"
     />
-    <arg name="object_recognition_detection_lidar_model_param_path" value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/lidar_model"/>
+    <!-- <arg name="object_recognition_detection_lidar_model_param_path" value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/lidar_model"/> -->
     <arg
       name="object_recognition_tracking_multi_object_tracker_data_association_matrix_param_path"
       value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/tracking/multi_object_tracker/data_association_matrix.param.yaml"
