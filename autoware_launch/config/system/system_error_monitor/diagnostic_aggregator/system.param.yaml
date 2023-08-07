@@ -13,3 +13,12 @@
               path: storage_error
               contains: ["bagpacker"]
               timeout: 3.0
+        fms_connection:
+          type: diagnostic_aggregator/AnalyzerGroup
+          path: fms_connection
+          analyzers:
+            connection_error:
+              type: diagnostic_aggregator/GenericAnalyzer
+              path: connection_error
+              contains: ["edge_core_internet_connection"]
+              timeout: 10.0
