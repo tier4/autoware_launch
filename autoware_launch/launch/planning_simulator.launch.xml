@@ -72,6 +72,8 @@
       <!-- Auto mode setting-->
       <arg name="enable_all_modules_auto_mode" value="$(var enable_all_modules_auto_mode)"/>
       <arg name="is_simulation" value="true"/>
+      <!-- V2X -->
+      <arg name="launch_v2x" value="false"/>
     </include>
   </group>
 
