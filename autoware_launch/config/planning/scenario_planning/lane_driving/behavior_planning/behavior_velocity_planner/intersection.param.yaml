@@ -33,14 +33,14 @@
         not_prioritized:
           collision_start_margin_time: 4.0 # [s] this + state_transit_margin_time should be higher to account for collision with fast/accelerating object
           collision_end_margin_time: 6.0 # [s] this + state_transit_margin_time should be higher to account for collision with slow/decelerating object
-        keep_detection_vel_thr: 0.833 # == 3.0km/h. keep detection if ego is ego.vel < keep_detection_vel_thr
+        keep_detection_vel_thr: 1.5 # == 5.4km/h. keep detection if ego is ego.vel < keep_detection_vel_thr
 
       occlusion:
         enable: true
         occlusion_attention_area_length: 70.0 # [m]
         enable_creeping: false # flag to use the creep velocity when reaching occlusion limit stop line
         occlusion_creep_velocity: 0.8333 # the creep velocity to occlusion limit stop line
-        peeking_offset: -0.5 # [m] offset for peeking into detection area
+        peeking_offset: 1.0 # [m] offset for peeking into detection area
         free_space_max: 43
         occupied_min: 58
         do_dp: true
