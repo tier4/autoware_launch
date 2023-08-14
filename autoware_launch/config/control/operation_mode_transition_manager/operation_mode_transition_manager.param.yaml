@@ -1,8 +1,10 @@
+# These parameters are tuned for xx1
+
 /**:
   ros__parameters:
-    transition_timeout: 10.0
+    transition_timeout: 5.0
     frequency_hz: 10.0
-    check_engage_condition: false # set false if you do not want to care about the engage condition.
+    check_engage_condition: true # set false if you do not want to care about the engage condition.
     nearest_dist_deviation_threshold: 3.0 # [m] for finding nearest index
     nearest_yaw_deviation_threshold: 1.57 # [rad] for finding nearest index
     engage_acceptable_limits:
@@ -15,8 +17,8 @@
       lateral_acc_threshold: 1.0
       lateral_acc_diff_threshold: 0.5
     stable_check:
-      duration: 0.1
-      dist_threshold: 1.5
+      duration: 3.0
+      dist_threshold: 0.5
       speed_upper_threshold: 2.0
       speed_lower_threshold: -2.0
       yaw_threshold: 0.262
