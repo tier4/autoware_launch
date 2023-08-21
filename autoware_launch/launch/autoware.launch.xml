@@ -32,12 +32,44 @@
   <arg name="system_run_mode" default="online" description="run mode in system"/>
   <arg name="launch_system_monitor" default="true" description="launch system monitor"/>
   <arg name="launch_dummy_diag_publisher" default="false" description="launch dummy diag publisher"/>
+  <arg name="system_error_monitor_param_path" default="$(find-pkg-share autoware_launch)/config/system/system_error_monitor/system_error_monitor.param.yaml"/>
   <!-- Tools -->
   <arg name="rviz" default="true" description="launch rviz"/>
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
   <!-- Perception -->
-  <arg name="perception_mode" default="lidar" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
+  <arg name="perception_mode" default="camera_lidar_fusion" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
+  <arg name="use_traffic_light_recognition" default="true"/>
   <arg name="traffic_light_recognition/enable_fine_detection" default="true" description="enable traffic light fine detection"/>
+  <arg name="traffic_light_recognition/fusion_only" default="true" description="Whether to start only some of the signal recognition related nodes"/>
+  <!-- Planning -->
+  <arg name="use_experimental_lane_change_function" default="false"/>
+  <!-- Others -->
+  <arg name="use_foa" default="false"/>
+  <arg name="rviz_respawn" default="true"/>
+
+  <!-- rtc settings (auto/manual) -->
+  <let
+    name="rtc_auto_mode_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager.param.yaml"
+    unless="$(var use_foa)"
+  />
+  <let
+    name="rtc_auto_mode_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager_foa.param.yaml"
+    if="$(var use_foa)"
+  />
+
+  <!-- external lane change setting -->
+  <let
+    name="scene_module_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/scene_module_manager.param.yaml"
+    unless="$(var use_foa)"
+  />
+  <let
+    name="scene_module_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/scene_module_manager_foa.param.yaml"
+    if="$(var use_foa)"
+  />
 
   <!-- Global parameters -->
   <group scoped="false">
@@ -89,11 +121,20 @@
   <!-- Perception -->
   <group if="$(var launch_perception)">
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_perception_component.launch.xml"/>
+
+    <!-- XX1 Traffic Light Perception Relay-->
+    <arg name="traffic_light_original_name" default="/perception/traffic_light_recognition/camera6/traffic_signals"/>
+    <arg name="traffic_light_topic_name" default="/perception/traffic_light_recognition/traffic_signals"/>
+    <node pkg="topic_tools" exec="relay" name="traffic_light_relay" args="$(var traffic_light_original_name) $(var traffic_light_topic_name)"/>
   </group>
 
   <!-- Planning -->
   <group if="$(var launch_planning)">
-    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_planning_component.launch.xml"/>
+    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_planning_component.launch.xml">
+      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
+      <arg name="rtc_auto_mode_manager_param_path" value="$(var rtc_auto_mode_manager_param_path)"/>
+      <arg name="scene_module_manager_param_path" value="$(var scene_module_manager_param_path)"/>
+    </include>
   </group>
 
   <!-- Control -->
@@ -108,6 +149,14 @@
 
   <!-- Tools -->
   <group>
-    <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" args="-d $(var rviz_config) -s $(find-pkg-share autoware_launch)/rviz/image/autoware.png" if="$(var rviz)"/>
+    <node
+      pkg="rviz2"
+      exec="rviz2"
+      name="rviz2"
+      output="screen"
+      args="-d $(var rviz_config) -s $(find-pkg-share autoware_launch)/rviz/image/autoware.png"
+      if="$(var rviz)"
+      respawn="$(var rviz_respawn)"
+    />
   </group>
 </launch>

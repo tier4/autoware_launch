@@ -88,8 +88,8 @@
       cruise:
         max_lat_margin: 1.0 # lateral margin between obstacle and trajectory band with ego's width
         outside_obstacle:
-          obstacle_velocity_threshold : 3.0 # minimum velocity threshold of obstacles outside the trajectory to cruise or stop [m/s]
-          ego_obstacle_overlap_time_threshold : 1.0 #  time threshold to decide cut-in obstacle for cruise or stop [s]
+          obstacle_velocity_threshold : 3.5 # minimum velocity threshold of obstacles outside the trajectory to cruise or stop [m/s]
+          ego_obstacle_overlap_time_threshold : 2.0 #  time threshold to decide cut-in obstacle for cruise or stop [s]
           max_prediction_time_for_collision_check : 20.0 # prediction time to check collision between obstacle and ego
 
       slow_down:
@@ -167,7 +167,7 @@
       # parameters to calculate slow down velocity by linear interpolation
       min_lat_margin: 0.2
       max_lat_margin: 1.0
-      min_ego_velocity: 2.0
+      min_ego_velocity: 4.0
       max_ego_velocity: 8.0
 
       time_margin_on_target_velocity: 1.5 # [s]
