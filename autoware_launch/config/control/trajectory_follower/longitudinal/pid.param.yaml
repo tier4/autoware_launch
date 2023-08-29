@@ -70,6 +70,8 @@
     min_jerk: -2.0
 
     # slope compensation
+    # pitch
+    use_trajectory_for_pitch_calculation: true
     lpf_pitch_gain: 0.95
     slope_source: "raw_pitch" # raw_pitch, trajectory_pitch or trajectory_adaptive
     adaptive_trajectory_velocity_th: 1.0
