@@ -39,7 +39,7 @@
   <node pkg="tf2_ros" exec="static_transform_publisher" name="traffic_light_transform_publisher" args="--frame-id $(var traffic_light_original_id) --child-frame-id $(var traffic_light_topic_id)"/>
 
   <!-- dummy topic publisher (camera0 ~ camera6)-->
-  <!-- temporary until AWSIM supports object recoginition camera -->
+  <!-- temporary until AWSIM supports object recognition camera -->
   <arg name="camera0_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera0/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
   <arg name="camera1_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera1/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
   <arg name="camera2_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera2/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
