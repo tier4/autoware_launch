@@ -51,7 +51,7 @@
         # If this parameter is commented out, the parameter is set as below by default.
         # The logic could be `optimization_center_offset = vehicle_info.wheelbase * 0.8`
         # The 0.8 scale is adopted as it performed the best.
-        optimization_center_offset: 2.0 # optimization center offset from base link
+        optimization_center_offset: 0.0 # optimization center offset from base link
 
       clearance:  # clearance(distance) between vehicle and roads/objects when generating trajectory
         # if collision_free_constraints.option.hard_constraint is true
