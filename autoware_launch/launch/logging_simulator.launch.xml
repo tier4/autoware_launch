@@ -36,7 +36,6 @@
   <arg name="scenario_simulation" default="true" description="use scenario simulation"/>
   <!-- Perception -->
   <arg name="centerpoint_model_path" default="/opt/autoware/mlmodels/centerpoint" description="path of centerpoint model file"/>
-  <arg name="centerpoint_model_param_path" default="/opt/autoware/mlmodels/centerpoint/aip_x2.param.yaml" description="path of centerpoint parameter file"/>
 
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
@@ -74,7 +73,6 @@
       <arg name="launch_sensing_driver" value="false"/>
       <!-- Perception -->
       <arg name="centerpoint_model_path" value="$(var centerpoint_model_path)"/>
-      <arg name="centerpoint_model_param_path" value="$(var centerpoint_model_param_path)"/>
       <!-- V2X -->
       <arg name="launch_v2x" value="false"/>
     </include>
