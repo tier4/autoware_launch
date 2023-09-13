@@ -2215,7 +2215,7 @@ Visualization Manager:
                                 Value: /planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/slow_down/virtual_wall
                               Value: true
                             - Class: rviz_default_plugins/MarkerArray
-                              Enabled: true
+                              Enabled: false
                               Name: DebugMarker
                               Namespaces:
                                 {}
@@ -2226,7 +2226,7 @@ Visualization Manager:
                                 Reliability Policy: Reliable
                                 Value: /planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/marker
                               Value: true
-                          Enabled: false
+                          Enabled: true
                           Name: ObstacleCruise
                         - Class: rviz_default_plugins/MarkerArray
                           Enabled: false
