@@ -263,7 +263,7 @@ Visualization Manager:
           Enabled: true
           Name: Vehicle
         - Class: rviz_plugins/MrmSummaryOverlayDisplay
-          Enabled: false
+          Enabled: true
           Font Size: 10
           Left: 512
           Max Letter Num: 100
