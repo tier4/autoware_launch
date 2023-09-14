@@ -8,9 +8,9 @@
       backward_length_buffer_for_blocking_object: 0.5 # [m]
       lane_change_finish_judge_buffer: 0.0      # [m]
 
-      lane_changing_lateral_jerk: 0.75             # [m/s3]
+      lane_changing_lateral_jerk: 0.5             # [m/s3]
 
-      minimum_lane_changing_velocity: 1.0         # [m/s]
+      minimum_lane_changing_velocity: 1.5         # [m/s]
       prediction_time_resolution: 0.5           # [s]
       longitudinal_acceleration_sampling_num: 5
       lateral_acceleration_sampling_num: 3
@@ -64,7 +64,7 @@
       lateral_acceleration:
         velocity: [0.0, 4.0, 10.0]
         min_values: [0.15, 0.15, 0.15]
-        max_values: [1.25, 1.25, 1.25]
+        max_values: [1.0, 0.75, 0.5]
 
       # target object
       target_object:
@@ -85,7 +85,7 @@
       prepare_segment_ignore_object_velocity_thresh: 0.1 # [m/s]
       check_objects_on_current_lanes: false
       check_objects_on_other_lanes: false
-      use_all_predicted_path: true
+      use_all_predicted_path: false
 
       # lane change regulations
       regulation:
@@ -101,7 +101,7 @@
       # lane change cancel
       cancel:
         enable_on_prepare_phase: true
-        enable_on_lane_changing_phase: true
+        enable_on_lane_changing_phase: false
         delta_time: 1.0                     # [s]
         duration: 5.0                       # [s]
         max_lateral_jerk: 100.0             # [m/s3]
