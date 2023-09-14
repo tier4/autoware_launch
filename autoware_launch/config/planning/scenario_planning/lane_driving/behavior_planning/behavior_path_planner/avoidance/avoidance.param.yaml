@@ -73,9 +73,9 @@
           moving_speed_threshold: 0.28                 # 1.0km/h
           moving_time_threshold: 1.0
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.5
+          envelope_buffer_margin: 0.1
           avoid_margin_lateral: 0.7
-          safety_buffer_lateral: 0.3
+          safety_buffer_lateral: -0.2
           safety_buffer_longitudinal: 0.0
         bicycle:
           is_target: true
