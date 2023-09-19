@@ -33,6 +33,8 @@
     <arg name="remove_unknown" value="false"/>
     <arg name="trust_distance" value="100.0"/>
     <arg name="external/traffic_signals" value="/v2x/traffic_signals"/>
+    <arg name="use_low_height_cropbox" value="true"/>
+    <arg name="use_roi_based_cluster" value="false"/>
 
     <!-- object recognition -->
     <arg
