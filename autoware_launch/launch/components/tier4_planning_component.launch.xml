@@ -60,6 +60,7 @@
               $(var behavior_velocity_config_path)/no_stopping_area.param.yaml,
               $(var behavior_velocity_config_path)/run_out.param.yaml,
               $(var behavior_velocity_config_path)/speed_bump.param.yaml,
+              $(var behavior_velocity_config_path)/template.param.yaml,
               $(var behavior_velocity_config_path)/out_of_lane.param.yaml,
               $(var behavior_velocity_config_path)/no_drivable_lane.param.yaml]"
     />
