@@ -70,23 +70,14 @@
           collision_start_margin_time: 2.0
           collision_end_margin_time: 0.0
         partially_prioritized:
-          collision_start_margin_time: 3.0
+          collision_start_margin_time: 2.0
           collision_end_margin_time: 2.0
         not_prioritized:
-          collision_start_margin_time: 3.0
-          collision_end_margin_time: 2.0
-        yield_on_green_traffic_light:
-          distance_to_assigned_lanelet_start: 10.0
-          duration: 3.0
-          object_dist_to_stopline: 10.0
-        ignore_on_amber_traffic_light:
-          object_expected_deceleration:
-            car: 2.0
-            bike: 5.0
-        ignore_on_red_traffic_light:
-          object_margin_to_path: 2.0
-        avoid_collision_by_acceleration:
-          object_time_margin_to_collision_point: 4.0
+          collision_start_margin_time: 4.0 # [s] this + state_transit_margin_time should be higher to account for collision with fast/accelerating object
+          collision_end_margin_time: 6.0 # [s] this + state_transit_margin_time should be higher to account for collision with slow/decelerating object
+        keep_detection_vel_thr: 0.833 # == 3.0km/h. keep detection if ego is ego.vel < keep_detection_vel_thr
+        use_upstream_velocity: true # flag to use the planned velocity profile from the upstream module
+        minimum_upstream_velocity: 0.01 # [m/s] minimum velocity to avoid null division for the stop line from the upstream velocity
 
       occlusion:
         enable: true
