@@ -39,7 +39,6 @@
                          # 'lanelet': add lanelets overlapped by the ego footprints
                          # 'polygon': add polygons built around sections of the ego footprint that go out of the drivable area
         max_distance: 0.0 # [m] maximum distance by which the drivable area can be expended (0.0 means no limit)
-        max_path_arc_length: 80.0 # [m] maximum arc length along the path where the ego footprint is projected (0.0 means no limit)
         extra_arc_length: 0.5 # [m] extra expansion arc length around an ego footprint
       avoid_linestring:
         types: # linestring types in the lanelet maps that will not be crossed when expanding the drivable area
@@ -49,3 +48,7 @@
         compensate:
           enable: false  # if true, when the drivable area cannot be expanded in one direction to completely include the ego footprint, it is expanded in the opposite direction
           extra_distance: 3.0 # [m] extra distance to add to the compensation
+      replan_checker:
+        enable: true  # if true, only recalculate the expanded drivable area when the path or its original drivable area change significantly
+                      # not compatible with dynamic_objects.avoid
+        max_deviation: 1.0  # [m] full replan is only done if the path changes by more than this distance
