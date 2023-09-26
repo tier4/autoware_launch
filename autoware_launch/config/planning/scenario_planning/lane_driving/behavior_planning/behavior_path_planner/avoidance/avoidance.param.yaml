@@ -135,7 +135,7 @@
         check_current_lane: false                        # [-]
         check_shift_side_lane: true                      # [-]
         check_other_side_lane: false                     # [-]
-        check_unavoidable_object: false                  # [-]
+        check_unavoidable_object: true                   # [-]
         check_other_object: true                         # [-]
         # collision check parameters
         check_all_predicted_path: false                  # [-]
