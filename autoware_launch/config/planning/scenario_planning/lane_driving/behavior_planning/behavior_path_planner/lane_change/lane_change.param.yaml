@@ -60,6 +60,11 @@
           left_offset: 1.0 # [m]
           right_offset: 1.0 # [m]
 
+        # lane expansion for object filtering
+        lane_expansion:
+          left_offset: 0.0 # [m]
+          right_offset: 0.0 # [m]
+
       # lateral acceleration map
       lateral_acceleration:
         velocity: [0.0, 4.0, 10.0]
