@@ -27,6 +27,13 @@
   <let name="rviz_respawn" value="true" unless="$(var scenario_simulation)"/>
   <!-- Vcu emulation -->
   <arg name="vehicle_simulation" default="true" description="use vehicle simulation"/>
+  <!-- Planning -->
+  <arg name="use_experimental_lane_change_function" default="true"/>
+  <!-- Others -->
+  <arg name="use_foa" default="$(var scenario_simulation)"/>
+
+  <let name="rviz_respawn" value="false" if="$(var scenario_simulation)"/>
+  <let name="rviz_respawn" value="true" unless="$(var scenario_simulation)"/>
 
   <group scoped="false">
     <!-- Vehicle -->
@@ -57,6 +64,10 @@
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
+      <!-- Planning -->
+      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
+      <!-- Others -->
+      <arg name="use_foa" value="$(var use_foa)"/>
       <arg name="rviz_respawn" value="$(var rviz_respawn)"/>
     </include>
   </group>
