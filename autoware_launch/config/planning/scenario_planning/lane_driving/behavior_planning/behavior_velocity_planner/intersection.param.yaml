@@ -97,11 +97,11 @@
         occlusion_detection_hold_time: 1.5
         temporal_stop_time_before_peeking: 0.1
         temporal_stop_before_attention_area: false
-        creep_velocity_without_traffic_light: 1.388
-        static_occlusion_with_traffic_light_timeout: 0.5
-
-      debug:
-        ttc: [0]
+        absence_traffic_light:
+          creep_velocity: 1.388 # [m/s]
+          maximum_peeking_distance: 6.0 # [m]
+        attention_lane_crop_curvature_threshold: 0.25
+        attention_lane_curvature_calculation_ds: 0.5
 
       enable_rtc:
         intersection: false
