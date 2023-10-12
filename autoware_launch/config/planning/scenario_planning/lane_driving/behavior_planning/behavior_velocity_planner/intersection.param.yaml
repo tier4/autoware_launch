@@ -24,7 +24,7 @@
           bicycle: false
           unknown: false
         turn_direction:
-          left: true
+          left: false
           right: true
           straight: true
         use_stuck_stopline: true
