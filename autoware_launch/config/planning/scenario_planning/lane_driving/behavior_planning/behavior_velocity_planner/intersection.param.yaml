@@ -103,7 +103,7 @@
         temporal_stop_before_attention_area: false
         absence_traffic_light:
           creep_velocity: 1.388 # [m/s]
-          maximum_peeking_distance: 6.0 # [m]
+          maximum_peeking_distance: -0.5 # [m]
         attention_lane_crop_curvature_threshold: 0.25
         attention_lane_curvature_calculation_ds: 0.5
 
