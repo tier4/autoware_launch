@@ -19,7 +19,12 @@
       enable_yield_maneuver: true
       enable_yield_maneuver_during_shifting: false
       disable_path_update: false
-      use_hatched_road_markings: false
+
+      # drivable area setting
+      use_adjacent_lane: true
+      use_opposite_lane: true
+      use_intersection_areas: false
+      use_hatched_road_markings: true
 
       # for debug
       publish_debug_marker: false
