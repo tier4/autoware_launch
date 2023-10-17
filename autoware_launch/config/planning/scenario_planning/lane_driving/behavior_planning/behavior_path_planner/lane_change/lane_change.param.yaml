@@ -88,7 +88,7 @@
         unknown: false
         bicycle: true
         motorcycle: true
-        pedestrian: true
+        pedestrian: false
 
       # collision check
       enable_collision_check_for_prepare_phase:
