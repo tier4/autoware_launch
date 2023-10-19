@@ -228,8 +228,8 @@
     topic_type: autoware_auto_control_msgs/msg/AckermannControlCommand
     best_effort: false
     transient_local: false
-    warn_rate: 5.0
-    error_rate: 1.0
+    warn_rate: 20.0
+    error_rate: 15.0
     timeout: 1.0
 
 - module: control
@@ -241,8 +241,8 @@
     topic_type: autoware_auto_control_msgs/msg/AckermannControlCommand
     best_effort: false
     transient_local: false
-    warn_rate: 5.0
-    error_rate: 1.0
+    warn_rate: 20.0
+    error_rate: 15.0
     timeout: 1.0
 
 - module: vehicle
