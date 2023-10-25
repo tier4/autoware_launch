@@ -41,6 +41,7 @@
           avoid_margin_lateral: 0.7                    # [m]
           safety_buffer_lateral: 0.3                   # [m]
           safety_buffer_longitudinal: 0.0              # [m]
+          use_conservative_buffer_longitudinal: true   # [-] When set to true, the base_link2front is added to the longitudinal buffer before avoidance.
         truck:
           enable: true
           moving_speed_threshold: 1.0                  # 3.6km/h
@@ -50,6 +51,7 @@
           avoid_margin_lateral: 0.0
           safety_buffer_lateral: 0.8
           safety_buffer_longitudinal: 0.0
+          use_conservative_buffer_longitudinal: true
         bus:
           enable: true
           moving_speed_threshold: 1.0                  # 3.6km/h
@@ -59,6 +61,7 @@
           avoid_margin_lateral: 0.0
           safety_buffer_lateral: 0.8
           safety_buffer_longitudinal: 0.0
+          use_conservative_buffer_longitudinal: true
         trailer:
           enable: true
           moving_speed_threshold: 1.0                  # 3.6km/h
@@ -68,6 +71,7 @@
           avoid_margin_lateral: 0.0
           safety_buffer_lateral: 0.8
           safety_buffer_longitudinal: 0.0
+          use_conservative_buffer_longitudinal: true
         unknown:
           enable: false
           moving_speed_threshold: 0.28                 # 1.0km/h
@@ -76,6 +80,7 @@
           envelope_buffer_margin: 0.3
           safety_buffer_lateral: 0.7
           safety_buffer_longitudinal: 0.0
+          use_conservative_buffer_longitudinal: true
         bicycle:
           enable: false
           moving_speed_threshold: 0.28                 # 1.0km/h
@@ -85,6 +90,7 @@
           avoid_margin_lateral: 0.0
           safety_buffer_lateral: 1.0
           safety_buffer_longitudinal: 1.0
+          use_conservative_buffer_longitudinal: true
         motorcycle:
           enable: false
           moving_speed_threshold: 1.0                  # 3.6km/h
@@ -94,6 +100,7 @@
           avoid_margin_lateral: 0.0
           safety_buffer_lateral: 1.0
           safety_buffer_longitudinal: 1.0
+          use_conservative_buffer_longitudinal: true
         pedestrian:
           enable: false
           moving_speed_threshold: 0.28                 # 1.0km/h
@@ -103,6 +110,7 @@
           avoid_margin_lateral: 0.0
           safety_buffer_lateral: 1.0
           safety_buffer_longitudinal: 1.0
+          use_conservative_buffer_longitudinal: true
         lower_distance_for_polygon_expansion: 30.0      # [m]
         upper_distance_for_polygon_expansion: 100.0     # [m]
 
