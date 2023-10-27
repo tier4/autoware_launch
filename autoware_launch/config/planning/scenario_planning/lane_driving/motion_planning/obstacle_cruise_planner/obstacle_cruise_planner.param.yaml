@@ -88,7 +88,7 @@
         obstacle_traj_angle_threshold : 1.22 # [rad] = 70 [deg], yaw threshold of crossing obstacle against the nearest trajectory point for cruise or stop
 
       stop:
-        max_lat_margin: 0.0 # lateral margin between obstacle and trajectory band with ego's width
+        max_lat_margin: 0.2 # lateral margin between obstacle and trajectory band with ego's width
         crossing_obstacle:
           collision_time_margin : 4.0 # time threshold of collision between obstacle adn ego for cruise or stop [s]
 
@@ -179,10 +179,13 @@
 
     slow_down:
       # parameters to calculate slow down velocity by linear interpolation
-      min_lat_margin: 0.2
-      max_lat_margin: 1.0
-      min_ego_velocity: 4.0
-      max_ego_velocity: 8.0
+      labels:
+        - "default"
+      default:
+        min_lat_margin: 0.2
+        max_lat_margin: 1.0
+        min_ego_velocity: 4.0
+        max_ego_velocity: 8.0
 
       time_margin_on_target_velocity: 1.5 # [s]
 
