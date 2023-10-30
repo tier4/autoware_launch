@@ -43,7 +43,7 @@
           avoid_margin_lateral: 0.0
           safety_buffer_lateral: 0.0
         unknown:
-          is_target: true
+          is_target: false
           execute_num: 1
           moving_speed_threshold: 0.28                 # 1.0km/h
           moving_time_threshold: 1.0

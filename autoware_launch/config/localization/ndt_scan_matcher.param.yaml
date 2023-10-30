@@ -38,10 +38,10 @@
 
     # If converged_param_type is 1
     # Threshold for deciding whether to trust the estimation result
-    converged_param_nearest_voxel_transformation_likelihood: 2.3
+    converged_param_nearest_voxel_transformation_likelihood: 2.2
 
     # The number of particles to estimate initial pose
-    initial_estimate_particles_num: 200
+    initial_estimate_particles_num: 400
 
     # The number of initial random trials in the TPE (Tree-Structured Parzen Estimator).
     # This value should be equal to or less than 'initial_estimate_particles_num' and more than 0.
