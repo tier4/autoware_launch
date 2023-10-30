@@ -34,7 +34,7 @@
         not_prioritized:
           collision_start_margin_time: 4.0 # [s] this + state_transit_margin_time should be higher to account for collision with fast/accelerating object
           collision_end_margin_time: 6.0 # [s] this + state_transit_margin_time should be higher to account for collision with slow/decelerating object
-        keep_detection_vel_thr: 0.833 # == 3.0km/h. keep detection if ego is ego.vel < keep_detection_vel_thr
+        keep_detection_vel_thr: 1.5 # == 5.4km/h. keep detection if ego is ego.vel < keep_detection_vel_thr
         use_upstream_velocity: true # flag to use the planned velocity profile from the upstream module
         minimum_upstream_velocity: 0.01 # [m/s] minimum velocity to avoid null division for the stop line from the upstream velocity
         yield_on_green_traffic_light:
@@ -47,7 +47,7 @@
         occlusion_attention_area_length: 70.0 # [m]
         enable_creeping: false # flag to use the creep velocity when reaching occlusion limit stop line
         occlusion_creep_velocity: 0.8333 # the creep velocity to occlusion limit stop line
-        peeking_offset: -0.5 # [m] offset for peeking into detection area
+        peeking_offset: 1.0 # [m] offset for peeking into detection area
         free_space_max: 43
         occupied_min: 58
         do_dp: true
@@ -63,7 +63,7 @@
           creep_velocity: 1.388 # [m/s]
           maximum_peeking_distance: 6.0 # [m]
         attention_lane_crop_curvature_threshold: 0.25
-        attention_lane_curvature_calculation_ds: 0.5
+        attention_lane_curvature_calculation_ds: 0.6
 
       enable_rtc:
         intersection: false # If set to true, the scene modules require approval from the rtc (request to cooperate) function. If set to false, the modules can be executed without requiring rtc approval

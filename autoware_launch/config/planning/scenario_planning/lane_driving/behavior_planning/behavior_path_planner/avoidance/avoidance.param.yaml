@@ -40,7 +40,7 @@
         truck:
           is_target: true
           execute_num: 1
-          moving_speed_threshold: 1.0                  # 3.6km/h
+          moving_speed_threshold: 2.0                  # 7.2km/h
           moving_time_threshold: 2.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.5
@@ -50,7 +50,7 @@
         bus:
           is_target: true
           execute_num: 1
-          moving_speed_threshold: 1.0                  # 3.6km/h
+          moving_speed_threshold: 2.0                  # 7.2km/h
           moving_time_threshold: 2.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.5
@@ -60,7 +60,7 @@
         trailer:
           is_target: true
           execute_num: 1
-          moving_speed_threshold: 1.0                  # 3.6km/h
+          moving_speed_threshold: 2.0                  # 7.2km/h
           moving_time_threshold: 2.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.5
@@ -73,9 +73,9 @@
           moving_speed_threshold: 0.28                 # 1.0km/h
           moving_time_threshold: 1.0
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.5
+          envelope_buffer_margin: 0.1
           avoid_margin_lateral: 0.7
-          safety_buffer_lateral: 0.3
+          safety_buffer_lateral: -0.2
           safety_buffer_longitudinal: 0.0
         bicycle:
           is_target: true
@@ -165,7 +165,7 @@
           lateral_execution_threshold: 0.09             # [m]
           lateral_small_shift_threshold: 0.501          # [m]
           lateral_avoid_check_threshold: 0.1            # [m]
-          soft_road_shoulder_margin: 0.3                # [m]
+          soft_road_shoulder_margin: 0.8                # [m]
           hard_road_shoulder_margin: 0.3                # [m]
           max_right_shift_length: 5.0
           max_left_shift_length: 5.0

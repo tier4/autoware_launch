@@ -1,7 +1,7 @@
 /**:
   ros__parameters:
     use_predicted_trajectory: true
-    use_imu_path: true
+    use_imu_path: false
     voxel_grid_x: 0.05
     voxel_grid_y: 0.05
     voxel_grid_z: 100000.0
@@ -13,5 +13,5 @@
     a_obj_min: -1.0
     prediction_time_horizon: 1.5
     prediction_time_interval: 0.1
-    collision_keeping_sec: 0.0
+    collision_keeping_sec: 2.0
     aeb_hz: 10.0
