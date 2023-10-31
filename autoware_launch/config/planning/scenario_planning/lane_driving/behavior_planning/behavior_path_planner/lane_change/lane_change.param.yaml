@@ -120,7 +120,7 @@
       cancel:
         enable_on_prepare_phase: true
         enable_on_lane_changing_phase: false
-        delta_time: 1.0                     # [s]
+        delta_time: 2.0                     # [s]
         duration: 5.0                       # [s]
         max_lateral_jerk: 100.0             # [m/s3]
         overhang_tolerance: 0.0             # [m]
