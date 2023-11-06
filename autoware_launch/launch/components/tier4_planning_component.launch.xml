@@ -6,7 +6,7 @@
   <!-- motion -->
   <arg name="motion_path_smoother_type" default="elastic_band" description="options: elastic_band, none"/>
   <arg name="motion_path_planner_type" default="obstacle_avoidance_planner" description="options: obstacle_avoidance_planner, path_sampler, none"/>
-  <arg name="motion_stop_planner_type" default="obstacle_stop_planner" description="options: obstacle_stop_planner, obstacle_cruise_planner, none"/>
+  <arg name="motion_stop_planner_type" default="obstacle_cruise_planner" description="options: obstacle_stop_planner, obstacle_cruise_planner, none"/>
   <arg name="motion_velocity_smoother_type" default="JerkFiltered" description="options: JerkFiltered, L2, Analytical, Linf(Unstable)"/>
   <arg name="enable_surround_check" default="true"/>
 
