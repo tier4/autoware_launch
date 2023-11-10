@@ -24,8 +24,8 @@
 
     enable_akima_spline_first: false
     enable_cog_on_centerline: false
-    input_path_interval: 2.0
-    output_path_interval: 2.0
+    input_path_interval: 1.0
+    output_path_interval: 1.0
 
     visualize_maximum_drivable_area: true
 
