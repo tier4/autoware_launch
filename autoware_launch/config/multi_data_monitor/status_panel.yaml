@@ -130,7 +130,7 @@ widgets:
     cols: 2
     items:
       - class: Titled
-        title: transform probability value [-]
+        title: NVTL [-]
         rules:
           - { class: SetIf, type: real, le: 1.0, attrs: { back-color: red } }
           - { class: Precision, digits: 2 }
