@@ -173,7 +173,7 @@ widgets:
           {
             class: subscription,
             topic: /planning/scenario_planning/lane_driving/behavior_planning/debug/traffic_signal,
-            field: ""
+            field: "",
           }
         rules:
           - class: Access
@@ -185,8 +185,8 @@ widgets:
               - { eq: 1, value: Red, attrs: { back-color: red } }
               - { eq: 2, value: Yellow, attrs: { back-color: yellow } }
               - { eq: 3, value: Green, attrs: { back-color: lime } }
-              - { eq: 0, value: Unknown, }
-              - { eq: ERROR-VALUE, value: None, }
+              - { eq: 0, value: Unknown }
+              - { eq: ERROR-VALUE, value: None }
 
 filters:
   - class: function
