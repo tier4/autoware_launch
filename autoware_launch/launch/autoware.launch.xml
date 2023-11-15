@@ -123,4 +123,9 @@
       respawn="$(var rviz_respawn)"
     />
   </group>
+
+  <!-- hazard_status convert modules for multi_data_monitor -->
+  <group>
+    <node pkg="autoware_launch" exec="hazard_convert" name="hazard_convert" output="screen"/>
+  </group>
 </launch>

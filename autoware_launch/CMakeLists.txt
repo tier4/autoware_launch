@@ -15,3 +15,8 @@ ament_auto_package(
   launch
   rviz
 )
+
+install(PROGRAMS
+  scripts/hazard_convert
+  DESTINATION lib/${PROJECT_NAME}
+)

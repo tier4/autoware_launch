@@ -1,0 +1,205 @@
+# yamllint disable rule:quoted-strings
+version: 2.0
+
+stylesheets:
+  - { path: "package://multi_data_monitor/css/plugins/simple.css", class: Simple }
+  - { path: "package://multi_data_monitor/css/plugins/titled.css", class: Titled }
+  - { path: "package://multi_data_monitor/css/colors.css" }
+
+widgets:
+  - class: Matrix
+    items:
+      - indicator-status
+      - gear-status
+      - emergency-status
+      # - current-status
+      - target-status
+      - localization-status
+      - planning-status
+
+  - class: Matrix
+    label: indicator-status
+    cols: 3
+    items:
+      - class: Simple
+        const: LEFT
+        input: { class: subscription, topic: /vehicle/status/turn_indicators_status, field: report }
+        rules: { class: SetIf, type: uint, eq: 2, attrs: { back-color: yellow } }
+      - class: Simple
+        const: HAZARD
+        input: { class: subscription, topic: /vehicle/status/hazard_lights_status, field: report }
+        rules: { class: SetIf, type: uint, eq: 2, attrs: { back-color: red } }
+      - class: Simple
+        const: RIGHT
+        input: { class: subscription, topic: /vehicle/status/turn_indicators_status, field: report }
+        rules: { class: SetIf, type: uint, eq: 3, attrs: { back-color: yellow } }
+
+  - class: Matrix
+    label: gear-status
+    cols: 5
+    items:
+      - class: Simple
+        const: P
+        input: { class: subscription, topic: /vehicle/status/gear_status, field: report }
+        rules: { class: SetIf, type: uint, eq: 22, attrs: { back-color: lime } }
+      - class: Simple
+        const: R
+        input: { class: subscription, topic: /vehicle/status/gear_status, field: report }
+        rules: { class: SetIf, type: uint, eq: 20, attrs: { back-color: lime } }
+      - class: Simple
+        const: N
+        input: { class: subscription, topic: /vehicle/status/gear_status, field: report }
+        rules: { class: SetIf, type: uint, eq: 1, attrs: { back-color: lime } }
+      - class: Simple
+        const: D
+        input: { class: subscription, topic: /vehicle/status/gear_status, field: report }
+        rules: { class: SetIf, type: uint, eq: 2, attrs: { back-color: lime } }
+      - class: Simple
+        const: L
+        input: { class: subscription, topic: /vehicle/status/gear_status, field: report }
+        rules: { class: SetIf, type: uint, eq: 13, attrs: { back-color: lime } }
+
+  - class: Matrix
+    label: emergency-status
+    cols: 2
+    items:
+      - class: Simple
+        const: Emergency
+        input: { class: subscription, topic: /emergency_status, field: data }
+        rules: { class: SetIf, type: text, eq: true, attrs: { back-color: red } }
+      - class: Simple
+        const: Emergency Holding
+        input: { class: subscription, topic: /emergency_hold_status, field: data }
+        rules: { class: SetIf, type: text, eq: true, attrs: { back-color: red } }
+
+  # - class: Matrix
+  #   label: current-status
+  #   cols: 3
+  #   items:
+  #     - class: Titled
+  #       title: current vel [km/h]
+  #       rules: mps-to-kph-precision-2
+  #       input:
+  #         {
+  #           class: subscription,
+  #           topic: /vehicle/status/velocity_status,
+  #           field: longitudinal_velocity,
+  #         }
+  #     - class: Titled
+  #       title: current steering [deg]
+  #       rules: rad-to-deg-precision-2
+  #       input:
+  #         {
+  #           class: subscription,
+  #           topic: /vehicle/status/steering_status,
+  #           field: steering_tire_angle,
+  #         }
+  #     - class: Simple
+  #       const: ""
+
+  - class: Matrix
+    label: target-status
+    cols: 3
+    items:
+      - class: Titled
+        title: target vel [km/h]
+        rules: mps-to-kph-precision-2
+        input:
+          { class: subscription, topic: /control/command/control_cmd, field: longitudinal.speed }
+      - class: Titled
+        title: target steering [deg]
+        rules: rad-to-deg-precision-2
+        input:
+          {
+            class: subscription,
+            topic: /control/command/control_cmd,
+            field: lateral.steering_tire_angle,
+          }
+      - class: Titled
+        title: target acc [m/s^2]
+        rules: precision-2
+        input:
+          {
+            class: subscription,
+            topic: /control/command/control_cmd,
+            field: longitudinal.acceleration,
+          }
+
+  - class: Matrix
+    label: localization-status
+    cols: 2
+    items:
+      - class: Titled
+        title: transform probability value [-]
+        rules:
+          - { class: SetIf, type: real, le: 1.0, attrs: { back-color: red } }
+          - { class: Precision, digits: 2 }
+        input:
+          {
+            class: subscription,
+            topic: /localization/pose_estimator/nearest_voxel_transformation_likelihood,
+            field: data,
+          }
+      - class: Titled
+        title: pose estimation time [ms]
+        rules: precision-2
+        input: { class: subscription, topic: /localization/pose_estimator/exe_time_ms, field: data }
+
+  - class: Matrix
+    label: planning-status
+    cols: 3
+    items:
+      - class: Titled
+        title: stop line distance [m]
+        rules: precision-2
+        input:
+          {
+            class: subscription,
+            topic: /planning/scenario_planning/motion_velocity_smoother/distance_to_stopline,
+            field: data,
+          }
+      - class: Titled
+        title: planning max velocity [km/h]
+        rules: mps-to-kph-precision-2
+        input:
+          {
+            class: subscription,
+            topic: /planning/scenario_planning/current_max_velocity,
+            field: max_velocity,
+          }
+      - class: Titled
+        title: traffic light color
+        input:
+          {
+            class: subscription,
+            topic: /planning/scenario_planning/lane_driving/behavior_planning/debug/traffic_signal,
+            field: ""
+          }
+        rules:
+          - class: Access
+            fails: ERROR-VALUE
+            field: [elements, 0, color]
+          - class: SetFirstIf
+            type: text
+            list:
+              - { eq: 1, value: Red, attrs: { back-color: red } }
+              - { eq: 2, value: Yellow, attrs: { back-color: yellow } }
+              - { eq: 3, value: Green, attrs: { back-color: lime } }
+              - { eq: 0, value: Unknown, }
+              - { eq: ERROR-VALUE, value: None, }
+
+filters:
+  - class: function
+    label: mps-to-kph-precision-2
+    rules:
+      - { class: Units, mode: mps_to_kph }
+      - { class: Precision, digits: 2 }
+  - class: function
+    label: precision-2
+    rules:
+      - { class: Precision, digits: 2 }
+  - class: function
+    label: rad-to-deg-precision-2
+    rules:
+      - { class: Units, mode: rad_to_deg }
+      - { class: Precision, digits: 2 }
