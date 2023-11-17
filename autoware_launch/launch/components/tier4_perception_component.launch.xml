@@ -35,6 +35,7 @@
     <arg name="external/traffic_signals" value="/v2x/traffic_signals"/>
     <arg name="use_low_height_cropbox" value="true"/>
     <arg name="use_roi_based_cluster" value="false"/>
+    <arg name="use_detection_by_tracker" value="true"/>
 
     <!-- object recognition -->
     <arg
