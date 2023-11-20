@@ -137,7 +137,7 @@
 
         # params for avoidance of vehicle type objects that are ambiguous as to whether they are parked.
         force_avoidance:
-          enable: false                                  # [-]
+          enable: true                                  # [-]
           time_threshold: 1.0                            # [s]
           ignore_area:
             traffic_light:
