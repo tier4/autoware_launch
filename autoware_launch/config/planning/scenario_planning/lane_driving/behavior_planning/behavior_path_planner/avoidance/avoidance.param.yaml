@@ -37,9 +37,9 @@
           moving_speed_threshold: 1.0                  # [m/s]
           moving_time_threshold: 1.0                   # [s]
           max_expand_ratio: 0.0                        # [-]
-          envelope_buffer_margin: 0.5                  # [m]
-          avoid_margin_lateral: 0.7                    # [m]
-          safety_buffer_lateral: 0.3                   # [m]
+          envelope_buffer_margin: 0.3                  # [m]
+          avoid_margin_lateral: 1.0                    # [m]
+          safety_buffer_lateral: 0.1                   # [m]
           safety_buffer_longitudinal: 0.0              # [m]
           use_conservative_buffer_longitudinal: false  # [-] When set to true, the base_link2front is added to the longitudinal buffer before avoidance.
         truck:
