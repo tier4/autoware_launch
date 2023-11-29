@@ -8,6 +8,9 @@
   <arg name="pointcloud_container_name" default="pointcloud_container"/>
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
 
+  <!-- launch module preset -->
+  <arg name="planning_module_preset" default="xx1" description="planning module preset"/>
+
   <!-- Optional parameters -->
   <!-- Modules to be launched -->
   <arg name="launch_vehicle" default="true" description="launch vehicle"/>
@@ -135,6 +138,7 @@
   <!-- Planning -->
   <group if="$(var launch_planning)">
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_planning_component.launch.xml">
+      <arg name="module_preset" value="$(var planning_module_preset)"/>
       <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
       <arg name="rtc_auto_mode_manager_param_path" value="$(var rtc_auto_mode_manager_param_path)"/>
       <arg name="scene_module_manager_param_path" value="$(var scene_module_manager_param_path)"/>
