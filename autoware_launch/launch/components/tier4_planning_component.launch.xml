@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <launch>
   <!-- NOTE: optional parameters are written here -->
+
+  <!-- behavior -->
+  <arg name="use_experimental_lane_change_function" default="false"/>
+  <arg name="rtc_auto_mode_manager_param_path"/>
+  <arg name="scene_module_manager_param_path"/>
   <arg name="module_preset" default="default"/>
   <include file="$(find-pkg-share autoware_launch)/config/planning/preset/$(var module_preset)_preset.yaml"/>
 
