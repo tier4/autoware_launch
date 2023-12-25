@@ -86,8 +86,8 @@
 
       # lane change regulations
       regulation:
-        crosswalk: false
-        intersection: false
+        crosswalk: true
+        intersection: true
         traffic_light: true
 
       # ego vehicle stuck detection
