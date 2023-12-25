@@ -37,7 +37,7 @@
         consider_wrong_direction_vehicle: false
         collision_detection_hold_time: 0.5
         min_predicted_path_confidence: 0.05
-        keep_detection_velocity_threshold: 0.833
+        keep_detection_velocity_threshold: 1.5
         velocity_profile:
           use_upstream: true
           minimum_upstream_velocity: 0.01
@@ -62,13 +62,12 @@
           object_margin_to_path: 2.0
 
       occlusion:
-        enable: false
+        enable: true
         occlusion_attention_area_length: 70.0
         free_space_max: 43
         occupied_min: 58
         denoise_kernel: 1.0
         attention_lane_crop_curvature_threshold: 0.25
-        attention_lane_curvature_calculation_ds: 0.5
         creep_during_peeking:
           enable: false
           creep_velocity: 0.8333
@@ -80,6 +79,7 @@
         temporal_stop_time_before_peeking: 0.1
         temporal_stop_before_attention_area: false
         creep_velocity_without_traffic_light: 1.388
+        attention_lane_curvature_calculation_ds: 0.6
         static_occlusion_with_traffic_light_timeout: 0.5
 
       debug:

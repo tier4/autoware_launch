@@ -72,7 +72,7 @@
         truck: true
         bus: true
         trailer: true
-        unknown: true
+        unknown: false
         bicycle: true
         motorcycle: true
         pedestrian: true
@@ -86,8 +86,8 @@
 
       # lane change regulations
       regulation:
-        crosswalk: false
-        intersection: false
+        crosswalk: true
+        intersection: true
         traffic_light: true
 
       # ego vehicle stuck detection
