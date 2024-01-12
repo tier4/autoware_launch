@@ -18,7 +18,7 @@
     required_modules:
       autonomous_driving:
         /autoware/control/autonomous_driving/node_alive_monitoring: default
-        # /autoware/control/autonomous_driving/performance_monitoring/lane_departure: default # tmp
+        /autoware/control/autonomous_driving/performance_monitoring/lane_departure: default
         /autoware/control/autonomous_driving/performance_monitoring/control_validator: default
         /autoware/control/autonomous_driving/performance_monitoring/trajectory_deviation: default
         /autoware/control/autonomous_emergency_braking/performance_monitoring/emergency_stop: { sf_at: "none", lf_at: "warn", spf_at: "error"}
