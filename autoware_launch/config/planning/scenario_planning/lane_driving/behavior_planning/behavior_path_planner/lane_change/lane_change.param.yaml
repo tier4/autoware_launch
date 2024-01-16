@@ -57,14 +57,14 @@
 
         # lane expansion for object filtering
         lane_expansion:
-          left_offset: 0.0 # [m]
-          right_offset: 0.0 # [m]
+          left_offset: 1.0 # [m]
+          right_offset: 1.0 # [m]
 
       # lateral acceleration map
       lateral_acceleration:
         velocity: [0.0, 4.0, 10.0]
-        min_values: [0.15, 0.15, 0.15]
-        max_values: [0.5, 0.5, 0.5]
+        min_values: [0.4, 0.4, 0.4]
+        max_values: [0.65, 0.65, 0.65]
 
       # target object
       target_object:
@@ -80,8 +80,8 @@
       # collision check
       enable_prepare_segment_collision_check: false
       prepare_segment_ignore_object_velocity_thresh: 0.1 # [m/s]
-      check_objects_on_current_lanes: true
-      check_objects_on_other_lanes: true
+      check_objects_on_current_lanes: false
+      check_objects_on_other_lanes: false
       use_all_predicted_path: true
 
       # lane change regulations
@@ -107,4 +107,4 @@
       finish_judge_lateral_threshold: 0.2        # [m]
 
       # debug
-      publish_debug_marker: false
+      publish_debug_marker: true
