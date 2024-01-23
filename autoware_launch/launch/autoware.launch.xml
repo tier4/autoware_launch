@@ -75,6 +75,8 @@
     value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/scene_module_manager_foa.param.yaml"
     if="$(var use_foa)"
   />
+  <!-- Auto mode setting-->
+  <arg name="enable_all_modules_auto_mode" default="false" description="enable all module's auto mode"/>
 
   <!-- Global parameters -->
   <group scoped="false">
@@ -142,6 +144,7 @@
       <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
       <arg name="rtc_auto_mode_manager_param_path" value="$(var rtc_auto_mode_manager_param_path)"/>
       <arg name="scene_module_manager_param_path" value="$(var scene_module_manager_param_path)"/>
+      <arg name="enable_all_modules_auto_mode" value="$(var enable_all_modules_auto_mode)"/>
     </include>
   </group>
 
