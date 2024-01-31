@@ -29,7 +29,10 @@
         gnd_grid_buffer_size: 5
         detection_range_z_max: 3.2
         elevation_grid_mode: true
+        use_recheck_ground_cluster: true
+        low_priority_region_x: -20.0
         center_pcl_shift: 0.0
+        radial_divider_angle_deg: 1.0
 
     # common_ground_filter:
     #   plugin: "ground_segmentation::RayGroundFilterComponent"
@@ -61,8 +64,11 @@
         grid_mode_switch_radius: 20.0
         gnd_grid_buffer_size: 4
         detection_range_z_max: 3.2
-        center_pcl_shift: 0.0
         elevation_grid_mode: true
+        use_recheck_ground_cluster: true
+        low_priority_region_x: -20.0
+        center_pcl_shift: 0.0
+        radial_divider_angle_deg: 1.0
 
     front_lower_crop_box_filter:
       parameters:
@@ -87,6 +93,8 @@
         grid_mode_switch_radius: 20.0
         gnd_grid_buffer_size: 4
         detection_range_z_max: 3.2
-        center_pcl_shift: 0.0
         elevation_grid_mode: false
         use_recheck_ground_cluster: false
+        low_priority_region_x: -20.0
+        center_pcl_shift: 0.0
+        radial_divider_angle_deg: 1.0
