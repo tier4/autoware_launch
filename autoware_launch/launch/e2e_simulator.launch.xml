@@ -60,14 +60,6 @@
   <executable cmd="$(var camera4_pub)" name="camera4" shell="true"/>
   <executable cmd="$(var camera5_pub)" name="camera5" shell="true"/>
 
-  <!-- XX1 Traffic Light Image/Info Relay-->
-  <arg name="traffic_light_image_original_name" default="/sensing/camera/traffic_light/image_raw"/>
-  <arg name="traffic_light_image_topic_name" default="/sensing/camera/camera6/image_raw"/>
-  <arg name="traffic_light_info_original_name" default="/sensing/camera/traffic_light/camera_info"/>
-  <arg name="traffic_light_info_topic_name" default="/sensing/camera/camera6/camera_info"/>
-  <node pkg="topic_tools" exec="relay" name="traffic_light_image_relay" args="$(var traffic_light_image_original_name) $(var traffic_light_image_topic_name)"/>
-  <node pkg="topic_tools" exec="relay" name="traffic_light_info_relay" args="$(var traffic_light_info_original_name) $(var traffic_light_info_topic_name)"/>
-
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
       <!-- Common -->

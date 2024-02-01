@@ -131,11 +131,6 @@
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_perception_component.launch.xml">
       <arg name="data_path" value="$(var data_path)"/>
     </include>
-
-    <!-- XX1 Traffic Light Perception Relay-->
-    <arg name="traffic_light_original_name" default="/perception/traffic_light_recognition/camera6/traffic_signals"/>
-    <arg name="traffic_light_topic_name" default="/perception/traffic_light_recognition/traffic_signals"/>
-    <node pkg="topic_tools" exec="relay" name="traffic_light_relay" args="$(var traffic_light_original_name) $(var traffic_light_topic_name)"/>
   </group>
 
   <!-- Planning -->
