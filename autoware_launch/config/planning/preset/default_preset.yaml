@@ -8,7 +8,7 @@ launch:
       default: "false"
   - arg:
       name: launch_dynamic_avoidance_module
-      default: "false"
+      default: "true"
   - arg:
       name: launch_sampling_planner_module
       default: "true" # Warning, experimental module, use only in simulations
