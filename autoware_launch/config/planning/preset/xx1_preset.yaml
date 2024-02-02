@@ -76,7 +76,7 @@ launch:
       default: "false"
   - arg:
       name: launch_out_of_lane_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_no_drivable_lane_module
       default: "false"
