@@ -1,7 +1,7 @@
 /**:
   ros__parameters:
 
-    publish_diag: false  # if true, diagnostic msg is published
+    publish_diag: true  # if true, diagnostic msg is published
 
     # If the number of consecutive invalid predicted_path exceeds this threshold, the Diag will be set to ERROR.
     # (For example, threshold = 1 means, even if the predicted_path is invalid, Diag will not be ERROR if

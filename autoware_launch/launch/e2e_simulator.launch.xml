@@ -7,7 +7,7 @@
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
 
   <!-- launch module preset -->
-  <arg name="planning_module_preset" default="default" description="planning module preset"/>
+  <arg name="planning_module_preset" default="xx1" description="planning module preset"/>
 
   <!-- Optional parameters -->
   <!-- Modules to be launched -->
@@ -37,7 +37,28 @@
   />
   <!-- Tools -->
   <arg name="rviz" default="true" description="launch rviz"/>
-  <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
+  <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/awsim.rviz" description="rviz config"/>
+
+  <!-- XX1 Traffic Light frame_id relay for AWSIM-->
+  <arg name="traffic_light_original_id" default="camera6/camera_optical_link"/>
+  <arg name="traffic_light_topic_id" default="traffic_light_left_camera/camera_optical_link"/>
+  <node pkg="tf2_ros" exec="static_transform_publisher" name="traffic_light_transform_publisher" args="--frame-id $(var traffic_light_original_id) --child-frame-id $(var traffic_light_topic_id)"/>
+
+  <!-- dummy topic publisher (camera0 ~ camera6)-->
+  <!-- temporary until AWSIM supports object recognition camera -->
+  <arg name="camera0_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera0/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera1_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera1/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera2_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera2/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera3_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera3/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera4_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera4/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera5_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera5/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+
+  <executable cmd="$(var camera0_pub)" name="camera0" shell="true"/>
+  <executable cmd="$(var camera1_pub)" name="camera1" shell="true"/>
+  <executable cmd="$(var camera2_pub)" name="camera2" shell="true"/>
+  <executable cmd="$(var camera3_pub)" name="camera3" shell="true"/>
+  <executable cmd="$(var camera4_pub)" name="camera4" shell="true"/>
+  <executable cmd="$(var camera5_pub)" name="camera5" shell="true"/>
 
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
@@ -70,8 +91,11 @@
       <!-- Sensing -->
       <arg name="launch_sensing_driver" value="false"/>
       <!-- Perception-->
+      <arg name="perception_mode" value="lidar"/>
+      <arg name="use_traffic_light_recognition" value="true"/>
       <arg name="traffic_light_recognition/enable_fine_detection" value="false"/>
-      <arg name="namespace1" value="$(var traffic_light_namespace)"/>
+      <arg name="traffic_light_recognition/fusion_only" value="false"/>
+      <arg name="lidar_detection_model" value="centerpoint"/>
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
