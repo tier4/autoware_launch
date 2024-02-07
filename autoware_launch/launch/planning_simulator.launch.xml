@@ -35,7 +35,7 @@
 
   <group scoped="false">
     <!-- Vehicle -->
-    <let name="launch_vehicle_interface" value="false" if="$(var vehicle_simulation)"/>
+    <let name="launch_vehicle_interface" value="true" if="$(var vehicle_simulation)"/>
     <let name="launch_vehicle_interface" value="true" unless="$(var vehicle_simulation)"/>
 
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">

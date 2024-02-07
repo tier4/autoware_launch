@@ -1,5 +1,8 @@
 /**:
   ros__parameters:
+    csv_path_accel_map: $(var csv_path_accel_map)
+    csv_path_brake_map: $(var csv_path_brake_map)
+    csv_path_steer_map: $(var csv_path_steer_map)
     convert_accel_cmd: true
     convert_brake_cmd: true
     convert_steer_cmd: false
