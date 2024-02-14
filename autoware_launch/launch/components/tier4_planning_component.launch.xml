@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <launch>
   <!-- NOTE: optional parameters are written here -->
+
+  <!-- behavior -->
+  <arg name="use_experimental_lane_change_function" default="false"/>
+  <arg name="scene_module_manager_param_path"/>
   <arg name="module_preset" default="default"/>
   <arg name="enable_all_modules_auto_mode" default="false"/>
   <include file="$(find-pkg-share autoware_launch)/config/planning/preset/$(var module_preset)_preset.yaml"/>
@@ -23,7 +27,7 @@
     <!-- behavior path planner -->
     <arg name="behavior_path_config_path" value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner"/>
     <arg name="behavior_path_planner_common_param_path" value="$(var behavior_path_config_path)/behavior_path_planner.param.yaml"/>
-    <arg name="behavior_path_planner_scene_module_manager_param_path" value="$(var behavior_path_config_path)/scene_module_manager.param.yaml"/>
+    <arg name="behavior_path_planner_scene_module_manager_param_path" value="$(var scene_module_manager_param_path)"/>
     <arg name="behavior_path_planner_side_shift_module_param_path" value="$(var behavior_path_config_path)/side_shift/side_shift.param.yaml"/>
     <arg name="behavior_path_planner_avoidance_module_param_path" value="$(var behavior_path_config_path)/avoidance/avoidance.param.yaml"/>
     <arg name="behavior_path_planner_avoidance_by_lc_module_param_path" value="$(var behavior_path_config_path)/avoidance_by_lane_change/avoidance_by_lane_change.param.yaml"/>
