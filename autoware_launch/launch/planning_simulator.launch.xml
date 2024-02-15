@@ -74,6 +74,8 @@
       <arg name="is_simulation" value="true"/>
       <!-- V2X -->
       <arg name="launch_v2x" value="false"/>
+      <!-- L4 Toolkit -->
+      <arg name="launch_l4_toolkit" value="true"/>
     </include>
   </group>
 
