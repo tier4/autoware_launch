@@ -51,6 +51,8 @@
   <arg name="enable_all_modules_auto_mode" default="false" description="enable all module's auto mode"/>
   <arg name="is_simulation" default="false" description="Autoware's behavior will change depending on whether this is a simulation or not."/>
   <arg name="centerpoint_model_path" default="/opt/autoware/mlmodels/centerpoint" description="path of centerpoint model file"/>
+  <!-- Auto mode setting-->
+  <arg name="enable_all_modules_auto_mode" default="false" description="enable all module's auto mode"/>
 
   <!-- Global parameters -->
   <group scoped="false">
