@@ -32,12 +32,12 @@
         allow_loose_check_for_cancel: true
         execution:
           expected_front_deceleration: -1.0
-          expected_rear_deceleration: -1.0
+          expected_rear_deceleration: -1.5
           rear_vehicle_reaction_time: 1.5
           rear_vehicle_safety_time_margin: 1.0
-          lateral_distance_max_threshold: 2.0
+          lateral_distance_max_threshold: 1.5
           longitudinal_distance_min_threshold: 3.0
-          longitudinal_velocity_delta_time: 0.8
+          longitudinal_velocity_delta_time: 0.5
         cancel:
           expected_front_deceleration: -1.0
           expected_rear_deceleration: -2.0
@@ -45,7 +45,7 @@
           rear_vehicle_safety_time_margin: 0.8
           lateral_distance_max_threshold: 1.0
           longitudinal_distance_min_threshold: 2.5
-          longitudinal_velocity_delta_time: 0.6
+          longitudinal_velocity_delta_time: 0.4
         stuck:
           expected_front_deceleration: -1.0
           expected_rear_deceleration: -1.0
@@ -53,7 +53,7 @@
           rear_vehicle_safety_time_margin: 1.0
           lateral_distance_max_threshold: 2.0
           longitudinal_distance_min_threshold: 3.0
-          longitudinal_velocity_delta_time: 0.8
+          longitudinal_velocity_delta_time: 0.4
 
         # lane expansion for object filtering
         lane_expansion:
