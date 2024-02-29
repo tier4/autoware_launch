@@ -89,13 +89,12 @@
           object_time_margin_to_collision_point: 4.0
 
       occlusion:
-        enable: false
+        enable: true
         occlusion_attention_area_length: 70.0
         free_space_max: 43
         occupied_min: 58
         denoise_kernel: 1.0
         attention_lane_crop_curvature_threshold: 0.25
-        attention_lane_curvature_calculation_ds: 0.6
         creep_during_peeking:
           enable: false
           creep_velocity: 0.8333
@@ -113,8 +112,8 @@
         ttc: [0]
 
       enable_rtc:
-        intersection: false
-        intersection_to_occlusion: false
+        intersection: true
+        intersection_to_occlusion: true
 
     merge_from_private:
       stopline_margin: 3.0

@@ -172,7 +172,7 @@
         check_current_lane: false                        # [-]
         check_shift_side_lane: true                      # [-]
         check_other_side_lane: false                     # [-]
-        check_unavoidable_object: false                  # [-]
+        check_unavoidable_object: true                   # [-]
         check_other_object: true                         # [-]
         # collision check parameters
         check_all_predicted_path: false                  # [-]
@@ -201,9 +201,9 @@
         # avoidance lateral parameters
         lateral:
           lateral_execution_threshold: 0.09             # [m]
-          lateral_small_shift_threshold: 0.101          # [m]
+          lateral_small_shift_threshold: 0.501          # [m]
           lateral_avoid_check_threshold: 0.1            # [m]
-          soft_road_shoulder_margin: 0.3                # [m]
+          soft_road_shoulder_margin: 0.8                # [m]
           hard_road_shoulder_margin: 0.3                # [m]
           max_right_shift_length: 5.0
           max_left_shift_length: 5.0
@@ -257,10 +257,10 @@
       constraints:
         # lateral constraints
         lateral:
-          velocity: [1.0, 1.38, 11.1]                   # [m/s]
+          velocity: [2.78, 4.17, 11.1]                   # [m/s]
           max_accel_values: [0.5, 0.5, 0.5]             # [m/ss]
           min_jerk_values: [0.2, 0.2, 0.2]              # [m/sss]
-          max_jerk_values: [1.0, 1.0, 1.0]              # [m/sss]
+          max_jerk_values: [1.5, 1.0, 1.0]              # [m/sss]
 
         # longitudinal constraints
         longitudinal:

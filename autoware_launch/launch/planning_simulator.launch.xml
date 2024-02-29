@@ -7,7 +7,7 @@
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
 
   <!-- launch module preset -->
-  <arg name="planning_module_preset" default="default" description="planning module preset"/>
+  <arg name="planning_module_preset" default="xx1" description="planning module preset"/>
 
   <!-- Optional parameters -->
   <!-- Map -->
@@ -32,6 +32,13 @@
   <let name="rviz_respawn" value="true" unless="$(var scenario_simulation)"/>
   <!-- Vcu emulation -->
   <arg name="vehicle_simulation" default="true" description="use vehicle simulation"/>
+  <!-- Planning -->
+  <arg name="use_experimental_lane_change_function" default="true"/>
+  <!-- Others -->
+  <arg name="use_foa" default="$(var scenario_simulation)"/>
+
+  <let name="rviz_respawn" value="false" if="$(var scenario_simulation)"/>
+  <let name="rviz_respawn" value="true" unless="$(var scenario_simulation)"/>
   <!-- Auto mode setting-->
   <arg name="enable_all_modules_auto_mode" default="$(var scenario_simulation)" description="enable all module's auto mode"/>
 
@@ -64,6 +71,10 @@
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
+      <!-- Planning -->
+      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
+      <!-- Others -->
+      <arg name="use_foa" value="$(var use_foa)"/>
       <arg name="rviz_respawn" value="$(var rviz_respawn)"/>
       <!-- Auto mode setting-->
       <arg name="enable_all_modules_auto_mode" value="$(var enable_all_modules_auto_mode)"/>
