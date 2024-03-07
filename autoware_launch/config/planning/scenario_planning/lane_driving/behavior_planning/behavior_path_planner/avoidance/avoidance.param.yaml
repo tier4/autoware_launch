@@ -30,7 +30,7 @@
         car:
           execute_num: 1                               # [-]
           moving_speed_threshold: 1.0                  # [m/s]
-          moving_time_threshold: 2.0                   # [s]
+          moving_time_threshold: 1.0                   # [s]
           lateral_margin:
             soft_margin: 0.3                           # [m]
             hard_margin: 0.2                           # [m]
@@ -42,7 +42,7 @@
         truck:
           execute_num: 1
           moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 2.0
+          moving_time_threshold: 1.0                   # [s]
           lateral_margin:
             soft_margin: 0.3                           # [m]
             hard_margin: 0.2                           # [m]
@@ -54,7 +54,7 @@
         bus:
           execute_num: 1
           moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 2.0
+          moving_time_threshold: 1.0                   # [s]
           lateral_margin:
             soft_margin: 0.3                           # [m]
             hard_margin: 0.2                           # [m]
@@ -66,7 +66,7 @@
         trailer:
           execute_num: 1
           moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 2.0
+          moving_time_threshold: 1.0                   # [s]
           lateral_margin:
             soft_margin: 0.3                           # [m]
             hard_margin: 0.2                           # [m]
