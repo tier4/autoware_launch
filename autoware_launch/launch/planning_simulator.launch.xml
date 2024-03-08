@@ -78,6 +78,7 @@
       <arg name="enable_all_modules_auto_mode" value="$(var enable_all_modules_auto_mode)"/>
       <!-- L4 Toolkit -->
       <arg name="launch_l4_toolkit" value="true"/>
+      <arg name="is_simulation" value="true"/>
     </include>
   </group>
 
