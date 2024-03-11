@@ -15,10 +15,10 @@
     <arg name="duplicated_node_checker_param_path" value="$(find-pkg-share autoware_launch)/config/system/duplicated_node_checker/duplicated_node_checker.param.yaml"/>
     <arg name="mrm_comfortable_stop_operator_param_path" value="$(find-pkg-share autoware_launch)/config/system/mrm_comfortable_stop_operator/mrm_comfortable_stop_operator.param.yaml"/>
     <arg name="mrm_emergency_stop_operator_param_path" value="$(find-pkg-share autoware_launch)/config/system/mrm_emergency_stop_operator/mrm_emergency_stop_operator.param.yaml"/>
-    <arg name="system_error_monitor_param_path" value="$(var system_error_monitor_param_path)"/>
-    <arg name="system_error_monitor_planning_simulator_param_path" value="$(find-pkg-share autoware_launch)/config/system/system_error_monitor/system_error_monitor.planning_simulation.param.yaml"/>
     <arg name="diagnostic_aggregator_vehicle_param_path" value="$(find-pkg-share autoware_launch)/config/system/system_error_monitor/diagnostic_aggregator/vehicle.param.yaml"/>
+    <arg name="system_error_monitor_planning_simulator_param_path" value="$(find-pkg-share autoware_launch)/config/system/system_error_monitor/system_error_monitor.planning_simulation.param.yaml"/>
     <arg name="diagnostic_aggregator_system_param_path" value="$(find-pkg-share autoware_launch)/config/system/system_error_monitor/diagnostic_aggregator/system.param.yaml"/>
+    <arg name="hazard_lights_selector_param_path" value="$(find-pkg-share autoware_launch)/config/system/hazard_lights_selector/hazard_lights_selector.param.yaml"/>
     <arg name="dummy_diag_publisher_param_path" value="$(find-pkg-share autoware_launch)/config/system/dummy_diag_publisher/dummy_diag_publisher.param.yaml"/>
     <arg name="system_monitor_cpu_monitor_param_path" value="$(find-pkg-share autoware_launch)/config/system/system_monitor/cpu_monitor.param.yaml"/>
     <arg name="system_monitor_gpu_monitor_param_path" value="$(find-pkg-share autoware_launch)/config/system/system_monitor/gpu_monitor.param.yaml"/>
