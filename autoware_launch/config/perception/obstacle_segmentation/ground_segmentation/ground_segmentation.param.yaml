@@ -1,6 +1,6 @@
 /**:
   ros__parameters:
-    additional_lidars: []
+    additional_lidars: ["front_lower"]
     ransac_input_topics: []
     use_single_frame_filter: False
     use_time_series_filter: True
@@ -20,10 +20,10 @@
       parameters:
         global_slope_max_angle_deg: 10.0
         local_slope_max_angle_deg: 25.0 # recommended 30.0 for non elevation_grid_mode
-        split_points_distance_tolerance: 0.2
+        split_points_distance_tolerance: 0.15
         use_virtual_ground_point: True
         split_height_distance: 0.2
-        non_ground_height_threshold: 0.20
+        non_ground_height_threshold: 0.12
         grid_size_m: 0.2
         grid_mode_switch_radius: 20.0
         gnd_grid_buffer_size: 5
@@ -54,7 +54,7 @@
         global_slope_max_angle_deg: 10.0
         local_slope_max_angle_deg: 18.0 # recommended 30.0 for non elevation_grid_mode
         split_points_distance_tolerance: 0.20  # recommended 0.045 for non elevation_grid_mode
-        split_height_distance: 0.2 # recommended 0.15 for non elevation_grid_mode
+        split_height_distance: 0.15 # recommended 0.15 for non elevation_grid_mode
         use_virtual_ground_point: False
         non_ground_height_threshold: 0.1
         grid_size_m: 0.1
@@ -79,14 +79,14 @@
       parameters:
         global_slope_max_angle_deg: 10.0
         local_slope_max_angle_deg: 18.0 # recommended 30.0 for non elevation_grid_mode
-        split_points_distance_tolerance: 0.20 # recommended 0.1 for non elevation_grid_mode
-        split_height_distance: 0.2      # recommended 0.05 for non elevation_grid_mode
-        use_virtual_ground_point: False
+        split_points_distance_tolerance: 0.10 # recommended 0.1 for non elevation_grid_mode
+        split_height_distance: 0.05      # recommended 0.05 for non elevation_grid_mode
+        use_virtual_ground_point: true
         non_ground_height_threshold: 0.1
         grid_size_m: 0.1
         grid_mode_switch_radius: 20.0
         gnd_grid_buffer_size: 4
         detection_range_z_max: 3.2
         center_pcl_shift: 0.0
-        elevation_grid_mode: true
+        elevation_grid_mode: false
         use_recheck_ground_cluster: false
