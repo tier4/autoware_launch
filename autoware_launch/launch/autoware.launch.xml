@@ -64,6 +64,7 @@
   />
   <!-- Auto mode setting-->
   <arg name="enable_all_modules_auto_mode" default="false" description="enable all module's auto mode"/>
+  <arg name="is_simulation" default="false" description="Autoware's behavior will change depending on whether this is a simulation or not."/>
 
   <!-- Global parameters -->
   <group scoped="false">
@@ -125,6 +126,7 @@
       <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
       <arg name="scene_module_manager_param_path" value="$(var scene_module_manager_param_path)"/>
       <arg name="enable_all_modules_auto_mode" value="$(var enable_all_modules_auto_mode)"/>
+      <arg name="is_simulation" value="$(var is_simulation)"/>
     </include>
   </group>
 
