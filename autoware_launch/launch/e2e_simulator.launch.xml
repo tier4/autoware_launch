@@ -92,11 +92,11 @@
       <!-- Sensing -->
       <arg name="launch_sensing_driver" value="false"/>
       <!-- Perception-->
-      <arg name="perception_mode" value="lidar"/>
+      <arg name="perception_mode" value="camera_lidar_radar_fusion"/>
       <arg name="use_traffic_light_recognition" value="true"/>
       <arg name="traffic_light_recognition/enable_fine_detection" value="false"/>
       <arg name="traffic_light_recognition/fusion_only" value="false"/>
-      <arg name="lidar_detection_model" value="centerpoint"/>
+      <arg name="lidar_detection_model" value="pointpainting"/>
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
