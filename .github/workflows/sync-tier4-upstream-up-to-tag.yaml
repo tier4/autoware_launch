@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       sync-target-tag:
-        description: "sync target tag like v0.24.0"
+        description: sync target tag like v0.24.0
         required: true
         type: string
         default: ""
