@@ -73,8 +73,8 @@ jobs:
           title: "chore: sync upstream up to ${{ inputs.sync-target-tag }}"
           body: ${{ steps.replace-pr-number-to-url.outputs.changelog }}
           labels: |
-              bot
-              sync-tier4-upstream
+            bot
+            sync-tier4-upstream
           author: github-actions <github-actions@github.com>
           signoff: true
           delete-branch: true
