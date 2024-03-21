@@ -1,0 +1,78 @@
+nodes:
+  - path: /system/autonomous_available
+    type: and
+    list:
+      - { type: link, link: /system/emergency_stop }
+      - { type: link, link: /system/pull_over }
+      - { type: link, link: /system/comfortable_stop }
+
+  - path: /system/pull_over_available
+    type: and
+    list:
+      - { type: link, link: /system/emergency_stop }
+      - { type: link, link: /system/comfortable_stop }
+
+  - path: /system/comfortable_stop_available
+    type: and
+    list:
+      - { type: link, link: /system/emergency_stop }
+
+  # *******************************************************************************
+  # NOTE: Please modify this section according to your environment and requirements.
+  # *******************************************************************************
+  - path: /system/emergency_stop
+    type: and
+    list:
+      - { type: link, link: /system/001-topic_status-error }
+      - { type: link, link: /system/002-emergency_stop_operation-error }
+
+  - path: /system/comfortable_stop
+    type: and
+
+  - path: /system/pull_over
+    type: and
+    list:
+      - { type: link, link: /system/005-fms_connection-error }
+
+  - path: /system/none
+    type: and
+    list:
+      - { type: link, link: /system/003-bagpacker_status }
+      - { type: link, link: /system/004-bagpacker_disk_space }
+
+  # Intermediate paths
+  - path: /system/001-topic_status-error
+    type: warn-to-ok
+    list:
+      - { type: link, link: /system/001-topic_status }
+
+  - path: /system/002-emergency_stop_operation-error
+    type: warn-to-ok
+    list:
+      - { type: link, link: /system/002-emergency_stop_operation }
+
+  - path: /system/005-fms_connection-error
+    type: warn-to-ok
+    list:
+      - { type: link, link: /system/005-fms_connection }
+
+  # Diagnostics paths
+  - path: /system/001-topic_status
+    diag: "topic_state_monitor_system_emergency_control_cmd: system_topic_status"
+    type: diag
+
+  - path: /system/002-emergency_stop_operation
+    diag: "vehicle_cmd_gate: emergency_stop_operation"
+    type: diag
+
+  - path: /system/003-bagpacker_status
+    diag: bagpacker_state
+    type: diag
+
+  - path: /system/004-bagpacker_disk_space
+    diag: bagpacker_state/disk_usage
+    type: diag
+
+  - path: /system/005-fms_connection
+    diag: edge_core_internet_connection
+    type: diag
