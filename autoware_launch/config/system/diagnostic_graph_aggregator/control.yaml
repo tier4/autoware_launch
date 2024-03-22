@@ -27,6 +27,7 @@ nodes:
       - { type: link, link: /control/004-lane_departure-error }
       - { type: link, link: /control/005-trajectory_deviation-error }
       - { type: link, link: /control/010-max_distance_deviation-error }
+      - { type: link, link: /control/011-slip_detection }
 
   - path: /control/comfortable_stop
     type: and
@@ -91,6 +92,6 @@ nodes:
     diag: "control_validator: control_validation_max_distance_deviation"
     type: diag
 
-  # - path: /control/011-slip_detection
-  #   diag: "slip_detection: "
-  #   type: diag
+  - path: /control/011-slip_detection
+    diag: "slip_detector: slip_status"
+    type: diag
