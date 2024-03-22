@@ -34,6 +34,8 @@ nodes:
 
   - path: /others/pull_over
     type: and
+    list:
+      - { type: link, link: /others/011-daytime_monitor }
 
   - path: /others/none
     type: and
