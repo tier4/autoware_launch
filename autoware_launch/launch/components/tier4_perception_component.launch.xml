@@ -28,8 +28,6 @@
     <arg name="centerpoint_model_name" value="centerpoint_xx1"/>
     <arg name="centerpoint_model_path" value="/opt/autoware/mlmodels/$(var lidar_detection_model)"/>
     <arg name="traffic_light_recognition/fusion_only" value="$(var traffic_light_recognition/fusion_only)"/>
-    <arg name="remove_unknown" value="false"/>
-    <arg name="trust_distance" value="100.0"/>
 
     <!-- object recognition -->
     <arg
