@@ -125,14 +125,14 @@ nodes:
     diag: "imu_monitor: yaw_rate_status"
     type: diag
   - path: /sensing/imu/002-connection
-    diag: "topic_state_monitor_imu_data: sensing_topic_status"
+    diag: "topic_state_monitor_imu_data: imu_topic_status"
     type: diag
   - path: /sensing/imu/003-gyro_bias
     diag: "gyro_bias_estimator: gyro_bias_validator"
     type: diag
 
   - path: /sensing/gnss/001-connection
-    diag: "topic_state_monitor_gnss_pose: sensing_topic_status"
+    diag: "topic_state_monitor_gnss_pose: gnss_topic_status"
     type: diag
   - path: /sensing/gnss/002-quality
     diag: "septentrio_driver: Quality indicators"
@@ -219,45 +219,45 @@ nodes:
     type: diag
 
   - path: /sensing/camera/0/connection
-    diag: "topic_state_monitor_camera0: sensing_topic_status"
+    diag: "topic_state_monitor_camera0: camera0_topic_status"
     type: diag
   - path: /sensing/camera/1/connection
-    diag: "topic_state_monitor_camera1: sensing_topic_status"
+    diag: "topic_state_monitor_camera1: camera1_topic_status"
     type: diag
   - path: /sensing/camera/2/connection
-    diag: "topic_state_monitor_camera2: sensing_topic_status"
+    diag: "topic_state_monitor_camera2: camera2_topic_status"
     type: diag
   - path: /sensing/camera/3/connection
-    diag: "topic_state_monitor_camera3: sensing_topic_status"
+    diag: "topic_state_monitor_camera3: camera3_topic_status"
     type: diag
   - path: /sensing/camera/4/connection
-    diag: "topic_state_monitor_camera4: sensing_topic_status"
+    diag: "topic_state_monitor_camera4: camera4_topic_status"
     type: diag
   - path: /sensing/camera/5/connection
-    diag: "topic_state_monitor_camera5: sensing_topic_status"
+    diag: "topic_state_monitor_camera5: camera5_topic_status"
     type: diag
   - path: /sensing/camera/6/connection
-    diag: "topic_state_monitor_camera6: sensing_topic_status"
+    diag: "topic_state_monitor_camera6: camera6_topic_status"
     type: diag
   - path: /sensing/camera/7/connection
-    diag: "topic_state_monitor_camera7: sensing_topic_status"
+    diag: "topic_state_monitor_camera7: camera7_topic_status"
     type: diag
 
   - path: /sensing/radar/front_center/connection
-    diag: "topic_state_monitor_radar_front_center: sensing_topic_status"
+    diag: "topic_state_monitor_radar_front_center: radar_front_center_topic_status"
     type: diag
   - path: /sensing/radar/front_left/connection
-    diag: "topic_state_monitor_radar_front_left: sensing_topic_status"
+    diag: "topic_state_monitor_radar_front_left: radar_front_left_topic_status"
     type: diag
   - path: /sensing/radar/front_right/connection
-    diag: "topic_state_monitor_radar_front_right: sensing_topic_status"
+    diag: "topic_state_monitor_radar_front_right: radar_front_right_topic_status"
     type: diag
   - path: /sensing/radar/rear_center/connection
-    diag: "topic_state_monitor_radar_rear_center: sensing_topic_status"
+    diag: "topic_state_monitor_radar_rear_center: radar_rear_center_topic_status"
     type: diag
   - path: /sensing/radar/rear_left/connection
-    diag: "topic_state_monitor_radar_rear_left: sensing_topic_status"
+    diag: "topic_state_monitor_radar_rear_left: radar_rear_left_topic_status"
     type: diag
   - path: /sensing/radar/rear_right/connection
-    diag: "topic_state_monitor_radar_rear_right: sensing_topic_status"
+    diag: "topic_state_monitor_radar_rear_right: radar_rear_right_topic_status"
     type: diag
