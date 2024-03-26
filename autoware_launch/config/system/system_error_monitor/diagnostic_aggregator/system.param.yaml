@@ -11,5 +11,5 @@
             storage_error:
               type: diagnostic_aggregator/GenericAnalyzer
               path: storage_error
-              contains: ["bagpacker"]
+              contains: ["disk_status"]
               timeout: 3.0
