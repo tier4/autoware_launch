@@ -41,6 +41,8 @@
   <let name="rviz_respawn" value="true" unless="$(var scenario_simulation)"/>
   <!-- Auto mode setting-->
   <arg name="enable_all_modules_auto_mode" default="$(var scenario_simulation)" description="enable all module's auto mode"/>
+  <!-- Simulated time -->
+  <arg name="use_sim_time" default="$(var scenario_simulation)"/>
 
   <group scoped="false">
     <!-- Vehicle -->
