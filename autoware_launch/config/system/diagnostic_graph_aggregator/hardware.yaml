@@ -174,124 +174,163 @@ nodes:
   - path: /hardware/cpu/001-temperature
     diag: "cpu_monitor: CPU Temperature"
     type: diag
+    timeout: 3.0
   - path: /hardware/cpu/002-usage
     diag: "cpu_monitor: CPU Usage"
     type: diag
+    timeout: 3.0
   - path: /hardware/cpu/003-load_average
     diag: "cpu_monitor: CPU Load Average"
     type: diag
+    timeout: 3.0
   - path: /hardware/cpu/004-throttling
     diag: "cpu_monitor: CPU Thermal Throttling"
     type: diag
+    timeout: 3.0
   - path: /hardware/cpu/005-frequency
     diag: "cpu_monitor: CPU Frequency"
     type: diag
+    timeout: 3.0
 
   - path: /hardware/hdd/001-temperature
     diag: "hdd_monitor: HDD Temperature"
     type: diag
+    timeout: 3.0
   - path: /hardware/hdd/002-usage
     diag: "hdd_monitor: HDD Usage"
     type: diag
+    timeout: 3.0
   - path: /hardware/hdd/003-connection
     diag: "hdd_monitor: HDD Connection"
     type: diag
+    timeout: 3.0
   - path: /hardware/hdd/004-total_written
     diag: "hdd_monitor: HDD TotalDataWritten"
     type: diag
+    timeout: 3.0
   - path: /hardware/hdd/005-warranty_period
     diag: "hdd_monitor: HDD PowerOnHours"
     type: diag
+    timeout: 3.0
   - path: /hardware/hdd/006-soft_error
     diag: "hdd_monitor: HDD RecoveredError"
     type: diag
+    timeout: 3.0
   - path: /hardware/hdd/007-load/read_rate
     diag: "hdd_monitor: HDD ReadDataRate"
     type: diag
+    timeout: 3.0
   - path: /hardware/hdd/007-load/write_rate
     diag: "hdd_monitor: HDD WriteDataRate"
     type: diag
+    timeout: 3.0
   - path: /hardware/hdd/007-load/read_iops
     diag: "hdd_monitor: HDD ReadIOPS"
     type: diag
+    timeout: 3.0
   - path: /hardware/hdd/007-load/write_iops
     diag: "hdd_monitor: HDD WriteIOPS"
     type: diag
+    timeout: 3.0
 
   - path: /hardware/memory/001-usage
     diag: "mem_monitor: Memory Usage"
     type: diag
+    timeout: 3.0
   - path: /hardware/memory/002-ecc
     diag: "mem_monitor: Memory ECC"
     type: diag
+    timeout: 3.0
 
   - path: /hardware/network/001-usage
     diag: "net_monitor: Network Usage"
     type: diag
+    timeout: 3.0
   - path: /hardware/network/002-traffic
     diag: "net_monitor: Network Traffic"
     type: diag
+    timeout: 3.0
   - path: /hardware/network/003-crc
     diag: "net_monitor: Network CRC Error"
     type: diag
+    timeout: 3.0
   - path: /hardware/network/004-packet_reassembles
     diag: "net_monitor: IP Packet Reassembles Failed"
     type: diag
+    timeout: 3.0
 
   - path: /hardware/ntp/001-sync
     diag: "ntp_monitor: NTP Offset"
     type: diag
+    timeout: 10.0
 
   - path: /hardware/process/001-summary
     diag: "process_monitor: Tasks Summary"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/002-load/proc-0
     diag: "process_monitor: High-load Proc[0]"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/002-load/proc-1
     diag: "process_monitor: High-load Proc[1]"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/002-load/proc-2
     diag: "process_monitor: High-load Proc[2]"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/002-load/proc-3
     diag: "process_monitor: High-load Proc[3]"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/002-load/proc-4
     diag: "process_monitor: High-load Proc[4]"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/003-memory/proc-0
     diag: "process_monitor: High-mem Proc[0]"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/003-memory/proc-1
     diag: "process_monitor: High-mem Proc[1]"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/003-memory/proc-2
     diag: "process_monitor: High-mem Proc[2]"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/003-memory/proc-3
     diag: "process_monitor: High-mem Proc[3]"
     type: diag
+    timeout: 3.0
   - path: /hardware/process/003-memory/proc-4
     diag: "process_monitor: High-mem Proc[4]"
     type: diag
+    timeout: 3.0
 
   - path: /hardware/gpu/001-temperature
     diag: "gpu_monitor: GPU Temperature"
     type: diag
+    timeout: 3.0
   - path: /hardware/gpu/002-usage
     diag: "gpu_monitor: GPU Usage"
     type: diag
+    timeout: 3.0
   - path: /hardware/gpu/003-memory
     diag: "gpu_monitor: GPU Memory Usage"
     type: diag
+    timeout: 3.0
   - path: /hardware/gpu/004-throttling
     diag: "gpu_monitor: GPU Thermal Throttling"
     type: diag
+    timeout: 3.0
   - path: /hardware/gpu/005-frequency
     diag: "gpu_monitor: GPU Frequency"
     type: diag
+    timeout: 3.0
 
   - path: /hardware/bios/001-battery
     diag: "voltage_monitor: CMOS Battery Status"
     type: diag
+    timeout: 3.0

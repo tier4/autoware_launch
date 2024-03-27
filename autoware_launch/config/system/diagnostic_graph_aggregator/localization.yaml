@@ -74,23 +74,29 @@ nodes:
   - path: /localization/001-topic_status/initialpose
     diag: "topic_state_monitor_initialpose3d: localization_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /localization/001-topic_status/pose_twist_fusion_filter
     diag: "topic_state_monitor_pose_twist_fusion_filter_pose: localization_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /localization/002-tf
     diag: "topic_state_monitor_transform_map_to_base_link: localization_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /localization/003-matching_score
     diag: ndt_scan_matcher
     type: diag
+    timeout: 1.0
 
   - path: /localization/004-accuracy
     diag: "localization_error_monitor: localization_accuracy"
     type: diag
+    timeout: 1.0
 
   - path: /localization/005-accuracy_lateral
     diag: "localization_error_monitor: localization_accuracy_lateral_direction"
     type: diag
+    timeout: 1.0

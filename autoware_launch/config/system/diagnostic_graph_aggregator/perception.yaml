@@ -62,15 +62,19 @@ nodes:
   - path: /perception/001-topic_status/traffic_signals
     diag: "topic_state_monitor_traffic_light_recognition_traffic_signals: perception_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /perception/001-topic_status/objects
     diag: "topic_state_monitor_object_recognition_objects: perception_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /perception/001-topic_status/pointcloud
     diag: "topic_state_monitor_obstacle_segmentation_pointcloud: perception_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /perception/002-detection_delay
     diag: "multi_object_tracker: Perception delay check from original header stamp"
     type: diag
+    timeout: 1.0

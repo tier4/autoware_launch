@@ -67,31 +67,39 @@ nodes:
   - path: /control/001-topic_status/control_command
     diag: "topic_state_monitor_control_command_control_cmd: control_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /control/003-gate_heartbeat
     diag: "vehicle_cmd_gate: heartbeat"
     type: diag
+    timeout: 1.0
 
   - path: /control/004-lane_departure
     diag: "lane_departure_checker_node: lane_departure"
     type: diag
+    timeout: 1.0
 
   - path: /control/005-trajectory_deviation
     diag: "lane_departure_checker_node: trajectory_deviation"
     type: diag
+    timeout: 1.0
 
   - path: /control/007-external_command_converter_heartbeat
     diag: "external_cmd_converter: remote_control_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /control/008-external_command_selector_heartbeat
     diag: "external_cmd_selector: heartbeat"
     type: diag
+    timeout: 1.0
 
   - path: /control/010-max_distance_deviation
     diag: "control_validator: control_validation_max_distance_deviation"
     type: diag
+    timeout: 1.0
 
   - path: /control/011-slip_detection
     diag: "slip_detector: slip_status"
     type: diag
+    timeout: 1.0

@@ -62,15 +62,19 @@ nodes:
   - path: /vehicle/001-topic_status/velocity
     diag: "topic_state_monitor_vehicle_status_velocity_status: vehicle_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /vehicle/001-topic_status/steering
     diag: "topic_state_monitor_vehicle_status_steering_status: vehicle_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /vehicle/005-vehicle_heartbeat
     diag: "j6_interface: vehicle_heartbeat_errors"
     type: diag
+    timeout: 1.0
 
   - path: /vehicle/006-vehicle_errors
     diag: "j6_interface: vehicle_errors"
     type: diag
+    timeout: 1.0

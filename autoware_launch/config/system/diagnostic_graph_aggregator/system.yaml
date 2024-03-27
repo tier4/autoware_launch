@@ -60,19 +60,24 @@ nodes:
   - path: /system/001-topic_status
     diag: "topic_state_monitor_system_emergency_control_cmd: system_topic_status"
     type: diag
+    timeout: 1.0
 
   - path: /system/002-emergency_stop_operation
     diag: "vehicle_cmd_gate: emergency_stop_operation"
     type: diag
+    timeout: 1.0
 
   - path: /system/003-bagpacker_status
     diag: bagpacker_state
     type: diag
+    timeout: 3.0
 
   - path: /system/004-bagpacker_disk_space
     diag: bagpacker_state/disk_usage
     type: diag
+    timeout: 3.0
 
   - path: /system/005-fms_connection
     diag: edge_core_internet_connection
     type: diag
+    timeout: 10.0
