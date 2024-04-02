@@ -152,5 +152,12 @@
       if="$(var rviz)"
       respawn="$(var rviz_respawn)"
     />
+
+    <!-- Convert "/diagnostics_graph" to "/diagnostics_agg" for debugging purpose -->
+    <group if="$(var launch_system)">
+      <include file="$(find-pkg-share diagnostic_graph_aggregator)/launch/converter.launch.xml">
+        <arg name="complement" value="true"/>
+      </include>
+    </group>
   </group>
 </launch>
