@@ -26,6 +26,7 @@ nodes:
       - { type: link, link: /control/001-topic_status/control_command-error }
       - { type: link, link: /control/004-lane_departure-error }
       - { type: link, link: /control/005-trajectory_deviation-error }
+      - { type: link, link: /control/009-aeb_emergency_stop }
       - { type: link, link: /control/010-max_distance_deviation-error }
       - { type: link, link: /control/011-slip_detection }
 
@@ -91,6 +92,11 @@ nodes:
 
   - path: /control/008-external_command_selector_heartbeat
     diag: "external_cmd_selector: heartbeat"
+    type: diag
+    timeout: 1.0
+
+  - path: /control/009-aeb_emergency_stop
+    diag: "autonomous_emergency_braking: aeb_emergency_stop"
     type: diag
     timeout: 1.0
 
