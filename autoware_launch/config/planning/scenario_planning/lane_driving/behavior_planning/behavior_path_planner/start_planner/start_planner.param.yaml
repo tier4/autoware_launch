@@ -17,7 +17,7 @@
         check_bicycle: true
         check_motorcycle: true
         check_pedestrian: true
-        check_unknown: true
+        check_unknown: false
       th_distance_to_middle_of_the_road: 0.5
       center_line_path_interval: 1.0
       # shift pull out
