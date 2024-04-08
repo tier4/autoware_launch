@@ -40,11 +40,6 @@
   <arg name="rviz" default="true" description="launch rviz"/>
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/awsim.rviz" description="rviz config"/>
 
-  <!-- XX1 Traffic Light frame_id relay for AWSIM-->
-  <arg name="traffic_light_original_id" default="camera6/camera_optical_link"/>
-  <arg name="traffic_light_topic_id" default="traffic_light_left_camera/camera_optical_link"/>
-  <node pkg="tf2_ros" exec="static_transform_publisher" name="traffic_light_transform_publisher" args="--frame-id $(var traffic_light_original_id) --child-frame-id $(var traffic_light_topic_id)"/>
-
   <!-- dummy topic publisher (camera0 ~ camera6)-->
   <!-- temporary until AWSIM supports object recognition camera -->
   <arg name="camera0_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera0/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
