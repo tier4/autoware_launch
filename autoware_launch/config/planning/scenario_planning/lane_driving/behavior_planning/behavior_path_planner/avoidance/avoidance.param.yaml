@@ -37,11 +37,11 @@
           moving_speed_threshold: 1.0                  # [m/s]
           moving_time_threshold: 1.0                   # [s]
           lateral_margin:
-            soft_margin: 1.0                           # [m]
-            hard_margin: 0.1                           # [m]
-            hard_margin_for_parked_vehicle: 0.1        # [m]
+            soft_margin: 0.2                           # [m]
+            hard_margin: 0.2                           # [m]
+            hard_margin_for_parked_vehicle: 0.7        # [m]
           max_expand_ratio: 0.0                        # [-]
-          envelope_buffer_margin: 0.3                  # [m]
+          envelope_buffer_margin: 0.1                  # [m]
           safety_buffer_longitudinal: 0.0              # [m]
           use_conservative_buffer_longitudinal: false  # [-] When set to true, the base_link2front is added to the longitudinal buffer before avoidance.
         truck:
@@ -49,9 +49,9 @@
           moving_speed_threshold: 1.0                  # 3.6km/h
           moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 1.0                           # [m]
-            hard_margin: 0.4                           # [m]
-            hard_margin_for_parked_vehicle: 0.4        # [m]
+            soft_margin: 0.2                           # [m]
+            hard_margin: 0.2                           # [m]
+            hard_margin_for_parked_vehicle: 0.7        # [m]
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.3
           avoid_margin_lateral: 0.0
@@ -63,11 +63,11 @@
           moving_speed_threshold: 1.0                  # 3.6km/h
           moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 0.0                           # [m]
-            hard_margin: 0.8                           # [m]
-            hard_margin_for_parked_vehicle: 0.8        # [m]
+            soft_margin: 0.2                           # [m]
+            hard_margin: 0.2                           # [m]
+            hard_margin_for_parked_vehicle: 0.7        # [m]
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.3
+          envelope_buffer_margin: 0.1
           safety_buffer_longitudinal: 0.0
           use_conservative_buffer_longitudinal: false
         trailer:
@@ -75,11 +75,11 @@
           moving_speed_threshold: 1.0                  # 3.6km/h
           moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 0.0                           # [m]
-            hard_margin: 0.8                           # [m]
-            hard_margin_for_parked_vehicle: 0.8        # [m]
+            soft_margin: 0.2                           # [m]
+            hard_margin: 0.2                           # [m]
+            hard_margin_for_parked_vehicle: 0.7        # [m]
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.3
+          envelope_buffer_margin: 0.1
           safety_buffer_longitudinal: 0.0
           use_conservative_buffer_longitudinal: false
         unknown:
