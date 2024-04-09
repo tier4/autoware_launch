@@ -28,7 +28,6 @@ nodes:
       - { type: link, link: /localization/002-tf-error }
       - { type: link, link: /localization/003-matching_score-error }
       - { type: link, link: /localization/004-accuracy-error }
-      - { type: link, link: /localization/005-accuracy_lateral-error }
 
   - path: /localization/comfortable_stop
     type: and
@@ -65,11 +64,6 @@ nodes:
     list:
       - { type: link, link: /localization/004-accuracy }
 
-  - path: /localization/005-accuracy_lateral-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /localization/005-accuracy_lateral }
-
   # Diagnostics paths
   - path: /localization/001-topic_status/initialpose
     diag: "topic_state_monitor_initialpose3d: localization_topic_status"
@@ -92,11 +86,6 @@ nodes:
     timeout: 1.0
 
   - path: /localization/004-accuracy
-    diag: "localization_error_monitor: localization_accuracy"
-    type: diag
-    timeout: 1.0
-
-  - path: /localization/005-accuracy_lateral
-    diag: "localization_error_monitor: localization_accuracy_lateral_direction"
+    diag: "localization: localization_error_monitor"
     type: diag
     timeout: 1.0
