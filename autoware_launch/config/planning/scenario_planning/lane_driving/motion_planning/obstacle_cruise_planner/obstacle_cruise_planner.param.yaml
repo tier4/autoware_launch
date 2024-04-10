@@ -191,7 +191,7 @@
           min_lat_margin: 0.2
           max_lat_margin: 0.7
           min_ego_velocity: 2.0
-          max_ego_velocity: 8.0
+          max_ego_velocity: 5.56
         static:
           min_lat_margin: 0.2
           max_lat_margin: 1.0
