@@ -67,6 +67,7 @@
         detection_range_z_max: 3.2
         elevation_grid_mode: true
         use_recheck_ground_cluster: true
+        use_lowest_point: true
         low_priority_region_x: -20.0
         center_pcl_shift: 0.0
         radial_divider_angle_deg: 1.0
@@ -96,6 +97,7 @@
         detection_range_z_max: 3.2
         elevation_grid_mode: false
         use_recheck_ground_cluster: false
+        use_lowest_point: true
         low_priority_region_x: -20.0
         center_pcl_shift: 0.0
         radial_divider_angle_deg: 1.0
