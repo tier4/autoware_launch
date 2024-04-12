@@ -8,8 +8,8 @@
       target_object:
         car:
           execute_num: 2                               # [-]
-          moving_speed_threshold: 1.0                  # [m/s]
-          moving_time_threshold: 1.0                   # [s]
+          th_moving_speed: 1.0                         # [m/s]
+          th_moving_time: 1.0                          # [s]
           max_expand_ratio: 0.0                        # [-]
           envelope_buffer_margin: 0.3                  # [m]
           lateral_margin:
@@ -18,8 +18,8 @@
             hard_margin_for_parked_vehicle: 0.0        # [m]
         truck:
           execute_num: 2
-          moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 1.0
+          th_moving_speed: 1.0                         # 3.6km/h
+          th_moving_time: 1.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.3
           lateral_margin:
@@ -28,8 +28,8 @@
             hard_margin_for_parked_vehicle: 0.0        # [m]
         bus:
           execute_num: 2
-          moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 1.0
+          th_moving_speed: 1.0                         # 3.6km/h
+          th_moving_time: 1.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.3
           lateral_margin:
@@ -38,8 +38,8 @@
             hard_margin_for_parked_vehicle: 0.0        # [m]
         trailer:
           execute_num: 2
-          moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 1.0
+          th_moving_speed: 1.0                         # 3.6km/h
+          th_moving_time: 1.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.3
           lateral_margin:
@@ -49,8 +49,8 @@
         unknown:
           is_target: false
           execute_num: 1
-          moving_speed_threshold: 0.28                 # 1.0km/h
-          moving_time_threshold: 1.0
+          th_moving_speed: 0.28                        # 1.0km/h
+          th_moving_time: 1.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.3
           lateral_margin:
@@ -59,8 +59,8 @@
             hard_margin_for_parked_vehicle: 0.0        # [m]
         bicycle:
           execute_num: 2
-          moving_speed_threshold: 0.28                 # 1.0km/h
-          moving_time_threshold: 1.0
+          th_moving_speed: 0.28                        # 1.0km/h
+          th_moving_time: 1.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.8
           lateral_margin:
@@ -69,8 +69,8 @@
             hard_margin_for_parked_vehicle: 1.0        # [m]
         motorcycle:
           execute_num: 2
-          moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 1.0
+          th_moving_speed: 1.0                         # 3.6km/h
+          th_moving_time: 1.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.8
           lateral_margin:
@@ -79,8 +79,8 @@
             hard_margin_for_parked_vehicle: 1.0        # [m]
         pedestrian:
           execute_num: 2
-          moving_speed_threshold: 0.28                 # 1.0km/h
-          moving_time_threshold: 1.0
+          th_moving_speed: 0.28                        # 1.0km/h
+          th_moving_time: 1.0
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.8
           lateral_margin:
