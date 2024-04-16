@@ -36,6 +36,9 @@ nodes:
     type: and
     list:
       - { type: link, link: /others/011-daytime_monitor }
+      - { type: link, link: /others/012-mot_hearbeat }
+      - { type: link, link: /others/013-signage_heartbeat }
+      - { type: link, link: /others/014-vehicle_voice_heartbeat }
 
   - path: /others/none
     type: and
@@ -126,3 +129,19 @@ nodes:
     diag: "daytime_monitor: daytime_status"
     type: diag
     timeout: 1.0
+
+  # We assume these diagnostics become only OK or STALE
+  - path: /others/012-mot_hearbeat
+    diag: "mot: /system/mot_connection : mot heartbeat"
+    type: diag
+    timeout: 5.0
+
+  - path: /others/013-signage_heartbeat
+    diag: "signage: /system/signage_connection : signage heartbeat"
+    type: diag
+    timeout: 5.0
+
+  - path: /others/014-vehicle_voice_heartbeat
+    diag: "vehicle_voice_alert_system: /system/voice_alert_system_connection : voirce alert system heartbeat"
+    type: diag
+    timeout: 5.0
