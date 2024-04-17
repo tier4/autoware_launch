@@ -68,12 +68,12 @@ nodes:
     timeout: 1.0
 
   - path: /system/003-bagpacker_status
-    diag: bagpacker_state
+    diag: rosbag_status
     type: diag
     timeout: 3.0
 
   - path: /system/004-bagpacker_disk_space
-    diag: bagpacker_state/disk_usage
+    diag: disk_status
     type: diag
     timeout: 3.0
 
