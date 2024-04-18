@@ -43,6 +43,9 @@ nodes:
     type: and
     list:
       - { type: link, link: /hardware/hdd/002-usage-error }
+      - { type: link, link: /hardware/mot/001-connection }
+      - { type: link, link: /hardware/signage/001-connection }
+      - { type: link, link: /hardware/voice/001-connection }
 
   - path: /hardware/comfortable_stop
     type: and
@@ -334,3 +337,19 @@ nodes:
     diag: "voltage_monitor: CMOS Battery Status"
     type: diag
     timeout: 3.0
+
+  # We assume these diagnostics become only OK or STALE
+  - path: /hardware/mot/001-connection
+    diag: "mot: /system/mot_connection : mot heartbeat"
+    type: diag
+    timeout: 5.0
+
+  - path: /hardware/signage/001-connection
+    diag: "signage: /system/signage_connection : signage heartbeat"
+    type: diag
+    timeout: 5.0
+
+  - path: /hardware/voice/001-connection
+    diag: "vehicle_voice_alert_system: /system/voice_alert_system_connection : voirce alert system heartbeat"
+    type: diag
+    timeout: 5.0
