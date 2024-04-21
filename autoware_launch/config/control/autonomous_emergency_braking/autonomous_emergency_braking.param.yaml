@@ -1,6 +1,6 @@
 /**:
   ros__parameters:
-    publish_debug_pointcloud: false
+    publish_debug_pointcloud: true
     use_predicted_trajectory: true
     use_imu_path: true
     path_footprint_extra_margin: 4.0
