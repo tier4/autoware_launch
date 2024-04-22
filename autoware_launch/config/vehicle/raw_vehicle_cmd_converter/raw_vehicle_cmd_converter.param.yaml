@@ -11,8 +11,8 @@
     is_debugging: false
     max_throttle: 0.4
     max_brake: 0.8
-    max_steer: 10.0
-    min_steer: -10.0
+    max_steer: 75.0
+    min_steer: -75.0
     steer_pid:
       kp: 150.0
       ki: 15.0

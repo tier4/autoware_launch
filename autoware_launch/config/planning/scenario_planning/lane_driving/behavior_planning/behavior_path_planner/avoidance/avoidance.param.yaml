@@ -3,7 +3,7 @@
   ros__parameters:
     avoidance:
       resample_interval_for_planning: 0.3               # [m]
-      resample_interval_for_output: 4.0                 # [m]
+      resample_interval_for_output: 0.5                 # [m]
 
       # avoidance module common setting
       enable_bound_clipping: false
@@ -25,50 +25,50 @@
       target_object:
         car:
           execute_num: 1                               # [-]
-          moving_speed_threshold: 1.0                  # [m/s]
-          moving_time_threshold: 2.0                   # [s]
+          moving_speed_threshold: 0.28                 # [m/s]
+          moving_time_threshold: 1.0                   # [s]
           lateral_margin:
-            soft_margin: 0.3                           # [m]
-            hard_margin: 0.2                           # [m]
-            hard_margin_for_parked_vehicle: 0.7        # [m]
+            soft_margin: 0.15                          # [m]
+            hard_margin: 0.1                           # [m]
+            hard_margin_for_parked_vehicle: 0.1        # [m]
           max_expand_ratio: 0.0                        # [-]
-          envelope_buffer_margin: 0.5                  # [m]
+          envelope_buffer_margin: 0.1                  # [m]
           safety_buffer_longitudinal: 0.0              # [m]
           use_conservative_buffer_longitudinal: true   # [-] When set to true, the base_link2front is added to the longitudinal buffer before avoidance.
         truck:
           execute_num: 1
-          moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 2.0
+          moving_speed_threshold: 0.28                 # 3.6km/h
+          moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 0.3                           # [m]
-            hard_margin: 0.2                           # [m]
-            hard_margin_for_parked_vehicle: 0.7        # [m]
+            soft_margin: 0.15                          # [m]
+            hard_margin: 0.1                           # [m]
+            hard_margin_for_parked_vehicle: 0.1        # [m]
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.5
+          envelope_buffer_margin: 0.1
           safety_buffer_longitudinal: 0.0
           use_conservative_buffer_longitudinal: true
         bus:
           execute_num: 1
-          moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 2.0
+          moving_speed_threshold: 0.28                 # 3.6km/h
+          moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 0.3                           # [m]
-            hard_margin: 0.2                           # [m]
-            hard_margin_for_parked_vehicle: 0.7        # [m]
+            soft_margin: 0.15                          # [m]
+            hard_margin: 0.1                           # [m]
+            hard_margin_for_parked_vehicle: 0.1        # [m]
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.5
+          envelope_buffer_margin: 0.1
           safety_buffer_longitudinal: 0.0
           use_conservative_buffer_longitudinal: true
         trailer:
           execute_num: 1
-          moving_speed_threshold: 1.0                  # 3.6km/h
-          moving_time_threshold: 2.0
+          moving_speed_threshold: 0.28                 # 3.6km/h
+          moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 0.3                           # [m]
-            hard_margin: 0.2                           # [m]
-            hard_margin_for_parked_vehicle: 0.7        # [m]
+            soft_margin: 0.15                          # [m]
+            hard_margin: 0.1                           # [m]
+            hard_margin_for_parked_vehicle: 0.1        # [m]
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.5
+          envelope_buffer_margin: 0.1
           safety_buffer_longitudinal: 0.0
           use_conservative_buffer_longitudinal: true
         unknown:
@@ -76,9 +76,9 @@
           moving_speed_threshold: 0.28                 # 1.0km/h
           moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 0.7                           # [m]
-            hard_margin: -0.2                          # [m]
-            hard_margin_for_parked_vehicle: -0.2       # [m]
+            soft_margin: 0.15                           # [m]
+            hard_margin: 0.1                          # [m]
+            hard_margin_for_parked_vehicle: 0.1       # [m]
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.1
           safety_buffer_longitudinal: 0.0
@@ -88,36 +88,36 @@
           moving_speed_threshold: 0.28                 # 1.0km/h
           moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 0.7                           # [m]
-            hard_margin: 0.5                           # [m]
-            hard_margin_for_parked_vehicle: 0.5        # [m]
+            soft_margin: 0.15                           # [m]
+            hard_margin: 0.1                           # [m]
+            hard_margin_for_parked_vehicle: 0.1        # [m]
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.5
-          safety_buffer_longitudinal: 1.0
+          envelope_buffer_margin: 0.1
+          safety_buffer_longitudinal: 0.0
           use_conservative_buffer_longitudinal: true
         motorcycle:
           execute_num: 1
-          moving_speed_threshold: 1.0                  # 3.6km/h
+          moving_speed_threshold: 0.28                 # 3.6km/h
           moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 0.7                           # [m]
-            hard_margin: 0.3                           # [m]
-            hard_margin_for_parked_vehicle: 0.3        # [m]
+            soft_margin: 0.15                           # [m]
+            hard_margin: 0.1                           # [m]
+            hard_margin_for_parked_vehicle: 0.1        # [m]
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.5
-          safety_buffer_longitudinal: 1.0
+          envelope_buffer_margin: 0.1
+          safety_buffer_longitudinal: 0.0
           use_conservative_buffer_longitudinal: true
         pedestrian:
           execute_num: 1
           moving_speed_threshold: 0.28                 # 1.0km/h
           moving_time_threshold: 1.0
           lateral_margin:
-            soft_margin: 0.7                           # [m]
-            hard_margin: 0.5                           # [m]
-            hard_margin_for_parked_vehicle: 0.5        # [m]
+            soft_margin: 0.15                           # [m]
+            hard_margin: 0.1                           # [m]
+            hard_margin_for_parked_vehicle: 0.1        # [m]
           max_expand_ratio: 0.0
-          envelope_buffer_margin: 0.5
-          safety_buffer_longitudinal: 1.0
+          envelope_buffer_margin: 0.1
+          safety_buffer_longitudinal: 0.0
           use_conservative_buffer_longitudinal: true
         lower_distance_for_polygon_expansion: 30.0      # [m]
         upper_distance_for_polygon_expansion: 100.0     # [m]
@@ -147,16 +147,16 @@
         # detection area generation parameters
         detection_area:
           static: false                                  # [-]
-          min_forward_distance: 50.0                     # [m]
-          max_forward_distance: 150.0                    # [m]
-          backward_distance: 10.0                        # [m]
+          min_forward_distance: 2.0                     # [m]
+          max_forward_distance: 3.0                    # [m]
+          backward_distance: 0.0                        # [m]
 
         # params for avoidance of vehicle type objects that are ambiguous as to whether they are parked.
         avoidance_for_ambiguous_vehicle:
           enable: true                                   # [-]
-          closest_distance_to_wait_and_see: 10.0         # [m]
+          closest_distance_to_wait_and_see: 2.0         # [m]
           condition:
-            time_threshold: 3.0                          # [s]
+            time_threshold: 2.0                          # [s]
             distance_threshold: 1.0                      # [m]
           ignore_area:
             traffic_light:
@@ -182,7 +182,7 @@
           motorcycle: true                               # [-]
           pedestrian: true                               # [-]
         # safety check configuration
-        enable: true                                     # [-]
+        enable: false                                     # [-]
         check_current_lane: false                        # [-]
         check_shift_side_lane: true                      # [-]
         check_other_side_lane: false                     # [-]
@@ -219,25 +219,25 @@
           lateral_avoid_check_threshold: 0.1            # [m]
           soft_road_shoulder_margin: 0.3                # [m]
           hard_road_shoulder_margin: 0.3                # [m]
-          max_right_shift_length: 5.0
-          max_left_shift_length: 5.0
+          max_right_shift_length: 2.5
+          max_left_shift_length: 2.5
           max_deviation_from_lane: 0.2                  # [m]
           # approve the next shift line after reaching this percentage of the current shift line length.
           # this parameter is added to allow waiting for the return of shift approval until the occlusion behind the avoid target is clear.
           # this feature can be disabled by setting this parameter to 0.0.
-          ratio_for_return_shift_approval: 0.5          # [-]
+          ratio_for_return_shift_approval: 0.0          # [-]
         # avoidance distance parameters
         longitudinal:
           min_prepare_time: 1.0                         # [s]
           max_prepare_time: 2.0                         # [s]
           min_prepare_distance: 1.0                     # [m]
-          min_slow_down_speed: 1.38                     # [m/s]
-          buf_slow_down_speed: 0.56                     # [m/s]
-          nominal_avoidance_speed: 8.33                 # [m/s]
+          min_slow_down_speed: 0.3                     # [m/s]
+          buf_slow_down_speed: 0.3                     # [m/s]
+          nominal_avoidance_speed: 0.3                 # [m/s]
         # return dead line
         return_dead_line:
           goal:
-            enable: true                                # [-]
+            enable: false                                # [-]
             buffer: 3.0                                 # [m]
           traffic_light:
             enable: true                                # [-]
@@ -250,7 +250,7 @@
 
       # For stop maneuver
       stop:
-        max_distance: 20.0                              # [m]
+        max_distance: 1.0                              # [m]
         stop_buffer: 1.0                                # [m]
 
       policy:

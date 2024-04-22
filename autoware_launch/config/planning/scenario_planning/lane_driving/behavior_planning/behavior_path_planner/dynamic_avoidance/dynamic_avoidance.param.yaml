@@ -54,8 +54,8 @@
         object_path_base:
           min_longitudinal_polygon_margin: 3.0 # [m]
 
-        lat_offset_from_obstacle: 1.0 # [m]
-        max_lat_offset_to_avoid: 0.5 # [m]
+        lat_offset_from_obstacle: 0.2 # [m]
+        max_lat_offset_to_avoid: 0.1 # [m]
         max_time_for_object_lat_shift: 0.0 # [s]
         lpf_gain_for_lat_avoid_to_offset: 0.9 # [-]
 

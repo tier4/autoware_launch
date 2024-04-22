@@ -6,8 +6,8 @@
     traffic_light_signal_timeout: 1.0
 
     planning_hz: 10.0
-    backward_path_length: 5.0
-    forward_path_length: 300.0
+    backward_path_length: 1.0
+    forward_path_length: 5.0
     backward_length_buffer_for_end_of_pull_over: 5.0
     backward_length_buffer_for_end_of_pull_out: 5.0
     minimum_pull_over_length: 16.0
@@ -24,7 +24,7 @@
 
     enable_akima_spline_first: false
     enable_cog_on_centerline: false
-    input_path_interval: 2.0
-    output_path_interval: 2.0
+    input_path_interval: 0.5
+    output_path_interval: 0.5
 
     visualize_maximum_drivable_area: true
