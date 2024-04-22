@@ -108,4 +108,4 @@ nodes:
   - path: /control/011-slip_detection
     diag: "slip_detector: slip_status"
     type: diag
-    timeout: 1.0
+    timeout: 3.0
