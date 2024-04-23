@@ -350,6 +350,6 @@ nodes:
     timeout: 5.0
 
   - path: /hardware/voice/001-connection
-    diag: "vehicle_voice_alert_system: /system/voice_alert_system_connection : voirce alert system heartbeat"
+    diag: "vehicle_voice_alert_system: /system/voice_alert_system_connection : voice alert system heartbeat"
     type: diag
     timeout: 5.0
