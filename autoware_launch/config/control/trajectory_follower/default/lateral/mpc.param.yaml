@@ -45,15 +45,9 @@
 
     # -- vehicle model --
     vehicle_model_type: "kinematics" # vehicle model type for mpc prediction. option is kinematics, kinematics_no_delay, and dynamics
-<<<<<<< HEAD:autoware_launch/config/control/trajectory_follower/lateral/mpc.param.yaml
-    input_delay: 0.24                # steering input delay time for delay compensation
-    vehicle_model_steer_tau: 0.27     # steering dynamics time constant (1d approximation) [s]
-    steer_rate_lim_dps_list_by_curvature: [40.0, 50.0, 60.0]            # steering angle rate limit list depending on curvature [deg/s]
-=======
     input_delay: 0.1                 # steering input delay time for delay compensation
     vehicle_model_steer_tau: 0.1     # steering dynamics time constant (1d approximation) [s]
     steer_rate_lim_dps_list_by_curvature: [20.0, 20.0, 20.0]            # steering angle rate limit list depending on curvature [deg/s]
->>>>>>> tier4/main:autoware_launch/config/control/trajectory_follower/default/lateral/mpc.param.yaml
     curvature_list_for_steer_rate_lim: [0.001, 0.002, 0.01]              # curvature list for steering angle rate limit interpolation in ascending order [/m]
     steer_rate_lim_dps_list_by_velocity: [18.0,  18.0,   15.0,   12.0,   5.0,  2.25,  1.5 ,  1.5 ,  1.5]  # steering angle rate limit list depending on velocity [deg/s] [72, 72, 36, 18, 9, 3.6, 3.6]
     velocity_list_for_steer_rate_lim:    [0.0,   1.388,  2.778,  4.167,  5.556,   6.944,  8.333,  9.722,  11.11] # velocity list for steering angle rate limit interpolation in ascending order [m/s]
