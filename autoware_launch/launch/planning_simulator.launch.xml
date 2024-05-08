@@ -18,7 +18,7 @@
   <!-- System -->
   <arg name="launch_dummy_doors" default="true" description="launch dummy doors simulation"/>
   <arg name="launch_system_monitor" default="false" description="launch system monitor"/>
-  <arg name="launch_dummy_diag_publisher" default="false" description="launch dummy diag publisher"/>
+  <arg name="launch_dummy_diag_publisher" default="true" description="launch dummy diag publisher"/>
   <!-- Scenario simulation -->
   <arg name="initial_engage_state" default="true" description="/vehicle/engage state after starting Autoware"/>
   <arg name="perception/enable_detection_failure" default="true" description="enable to simulate detection failure when using dummy perception"/>
