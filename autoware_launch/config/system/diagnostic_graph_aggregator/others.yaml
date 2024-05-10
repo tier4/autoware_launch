@@ -125,4 +125,4 @@ nodes:
   - path: /others/011-daytime_monitor
     diag: "daytime_monitor: daytime_status"
     type: diag
-    timeout: 1.0
+    timeout: 3.0
