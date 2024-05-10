@@ -94,9 +94,10 @@ launch:
 
   - arg:
       name: motion_stop_planner_type
-      default: obstacle_cruise_planner
+      default: obstacle_cruise_planner_with_pseudo_occlusion
       # option: obstacle_stop_planner
       #         obstacle_cruise_planner
+      #         obstacle_cruise_planner_with_pseudo_occlusion
       #         none
 
   - arg:
