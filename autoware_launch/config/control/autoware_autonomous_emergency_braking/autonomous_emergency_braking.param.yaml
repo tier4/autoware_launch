@@ -9,11 +9,11 @@
     min_generated_path_length: 0.5
     imu_prediction_time_horizon: 1.5
     imu_prediction_time_interval: 0.1
-    mpc_prediction_time_horizon: 1.5
+    mpc_prediction_time_horizon: 4.5
     mpc_prediction_time_interval: 0.1
 
     # Debug
-    publish_debug_pointcloud: false
+    publish_debug_pointcloud: true
     publish_debug_markers: true
 
     # Point cloud partitioning
