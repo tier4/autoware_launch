@@ -6,7 +6,7 @@
     min_generated_path_length: 0.5
     imu_prediction_time_horizon: 1.5
     imu_prediction_time_interval: 0.1
-    mpc_prediction_time_horizon: 1.5
+    mpc_prediction_time_horizon: 4.5
     mpc_prediction_time_interval: 0.1
 
     # Debug
@@ -31,8 +31,8 @@
     # RSS distance collision check
     longitudinal_offset: 2.0
     t_response: 1.0
-    a_ego_min: -3.0
-    a_obj_min: -1.0
+    a_ego_min: -1.5
+    a_obj_min: -2.5
     collision_keeping_sec: 2.0
     previous_obstacle_keep_time: 1.0
     aeb_hz: 10.0
