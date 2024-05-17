@@ -248,35 +248,35 @@ nodes:
     timeout: 5.0
 
   - path: /sensing/camera/0/connection
-    diag: "topic_state_monitor_camera0: camera0_topic_status"
+    diag: "v4l2_camera_camera0: capture_status"
     type: diag
     timeout: 1.0
   - path: /sensing/camera/1/connection
-    diag: "topic_state_monitor_camera1: camera1_topic_status"
+    diag: "v4l2_camera_camera1: capture_status"
     type: diag
     timeout: 1.0
   - path: /sensing/camera/2/connection
-    diag: "topic_state_monitor_camera2: camera2_topic_status"
+    diag: "v4l2_camera_camera2: capture_status"
     type: diag
     timeout: 1.0
   - path: /sensing/camera/3/connection
-    diag: "topic_state_monitor_camera3: camera3_topic_status"
+    diag: "v4l2_camera_camera3: capture_status"
     type: diag
     timeout: 1.0
   - path: /sensing/camera/4/connection
-    diag: "topic_state_monitor_camera4: camera4_topic_status"
+    diag: "v4l2_camera_camera4: capture_status"
     type: diag
     timeout: 1.0
   - path: /sensing/camera/5/connection
-    diag: "topic_state_monitor_camera5: camera5_topic_status"
+    diag: "v4l2_camera_camera5: capture_status"
     type: diag
     timeout: 1.0
   - path: /sensing/camera/6/connection
-    diag: "topic_state_monitor_camera6: camera6_topic_status"
+    diag: "v4l2_camera_camera6: capture_status"
     type: diag
     timeout: 1.0
   - path: /sensing/camera/7/connection
-    diag: "topic_state_monitor_camera7: camera7_topic_status"
+    diag: "v4l2_camera_camera7: capture_status"
     type: diag
     timeout: 1.0
 
