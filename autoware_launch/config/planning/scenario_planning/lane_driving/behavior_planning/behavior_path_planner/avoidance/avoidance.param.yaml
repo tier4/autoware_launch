@@ -293,8 +293,8 @@
 
       # for debug
       debug:
-        enable_other_objects_marker: false
-        enable_other_objects_info: false
+        enable_other_objects_marker: true
+        enable_other_objects_info: true
         enable_detection_area_marker: false
         enable_drivable_bound_marker: false
         enable_safety_check_marker: false
