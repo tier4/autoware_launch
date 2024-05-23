@@ -121,7 +121,7 @@ nodes:
   - path: /others/010-emergency_vehicle
     diag: "emergency_vehicle_detector: emergency_vehicle"
     type: diag
-    timeout: 1.0
+    timeout: 3.0
 
   - path: /others/011-daytime_monitor
     diag: "daytime_monitor: daytime_status"
