@@ -58,6 +58,7 @@ nodes:
     type: and
     list:
       - { type: link, link: /others/005-visibility_validation/front_lower }
+      - { type: link, link: /others/005-visibility_validation/left_upper }
 
   - path: /others/002-blockage_validation-error
     type: warn-to-ok
@@ -115,6 +116,11 @@ nodes:
 
   - path: /others/005-visibility_validation/front_lower
     diag: "dual_return_filter: /sensing/lidar/front_lower: visibility_validation"
+    type: diag
+    timeout: 1.0
+
+  - path: /others/005-visibility_validation/left_upper
+    diag: "dual_return_filter: /sensing/lidar/left_upper: visibility_validation"
     type: diag
     timeout: 1.0
 
