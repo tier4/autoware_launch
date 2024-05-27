@@ -188,5 +188,6 @@
       OTHERS-002/rear_upper: "blockage_return_diag: /sensing/lidar/rear_upper: blockage_validation"
       OTHERS-004: "concatenate_data: concat_status"
       OTHERS-005/front_lower: "dual_return_filter: /sensing/lidar/front_lower: visibility_validation"
+      OTHERS-005/left_upper: "dual_return_filter: /sensing/lidar/left_upper: visibility_validation"
       OTHERS-010: "emergency_vehicle_detector: emergency_vehicle"
       OTHERS-011: "daytime_monitor: daytime_status"
