@@ -2,7 +2,7 @@
   ros__parameters:
     # Ego path calculation
     use_predicted_trajectory: true
-    use_imu_path: true
+    use_imu_path: false
     min_generated_path_length: 0.5
     imu_prediction_time_horizon: 1.5
     imu_prediction_time_interval: 0.1
