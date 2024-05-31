@@ -19,7 +19,11 @@
       autonomous_driving:
         /autoware/control/autonomous_driving/node_alive_monitoring: default
         /autoware/control/autonomous_driving/performance_monitoring/lane_departure: default
+        # /autoware/control/autonomous_driving/performance_monitoring/control_validator: default
+        /autoware/control/autonomous_driving/performance_monitoring/trajectory_deviation: default
+        /autoware/control/autonomous_emergency_braking/performance_monitoring/emergency_stop: { sf_at: "none", lf_at: "warn", spf_at: "error"}
         /autoware/control/control_command_gate/node_alive_monitoring: default
+        /autoware/control/external_control/local_external_control/device_connection: default
 
         /autoware/localization/node_alive_monitoring: default
         /autoware/localization/performance_monitoring/scan_matching_status: { sf_at: "warn", lf_at: "none", spf_at: "none" }
@@ -34,15 +38,19 @@
         /autoware/planning/node_alive_monitoring: default
         /autoware/planning/performance_monitoring/trajectory_validation: default
 
-        # /autoware/sensing/node_alive_monitoring: default
+        /autoware/sensing/node_alive_monitoring: default
+        /autoware/sensing/imu/bias_monitoring/gyro_bias_validator: default
 
         /autoware/system/node_alive_monitoring: default
         /autoware/system/emergency_stop_operation: default
-        /autoware/system/service_log_checker: { sf_at: "warn", lf_at: "none", spf_at: "none" }
         /autoware/system/resource_monitoring: { sf_at: "warn", lf_at: "error", spf_at: "none" }
         /autoware/system/duplicated_node_checker: default
 
         /autoware/vehicle/node_alive_monitoring: default
+
+        /autoware/system/debug_data_logger/storage_error: { sf_at: "warn", lf_at: "none", spf_at: "none" }
+
+        /autoware/vehicle/calibration: { sf_at: "warn", lf_at: "none", spf_at: "none" }
 
       external_control:
         /autoware/control/control_command_gate/node_alive_monitoring: default
@@ -50,6 +58,5 @@
 
         /autoware/system/node_alive_monitoring: default
         /autoware/system/emergency_stop_operation: default
-        /autoware/system/service_log_checker: { sf_at: "warn", lf_at: "none", spf_at: "none" }
 
         /autoware/vehicle/node_alive_monitoring: default
