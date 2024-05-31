@@ -10,22 +10,22 @@
     mpc_prediction_time_interval: 0.1
 
     # Debug
-    publish_debug_pointcloud: false
+    publish_debug_pointcloud: true
 
     # Point cloud partitioning
     detection_range_min_height: 0.0
     detection_range_max_height_margin: 0.0
     voxel_grid_x: 0.05
     voxel_grid_y: 0.05
-    voxel_grid_z: 0.5
+    voxel_grid_z: 10000.0
 
     # Point cloud cropping
     expand_width: 0.1
     path_footprint_extra_margin: 4.0
 
     # Point cloud clustering
-    cluster_tolerance: 0.15 #[m]
-    minimum_cluster_size: 8
+    cluster_tolerance: 0.5 #[m]
+    minimum_cluster_size: 2
     maximum_cluster_size: 10000
 
     # RSS distance collision check
