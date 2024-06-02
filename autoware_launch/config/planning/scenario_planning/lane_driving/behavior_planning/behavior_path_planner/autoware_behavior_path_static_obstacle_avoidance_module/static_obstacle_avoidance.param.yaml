@@ -128,7 +128,7 @@
 
         # filtering parking objects
         parked_vehicle:
-          th_offset_from_centerline: 1.0                # [m]
+          th_offset_from_centerline: 0.8                # [m]
           th_shiftable_ratio: 0.8                       # [-]
           min_road_shoulder_width: 0.5                  # [m] FOR DEVELOPER
 
