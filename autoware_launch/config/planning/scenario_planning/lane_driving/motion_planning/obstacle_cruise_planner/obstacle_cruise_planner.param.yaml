@@ -215,4 +215,4 @@
           limit_min_acc: -1.2 # overwrite the deceleration limit, in usually, common_param.yaml/limit.min_acc is referred.
           sudden_object_acc_threshold: -1.1 # If a stop can be achieved by a deceleration smaller than this value, it is not considered as “sudden stop".
           sudden_object_dist_threshold: 1000.0 # If a stop distance is longer than this value, it is not considered as “sudden stop".
-          abandon_to_stop: false # If true, the planner gives up to stop when it cannot avoid to run over while maintaining the deceleration limit.
+          abandon_to_stop: true # If true, the planner gives up to stop when it cannot avoid to run over while maintaining the deceleration limit.
