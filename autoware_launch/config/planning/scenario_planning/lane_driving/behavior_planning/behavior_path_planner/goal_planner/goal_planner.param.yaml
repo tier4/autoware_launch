@@ -17,7 +17,7 @@
         forward_goal_search_length: 40.0
         backward_goal_search_length: 20.0
         goal_search_interval: 2.0
-        longitudinal_margin: 3.0
+        longitudinal_margin: 6.0
         max_lateral_offset: 1.0
         lateral_offset_interval: 0.5
         ignore_distance_from_lane_start: 0.0
