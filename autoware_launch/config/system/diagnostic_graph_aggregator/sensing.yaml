@@ -107,8 +107,6 @@ nodes:
       - { type: link, link: /sensing/camera/3/connection }
       - { type: link, link: /sensing/camera/4/connection }
       - { type: link, link: /sensing/camera/5/connection }
-      - { type: link, link: /sensing/camera/6/connection }
-      - { type: link, link: /sensing/camera/7/connection }
 
   - path: /sensing/radar/001-connection
     type: and
@@ -269,14 +267,6 @@ nodes:
     timeout: 1.0
   - path: /sensing/camera/5/connection
     diag: "v4l2_camera_camera5: capture_status"
-    type: diag
-    timeout: 1.0
-  - path: /sensing/camera/6/connection
-    diag: "v4l2_camera_camera6: capture_status"
-    type: diag
-    timeout: 1.0
-  - path: /sensing/camera/7/connection
-    diag: "v4l2_camera_camera7: capture_status"
     type: diag
     timeout: 1.0
 
