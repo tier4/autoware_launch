@@ -14,14 +14,14 @@
           lateral_weight: 40.0
         prioritize_goals_before_objects: true
         parking_policy: "left_side" # "left_side" or "right_side"
-        forward_goal_search_length: 40.0
+        forward_goal_search_length: 0.5
         backward_goal_search_length: 20.0
         goal_search_interval: 2.0
         longitudinal_margin: 6.0
-        max_lateral_offset: 1.0
+        max_lateral_offset: 0.0
         lateral_offset_interval: 0.5
         ignore_distance_from_lane_start: 0.0
-        margin_from_boundary: 0.75
+        margin_from_boundary: 0.50
 
       # occupancy grid map
       occupancy_grid:
@@ -59,8 +59,8 @@
         shift_parking:
           enable_shift_parking: true
           shift_sampling_num: 4
-          maximum_lateral_jerk: 2.0
-          minimum_lateral_jerk: 0.5
+          maximum_lateral_jerk: 0.5
+          minimum_lateral_jerk: 0.1
           deceleration_interval: 15.0
           after_shift_straight_distance: 1.0
 
