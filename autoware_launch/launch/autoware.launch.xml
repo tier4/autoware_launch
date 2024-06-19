@@ -113,7 +113,7 @@
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_localization_component.launch.xml"/>
   </group>
 
-<!-- Perception -->
+  <!-- Perception -->
   <group if="$(var launch_perception)">
     <let name="occupancy_grid_map_method" value="multi_lidar_pointcloud_based_occupancy_grid_map" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
     <let name="occupancy_grid_map_method" value="pointcloud_based_occupancy_grid_map" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
