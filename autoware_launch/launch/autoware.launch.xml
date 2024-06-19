@@ -121,7 +121,7 @@
       <arg name="data_path" value="$(var data_path)"/>
       <arg
         name="occupancy_grid_map_method"
-        value="$(eval 'pointcloud_based_occupancy_grid_map' if sensor_model == 'aip_xx1' else ('pointcloud_based_occupancy_grid_map' if sensor_model == 'aip_xx1_gen2' else 'pointcloud_based_occupancy_grid_map'))"
+        value="$(var occupancy_grid_map_method)"
       />
     </include>
   </group>
