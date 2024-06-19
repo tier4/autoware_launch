@@ -21,7 +21,7 @@
   <arg name="launch_perception" default="true" description="launch perception"/>
   <arg name="launch_planning" default="true" description="launch planning"/>
   <arg name="launch_control" default="true" description="launch control"/>
-  <arg name="launch_api" default="true" description="launch api"/>
+
   <!-- Global parameters -->
   <arg name="use_sim_time" default="false" description="use_sim_time"/>
   <!-- Vehicle -->
@@ -113,11 +113,13 @@
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_localization_component.launch.xml"/>
   </group>
 
-  <!-- Perception -->
+<!-- Perception -->
   <group if="$(var launch_perception)">
+    <let name="occupancy_grid_map_method" value="multi_lidar_pointcloud_based_occupancy_grid_map" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+    <let name="occupancy_grid_map_method" value="pointcloud_based_occupancy_grid_map" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_perception_component.launch.xml">
       <arg name="data_path" value="$(var data_path)"/>
-      <arg name="occupancy_grid_map_method" value="$(eval 'pointcloud_based_occupancy_grid_map' if sensor_model == 'aip_xx1' else ('pointcloud_based_occupancy_grid_map' if sensor_model == 'aip_xx1_gen2' else 'pointcloud_based_occupancy_grid_map'))"/>
+      <arg name="occupancy_grid_map_method" value="$(var occupancy_grid_map_method)"/>
     </include>
   </group>
 
