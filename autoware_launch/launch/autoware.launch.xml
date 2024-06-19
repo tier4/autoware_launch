@@ -119,10 +119,7 @@
     <let name="occupancy_grid_map_method" value="pointcloud_based_occupancy_grid_map" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_perception_component.launch.xml">
       <arg name="data_path" value="$(var data_path)"/>
-      <arg
-        name="occupancy_grid_map_method"
-        value="$(var occupancy_grid_map_method)"
-      />
+      <arg name="occupancy_grid_map_method" value="$(var occupancy_grid_map_method)"/>
     </include>
   </group>
 
