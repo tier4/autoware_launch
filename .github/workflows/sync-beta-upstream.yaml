@@ -30,4 +30,3 @@ jobs:
             bot
             sync-tier4-upstream
           auto-merge-method: merge
-
