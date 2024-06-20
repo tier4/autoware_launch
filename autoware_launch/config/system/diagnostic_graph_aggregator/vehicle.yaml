@@ -30,6 +30,8 @@ nodes:
 
   - path: /vehicle/comfortable_stop
     type: and
+    list:
+      - { type: link, link: /vehicle/006-vehicle_errors }
 
   - path: /vehicle/pull_over
     type: and
