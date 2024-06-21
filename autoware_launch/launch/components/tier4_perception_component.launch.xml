@@ -22,8 +22,8 @@
     <include file="$(find-pkg-share autoware_launch)/launch/components/traffic_light_recognition/traffic_light.launch.xml"/>
   </group>
   <!-- NOTE: Override by false to disable conventional traffic light recognition launch -->
-  <let name="use_traffic_light_recognition" value="false" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
-  <let name="use_traffic_light_recognition" value="true" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+  <let name="use_traffic_light_recognition" value="false" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+  <let name="use_traffic_light_recognition" value="true" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
 
   <include file="$(find-pkg-share tier4_perception_launch)/launch/perception.launch.xml">
     <arg name="mode" value="$(var perception_mode)"/>
