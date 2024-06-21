@@ -22,16 +22,14 @@
   <!-- NOTE: Override by false to disable conventional traffic light recognition launch -->
   <let name="use_traffic_light_recognition" value="false"/>
 
-
   <!-- <group if="$(eval sensor_model == 'aip_xx1_gen2')"> -->
-    <!-- In the Gen2 sensor configuration, the traffic_light_recognition node is launched not through the conventional autoware.universe/launch/tier4_perception_launch but with its own custom launch file.
+  <!-- In the Gen2 sensor configuration, the traffic_light_recognition node is launched not through the conventional autoware.universe/launch/tier4_perception_launch but with its own custom launch file.
     This is because autoware.universe's launch files do not support an arbitrary number of cameras. If autoware.universe's launch files were to support it, it is recommended to use them instead. -->
-    <!-- <include file="$(find-pkg-share autoware_launch)/launch/components/traffic_light_recognition/traffic_light.launch.xml"/> -->
+  <!-- <include file="$(find-pkg-share autoware_launch)/launch/components/traffic_light_recognition/traffic_light.launch.xml"/> -->
   <!-- </group> -->
   <!-- NOTE: Override by false to disable conventional traffic light recognition launch -->
   <!-- <let name="use_traffic_light_recognition" value="false" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/> -->
   <!-- <let name="use_traffic_light_recognition" value="true" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/> -->
-
 
   <include file="$(find-pkg-share tier4_perception_launch)/launch/perception.launch.xml">
     <arg name="mode" value="$(var perception_mode)"/>
