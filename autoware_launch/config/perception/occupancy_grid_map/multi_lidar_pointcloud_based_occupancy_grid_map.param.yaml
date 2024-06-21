@@ -11,6 +11,10 @@
         map_length_x: 150.0 # [m]
         map_length_y: 150.0 # [m]
 
+        # downsample input pointcloud
+        downsample_input_pointcloud: true
+        downsample_voxel_size: 0.25 # [m]
+
       # each grid map parameters
       ogm_creation_config:
         height_filter:
@@ -19,7 +23,7 @@
           max_height: 2.0
         enable_single_frame_mode: true
         # use sensor pointcloud to filter obstacle pointcloud
-        filter_obstacle_pointcloud_by_raw_pointcloud: true
+        filter_obstacle_pointcloud_by_raw_pointcloud: false
 
         grid_map_type: "OccupancyGridMapFixedBlindSpot"
         OccupancyGridMapFixedBlindSpot:
@@ -35,16 +39,12 @@
         # Setting1: tune ogm creation parameters
         raw_pointcloud_topics: # put each sensor's pointcloud topic
           - "/sensing/lidar/top/pointcloud"
-          - "/sensing/lidar/side_left/pointcloud"
-          - "/sensing/lidar/side_right/pointcloud"
-          - "/sensing/lidar/front_left/pointcloud"
-          - "/sensing/lidar/front_right/pointcloud"
+          - "/sensing/lidar/left/pointcloud"
+          - "/sensing/lidar/right/pointcloud"
         fusion_input_ogm_topics:
-          - "/perception/occupancy_grid_map/top/map"
-          - "/perception/occupancy_grid_map/side_left/map"
-          - "/perception/occupancy_grid_map/side_right/map"
-          - "/perception/occupancy_grid_map/front_left/map"
-          - "/perception/occupancy_grid_map/front_right/map"
+          - "/perception/occupancy_grid_map/top_lidar/map"
+          - "/perception/occupancy_grid_map/left_lidar/map"
+          - "/perception/occupancy_grid_map/right_lidar/map"
         # reliability of each sensor (0.0 ~ 1.0) only work with "log-odds" and "dempster-shafer"
         input_ogm_reliabilities:
           - 1.0
