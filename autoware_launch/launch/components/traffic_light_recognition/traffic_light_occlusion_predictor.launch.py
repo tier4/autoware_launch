@@ -27,9 +27,7 @@ import yaml
 
 def create_traffic_light_occlusion_predictor(namespace):
     package = FindPackageShare("traffic_light_occlusion_predictor")
-    include = PathJoinSubstitution(
-        [package, f"launch/traffic_light_occlusion_predictor.launch.xml"]
-    )
+    include = PathJoinSubstitution([package, "launch/traffic_light_occlusion_predictor.launch.xml"])
 
     input_camera_info = f"/sensing/camera/{namespace}/camera_info"
     output_rois = f"/perception/traffic_light_recognition/{namespace}/detection/rois"
