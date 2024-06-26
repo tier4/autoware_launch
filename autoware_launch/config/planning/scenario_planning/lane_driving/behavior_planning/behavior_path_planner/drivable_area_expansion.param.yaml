@@ -18,11 +18,6 @@
         extra_wheelbase: 0.0 # [m] extra length to add to the wheelbase
         extra_front_overhang: 0.5 # [m] extra length to add to the front overhang
         extra_width: 1.0 # [m] extra length to add to the width
-        extra_footprint_offset:
-          front: 0.5 # [m] extra length to add to the front of the ego footprint
-          rear: 0.5 # [m] extra length to add to the rear of the ego footprint
-          left: 0.5 # [m] extra length to add to the left of the ego footprint
-          right: 0.5 # [m] extra length to add to the rear of the ego footprint
       dynamic_objects:
         avoid: false # if true, the drivable area is not expanded in the predicted path of dynamic objects
         extra_footprint_offset:
@@ -34,22 +29,9 @@
         max_arc_length: 100.0 # [m] maximum arc length along the path where the ego footprint is projected (0.0 means no limit)
         resample_interval: 2.0 # [m] fixed interval between resampled path points (0.0 means path points are directly used)
         reuse_max_deviation: 0.5 # [m] if the path changes by more than this value, the curvatures are recalculated. Otherwise they are reused.
-      expansion:
-        method: polygon # method used to expand the drivable area. Either 'lanelet' or 'polygon'.
-                         # 'lanelet': add lanelets overlapped by the ego footprints
-                         # 'polygon': add polygons built around sections of the ego footprint that go out of the drivable area
-        max_distance: 0.0 # [m] maximum distance by which the drivable area can be expended (0.0 means no limit)
-        extra_arc_length: 0.5 # [m] extra expansion arc length around an ego footprint
       avoid_linestring:
         types: # linestring types in the lanelet maps that will not be crossed when expanding the drivable area
           - road_border
           - curbstone
           - drivable_area
         distance: 0.0 # [m] distance to keep between the drivable area and the linestrings to avoid
-        compensate:
-          enable: false  # if true, when the drivable area cannot be expanded in one direction to completely include the ego footprint, it is expanded in the opposite direction
-          extra_distance: 3.0 # [m] extra distance to add to the compensation
-      replan_checker:
-        enable: true  # if true, only recalculate the expanded drivable area when the path or its original drivable area change significantly
-                      # not compatible with dynamic_objects.avoid
-        max_deviation: 1.0  # [m] full replan is only done if the path changes by more than this distance

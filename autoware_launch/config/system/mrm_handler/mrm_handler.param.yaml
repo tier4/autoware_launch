@@ -9,7 +9,7 @@
     use_emergency_holding: false
     timeout_emergency_recovery: 5.0
     use_parking_after_stopped: false
-    use_pull_over: true
+    use_pull_over: false
     use_comfortable_stop: true
 
     # setting whether to turn hazard lamp on for each situation

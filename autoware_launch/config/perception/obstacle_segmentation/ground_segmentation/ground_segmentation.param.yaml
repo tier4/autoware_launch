@@ -1,6 +1,6 @@
 /**:
   ros__parameters:
-    additional_lidars: ["front_lower"]
+    additional_lidars: []
     ransac_input_topics: []
     use_single_frame_filter: False
     use_time_series_filter: True
@@ -8,11 +8,11 @@
     common_crop_box_filter:
       parameters:
         min_x: -70.0
-        max_x: 100.0
+        max_x: 120.0
         min_y: -75.0
         max_y: 75.0
-        max_z: 3.2
-        min_z: -2.5 # recommended 0.0 for non elevation_grid_mode
+        margin_max_z: 3.2
+        margin_min_z: -2.5 # recommended 0.0 for non elevation_grid_mode
         negative: False
 
     common_ground_filter:
@@ -20,10 +20,10 @@
       parameters:
         global_slope_max_angle_deg: 10.0
         local_slope_max_angle_deg: 25.0 # recommended 30.0 for non elevation_grid_mode
-        split_points_distance_tolerance: 0.15
+        split_points_distance_tolerance: 0.2
         use_virtual_ground_point: True
         split_height_distance: 0.2
-        non_ground_height_threshold: 0.12
+        non_ground_height_threshold: 0.20
         grid_size_m: 0.2
         grid_mode_switch_radius: 20.0
         gnd_grid_buffer_size: 5
@@ -44,12 +44,12 @@
 
     front_upper_crop_box_filter:
       parameters:
-        min_x: 5.8
+        min_x: -50.0
         max_x: 100.0
         min_y: -50.0
         max_y: 50.0
-        max_z: 3.2  # recommended 2.5 for non elevation_grid_mode
-        min_z: -2.5 # recommended 0.0 for non elevation_grid_mode
+        margin_max_z: 3.2  # recommended 2.5 for non elevation_grid_mode
+        margin_min_z: -2.5 # recommended 0.0 for non elevation_grid_mode
         negative: False
 
     front_upper_ground_filter:
@@ -58,7 +58,7 @@
         global_slope_max_angle_deg: 10.0
         local_slope_max_angle_deg: 18.0 # recommended 30.0 for non elevation_grid_mode
         split_points_distance_tolerance: 0.20  # recommended 0.045 for non elevation_grid_mode
-        split_height_distance: 0.15 # recommended 0.15 for non elevation_grid_mode
+        split_height_distance: 0.2 # recommended 0.15 for non elevation_grid_mode
         use_virtual_ground_point: False
         non_ground_height_threshold: 0.1
         grid_size_m: 0.1
@@ -74,12 +74,12 @@
 
     front_lower_crop_box_filter:
       parameters:
-        min_x: 5.8
+        min_x: -50.0
         max_x: 100.0
         min_y: -50.0
         max_y: 50.0
-        max_z: 3.2  # recommended 2.5 for non elevation_grid_mode
-        min_z: -2.5 # recommended 0.0 for non elevation_grid_mode
+        margin_max_z: 3.2  # recommended 2.5 for non elevation_grid_mode
+        margin_min_z: -2.5 # recommended 0.0 for non elevation_grid_mode
         negative: False
 
     front_lower_ground_filter:
@@ -87,46 +87,16 @@
       parameters:
         global_slope_max_angle_deg: 10.0
         local_slope_max_angle_deg: 18.0 # recommended 30.0 for non elevation_grid_mode
-        split_points_distance_tolerance: 0.10 # recommended 0.1 for non elevation_grid_mode
-        split_height_distance: 0.05      # recommended 0.05 for non elevation_grid_mode
-        use_virtual_ground_point: true
+        split_points_distance_tolerance: 0.20 # recommended 0.1 for non elevation_grid_mode
+        split_height_distance: 0.2      # recommended 0.05 for non elevation_grid_mode
+        use_virtual_ground_point: False
         non_ground_height_threshold: 0.1
         grid_size_m: 0.1
         grid_mode_switch_radius: 20.0
         gnd_grid_buffer_size: 4
         detection_range_z_max: 3.2
-        elevation_grid_mode: true
-        use_recheck_ground_cluster: true
-        use_lowest_point: true
-        low_priority_region_x: -20.0
-        center_pcl_shift: 0.0
-        radial_divider_angle_deg: 1.0
-
-    left_upper_crop_box_filter:
-      parameters:
-        min_x: 5.8
-        max_x: 40.0
-        min_y: -10.0
-        max_y: 10.0
-        max_z: 1.  # recommended 2.5 for non elevation_grid_mode
-        min_z: -1.0 # recommended 0.0 for non elevation_grid_mode
-        negative: False
-
-    left_upper_ground_filter:
-      plugin: "ground_segmentation::ScanGroundFilterComponent"
-      parameters:
-        global_slope_max_angle_deg: 6.0
-        local_slope_max_angle_deg: 6.0 # recommended 30.0 for non elevation_grid_mode
-        split_points_distance_tolerance: 0.20  # recommended 0.045 for non elevation_grid_mode
-        split_height_distance: 0.2 # recommended 0.15 for non elevation_grid_mode
-        use_virtual_ground_point: False
-        non_ground_height_threshold: 0.05
-        grid_size_m: 0.2
-        grid_mode_switch_radius: 10.0
-        gnd_grid_buffer_size: 3
-        detection_range_z_max: 3.2
-        elevation_grid_mode: true
-        use_recheck_ground_cluster: true
+        elevation_grid_mode: false
+        use_recheck_ground_cluster: false
         use_lowest_point: true
         low_priority_region_x: -20.0
         center_pcl_shift: 0.0

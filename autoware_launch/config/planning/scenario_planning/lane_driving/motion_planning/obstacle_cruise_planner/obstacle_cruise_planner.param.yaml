@@ -107,11 +107,6 @@
       slow_down:
         max_lat_margin: 0.8  # lateral margin between obstacle and trajectory band with ego's width
         lat_hysteresis_margin: 0.2
-        pseudo_occlusion:
-          enable_function: false # If true, the slow down function behave as pseudo_occlusion
-          max_obj_vel: 1.0 # Objects which is slow than this speed are focused by the pseudo_occlusion function
-          focus_intersections: [0] # Specify the polygon's ID of lanelet map. If a object is on this ID's area the function treat the object even if it's right-hand beside object. ID "0" is required to parse as ROS params.
-
         successive_num_to_entry_slow_down_condition: 5
         successive_num_to_exit_slow_down_condition: 5
 
@@ -198,9 +193,9 @@
           max_ego_velocity: 5.56
         static:
           min_lat_margin: 0.2
-          max_lat_margin: 1.0
-          min_ego_velocity: 4.0
-          max_ego_velocity: 8.0
+          max_lat_margin: 0.7
+          min_ego_velocity: 2.0
+          max_ego_velocity: 5.56
 
       moving_object_speed_threshold: 0.5 # [m/s] how fast the object needs to move to be considered as "moving"
       moving_object_hysteresis_range: 0.1 # [m/s] hysteresis range used to prevent chattering when obstacle moves close to moving_object_speed_threshold

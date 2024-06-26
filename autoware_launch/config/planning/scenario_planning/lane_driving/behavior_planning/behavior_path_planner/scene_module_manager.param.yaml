@@ -24,7 +24,7 @@
       enable_simultaneous_execution_as_approved_module: true
       enable_simultaneous_execution_as_candidate_module: false
       keep_last: false
-      priority: 4
+      priority: 5
       max_module_size: 1
 
     lane_change_right:
@@ -32,7 +32,7 @@
       enable_simultaneous_execution_as_approved_module: true
       enable_simultaneous_execution_as_candidate_module: false
       keep_last: false
-      priority: 4
+      priority: 5
       max_module_size: 1
 
     start_planner:

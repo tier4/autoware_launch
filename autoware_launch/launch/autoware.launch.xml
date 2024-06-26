@@ -23,7 +23,6 @@
   <arg name="launch_control" default="true" description="launch control"/>
   <arg name="launch_api" default="true" description="launch api"/>
   <arg name="launch_v2x" default="true" description="launch V2X"/>
-  <arg name="launch_l4_toolkit" default="true" description="launch L4 Toolkit"/>
   <!-- Global parameters -->
   <arg name="use_sim_time" default="false" description="use_sim_time"/>
   <!-- Vehicle -->
@@ -47,9 +46,6 @@
   <!-- Perception -->
   <arg name="perception_mode" default="camera_lidar_radar_fusion" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
   <arg name="traffic_light_recognition/enable_fine_detection" default="true" description="enable traffic light fine detection"/>
-  <!-- Auto mode setting-->
-  <arg name="enable_all_modules_auto_mode" default="false" description="enable all module's auto mode"/>
-  <arg name="is_simulation" default="false" description="Autoware's behavior will change depending on whether this is a simulation or not."/>
   <arg name="centerpoint_model_path" default="/opt/autoware/mlmodels/centerpoint" description="path of centerpoint model file"/>
   <!-- Auto mode setting-->
   <arg name="enable_all_modules_auto_mode" default="false" description="enable all module's auto mode"/>
@@ -136,11 +132,6 @@
     </include>
   </group>
 
-  <!-- L4 Toolkit -->
-  <group if="$(var launch_l4_toolkit)">
-    <include file="$(find-pkg-share l4_toolkit_launch)/launch/l4_toolkit.launch.xml"/>
-  </group>
-
   <!-- Tools -->
   <group>
     <node
@@ -152,12 +143,5 @@
       if="$(var rviz)"
       respawn="$(var rviz_respawn)"
     />
-
-    <!-- Convert "/diagnostics_graph" to "/diagnostics_agg" for debugging purpose -->
-    <group if="$(var launch_system)">
-      <include file="$(find-pkg-share diagnostic_graph_aggregator)/launch/converter.launch.xml">
-        <arg name="complement" value="true"/>
-      </include>
-    </group>
   </group>
 </launch>

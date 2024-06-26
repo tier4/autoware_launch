@@ -75,8 +75,6 @@
       <arg name="centerpoint_model_path" value="$(var centerpoint_model_path)"/>
       <!-- V2X -->
       <arg name="launch_v2x" value="false"/>
-      <!-- L4 Toolkit -->
-      <arg name="launch_l4_toolkit" value="true"/>
     </include>
   </group>
 </launch>

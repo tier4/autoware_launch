@@ -10,4 +10,3 @@
 
     thresholds:
       max_distance_deviation: 1.0
-      min_velocity_for_checking: 1.0  # m/s

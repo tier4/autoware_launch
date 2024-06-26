@@ -25,8 +25,7 @@
     <arg name="data_path" value="$(var data_path)"/>
     <arg name="use_low_height_cropbox" value="false"/>
     <arg name="enable_fine_detection" value="$(var traffic_light_recognition/enable_fine_detection)"/>
-    <arg name="centerpoint_model_name" value="aip_x2"/>
-    <arg name="centerpoint_model_path" value="$(var centerpoint_model_path)"/>
+    <arg name="centerpoint_model_name" value="centerpoint_x2"/>
     <arg name="object_recognition_detection_lidar_model_param_path" value="$(var centerpoint_model_path)"/>
     <arg name="traffic_light_recognition/fusion_only" value="true"/>
     <arg name="namespace1" value="camera7"/>
