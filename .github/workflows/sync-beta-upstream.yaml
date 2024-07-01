@@ -25,6 +25,10 @@ jobs:
           sync-pr-branch: sync-beta-upstream
           sync-target-repository: https://github.com/tier4/autoware_launch.git
           sync-target-branch: beta/<version>
+          base-branch: beta/v0.46.0
+          sync-pr-branch: sync-beta-upstream
+          sync-target-repository: https://github.com/tier4/autoware_launch.git
+          sync-target-branch: beta/v0.29.0
           pr-title: "chore: sync beta upstream"
           pr-labels: |
             bot
