@@ -9,7 +9,7 @@
     filter_activated_count_threshold: 5
     filter_activated_velocity_threshold: 1.0
     external_emergency_stop_heartbeat_timeout: 0.0
-    stop_hold_acceleration: -1.5
+    stop_hold_acceleration: -2.0 # 坂路実験のために一時的に変更
     emergency_acceleration: -2.4
     moderate_stop_service_acceleration: -1.5
     stopped_state_entry_duration_time: 0.1
