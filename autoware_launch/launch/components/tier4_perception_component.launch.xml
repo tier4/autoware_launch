@@ -32,6 +32,7 @@
     <arg name="use_low_height_cropbox" value="true"/>
     <arg name="use_roi_based_cluster" value="false"/>
     <arg name="use_detection_by_tracker" value="true"/>
+    <arg name="image_number" value="7"/>
 
     <!-- object recognition -->
     <arg
