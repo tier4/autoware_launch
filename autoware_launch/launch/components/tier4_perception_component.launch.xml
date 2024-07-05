@@ -27,7 +27,6 @@
     <arg name="enable_fine_detection" value="$(var traffic_light_recognition/enable_fine_detection)"/>
     <arg name="centerpoint_model_name" value="centerpoint_x2"/>
     <arg name="object_recognition_detection_lidar_model_param_path" value="$(var centerpoint_model_path)"/>
-    <arg name="traffic_light_recognition/fusion_only" value="true"/>
     <arg name="namespace1" value="camera7"/>
     <arg name="external/traffic_signals" value="/v2x/traffic_signals"/>
     <arg name="use_low_height_cropbox" value="true"/>
@@ -179,7 +178,7 @@
     <!-- traffic light recognition -->
     <arg name="use_traffic_light_recognition" value="true"/>
     <arg name="traffic_light_recognition/enable_fine_detection" value="$(var traffic_light_recognition/enable_fine_detection)"/>
-    <arg name="traffic_light_recognition/fusion_only" value="false"/>
+    <arg name="traffic_light_recognition/fusion_only" value="true"/>
     <arg name="traffic_light_image_number" value="1"/>
 
     <arg name="traffic_light_arbiter_param_path" value="$(find-pkg-share autoware_launch)/config/perception/traffic_light_arbiter/traffic_light_arbiter.param.yaml"/>
