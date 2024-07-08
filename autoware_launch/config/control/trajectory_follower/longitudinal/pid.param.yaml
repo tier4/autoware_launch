@@ -53,13 +53,11 @@
 
     # stopped state
     stopped_vel: 0.0
-    stopped_acc: -3.4
-    stopped_jerk: -5.0
+    stopped_acc: -3.4 # denotes pedal position
 
     # emergency state
     emergency_vel: 0.0
-    emergency_acc: -2.5
-    emergency_jerk: -1.5
+    emergency_acc: -2.5 # denotes acceleration
 
     # acceleration limit
     max_acc: 1.86
@@ -68,11 +66,12 @@
     # jerk limit
     max_jerk: 2.0
     min_jerk: -30.0
+    max_pedal_pos_diff_rate: 50.0 # [m/s^2 * s^-1]
 
     # slope compensation
     # pitch
     lpf_pitch_gain: 0.95
     slope_source: "trajectory_pitch" # raw_pitch, trajectory_pitch or trajectory_adaptive
     adaptive_trajectory_velocity_th: 1.0
-    max_pitch_rad: 0.1
-    min_pitch_rad: -0.1
+    max_pitch_rad: 0.2
+    min_pitch_rad: -0.2
