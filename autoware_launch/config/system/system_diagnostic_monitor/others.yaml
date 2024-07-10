@@ -23,9 +23,9 @@ units:
   - path: /others/emergency_stop
     type: and
     list:
-      - { type: link, link: /others/002-blockage_validation-error }
+      # - { type: link, link: /others/002-blockage_validation-error }
       - { type: link, link: /others/004-concat_status }
-      - { type: link, link: /others/005-visibility_validation-error }
+      # - { type: link, link: /others/005-visibility_validation-error }
       - { type: link, link: /others/012-vehicle_stuck_checker }
 
   - path: /others/comfortable_stop
@@ -41,89 +41,90 @@ units:
   - path: /others/none
     type: and
 
-  # Intermediate paths
-  - path: /others/002-blockage_validation
-    type: and
-    list:
-      - { type: link, link: /others/002-blockage_validation/front_lower }
-      - { type: link, link: /others/002-blockage_validation/front_upper }
-      - { type: link, link: /others/002-blockage_validation/left_lower }
-      - { type: link, link: /others/002-blockage_validation/left_upper }
-      - { type: link, link: /others/002-blockage_validation/right_lower }
-      - { type: link, link: /others/002-blockage_validation/right_upper }
-      - { type: link, link: /others/002-blockage_validation/rear_lower }
-      - { type: link, link: /others/002-blockage_validation/rear_upper }
-
-  - path: /others/005-visibility_validation
-    type: and
-    list:
-      - { type: link, link: /others/005-visibility_validation/front_lower }
-      - { type: link, link: /others/005-visibility_validation/left_upper }
-
-  - path: /others/002-blockage_validation-error
-    type: warn-to-ok
-    item:
-      type: link
-      link: /others/002-blockage_validation
-
-  - path: /others/005-visibility_validation-error
-    type: warn-to-ok
-    item:
-      type: link
-      link: /others/005-visibility_validation
   - path: /others/010-emergency_vehicle-error
     type: warn-to-ok
     item:
       type: link
       link: /others/010-emergency_vehicle
 
-  - path: /others/002-blockage_validation/front_lower
-    type: diag
-    node: "blockage_return_diag: /sensing/lidar/front_lower"
-    name: blockage_validation
-    timeout: 1.0
+  # # Intermediate paths
+  # - path: /others/002-blockage_validation-error
+  #   type: warn-to-ok
+  #   item:
+  #     type: link
+  #     link: /others/002-blockage_validation
 
-  - path: /others/002-blockage_validation/front_upper
-    type: diag
-    node: "blockage_return_diag: /sensing/lidar/front_upper"
-    name: blockage_validation
-    timeout: 1.0
+  # - path: /others/002-blockage_validation
+  #   type: and
+  #   list:
+  #     - { type: link, link: /others/002-blockage_validation/front_lower }
+  #     - { type: link, link: /others/002-blockage_validation/front_upper }
+  #     - { type: link, link: /others/002-blockage_validation/left_lower }
+  #     - { type: link, link: /others/002-blockage_validation/left_upper }
+  #     - { type: link, link: /others/002-blockage_validation/right_lower }
+  #     - { type: link, link: /others/002-blockage_validation/right_upper }
+  #     - { type: link, link: /others/002-blockage_validation/rear_lower }
+  #     - { type: link, link: /others/002-blockage_validation/rear_upper }
 
-  - path: /others/002-blockage_validation/left_lower
-    type: diag
-    node: "blockage_return_diag: /sensing/lidar/left_lower"
-    name: blockage_validation
-    timeout: 1.0
+  # - path: /others/005-visibility_validation
+  #   type: and
+  #   list:
+  #     - { type: link, link: /others/005-visibility_validation/front_lower }
+  #     - { type: link, link: /others/005-visibility_validation/left_upper }
 
-  - path: /others/002-blockage_validation/left_upper
-    type: diag
-    node: "blockage_return_diag: /sensing/lidar/left_upper"
-    name: blockage_validation
-    timeout: 1.0
+  # - path: /others/005-visibility_validation-error
+  #   type: warn-to-ok
+  #   item:
+  #     type: link
+  #     link: /others/005-visibility_validation
 
-  - path: /others/002-blockage_validation/right_lower
-    type: diag
-    node: "blockage_return_diag: /sensing/lidar/right_lower"
-    name: blockage_validation
-    timeout: 1.0
+  # - path: /others/002-blockage_validation/front_lower
+  #   type: diag
+  #   node: "blockage_return_diag: /sensing/lidar/front_lower"
+  #   name: blockage_validation
+  #   timeout: 1.0
 
-  - path: /others/002-blockage_validation/right_upper
-    type: diag
-    node: "blockage_return_diag: /sensing/lidar/right_upper"
-    name: blockage_validation
-    timeout: 1.0
+  # - path: /others/002-blockage_validation/front_upper
+  #   type: diag
+  #   node: "blockage_return_diag: /sensing/lidar/front_upper"
+  #   name: blockage_validation
+  #   timeout: 1.0
 
-  - path: /others/002-blockage_validation/rear_lower
-    type: diag
-    node: "blockage_return_diag: /sensing/lidar/rear_lower"
-    name: blockage_validation
-    timeout: 1.0
+  # - path: /others/002-blockage_validation/left_lower
+  #   type: diag
+  #   node: "blockage_return_diag: /sensing/lidar/left_lower"
+  #   name: blockage_validation
+  #   timeout: 1.0
 
-  - path: /others/002-blockage_validation/rear_upper
-    type: diag
-    node: "blockage_return_diag: /sensing/lidar/rear_upper"
-    name: blockage_validation
-    timeout: 1.0
+  # - path: /others/002-blockage_validation/left_upper
+  #   type: diag
+  #   node: "blockage_return_diag: /sensing/lidar/left_upper"
+  #   name: blockage_validation
+  #   timeout: 1.0
+
+  # - path: /others/002-blockage_validation/right_lower
+  #   type: diag
+  #   node: "blockage_return_diag: /sensing/lidar/right_lower"
+  #   name: blockage_validation
+  #   timeout: 1.0
+
+  # - path: /others/002-blockage_validation/right_upper
+  #   type: diag
+  #   node: "blockage_return_diag: /sensing/lidar/right_upper"
+  #   name: blockage_validation
+  #   timeout: 1.0
+
+  # - path: /others/002-blockage_validation/rear_lower
+  #   type: diag
+  #   node: "blockage_return_diag: /sensing/lidar/rear_lower"
+  #   name: blockage_validation
+  #   timeout: 1.0
+
+  # - path: /others/002-blockage_validation/rear_upper
+  #   type: diag
+  #   node: "blockage_return_diag: /sensing/lidar/rear_upper"
+  #   name: blockage_validation
+  #   timeout: 1.0
 
   - path: /others/004-concat_status
     type: diag

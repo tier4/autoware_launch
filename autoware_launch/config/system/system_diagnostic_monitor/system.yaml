@@ -31,14 +31,14 @@ units:
 
   - path: /system/pull_over
     type: and
-    list:
-      - { type: link, link: /system/005-fms_connection-error }
+    # list:
+      # - { type: link, link: /system/005-fms_connection-error }
 
-  - path: /system/none
-    type: and
-    list:
-      - { type: link, link: /system/003-bagpacker_status }
-      - { type: link, link: /system/004-bagpacker_disk_space }
+  # - path: /system/none
+  #   type: and
+  #   list:
+  #     - { type: link, link: /system/003-bagpacker_status }
+  #     - { type: link, link: /system/004-bagpacker_disk_space }
 
   - path: /system/001-topic_status-error
     type: warn-to-ok
@@ -52,11 +52,11 @@ units:
       type: link
       link: /system/002-emergency_stop_operation
 
-  - path: /system/005-fms_connection-error
-    type: warn-to-ok
-    item:
-      type: link
-      link: /system/005-fms_connection
+  # - path: /system/005-fms_connection-error
+  #   type: warn-to-ok
+  #   item:
+  #     type: link
+  #     link: /system/005-fms_connection
 
   - path: /system/001-topic_status
     type: diag
@@ -70,20 +70,20 @@ units:
     name: emergency_stop_operation
     timeout: 1.0
 
-  - path: /system/003-bagpacker_status
-    type: diag
-    node: system
-    name: rosbag_status
-    timeout: 3.0
+  # - path: /system/003-bagpacker_status
+  #   type: diag
+  #   node: system
+  #   name: rosbag_status
+  #   timeout: 3.0
 
-  - path: /system/004-bagpacker_disk_space
-    type: diag
-    node: system
-    name: disk_status
-    timeout: 3.0
+  # - path: /system/004-bagpacker_disk_space
+  #   type: diag
+  #   node: system
+  #   name: disk_status
+  #   timeout: 3.0
 
-  - path: /system/005-fms_connection
-    type: diag
-    node: system
-    name: edge_core_internet_connection
-    timeout: 10.0
+  # - path: /system/005-fms_connection
+  #   type: diag
+  #   node: system
+  #   name: edge_core_internet_connection
+  #   timeout: 10.0

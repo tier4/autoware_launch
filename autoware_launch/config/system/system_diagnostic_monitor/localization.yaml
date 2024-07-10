@@ -88,8 +88,8 @@ units:
 
   - path: /localization/003-matching_score
     type: diag
-    node: localization
-    name: ndt_scan_matcher
+    node: ndt_scan_matcher
+    name: scan_matching_status
     timeout: 1.0
 
   - path: /localization/004-accuracy
