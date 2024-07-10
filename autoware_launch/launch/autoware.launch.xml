@@ -23,6 +23,7 @@
   <arg name="launch_control" default="true" description="launch control"/>
   <arg name="launch_api" default="true" description="launch api"/>
   <arg name="launch_v2x" default="true" description="launch V2X"/>
+  <arg name="launch_l4_toolkit" default="true" description="launch L4 Toolkit"/>
   <!-- Global parameters -->
   <arg name="use_sim_time" default="false" description="use_sim_time"/>
   <!-- Vehicle -->
@@ -130,6 +131,11 @@
       <arg name="vehicle_model" value="$(var vehicle_model)"/>
       <arg name="vehicle_id" value="1"/>
     </include>
+  </group>
+
+  <!-- L4 Toolkit -->
+  <group if="$(var launch_l4_toolkit)">
+    <include file="$(find-pkg-share l4_toolkit_launch)/launch/l4_toolkit.launch.xml"/>
   </group>
 
   <!-- Tools -->
