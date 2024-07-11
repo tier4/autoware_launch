@@ -30,8 +30,8 @@ units:
 
   - path: /others/comfortable_stop
     type: and
-    list:
-      - { type: link, link: /others/010-emergency_vehicle-error }
+    # list:
+      # - { type: link, link: /others/010-emergency_vehicle-error }
 
   - path: /others/pull_over
     type: and
@@ -41,11 +41,11 @@ units:
   - path: /others/none
     type: and
 
-  - path: /others/010-emergency_vehicle-error
-    type: warn-to-ok
-    item:
-      type: link
-      link: /others/010-emergency_vehicle
+  # - path: /others/010-emergency_vehicle-error
+  #   type: warn-to-ok
+  #   item:
+  #     type: link
+  #     link: /others/010-emergency_vehicle
 
   # # Intermediate paths
   # - path: /others/002-blockage_validation-error
@@ -132,23 +132,23 @@ units:
     name: concat_status
     timeout: 1.0
 
-  - path: /others/005-visibility_validation/front_lower
-    type: diag
-    node: "dual_return_filter: /sensing/lidar/front_lower"
-    name: visibility_validation
-    timeout: 1.0
+  # - path: /others/005-visibility_validation/front_lower
+  #   type: diag
+  #   node: "dual_return_filter: /sensing/lidar/front_lower"
+  #   name: visibility_validation
+  #   timeout: 1.0
 
-  - path: /others/005-visibility_validation/left_upper
-    type: diag
-    node: "dual_return_filter: /sensing/lidar/left_upper"
-    name: visibility_validation
-    timeout: 1.0
+  # - path: /others/005-visibility_validation/left_upper
+  #   type: diag
+  #   node: "dual_return_filter: /sensing/lidar/left_upper"
+  #   name: visibility_validation
+  #   timeout: 1.0
 
-  - path: /others/010-emergency_vehicle
-    type: diag
-    node: emergency_vehicle_detector
-    name: emergency_vehicle
-    timeout: 3.0
+  # - path: /others/010-emergency_vehicle
+  #   type: diag
+  #   node: emergency_vehicle_detector
+  #   name: emergency_vehicle
+  #   timeout: 3.0
 
   - path: /others/011-daytime_monitor
     type: diag
