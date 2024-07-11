@@ -28,9 +28,9 @@
     path_footprint_extra_margin: 4.0
 
     # Point cloud clustering
-    cluster_tolerance: 0.15 #[m]
+    cluster_tolerance: 0.5 #[m]
     cluster_minimum_height: 0.0
-    minimum_cluster_size: 10
+    minimum_cluster_size: 2
     maximum_cluster_size: 10000
 
     # RSS distance collision check
