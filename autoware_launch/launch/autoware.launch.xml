@@ -8,7 +8,7 @@
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
 
   <!-- launch module preset -->
-  <arg name="planning_module_preset" default="default" description="planning module preset"/>
+  <arg name="planning_module_preset" default="x2" description="planning module preset"/>
 
   <!-- Optional parameters -->
   <!-- Modules to be launched -->
@@ -22,6 +22,8 @@
   <arg name="launch_planning" default="true" description="launch planning"/>
   <arg name="launch_control" default="true" description="launch control"/>
   <arg name="launch_api" default="true" description="launch api"/>
+  <arg name="launch_v2x" default="true" description="launch V2X"/>
+  <arg name="launch_l4_toolkit" default="true" description="launch L4 Toolkit"/>
   <!-- Global parameters -->
   <arg name="use_sim_time" default="false" description="use_sim_time"/>
   <!-- Vehicle -->
@@ -39,12 +41,13 @@
   <arg name="system_error_monitor_param_path" default="$(find-pkg-share autoware_launch)/config/system/system_error_monitor/system_error_monitor.param.yaml"/>
   <arg name="diagnostic_graph_aggregator_graph_path" default="$(find-pkg-share autoware_launch)/config/system/diagnostic_graph_aggregator/autoware-main.yaml" description="diagnostic graph config"/>
   <!-- Tools -->
-  <arg name="rviz" default="true" description="launch rviz"/>
+  <arg name="rviz" default="false" description="launch rviz"/>
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
   <arg name="rviz_respawn" default="true"/>
   <!-- Perception -->
-  <arg name="perception_mode" default="lidar" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
+  <arg name="perception_mode" default="camera_lidar_radar_fusion" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
   <arg name="traffic_light_recognition/enable_fine_detection" default="true" description="enable traffic light fine detection"/>
+  <arg name="centerpoint_model_path" default="/opt/autoware/mlmodels/centerpoint" description="path of centerpoint model file"/>
   <!-- Auto mode setting-->
   <arg name="enable_all_modules_auto_mode" default="false" description="enable all module's auto mode"/>
   <arg name="is_simulation" default="false" description="Autoware's behavior will change depending on whether this is a simulation or not."/>
@@ -119,6 +122,20 @@
   <!-- API -->
   <group if="$(var launch_api)">
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_autoware_api_component.launch.xml"/>
+  </group>
+
+  <!-- V2X -->
+  <group if="$(var launch_v2x)">
+    <include file="$(find-pkg-share jpn_signal_launcher)/launch/jpn_signal.launch.xml">
+      <arg name="map_path" value="$(var map_path)"/>
+      <arg name="vehicle_model" value="$(var vehicle_model)"/>
+      <arg name="vehicle_id" value="1"/>
+    </include>
+  </group>
+
+  <!-- L4 Toolkit -->
+  <group if="$(var launch_l4_toolkit)">
+    <include file="$(find-pkg-share l4_toolkit_launch)/launch/l4_toolkit.launch.xml"/>
   </group>
 
   <!-- Tools -->

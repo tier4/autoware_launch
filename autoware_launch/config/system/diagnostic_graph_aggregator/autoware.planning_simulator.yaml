@@ -1,0 +1,59 @@
+files:
+  - { path: $(dirname)/map.yaml }
+  - { path: $(dirname)/planning.yaml }
+  - { path: $(dirname)/control.yaml }
+  - { path: $(dirname)/system.yaml }
+
+# Exclude paths that does not need on planning simulator
+edits:
+  - path: /map/001-topic_status/pointcloud_map-error
+    type: remove
+  - path: /map/001-topic_status/pointcloud_map
+    type: remove
+  - path: /system/003-bagpacker_status
+    type: remove
+  - path: /system/004-bagpacker_disk_space
+    type: remove
+  - path: /system/005-fms_connection
+    type: remove
+  - path: /system/005-fms_connection-error
+    type: remove
+
+nodes:
+  - path: /autoware/modes/local
+    type: stale
+
+  - path: /autoware/modes/remote
+    type: stale
+
+  # Stop is always available
+  - path: /autoware/modes/stop
+    type: ok
+
+  - path: /autoware/modes/autonomous
+    type: and
+    list:
+      - { type: link, link: /map/autonomous_available }
+      - { type: link, link: /planning/autonomous_available }
+      - { type: link, link: /control/autonomous_available }
+      - { type: link, link: /system/autonomous_available }
+
+  - path: /autoware/modes/pull_over
+    type: and
+    list:
+      - { type: link, link: /map/pull_over_available }
+      - { type: link, link: /planning/pull_over_available }
+      - { type: link, link: /control/pull_over_available }
+      - { type: link, link: /system/pull_over_available }
+
+  - path: /autoware/modes/comfortable_stop
+    type: and
+    list:
+      - { type: link, link: /map/comfortable_stop_available }
+      - { type: link, link: /planning/comfortable_stop_available }
+      - { type: link, link: /control/comfortable_stop_available }
+      - { type: link, link: /system/comfortable_stop_available }
+
+  # Emergency stop is always available
+  - path: /autoware/modes/emergency_stop
+    type: ok

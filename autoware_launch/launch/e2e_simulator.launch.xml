@@ -9,7 +9,7 @@
   <arg name="simulator_type" default="awsim" description="select the simulator type ('awsim' or 'carla')"/>
 
   <!-- launch module preset -->
-  <arg name="planning_module_preset" default="default" description="planning module preset"/>
+  <arg name="planning_module_preset" default="x2" description="planning module preset"/>
 
   <!-- Optional parameters -->
   <!-- Modules to be launched -->
@@ -81,6 +81,8 @@
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
+      <!-- V2X -->
+      <arg name="launch_v2x" value="false"/>
     </include>
   </group>
 </launch>

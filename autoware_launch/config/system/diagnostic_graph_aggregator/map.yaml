@@ -1,0 +1,58 @@
+nodes:
+  - path: /map/autonomous_available
+    type: and
+    list:
+      - { type: link, link: /map/emergency_stop }
+      - { type: link, link: /map/pull_over }
+      - { type: link, link: /map/comfortable_stop }
+
+  - path: /map/pull_over_available
+    type: and
+    list:
+      - { type: link, link: /map/emergency_stop }
+      - { type: link, link: /map/comfortable_stop }
+
+  - path: /map/comfortable_stop_available
+    type: and
+    list:
+      - { type: link, link: /map/emergency_stop }
+
+  # *******************************************************************************
+  # NOTE: Please modify this section according to your environment and requirements.
+  # *******************************************************************************
+  - path: /map/emergency_stop
+    type: and
+    list:
+      - { type: link, link: /map/001-topic_status/vector_map-error }
+      - { type: link, link: /map/001-topic_status/pointcloud_map-error }
+
+  - path: /map/comfortable_stop
+    type: and
+
+  - path: /map/pull_over
+    type: and
+
+  - path: /map/none
+    type: and
+
+  # Intermediate paths
+  - path: /map/001-topic_status/vector_map-error
+    type: warn-to-ok
+    list:
+      - { type: link, link: /map/001-topic_status/vector_map }
+
+  - path: /map/001-topic_status/pointcloud_map-error
+    type: warn-to-ok
+    list:
+      - { type: link, link: /map/001-topic_status/pointcloud_map }
+
+  # Diagnostics paths
+  - path: /map/001-topic_status/vector_map
+    diag: "topic_state_monitor_vector_map: map_topic_status"
+    type: diag
+    timeout: 1.0
+
+  - path: /map/001-topic_status/pointcloud_map
+    diag: "topic_state_monitor_pointcloud_map: map_topic_status"
+    type: diag
+    timeout: 1.0

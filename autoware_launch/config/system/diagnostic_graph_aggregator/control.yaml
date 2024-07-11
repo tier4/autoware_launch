@@ -1,0 +1,111 @@
+nodes:
+  - path: /control/autonomous_available
+    type: and
+    list:
+      - { type: link, link: /control/emergency_stop }
+      - { type: link, link: /control/pull_over }
+      - { type: link, link: /control/comfortable_stop }
+
+  - path: /control/pull_over_available
+    type: and
+    list:
+      - { type: link, link: /control/emergency_stop }
+      - { type: link, link: /control/comfortable_stop }
+
+  - path: /control/comfortable_stop_available
+    type: and
+    list:
+      - { type: link, link: /control/emergency_stop }
+
+  # *******************************************************************************
+  # NOTE: Please modify this section according to your environment and requirements.
+  # *******************************************************************************
+  - path: /control/emergency_stop
+    type: and
+    list:
+      - { type: link, link: /control/001-topic_status/control_command-error }
+      - { type: link, link: /control/004-lane_departure-error }
+      - { type: link, link: /control/005-trajectory_deviation-error }
+      - { type: link, link: /control/009-aeb_emergency_stop }
+      - { type: link, link: /control/010-max_distance_deviation-error }
+      - { type: link, link: /control/011-slip_detection }
+
+  - path: /control/comfortable_stop
+    type: and
+
+  - path: /control/pull_over
+    type: and
+
+  - path: /control/none
+    type: and
+    list:
+      - { type: link, link: /control/003-gate_heartbeat }
+      - { type: link, link: /control/007-external_command_converter_heartbeat }
+      - { type: link, link: /control/008-external_command_selector_heartbeat }
+
+  # Intermediate paths
+  - path: /control/001-topic_status/control_command-error
+    type: warn-to-ok
+    list:
+      - { type: link, link: /control/001-topic_status/control_command }
+
+  - path: /control/004-lane_departure-error
+    type: warn-to-ok
+    list:
+      - { type: link, link: /control/004-lane_departure }
+
+  - path: /control/005-trajectory_deviation-error
+    type: warn-to-ok
+    list:
+      - { type: link, link: /control/005-trajectory_deviation }
+
+  - path: /control/010-max_distance_deviation-error
+    type: warn-to-ok
+    list:
+      - { type: link, link: /control/010-max_distance_deviation }
+
+  # Diagnostics paths
+  - path: /control/001-topic_status/control_command
+    diag: "topic_state_monitor_control_command_control_cmd: control_topic_status"
+    type: diag
+    timeout: 1.0
+
+  - path: /control/003-gate_heartbeat
+    diag: "vehicle_cmd_gate: heartbeat"
+    type: diag
+    timeout: 1.0
+
+  - path: /control/004-lane_departure
+    diag: "lane_departure_checker_node: lane_departure"
+    type: diag
+    timeout: 1.0
+
+  - path: /control/005-trajectory_deviation
+    diag: "lane_departure_checker_node: trajectory_deviation"
+    type: diag
+    timeout: 1.0
+
+  - path: /control/007-external_command_converter_heartbeat
+    diag: "external_cmd_converter: remote_control_topic_status"
+    type: diag
+    timeout: 1.0
+
+  - path: /control/008-external_command_selector_heartbeat
+    diag: "external_cmd_selector: heartbeat"
+    type: diag
+    timeout: 1.0
+
+  - path: /control/009-aeb_emergency_stop
+    diag: "autonomous_emergency_braking: aeb_emergency_stop"
+    type: diag
+    timeout: 1.0
+
+  - path: /control/010-max_distance_deviation
+    diag: "control_validator: control_validation_max_distance_deviation"
+    type: diag
+    timeout: 1.0
+
+  - path: /control/011-slip_detection
+    diag: "slip_detector: slip_status"
+    type: diag
+    timeout: 3.0

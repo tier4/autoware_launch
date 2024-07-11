@@ -6,8 +6,8 @@
       disk0:
         name: /
         temp_attribute_id: 0xC2
-        temp_warn: 55.0
-        temp_error: 70.0
+        temp_warn: 70.0
+        temp_error: 85.0
         power_on_hours_attribute_id: 0x09
         power_on_hours_warn: 3000000
         total_data_written_attribute_id: 0xF1

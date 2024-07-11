@@ -2,7 +2,7 @@
   ros__parameters:
     node:
       show_debug_info: false
-      enable_yaw_bias_estimation: true
+      enable_yaw_bias_estimation: false
       predict_frequency: 50.0
       tf_rate: 50.0
       publish_tf: true
@@ -42,5 +42,5 @@
 
     misc:
       # for velocity measurement limitation (Set 0.0 if you want to ignore)
-      threshold_observable_velocity_mps: 0.0 # [m/s]
+      threshold_observable_velocity_mps: 0.5 # [m/s]
       pose_frame_id: "map"

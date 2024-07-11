@@ -7,7 +7,7 @@
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
 
   <!-- launch module preset -->
-  <arg name="planning_module_preset" default="default" description="planning module preset"/>
+  <arg name="planning_module_preset" default="x2" description="planning module preset"/>
 
   <!-- Optional parameters -->
   <!-- Map -->
@@ -18,7 +18,7 @@
   <!-- System -->
   <arg name="launch_dummy_doors" default="true" description="launch dummy doors simulation"/>
   <arg name="launch_system_monitor" default="false" description="launch system monitor"/>
-  <arg name="launch_dummy_diag_publisher" default="false" description="launch dummy diag publisher"/>
+  <arg name="launch_dummy_diag_publisher" default="true" description="launch dummy diag publisher"/>
   <!-- Scenario simulation -->
   <arg name="initial_engage_state" default="true" description="/vehicle/engage state after starting Autoware"/>
   <arg name="perception/enable_detection_failure" default="true" description="enable to simulate detection failure when using dummy perception"/>
@@ -69,6 +69,11 @@
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>
       <arg name="rviz_respawn" value="$(var rviz_respawn)"/>
+      <!-- Auto mode setting-->
+      <arg name="enable_all_modules_auto_mode" value="$(var enable_all_modules_auto_mode)"/>
+      <arg name="is_simulation" value="true"/>
+      <!-- V2X -->
+      <arg name="launch_v2x" value="false"/>
       <!-- Auto mode setting-->
       <arg name="enable_all_modules_auto_mode" value="$(var enable_all_modules_auto_mode)"/>
       <arg name="is_simulation" value="true"/>
