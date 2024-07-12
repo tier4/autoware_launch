@@ -23,8 +23,8 @@ units:
   - path: /sensing/emergency_stop
     type: and
     list:
-      - { type: link, link: /sensing/imu/001-monitor-error }
-      - { type: link, link: /sensing/imu/002-connection }
+      # - { type: link, link: /sensing/imu/001-monitor-error }
+      # - { type: link, link: /sensing/imu/002-connection }
       # - { type: link, link: /sensing/lidar/pndr/001-connection }
       # - { type: link, link: /sensing/lidar/pndr/002-temperature-error }
       # - { type: link, link: /sensing/lidar/pndr/003-ptp }
@@ -52,11 +52,11 @@ units:
   #   list:
   #     - { type: link, link: /sensing/lidar/pndr/002-temperature }
 
-  - path: /sensing/imu/001-monitor-error
-    type: warn-to-ok
-    item:
-      type: link
-      link: /sensing/imu/001-monitor
+  # - path: /sensing/imu/001-monitor-error
+  #   type: warn-to-ok
+  #   item:
+  #     type: link
+  #     link: /sensing/imu/001-monitor
 
   - path: /sensing/gnss/001-connection-error
     type: warn-to-ok
@@ -121,17 +121,17 @@ units:
       - { type: link, link: /sensing/radar/rear_right/connection }
 
   # Diagnostics paths
-  - path: /sensing/imu/001-monitor
-    type: diag
-    node: imu_monitor
-    name: yaw_rate_status
-    type: diag
-    timeout: 5.0
-  - path: /sensing/imu/002-connection
-    type: diag
-    node: topic_state_monitor_imu_data
-    name: imu_topic_status
-    timeout: 1.0
+  # - path: /sensing/imu/001-monitor
+  #   type: diag
+  #   node: imu_monitor
+  #   name: yaw_rate_status
+  #   type: diag
+  #   timeout: 5.0
+  # - path: /sensing/imu/002-connection
+  #   type: diag
+  #   node: topic_state_monitor_imu_data
+  #   name: imu_topic_status
+  #   timeout: 1.0
   - path: /sensing/imu/003-gyro_bias
     type: diag
     node: gyro_bias_estimator
