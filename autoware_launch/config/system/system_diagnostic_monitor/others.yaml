@@ -31,7 +31,7 @@ units:
   - path: /others/comfortable_stop
     type: and
     # list:
-      # - { type: link, link: /others/010-emergency_vehicle-error }
+    # - { type: link, link: /others/010-emergency_vehicle-error }
 
   - path: /others/pull_over
     type: and

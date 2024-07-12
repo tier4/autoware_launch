@@ -45,7 +45,7 @@ units:
 
   - path: /planning/none
     type: and
-  
+
   - path: /planning/001-topic_status/route-error
     type: warn-to-ok
     item:

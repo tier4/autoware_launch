@@ -64,4 +64,3 @@ units:
 
   - path: /autoware/modes/emergency_stop
     type: ok
-
