@@ -1,4 +1,4 @@
-nodes:
+units:
   - path: /localization/autonomous_available
     type: and
     list:
@@ -38,54 +38,62 @@ nodes:
   - path: /localization/none
     type: and
 
-  # Intermediate paths
   - path: /localization/001-topic_status/initialpose-error
     type: warn-to-ok
-    list:
-      - { type: link, link: /localization/001-topic_status/initialpose }
+    item:
+      type: link
+      link: /localization/001-topic_status/initialpose
 
   - path: /localization/001-topic_status/pose_twist_fusion_filter-error
     type: warn-to-ok
-    list:
-      - { type: link, link: /localization/001-topic_status/pose_twist_fusion_filter }
+    item:
+      type: link
+      link: /localization/001-topic_status/pose_twist_fusion_filter
 
   - path: /localization/002-tf-error
     type: warn-to-ok
-    list:
-      - { type: link, link: /localization/002-tf }
+    item:
+      type: link
+      link: /localization/002-tf
 
   - path: /localization/003-matching_score-error
     type: warn-to-ok
-    list:
-      - { type: link, link: /localization/003-matching_score }
+    item:
+      type: link
+      link: /localization/003-matching_score
 
   - path: /localization/004-accuracy-error
     type: warn-to-ok
-    list:
-      - { type: link, link: /localization/004-accuracy }
+    item:
+      type: link
+      link: /localization/004-accuracy
 
-  # Diagnostics paths
   - path: /localization/001-topic_status/initialpose
-    diag: "topic_state_monitor_initialpose3d: localization_topic_status"
     type: diag
+    node: topic_state_monitor_initialpose3d
+    name: localization_topic_status
     timeout: 1.0
 
   - path: /localization/001-topic_status/pose_twist_fusion_filter
-    diag: "topic_state_monitor_pose_twist_fusion_filter_pose: localization_topic_status"
     type: diag
+    node: topic_state_monitor_pose_twist_fusion_filter_pose
+    name: localization_topic_status
     timeout: 1.0
 
   - path: /localization/002-tf
-    diag: "topic_state_monitor_transform_map_to_base_link: localization_topic_status"
     type: diag
+    node: topic_state_monitor_transform_map_to_base_link
+    name: localization_topic_status
     timeout: 1.0
 
   - path: /localization/003-matching_score
-    diag: ndt_scan_matcher
     type: diag
+    node: ndt_scan_matcher
+    name: scan_matching_status
     timeout: 1.0
 
   - path: /localization/004-accuracy
-    diag: "localization: localization_error_monitor"
     type: diag
+    node: localization
+    name: localization_error_monitor
     timeout: 1.0

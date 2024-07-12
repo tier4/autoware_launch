@@ -1,4 +1,4 @@
-nodes:
+units:
   - path: /hardware/autonomous_available
     type: and
     list:
@@ -43,9 +43,6 @@ nodes:
     type: and
     list:
       - { type: link, link: /hardware/hdd/002-usage-error }
-      - { type: link, link: /hardware/mot/001-connection }
-      - { type: link, link: /hardware/signage/001-connection }
-      - { type: link, link: /hardware/voice/001-connection }
 
   - path: /hardware/comfortable_stop
     type: and
@@ -65,88 +62,6 @@ nodes:
       - { type: link, link: /hardware/process/002-load }
       - { type: link, link: /hardware/process/003-memory }
       - { type: link, link: /hardware/bios/001-battery }
-
-  # Intermediate paths
-  - path: /hardware/cpu/002-usage-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/cpu/002-usage }
-
-  - path: /hardware/cpu/004-throttling-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/cpu/004-throttling }
-
-  - path: /hardware/hdd/001-temperature-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/hdd/001-temperature }
-
-  - path: /hardware/hdd/002-usage-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/hdd/002-usage }
-
-  - path: /hardware/hdd/003-connection-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/hdd/003-connection }
-
-  - path: /hardware/hdd/006-soft_error-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/hdd/006-soft_error }
-
-  - path: /hardware/hdd/007-load-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/hdd/007-load }
-
-  - path: /hardware/memory/001-usage-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/memory/001-usage }
-
-  - path: /hardware/memory/002-ecc-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/memory/002-ecc }
-
-  - path: /hardware/network/003-crc-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/network/003-crc }
-
-  - path: /hardware/gpu/001-temperature-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/gpu/001-temperature }
-
-  - path: /hardware/gpu/002-usage-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/gpu/002-usage }
-
-  - path: /hardware/gpu/003-memory-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/gpu/003-memory }
-
-  - path: /hardware/gpu/004-throttling-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/gpu/004-throttling }
-
-  - path: /hardware/gpu/005-frequency-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/gpu/005-frequency }
-
-  - path: /hardware/network/004-packet_reassembles-error
-    type: warn-to-ok
-    list:
-      - { type: link, link: /hardware/network/004-packet_reassembles }
-
   - path: /hardware/hdd/007-load
     type: and
     list:
@@ -173,183 +88,278 @@ nodes:
       - { type: link, link: /hardware/process/003-memory/proc-3 }
       - { type: link, link: /hardware/process/003-memory/proc-4 }
 
-  # Diagnostics paths
+  - path: /hardware/cpu/002-usage-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/cpu/002-usage
+  - path: /hardware/cpu/004-throttling-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/cpu/004-throttling
+  - path: /hardware/hdd/001-temperature-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/hdd/001-temperature
+  - path: /hardware/hdd/002-usage-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/hdd/002-usage
+  - path: /hardware/hdd/003-connection-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/hdd/003-connection
+  - path: /hardware/hdd/006-soft_error-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/hdd/006-soft_error
+  - path: /hardware/hdd/007-load-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/hdd/007-load
+  - path: /hardware/memory/001-usage-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/memory/001-usage
+  - path: /hardware/memory/002-ecc-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/memory/002-ecc
+  - path: /hardware/network/003-crc-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/network/003-crc
+  - path: /hardware/gpu/001-temperature-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/gpu/001-temperature
+  - path: /hardware/gpu/002-usage-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/gpu/002-usage
+  - path: /hardware/gpu/003-memory-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/gpu/003-memory
+  - path: /hardware/gpu/004-throttling-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/gpu/004-throttling
+  - path: /hardware/gpu/005-frequency-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/gpu/005-frequency
+  - path: /hardware/network/004-packet_reassembles-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/network/004-packet_reassembles
   - path: /hardware/cpu/001-temperature
-    diag: "cpu_monitor: CPU Temperature"
     type: diag
+    node: cpu_monitor
+    name: CPU Temperature
     timeout: 3.0
   - path: /hardware/cpu/002-usage
-    diag: "cpu_monitor: CPU Usage"
     type: diag
+    node: cpu_monitor
+    name: CPU Usage
     timeout: 3.0
   - path: /hardware/cpu/003-load_average
-    diag: "cpu_monitor: CPU Load Average"
     type: diag
+    node: cpu_monitor
+    name: CPU Load Average
     timeout: 3.0
   - path: /hardware/cpu/004-throttling
-    diag: "cpu_monitor: CPU Thermal Throttling"
     type: diag
+    node: cpu_monitor
+    name: CPU Thermal Throttling
     timeout: 3.0
   - path: /hardware/cpu/005-frequency
-    diag: "cpu_monitor: CPU Frequency"
     type: diag
+    node: cpu_monitor
+    name: CPU Frequency
     timeout: 3.0
-
   - path: /hardware/hdd/001-temperature
-    diag: "hdd_monitor: HDD Temperature"
     type: diag
+    node: hdd_monitor
+    name: HDD Temperature
     timeout: 3.0
   - path: /hardware/hdd/002-usage
-    diag: "hdd_monitor: HDD Usage"
     type: diag
+    node: hdd_monitor
+    name: HDD Usage
     timeout: 3.0
   - path: /hardware/hdd/003-connection
-    diag: "hdd_monitor: HDD Connection"
     type: diag
+    node: hdd_monitor
+    name: HDD Connection
     timeout: 3.0
   - path: /hardware/hdd/004-total_written
-    diag: "hdd_monitor: HDD TotalDataWritten"
     type: diag
+    node: hdd_monitor
+    name: HDD TotalDataWritten
     timeout: 3.0
   - path: /hardware/hdd/005-warranty_period
-    diag: "hdd_monitor: HDD PowerOnHours"
     type: diag
+    node: hdd_monitor
+    name: HDD PowerOnHours
     timeout: 3.0
   - path: /hardware/hdd/006-soft_error
-    diag: "hdd_monitor: HDD RecoveredError"
     type: diag
+    node: hdd_monitor
+    name: HDD RecoveredError
     timeout: 3.0
   - path: /hardware/hdd/007-load/read_rate
-    diag: "hdd_monitor: HDD ReadDataRate"
     type: diag
+    node: hdd_monitor
+    name: HDD ReadDataRate
     timeout: 3.0
   - path: /hardware/hdd/007-load/write_rate
-    diag: "hdd_monitor: HDD WriteDataRate"
     type: diag
+    node: hdd_monitor
+    name: HDD WriteDataRate
     timeout: 3.0
   - path: /hardware/hdd/007-load/read_iops
-    diag: "hdd_monitor: HDD ReadIOPS"
     type: diag
+    node: hdd_monitor
+    name: HDD ReadIOPS
     timeout: 3.0
   - path: /hardware/hdd/007-load/write_iops
-    diag: "hdd_monitor: HDD WriteIOPS"
     type: diag
+    node: hdd_monitor
+    name: HDD WriteIOPS
     timeout: 3.0
-
   - path: /hardware/memory/001-usage
-    diag: "mem_monitor: Memory Usage"
     type: diag
+    node: mem_monitor
+    name: Memory Usage
     timeout: 3.0
   - path: /hardware/memory/002-ecc
-    diag: "mem_monitor: Memory ECC"
     type: diag
+    node: mem_monitor
+    name: Memory ECC
     timeout: 3.0
-
   - path: /hardware/network/001-usage
-    diag: "net_monitor: Network Usage"
     type: diag
+    node: net_monitor
+    name: Network Usage
     timeout: 3.0
   - path: /hardware/network/002-traffic
-    diag: "net_monitor: Network Traffic"
     type: diag
+    node: net_monitor
+    name: Network Traffic
     timeout: 3.0
   - path: /hardware/network/003-crc
-    diag: "net_monitor: Network CRC Error"
     type: diag
+    node: net_monitor
+    name: Network CRC Error
     timeout: 3.0
   - path: /hardware/network/004-packet_reassembles
-    diag: "net_monitor: IP Packet Reassembles Failed"
     type: diag
+    node: net_monitor
+    name: IP Packet Reassembles Failed
     timeout: 3.0
-
   - path: /hardware/ntp/001-sync
-    diag: "ntp_monitor: NTP Offset"
     type: diag
+    node: ntp_monitor
+    name: NTP Offset
     timeout: 10.0
-
   - path: /hardware/process/001-summary
-    diag: "process_monitor: Tasks Summary"
     type: diag
+    node: process_monitor
+    name: Tasks Summary
     timeout: 3.0
   - path: /hardware/process/002-load/proc-0
-    diag: "process_monitor: High-load Proc[0]"
     type: diag
+    node: process_monitor
+    name: High-load Proc[0]
     timeout: 3.0
   - path: /hardware/process/002-load/proc-1
-    diag: "process_monitor: High-load Proc[1]"
     type: diag
+    node: process_monitor
+    name: High-load Proc[1]
     timeout: 3.0
   - path: /hardware/process/002-load/proc-2
-    diag: "process_monitor: High-load Proc[2]"
     type: diag
+    node: process_monitor
+    name: High-load Proc[2]
     timeout: 3.0
   - path: /hardware/process/002-load/proc-3
-    diag: "process_monitor: High-load Proc[3]"
     type: diag
+    node: process_monitor
+    name: High-load Proc[3]
     timeout: 3.0
   - path: /hardware/process/002-load/proc-4
-    diag: "process_monitor: High-load Proc[4]"
     type: diag
+    node: process_monitor
+    name: High-load Proc[4]
     timeout: 3.0
   - path: /hardware/process/003-memory/proc-0
-    diag: "process_monitor: High-mem Proc[0]"
     type: diag
+    node: process_monitor
+    name: High-mem Proc[0]
     timeout: 3.0
   - path: /hardware/process/003-memory/proc-1
-    diag: "process_monitor: High-mem Proc[1]"
     type: diag
+    node: process_monitor
+    name: High-mem Proc[1]
     timeout: 3.0
   - path: /hardware/process/003-memory/proc-2
-    diag: "process_monitor: High-mem Proc[2]"
     type: diag
+    node: process_monitor
+    name: High-mem Proc[2]
     timeout: 3.0
   - path: /hardware/process/003-memory/proc-3
-    diag: "process_monitor: High-mem Proc[3]"
     type: diag
+    node: process_monitor
+    name: High-mem Proc[3]
     timeout: 3.0
   - path: /hardware/process/003-memory/proc-4
-    diag: "process_monitor: High-mem Proc[4]"
     type: diag
+    node: process_monitor
+    name: High-mem Proc[4]
     timeout: 3.0
-
   - path: /hardware/gpu/001-temperature
-    diag: "gpu_monitor: GPU Temperature"
     type: diag
+    node: gpu_monitor
+    name: GPU Temperature
     timeout: 3.0
   - path: /hardware/gpu/002-usage
-    diag: "gpu_monitor: GPU Usage"
     type: diag
+    node: gpu_monitor
+    name: GPU Usage
     timeout: 3.0
   - path: /hardware/gpu/003-memory
-    diag: "gpu_monitor: GPU Memory Usage"
     type: diag
+    node: gpu_monitor
+    name: GPU Memory Usage
     timeout: 3.0
   - path: /hardware/gpu/004-throttling
-    diag: "gpu_monitor: GPU Thermal Throttling"
     type: diag
+    node: gpu_monitor
+    name: GPU Thermal Throttling
     timeout: 3.0
   - path: /hardware/gpu/005-frequency
-    diag: "gpu_monitor: GPU Frequency"
     type: diag
+    node: gpu_monitor
+    name: GPU Frequency
     timeout: 3.0
-
   - path: /hardware/bios/001-battery
-    diag: "voltage_monitor: CMOS Battery Status"
     type: diag
+    node: voltage_monitor
+    name: CMOS Battery Status
     timeout: 3.0
-
-  # We assume these diagnostics become only OK or STALE
-  - path: /hardware/mot/001-connection
-    diag: "mot: /system/mot_connection : mot heartbeat"
-    type: diag
-    timeout: 5.0
-
-  - path: /hardware/signage/001-connection
-    diag: "signage: /system/signage_connection : signage heartbeat"
-    type: diag
-    timeout: 5.0
-
-  - path: /hardware/voice/001-connection
-    diag: "vehicle_voice_alert_system: /system/voice_alert_system_connection : voice alert system heartbeat"
-    type: diag
-    timeout: 5.0

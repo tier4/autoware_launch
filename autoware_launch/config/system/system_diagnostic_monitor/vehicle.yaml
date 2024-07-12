@@ -1,4 +1,4 @@
-nodes:
+units:
   - path: /vehicle/autonomous_available
     type: and
     list:
@@ -39,44 +39,50 @@ nodes:
   - path: /vehicle/none
     type: and
 
-  # Intermediate paths
   - path: /vehicle/001-topic_status/velocity-error
     type: warn-to-ok
-    list:
-      - { type: link, link: /vehicle/001-topic_status/velocity }
+    item:
+      type: link
+      link: /vehicle/001-topic_status/velocity
 
   - path: /vehicle/001-topic_status/steering-error
     type: warn-to-ok
-    list:
-      - { type: link, link: /vehicle/001-topic_status/steering }
+    item:
+      type: link
+      link: /vehicle/001-topic_status/steering
 
   - path: /vehicle/005-vehicle_heartbeat-error
     type: warn-to-ok
-    list:
-      - { type: link, link: /vehicle/005-vehicle_heartbeat }
+    item:
+      type: link
+      link: /vehicle/005-vehicle_heartbeat
 
   - path: /vehicle/006-vehicle_errors-error
     type: warn-to-ok
-    list:
-      - { type: link, link: /vehicle/006-vehicle_errors }
+    item:
+      type: link
+      link: /vehicle/006-vehicle_errors
 
-  # Diagnostics paths
   - path: /vehicle/001-topic_status/velocity
-    diag: "topic_state_monitor_vehicle_status_velocity_status: vehicle_topic_status"
     type: diag
+    node: topic_state_monitor_vehicle_status_velocity_status
+    name: vehicle_topic_status
     timeout: 1.0
 
   - path: /vehicle/001-topic_status/steering
-    diag: "topic_state_monitor_vehicle_status_steering_status: vehicle_topic_status"
     type: diag
+    node: topic_state_monitor_vehicle_status_steering_status
+    name: vehicle_topic_status
     timeout: 1.0
 
   - path: /vehicle/005-vehicle_heartbeat
-    diag: "j6_interface: vehicle_heartbeat_errors"
     type: diag
+    node: j6_interface
+    name: vehicle_heartbeat_errors
     timeout: 1.0
 
   - path: /vehicle/006-vehicle_errors
-    diag: "j6_interface: vehicle_errors"
     type: diag
+    node: j6_interface
+    name: vehicle_errors
     timeout: 1.0

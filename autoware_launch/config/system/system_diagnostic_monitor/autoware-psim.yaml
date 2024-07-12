@@ -6,20 +6,14 @@ files:
 
 # Exclude paths that does not need on planning simulator
 edits:
-  - path: /map/001-topic_status/pointcloud_map-error
-    type: remove
-  - path: /map/001-topic_status/pointcloud_map
-    type: remove
-  - path: /system/003-bagpacker_status
-    type: remove
-  - path: /system/004-bagpacker_disk_space
-    type: remove
-  - path: /system/005-fms_connection
-    type: remove
-  - path: /system/005-fms_connection-error
-    type: remove
+  - { type: remove, path: /map/001-topic_status/pointcloud_map-error }
+  - { type: remove, path: /map/001-topic_status/pointcloud_map }
+  # - { type: remove, path: /system/003-bagpacker_status }
+  # - { type: remove, path: /system/004-bagpacker_disk_space }
+  # - { type: remove, path: /system/005-fms_connection }
+  # - { type: remove, path: /system/005-fms_connection-error }
 
-nodes:
+units:
   - path: /autoware/modes/local
     type: stale
 
