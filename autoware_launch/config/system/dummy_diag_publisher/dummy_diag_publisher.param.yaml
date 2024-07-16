@@ -131,7 +131,7 @@
       "topic_state_monitor_transform_map_to_base_link: localization_topic_status": default
 
       ## /localization/003-matching_score
-      ndt_scan_matcher: default
+      "ndt_scan_matcher: scan_matching_status": default
 
       ## /localization/004-accuracy
       "localization: localization_error_monitor": default
