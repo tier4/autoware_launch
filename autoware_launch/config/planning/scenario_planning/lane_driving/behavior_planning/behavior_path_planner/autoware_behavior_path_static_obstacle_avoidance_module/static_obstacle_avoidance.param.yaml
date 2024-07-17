@@ -138,7 +138,7 @@
 
         # params for avoidance of vehicle type objects that are ambiguous as to whether they are parked.
         avoidance_for_ambiguous_vehicle:
-          enable: true                                  # [-]
+          enable: false                                  # [-]
           closest_distance_to_wait_and_see: 10.0        # [m]
           condition:
             th_stopped_time: 3.0                        # [s]
