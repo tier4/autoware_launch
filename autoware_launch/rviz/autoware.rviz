@@ -2424,11 +2424,11 @@ Visualization Manager:
           Value: true
           View Path:
             Alpha: 1
-            Color: 255; 255; 255
+            Color: 224; 27; 36
             Constant Color: true
             Value: true
             Constant Width: true
-            Width: 0.05000000074505806
+            Width: 0.3
           View Velocity:
             Alpha: 1
             Color: 0; 0; 0
@@ -2448,11 +2448,11 @@ Visualization Manager:
           Value: true
           View Path:
             Alpha: 1
-            Color: 255; 255; 255
+            Color: 249; 240; 107
             Constant Color: true
             Value: true
             Constant Width: true
-            Width: 0.05000000074505806
+            Width: 0.2
           View Velocity:
             Alpha: 1
             Color: 0; 0; 0
@@ -2468,15 +2468,15 @@ Visualization Manager:
             Durability Policy: Volatile
             History Policy: Keep Last
             Reliability Policy: Reliable
-            Value: /control/trajectory_follower/controller_node_exe/debug/predicted_trajectory_in_frenet_coordinate
+            Value: /control/trajectory_follower/controller_node_exe/debug/cgmres/predicted_trajectory_in_frenet_coordinate
           Value: true
           View Path:
             Alpha: 1
-            Color: 255; 255; 255
+            Color: 153; 193; 241
             Constant Color: true
             Value: true
             Constant Width: true
-            Width: 0.05000000074505806
+            Width: 0.2
           View Velocity:
             Alpha: 1
             Color: 0; 0; 0
