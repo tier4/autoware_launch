@@ -16,32 +16,40 @@
     extend_trajectory_for_end_yaw_control: false  # flag of trajectory extending for terminal yaw control
 
     # -- mpc optimization --
-    qp_solver_type: "osqp"                       # optimization solver option (unconstraint_fast or osqp)
+    qp_solver_type: "cgmres"                       # optimization solver option (unconstraint_fast or osqp)
     mpc_prediction_horizon: 50                   # prediction horizon step
     mpc_prediction_dt: 0.1                       # prediction horizon period [s]
     mpc_weight_lat_error: 1.0                    # lateral error weight in matrix Q
     mpc_weight_heading_error: 0.0                # heading error weight in matrix Q
-    mpc_weight_heading_error_squared_vel: 0.3    # heading error * velocity weight in matrix Q
+    mpc_weight_heading_error_squared_vel: 0.0    # heading error * velocity weight in matrix Q
     mpc_weight_steering_input: 1.0               # steering error weight in matrix R
-    mpc_weight_steering_input_squared_vel: 0.25  # steering error * velocity weight in matrix R
-    mpc_weight_lat_jerk: 0.1                     # lateral jerk weight in matrix R
+    mpc_weight_steering_input_squared_vel: 0.0  # steering error * velocity weight in matrix R
+    mpc_weight_lat_jerk: 0.0                     # lateral jerk weight in matrix R
     mpc_weight_steer_rate: 0.0                   # steering rate weight in matrix R
-    mpc_weight_steer_acc: 0.000001               # steering angular acceleration weight in matrix R
-    mpc_low_curvature_weight_lat_error: 0.1                    # lateral error weight in matrix Q in low curvature point
+    mpc_weight_steer_acc: 0.0                    # steering angular acceleration weight in matrix R
+    mpc_low_curvature_weight_lat_error: 1.0                    # lateral error weight in matrix Q in low curvature point
     mpc_low_curvature_weight_heading_error: 0.0                # heading error weight in matrix Q in low curvature point
-    mpc_low_curvature_weight_heading_error_squared_vel: 0.3    # heading error * velocity weight in matrix Q in low curvature point
+    mpc_low_curvature_weight_heading_error_squared_vel: 0.0    # heading error * velocity weight in matrix Q in low curvature point
     mpc_low_curvature_weight_steering_input: 1.0               # steering error weight in matrix R in low curvature point
-    mpc_low_curvature_weight_steering_input_squared_vel: 0.25  # steering error * velocity weight in matrix R in low curvature point
+    mpc_low_curvature_weight_steering_input_squared_vel: 0.0  # steering error * velocity weight in matrix R in low curvature point
     mpc_low_curvature_weight_lat_jerk: 0.0                     # lateral jerk weight in matrix R in low curvature point
     mpc_low_curvature_weight_steer_rate: 0.0                   # steering rate weight in matrix R in low curvature point
-    mpc_low_curvature_weight_steer_acc: 0.000001               # steering angular acceleration weight in matrix R in low curvature point
+    mpc_low_curvature_weight_steer_acc: 0.0                    # steering angular acceleration weight in matrix R in low curvature point
     mpc_low_curvature_thresh_curvature: 0.0                    # threshold of curvature to use "low_curvature" parameter (recommend: 0.01~0.03)
     mpc_weight_terminal_lat_error: 1.0           # terminal lateral error weight in matrix Q to improve mpc stability
-    mpc_weight_terminal_heading_error: 0.1       # terminal heading error weight in matrix Q to improve mpc stability
+    mpc_weight_terminal_heading_error: 0.0       # terminal heading error weight in matrix Q to improve mpc stability
     mpc_zero_ff_steer_deg: 0.5                   # threshold that feed-forward angle becomes zero
     mpc_acceleration_limit: 2.0                  # limit on the vehicle's acceleration
     mpc_velocity_time_constant: 0.3              # time constant used for velocity smoothing
     mpc_min_prediction_length: 5.0               # minimum prediction length
+
+    # -- cgmres solver setting --
+    max_iter_for_zero_horizon: 100
+    opterr_tol_for_zero_horizon: 1.0e-04
+    finite_difference_epsilon: 1.0e-08
+    min_dummy: 1.0e-03
+    verbose_level: 0
+    horizon_alpha: 0.0
 
     # -- vehicle model --
     vehicle_model_type: "kinematics" # vehicle model type for mpc prediction. option is kinematics, kinematics_no_delay, and dynamics
@@ -75,4 +83,14 @@
       average_num: 1000
       steering_offset_limit: 0.02
 
+    # vehicle parameters
+    mass_kg: 2400.0
+    mass_fl: 600.0
+    mass_fr: 600.0
+    mass_rl: 600.0
+    mass_rr: 600.0
+    cf: 155494.663
+    cr: 155494.663
+
     debug_publish_predicted_trajectory: true  # publish debug predicted trajectory in Frenet coordinate
+    debug_resampled_reference_trajectory: true # publish resampled reference trajectory in world coordinate
