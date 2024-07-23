@@ -2,15 +2,15 @@
   ros__parameters:
     update_rate: 10.0
     system_emergency_heartbeat_timeout: 0.5
-    use_emergency_handling: false
+    use_emergency_handling: true
     check_external_emergency_heartbeat: $(var check_external_emergency_heartbeat)
-    use_start_request: false
+    use_start_request: true
     enable_cmd_limit_filter: true
     filter_activated_count_threshold: 5
     filter_activated_velocity_threshold: 1.0
     external_emergency_stop_heartbeat_timeout: 0.0
     stop_hold_acceleration: -1.5
-    emergency_acceleration: -2.4
+    emergency_acceleration: -4.0
     moderate_stop_service_acceleration: -1.5
     stopped_state_entry_duration_time: 0.1
     stop_check_duration: 1.0
@@ -19,8 +19,8 @@
       reference_speed_points: [20.0, 30.0]
       steer_lim: [1.0, 0.8]
       steer_rate_lim: [1.0, 0.8]
-      lon_acc_lim: [5.0, 4.0]
-      lon_jerk_lim: [5.0, 4.0]
+      lon_acc_lim: [6.0, 6.0]
+      lon_jerk_lim: [30.0, 30.0]
       lat_acc_lim: [5.0, 4.0]
       lat_jerk_lim: [7.0, 6.0]
       actual_steer_diff_lim: [1.0, 0.8]

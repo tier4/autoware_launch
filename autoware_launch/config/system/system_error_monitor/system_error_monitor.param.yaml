@@ -17,32 +17,43 @@
   ros__parameters:
     required_modules:
       autonomous_driving:
+        # Control (from control.param.yaml)
         /autoware/control/autonomous_driving/node_alive_monitoring: default
-        /autoware/control/autonomous_driving/performance_monitoring/lane_departure: default
+        # /autoware/control/autonomous_driving/performance_monitoring/lane_departure: default # temporarily until logic is improved
         /autoware/control/control_command_gate/node_alive_monitoring: default
 
+        # Localization (from localization.param.yaml)
         /autoware/localization/node_alive_monitoring: default
         /autoware/localization/performance_monitoring/scan_matching_status: { sf_at: "warn", lf_at: "none", spf_at: "none" }
         /autoware/localization/performance_monitoring/localization_error_ellipse: default
         /autoware/localization/performance_monitoring/localization_stability: default
         /autoware/localization/performance_monitoring/sensor_fusion_status: { sf_at: "error", lf_at: "none", spf_at: "none" }
 
+        # Map (from map.param.yaml)
         /autoware/map/node_alive_monitoring: default
 
+        # Perception (from perception.param.yaml)
         /autoware/perception/node_alive_monitoring: default
 
+        # Planning (from planning.param.yaml)
         /autoware/planning/node_alive_monitoring: default
         /autoware/planning/performance_monitoring/trajectory_validation: default
 
+        # Sensors (from sensor_kit.param.yaml)
         # /autoware/sensing/node_alive_monitoring: default
-        # /autoware/control/autoware_autonomous_emergency_braking/performance_monitoring/emergency_stop: { sf_at: "none", lf_at: "warn", spf_at: "error", auto_recovery: "false", ignore_until_waiting_for_route: "true"}
+        /autoware/sensing/lidar/pandar/health_monitoring/connection: { sf_at: "none", lf_at: "none", spf_at: "error", auto_recovery: "true"}
+        /autoware/sensing/lidar/pandar/health_monitoring/temperature: { sf_at: "warn", lf_at: "error", spf_at: "none", auto_recovery: "true"}
+        /autoware/sensing/lidar/pandar/health_monitoring/ptp: { sf_at: "none", lf_at: "none", spf_at: "warn", auto_recovery: "true"}
 
+        # System (from system.param.yaml in universe and system.param.yaml in system_launch)
         /autoware/system/node_alive_monitoring: default
         /autoware/system/emergency_stop_operation: default
         /autoware/system/service_log_checker: { sf_at: "warn", lf_at: "none", spf_at: "none" }
         /autoware/system/resource_monitoring: { sf_at: "warn", lf_at: "error", spf_at: "none" }
         /autoware/system/duplicated_node_checker: default
+        /autoware/system/fms_connection: { sf_at: "warn", lf_at: "none", spf_at: "none" }
 
+        # Vehicle (from vehicle.param.yaml in universe and vehicle.param.yaml in system_launch)
         /autoware/vehicle/node_alive_monitoring: default
 
       external_control:
