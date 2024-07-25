@@ -18,6 +18,16 @@
   <arg name="detected_objects_filter_method" default="lanelet_filter" description="options: lanelet_filter, position_filter"/>
   <arg name="detected_objects_validation_method" default="obstacle_pointcloud" description="options: obstacle_pointcloud, occupancy_grid (must be used with laserscan_based_occupancy_grid_map)"/>
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
+  <arg name="lidar_detection_model" default="pointpainting" description="options: `centerpoint`, `apollo`, `pointpainting`, `clustering`"/>
+
+  <group if="$(eval &quot;'$(var sensor_model)' == 'aip_xx1_gen2'&quot;)">
+    <!-- In the Gen2 sensor configuration, the traffic_light_recognition node is launched not through the conventional autoware.universe/launch/tier4_perception_launch but with its own custom launch file.
+    This is because autoware.universe's launch files do not support an arbitrary number of cameras. If autoware.universe's launch files were to support it, it is recommended to use them instead. -->
+    <include file="$(find-pkg-share autoware_launch)/launch/components/traffic_light_recognition/traffic_light.launch.xml"/>
+  </group>
+  <!-- NOTE: Override by false to disable conventional traffic light recognition launch -->
+  <let name="use_traffic_light_recognition" value="false" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+  <let name="use_traffic_light_recognition" value="true" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
 
   <include file="$(find-pkg-share tier4_perception_launch)/launch/perception.launch.xml">
     <!-- Options to Switch Launch Function/Module -->
@@ -41,6 +51,11 @@
     <arg name="objects_filter_method" value="$(var detected_objects_filter_method)"/>
     <arg name="objects_validation_method" value="$(var detected_objects_validation_method)"/>
     <arg name="data_path" value="$(var data_path)"/>
+    <arg name="input/pointcloud" value="/sensing/lidar/concatenated/pointcloud"/>
+    <arg name="lidar_detection_model" value="$(var lidar_detection_model)"/>
+    <arg name="pointpainting_model_path" value="/opt/autoware/mlmodels/pointpainting"/>
+    <arg name="centerpoint_model_name" value="centerpoint_xx1"/>
+    <arg name="centerpoint_model_path" value="/opt/autoware/mlmodels/$(var lidar_detection_model)"/>
 
     <arg name="use_traffic_light_recognition" value="$(var use_traffic_light_recognition)"/>
     <arg name="traffic_light_recognition/enable_fine_detection" value="$(var traffic_light_recognition/enable_fine_detection)"/>
@@ -181,7 +196,6 @@
     <arg name="occupancy_grid_map_param_path" value="$(find-pkg-share autoware_launch)/config/perception/occupancy_grid_map/$(var occupancy_grid_map_method).param.yaml"/>
     <arg name="occupancy_grid_map_updater_param_path" value="$(find-pkg-share autoware_launch)/config/perception/occupancy_grid_map/$(var occupancy_grid_map_updater)_updater.param.yaml"/>
 
-    <!-- traffic light recognition parameters -->
     <arg name="traffic_light_arbiter_param_path" value="$(find-pkg-share autoware_launch)/config/perception/traffic_light_arbiter/traffic_light_arbiter.param.yaml"/>
     <arg name="traffic_light_fine_detector_model_path" value="$(var data_path)/traffic_light_fine_detector"/>
     <arg name="traffic_light_fine_detector_model_name" value="tlr_car_ped_yolox_s_batch_6"/>

@@ -113,8 +113,8 @@
         ttc: [0]
 
       enable_rtc:
-        intersection: false
-        intersection_to_occlusion: false
+        intersection: true
+        intersection_to_occlusion: true
 
     merge_from_private:
       stopline_margin: 3.0
