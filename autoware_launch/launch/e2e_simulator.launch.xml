@@ -39,7 +39,6 @@
   />
   <!-- Tools -->
   <arg name="rviz" default="true" description="launch rviz"/>
-  <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/awsim.rviz" description="rviz config"/>
 
   <!-- dummy topic publisher (camera0 ~ camera6)-->
   <!-- temporary until AWSIM supports object recognition camera -->
@@ -96,7 +95,6 @@
       <arg name="lidar_detection_model" value="pointpainting"/>
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
-      <arg name="rviz_config" value="$(var rviz_config)"/>
     </include>
   </group>
 </launch>
