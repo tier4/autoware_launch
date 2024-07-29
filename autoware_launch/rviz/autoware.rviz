@@ -20,6 +20,8 @@ Panels:
     Name: AutowareDateTimePanel
   - Class: rviz_plugins::AutowareStatePanel
     Name: AutowareStatePanel
+  - Class: real_time_factor_control_rviz_plugin/RealTimeFactorSliderPanel
+    Name: RealTimeFactorSliderPanel
 Visualization Manager:
   Class: ""
   Displays:
@@ -842,7 +844,7 @@ Visualization Manager:
         - Class: rviz_common/Group
           Displays:
             - Class: rviz_default_plugins/Image
-              Enabled: true
+              Enabled: false
               Max Value: 1
               Median window: 5
               Min Value: 0
