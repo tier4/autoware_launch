@@ -2491,8 +2491,32 @@ Visualization Manager:
             Value: /control/trajectory_follower/controller_node_exe/debug/cgmres/predicted_trajectory
           Value: true
           View Path:
+            Alpha: 0.6
+            Color: 220; 138; 221
+            Constant Color: true
+            Value: true
+            Constant Width: true
+            Width: 0.3
+          View Velocity:
             Alpha: 1
-            Color: 249; 240; 107
+            Color: 0; 0; 0
+            Constant Color: false
+            Scale: 0.30000001192092896
+            Value: false
+        - Class: rviz_plugins/Trajectory
+          Color Border Vel Max: 3
+          Enabled: false
+          Name: Predicted Trajectory by C/GMRES method in frenet coordinate
+          Topic:
+            Depth: 5
+            Durability Policy: Volatile
+            History Policy: Keep Last
+            Reliability Policy: Reliable
+            Value: /control/trajectory_follower/controller_node_exe/debug/cgmres/predicted_trajectory_in_frenet_coordinate
+          Value: true
+          View Path:
+            Alpha: 1
+            Color: 153; 193; 241
             Constant Color: true
             Value: true
             Constant Width: true
@@ -2518,7 +2542,7 @@ Visualization Manager:
             Alpha: 1
             Color: 153; 193; 241
             Constant Color: true
-            Value: true
+            Value: false
             Constant Width: true
             Width: 0.2
           View Velocity:
@@ -2531,32 +2555,8 @@ Visualization Manager:
             Alpha: 1
             Color: 0; 60; 255
             Offset: 0
-            Radius: 0.20000000149011612
+            Radius: 0.10000000149011612
             Value: true
-        - Class: rviz_plugins/Trajectory
-          Color Border Vel Max: 3
-          Enabled: true
-          Name: Predicted Trajectory by C/GMRES method in frenet coordinate
-          Topic:
-            Depth: 5
-            Durability Policy: Volatile
-            History Policy: Keep Last
-            Reliability Policy: Reliable
-            Value: /control/trajectory_follower/controller_node_exe/debug/cgmres/predicted_trajectory_in_frenet_coordinate
-          Value: true
-          View Path:
-            Alpha: 1
-            Color: 153; 193; 241
-            Constant Color: true
-            Value: true
-            Constant Width: true
-            Width: 0.2
-          View Velocity:
-            Alpha: 1
-            Color: 0; 0; 0
-            Constant Color: false
-            Scale: 0.30000001192092896
-            Value: false
         - Class: rviz_default_plugins/Marker
           Enabled: false
           Name: Stop Reason
