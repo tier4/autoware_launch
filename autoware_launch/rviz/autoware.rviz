@@ -2529,7 +2529,7 @@ Visualization Manager:
             Alpha: 1
             Color: 0; 60; 255
             Offset: 0
-            Radius: 0.10000000149011612
+            Radius: 0.20000000149011612
             Value: true
         - Class: rviz_plugins/Trajectory
           Color Border Vel Max: 3
@@ -3874,7 +3874,7 @@ Visualization Manager:
       Name: Current View
       Near Clip Distance: 0.009999999776482582
       Scale: 10
-      Target Frame: viewer
+      Target Frame: base_link
       Value: TopDownOrtho (rviz_default_plugins)
       X: 0
       Y: 0
