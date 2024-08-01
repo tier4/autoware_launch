@@ -60,6 +60,10 @@
     emergency_acc: -2.5 # denotes acceleration
     emergency_jerk: -1.5
 
+    # acceleration feedback 2/(0.6s+1)
+    lpf_acc_error_gain: 0.95 # 
+    acc_feedback_gain: 0.0
+
     # acceleration limit
     max_acc: 1.86
     min_acc: -6.00
