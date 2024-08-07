@@ -24,10 +24,10 @@
     mpc_weight_heading_error_squared_vel: 0.03   # heading error * velocity weight in matrix Q
     mpc_weight_steering_input: 1.0               # steering error weight in matrix R
     mpc_weight_steering_input_squared_vel: 1.00  # steering error * velocity weight in matrix R
-    mpc_weight_lat_jerk: 0.1                     # lateral jerk weight in matrix R
+    mpc_weight_lat_jerk: 0.075                   # lateral jerk weight in matrix R
     mpc_weight_steer_rate: 0.0                   # steering rate weight in matrix R
     mpc_weight_steer_acc: 0.000001               # steering angular acceleration weight in matrix R
-    mpc_low_curvature_weight_lat_error: 0.05                   # lateral error weight in matrix Q in low curvature point
+    mpc_low_curvature_weight_lat_error: 0.1                    # lateral error weight in matrix Q in low curvature point
     mpc_low_curvature_weight_heading_error: 0.0                # heading error weight in matrix Q in low curvature point
     mpc_low_curvature_weight_heading_error_squared_vel: 0.03   # heading error * velocity weight in matrix Q in low curvature point
     mpc_low_curvature_weight_steering_input: 1.0               # steering error weight in matrix R in low curvature point
@@ -49,8 +49,8 @@
     vehicle_model_steer_tau: 0.1     # steering dynamics time constant (1d approximation) [s]
     steer_rate_lim_dps_list_by_curvature: [20.0, 20.0, 20.0]            # steering angle rate limit list depending on curvature [deg/s]
     curvature_list_for_steer_rate_lim: [0.001, 0.002, 0.01]              # curvature list for steering angle rate limit interpolation in ascending order [/m]
-    steer_rate_lim_dps_list_by_velocity: [18.0,  18.0,   15.0,   12.0,   5.0,  2.25,  1.5 ,  1.5 ,  1.5]  # steering angle rate limit list depending on velocity [deg/s] [72, 72, 36, 18, 9, 3.6, 3.6]
-    velocity_list_for_steer_rate_lim:    [0.0,   1.388,  2.778,  4.167,  5.556,   6.944,  8.333,  9.722,  11.11] # velocity list for steering angle rate limit interpolation in ascending order [m/s]
+    steer_rate_lim_dps_list_by_velocity: [18.0, 18.0, 15.0, 12.0, 5.0, 2.25, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]  # steering angle rate limit list depending on velocity [deg/s] [72, 72, 36, 18, 9, 3.6, 3.6]
+    velocity_list_for_steer_rate_lim:    [0.0, 1.388, 2.778, 4.167, 5.556, 6.944, 8.333, 9.722, 11.11, 12.5, 13.89, 15.28, 16.67] # velocity list for steering angle rate limit interpolation in ascending order [m/s]
     acceleration_limit: 1.0          # acceleration limit for trajectory velocity modification [m/ss]
     velocity_time_constant: 0.3      # velocity dynamics time constant  for trajectory velocity modification [s]
 
