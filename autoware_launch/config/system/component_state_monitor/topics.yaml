@@ -242,7 +242,7 @@
     best_effort: false
     transient_local: false
     warn_rate: 20.0
-    error_rate: 15.0
+    error_rate: 9.0
     timeout: 1.0
 
 - module: vehicle
