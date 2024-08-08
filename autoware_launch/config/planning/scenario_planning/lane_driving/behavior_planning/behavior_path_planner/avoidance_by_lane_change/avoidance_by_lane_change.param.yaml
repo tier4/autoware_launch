@@ -47,6 +47,7 @@
             hard_margin: 0.0                           # [m]
             hard_margin_for_parked_vehicle: 0.0        # [m]
         unknown:
+          is_target: false
           execute_num: 1
           th_moving_speed: 0.28                        # 1.0km/h
           th_moving_time: 1.0
