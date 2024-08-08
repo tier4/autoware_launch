@@ -53,20 +53,11 @@
 
     # stopped state
     stopped_vel: 0.0
-<<<<<<< HEAD
     stopped_acc: -3.4 # denotes pedal position
 
     # emergency state
     emergency_vel: 0.0
     emergency_acc: -5.0 # denotes acceleration
-=======
-    stopped_acc: -3.4
-    stopped_jerk: -5.0
-
-    # emergency state
-    emergency_vel: 0.0
-    emergency_acc: -5.0
->>>>>>> tier4/main
     emergency_jerk: -3.0
 
     # acceleration limit
@@ -76,10 +67,8 @@
     # jerk limit
     max_jerk: 3.5
     min_jerk: -5.0
-<<<<<<< HEAD
     max_acc_cmd_diff: 50.0 # [m/s^2 * s^-1]
-=======
->>>>>>> tier4/main
+
 
     # slope compensation
     lpf_pitch_gain: 0.95
