@@ -9,3 +9,41 @@
           path: vehicle_errors
           contains: [": vehicle_errors"]
           timeout: 1.0
+        pacmod_errors:
+          type: diagnostic_aggregator/GenericAnalyzer
+          path: pacmod_checker
+          contains: [": pacmod_checker"]
+          timeout: 1.0
+        pacmod_accel_brake_fault:
+          type: diagnostic_aggregator/GenericAnalyzer
+          path: pacmod_accel_brake_fault
+          contains: [": pacmod_accel_brake_fault"]
+          timeout: 1.0
+        node_alive_monitoring:
+          type: diagnostic_aggregator/AnalyzerGroup
+          path: node_alive_monitoring
+          analyzers:
+            # TODO(Tier IV): Consider splitting sensor input and control command output
+            topic_status:
+              type: diagnostic_aggregator/GenericAnalyzer
+              path: topic_status
+              contains: [": vehicle_topic_status"]
+              timeout: 1.0
+        calibration:
+          type: diagnostic_aggregator/AnalyzerGroup
+          path: calibration
+          analyzers:
+            accel_brake_map_calibrator:
+              type: diagnostic_aggregator/GenericAnalyzer
+              path: accel_brake_map_calibrator
+              contains: [": accel_brake_map_calibrator"]
+              timeout: 1.0
+        awsim:
+          type: diagnostic_aggregator/AnalyzerGroup
+          path: awsim
+          analyzers:
+            vehicle_stuck_detection:
+              type: diagnostic_aggregator/GenericAnalyzer
+              path: vehicle_stuck_detection
+              contains: [": vehicle_stuck_detection"]
+              timeout: 1.0

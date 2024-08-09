@@ -12,7 +12,7 @@
       idling_time: 2.0 # idling time to detect front vehicle starting deceleration [s]
       min_ego_accel_for_rss: -1.0 # ego's acceleration to calculate RSS distance [m/ss]
       min_object_accel_for_rss: -1.0 # front obstacle's acceleration to calculate RSS distance [m/ss]
-      safe_distance_margin : 5.0 # This is also used as a stop margin [m]
+      safe_distance_margin : 6.0 # This is also used as a stop margin [m]
       terminal_safe_distance_margin : 3.0 # Stop margin at the goal. This value cannot exceed safe distance margin. [m]
       hold_stop_velocity_threshold: 0.01 # The maximum ego velocity to hold stopping [m/s]
       hold_stop_distance_threshold: 0.3 # The ego keeps stopping if the distance to stop changes within the threshold [m]
@@ -88,7 +88,7 @@
 
       stop:
         max_lat_margin: 0.3 # lateral margin between the obstacles and ego's footprint
-        max_lat_margin_against_unknown: 0.3 # lateral margin between the unknown obstacles and ego's footprint
+        max_lat_margin_against_unknown: -0.3 # lateral margin between the unknown obstacles and ego's footprint
         crossing_obstacle:
           collision_time_margin : 4.0 # time threshold of collision between obstacle adn ego for cruise or stop [s]
 
@@ -200,7 +200,6 @@
 
       moving_object_speed_threshold: 0.5 # [m/s] how fast the object needs to move to be considered as "moving"
       moving_object_hysteresis_range: 0.1 # [m/s] hysteresis range used to prevent chattering when obstacle moves close to moving_object_speed_threshold
-
       time_margin_on_target_velocity: 1.5 # [s]
 
       lpf_gain_slow_down_vel: 0.99 # low-pass filter gain for slow down velocity
