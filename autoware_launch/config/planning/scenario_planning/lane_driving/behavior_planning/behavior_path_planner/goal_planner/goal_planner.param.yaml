@@ -55,6 +55,7 @@
         maximum_jerk: 1.0
         path_priority: "efficient_path" # "efficient_path" or "close_goal"
         efficient_path_order: ["SHIFT", "ARC_FORWARD", "ARC_BACKWARD"] # only lane based pull over(exclude freespace parking)
+        lane_departure_check_expansion_margin: 0.0
 
         # shift parking
         shift_parking:
@@ -64,6 +65,7 @@
           minimum_lateral_jerk: 0.5
           deceleration_interval: 15.0
           after_shift_straight_distance: 1.0
+          lane_departure_check_expansion_margin: 0.0
 
         # parallel parking path
         parallel_parking:
