@@ -20,8 +20,8 @@ Panels:
     Name: AutowareDateTimePanel
   - Class: rviz_plugins::AutowareStatePanel
     Name: AutowareStatePanel
-  - Class: real_time_factor_control_rviz_plugin/RealTimeFactorSliderPanel
-    Name: RealTimeFactorSliderPanel
+  - Class: rviz_plugins::SimulatedClockPanel
+    Name: SimulatedClockPanel
 Visualization Manager:
   Class: ""
   Displays:
