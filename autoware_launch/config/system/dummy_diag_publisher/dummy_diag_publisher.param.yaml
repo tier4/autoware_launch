@@ -14,4 +14,51 @@
 /**:
   ros__parameters:
     required_diags:
-      dummy_diag_empty: default
+      #example
+      #"node: name": default
+
+      # Debug
+      # "node_A: name_B": default
+
+      #map
+      "topic_state_monitor_pointcloud_map: map_topic_status": default
+
+      #control
+      # joy_controller_connection: default
+
+      #localization
+      "topic_state_monitor_pose_twist_fusion_filter_pose: localization_topic_status": default
+      "ndt_scan_matcher: scan_matching_status": default
+      "localization: localization_error_monitor": default
+      "localization: ekf_localizer": default
+
+      #system
+
+      # bagpacker: default
+      # NTP Offset: default
+      # CPU Temperature: default
+      # CPU Usage: default
+      # CPU Thermal Throttling: default
+      # CPU Frequency: default
+      # CPU Load Average: default
+      # GPU Temperature: default
+      # GPU Usage: default
+      # GPU Memory Usage: default
+      # GPU Thermal Throttling: default
+      # Memory Usage: default
+      # Network Usage: default
+      # Network Traffic: default
+      # HDD Temperature: default
+      # HDD Usage: default
+      # HDD PowerOnHours: default
+      # HDD TotalDataWritten: default
+      # High-load: default
+      # High-mem: default
+      # Tasks Summary: default
+
+      #vehicle
+
+      # vehicle_errors: default
+      # pacmod_errors: default
+      # pacmod_accel_brake_fault: default
+      # accel_brake_map_calibrator: default

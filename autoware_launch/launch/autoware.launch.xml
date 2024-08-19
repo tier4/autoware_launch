@@ -8,7 +8,7 @@
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
 
   <!-- launch module preset -->
-  <arg name="planning_module_preset" default="default" description="planning module preset"/>
+  <arg name="planning_module_preset" default="xx1" description="planning module preset"/>
 
   <!-- Optional parameters -->
   <!-- Modules to be launched -->
@@ -22,6 +22,7 @@
   <arg name="launch_planning" default="true" description="launch planning"/>
   <arg name="launch_control" default="true" description="launch control"/>
   <arg name="launch_api" default="true" description="launch api"/>
+
   <!-- Global parameters -->
   <arg name="use_sim_time" default="false" description="use_sim_time"/>
   <!-- Vehicle -->
@@ -37,14 +38,33 @@
   <arg name="launch_system_monitor" default="true" description="launch system monitor"/>
   <arg name="launch_dummy_diag_publisher" default="false" description="launch dummy diag publisher"/>
   <arg name="system_error_monitor_param_path" default="$(find-pkg-share autoware_launch)/config/system/system_error_monitor/system_error_monitor.param.yaml"/>
-  <arg name="diagnostic_graph_aggregator_graph_path" default="$(find-pkg-share autoware_launch)/config/system/diagnostic_graph_aggregator/autoware-main.yaml" description="diagnostic graph config"/>
+  <arg name="diagnostic_graph_aggregator_graph_path" default="$(find-pkg-share autoware_launch)/config/system/diagnostic_graph_aggregator/autoware.yaml" description="diagnostic graph config"/>
   <!-- Tools -->
   <arg name="rviz" default="true" description="launch rviz"/>
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
   <arg name="rviz_respawn" default="true"/>
   <!-- Perception -->
-  <arg name="perception_mode" default="lidar" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
+  <arg name="perception_mode" default="camera_lidar_radar_fusion" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
+  <arg name="use_traffic_light_recognition" default="true"/>
   <arg name="traffic_light_recognition/enable_fine_detection" default="true" description="enable traffic light fine detection"/>
+  <arg name="traffic_light_recognition/fusion_only" default="true" description="Whether to start only some of the signal recognition related nodes"/>
+  <!-- Planning -->
+  <arg name="use_experimental_lane_change_function" default="false"/>
+  <!-- Others -->
+  <arg name="use_foa" default="false"/>
+  <arg name="rviz_respawn" default="true"/>
+
+  <!-- external lane change setting -->
+  <let
+    name="scene_module_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/scene_module_manager.param.yaml"
+    unless="$(var use_foa)"
+  />
+  <let
+    name="scene_module_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/scene_module_manager_foa.param.yaml"
+    if="$(var use_foa)"
+  />
   <!-- Auto mode setting-->
   <arg name="enable_all_modules_auto_mode" default="false" description="enable all module's auto mode"/>
   <arg name="is_simulation" default="false" description="Autoware's behavior will change depending on whether this is a simulation or not."/>
@@ -97,8 +117,13 @@
 
   <!-- Perception -->
   <group if="$(var launch_perception)">
+    <let name="occupancy_grid_map_method" value="multi_lidar_pointcloud_based_occupancy_grid_map" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+    <let name="occupancy_grid_map_method" value="pointcloud_based_occupancy_grid_map" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_perception_component.launch.xml">
       <arg name="data_path" value="$(var data_path)"/>
+      <arg name="occupancy_grid_map_method" value="$(var occupancy_grid_map_method)"/>
+      <arg name="sensor_model" value="$(var sensor_model)"/>
+      <arg name="traffic_light_recognition/fusion_only" value="$(var traffic_light_recognition/fusion_only)"/>
     </include>
   </group>
 
@@ -106,6 +131,8 @@
   <group if="$(var launch_planning)">
     <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_planning_component.launch.xml">
       <arg name="module_preset" value="$(var planning_module_preset)"/>
+      <arg name="use_experimental_lane_change_function" value="$(var use_experimental_lane_change_function)"/>
+      <arg name="scene_module_manager_param_path" value="$(var scene_module_manager_param_path)"/>
       <arg name="enable_all_modules_auto_mode" value="$(var enable_all_modules_auto_mode)"/>
       <arg name="is_simulation" value="$(var is_simulation)"/>
     </include>

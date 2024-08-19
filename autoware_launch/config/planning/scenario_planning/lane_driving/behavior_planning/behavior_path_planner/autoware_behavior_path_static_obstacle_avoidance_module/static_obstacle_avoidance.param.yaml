@@ -177,12 +177,12 @@
           motorcycle: true                              # [-]
           pedestrian: true                              # [-]
         # safety check configuration
-        enable: true                                    # [-]
-        check_current_lane: false                       # [-]
-        check_shift_side_lane: true                     # [-]
-        check_other_side_lane: false                    # [-]
-        check_unavoidable_object: false                 # [-]
-        check_other_object: true                        # [-]
+        enable: true                                     # [-]
+        check_current_lane: false                        # [-]
+        check_shift_side_lane: true                      # [-]
+        check_other_side_lane: false                     # [-]
+        check_unavoidable_object: true                   # [-]
+        check_other_object: true                         # [-]
         # collision check parameters
         check_all_predicted_path: false                 # [-]
         safety_check_backward_distance: 100.0           # [m]
@@ -211,8 +211,8 @@
         # avoidance lateral parameters
         lateral:
           th_avoid_execution: 0.09                      # [m] FOR DEVELOPER
-          th_small_shift_length: 0.101                  # [m] FOR DEVELOPER
-          soft_drivable_bound_margin: 0.3               # [m]
+          th_small_shift_length: 0.501                  # [m] FOR DEVELOPER
+          soft_drivable_bound_margin: 0.8               # [m]
           hard_drivable_bound_margin: 0.3               # [m]
           max_right_shift_length: 5.0                   # [m] FOR DEVELOPER
           max_left_shift_length: 5.0                    # [m] FOR DEVELOPER
