@@ -58,7 +58,7 @@
 
     <arg name="use_traffic_light_recognition" value="$(var use_traffic_light_recognition)"/>
     <arg name="traffic_light_recognition/enable_fine_detection" value="$(var traffic_light_recognition/enable_fine_detection)"/>
-    <arg name="traffic_light_recognition/fusion_only" value="true"/>
+    <arg name="traffic_light_recognition/fusion_only" value="$(var traffic_light_recognition/fusion_only)"/>
     <arg name="traffic_light_image_number" value="1"/>
 
     <!-- object recognition parameters -->

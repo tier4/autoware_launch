@@ -123,6 +123,7 @@
       <arg name="data_path" value="$(var data_path)"/>
       <arg name="occupancy_grid_map_method" value="$(var occupancy_grid_map_method)"/>
       <arg name="sensor_model" value="$(var sensor_model)"/>
+      <arg name="traffic_light_recognition/fusion_only" value="$(var traffic_light_recognition/fusion_only)"/>
     </include>
   </group>
 
