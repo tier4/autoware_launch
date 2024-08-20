@@ -13,7 +13,7 @@
     description="options: obstacle_pointcloud, occupancy_grid (occupancy_grid_map_method must be laserscan_based_occupancy_grid_map)"
   />
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
-  <arg name="lidar_detection_model" default="pointpainting" description="options: `centerpoint`, `apollo`, `pointpainting`, `clustering`"/>
+  <arg name="lidar_detection_model" default="transfusion" description="options: `transfusion`, `centerpoint`, `apollo`, `pointpainting`, `clustering`"/>
   <arg name="traffic_light_recognition/fusion_only" default="true" description="Whether to start only some of the signal recognition related nodes"/>
 
   <group if="$(eval &quot;'$(var sensor_model)' == 'aip_xx1_gen2'&quot;)">
