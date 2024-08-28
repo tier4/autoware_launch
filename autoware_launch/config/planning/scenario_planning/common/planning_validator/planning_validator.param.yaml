@@ -17,8 +17,8 @@
 
     thresholds:
       interval: 100.0
-      relative_angle: 2.0  # (= 115 degree)
-      curvature: 1.0
+      relative_angle: 2.5  # (= 143.3 degree)
+      curvature: 2.0
       lateral_acc: 9.8
       longitudinal_max_acc: 9.8
       longitudinal_min_acc: -9.8

@@ -5,7 +5,85 @@
       path: vehicle
       analyzers:
         vehicle_errors:
-          type: diagnostic_aggregator/GenericAnalyzer
+          type: diagnostic_aggregator/AnalyzerGroup
           path: vehicle_errors
-          contains: [": vehicle_errors"]
-          timeout: 1.0
+          analyzers:
+            lsdb_errors:
+              type: diagnostic_aggregator/AnalyzerGroup
+              path: lsdb_errors
+              analyzers:
+                internal_error:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: internal_error
+                  contains: [": Internal error"]
+                  timeout: 1.0
+                encoder_abz_signal_error:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: encoder_abz_signal_error
+                  contains: [": Encoder ABZ signal error"]
+                  timeout: 1.0
+                eEncoder_uvw_signal_error:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: eEncoder_uvw_signal_error
+                  contains: [": Encoder UVW signal error"]
+                  timeout: 1.0
+                encoder_counting_error:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: encoder_counting_error
+                  contains: [": Encoder counting error"]
+                  timeout: 1.0
+                driver_temperature_too_high:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: driver_temperature_too_high
+                  contains: [": Driver temperature too high"]
+                  timeout: 1.0
+                driver_bus_voltage_too_high:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: driver_bus_voltage_too_high
+                  contains: [": Driver bus voltage too high"]
+                  timeout: 1.0
+                driver_bus_voltage_too_low:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: driver_bus_voltage_too_low
+                  contains: [": Driver bus voltage too low"]
+                  timeout: 1.0
+                driver_output_short_circuit:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: driver_output_short_circuit
+                  contains: [": Driver output short-circuit"]
+                  timeout: 1.0
+                braking_resistor_temperature_too_high:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: braking_resistor_temperature_too_high
+                  contains: [": Braking resistor temperature too high"]
+                  timeout: 1.0
+                following_error_over_range:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: following_error_over_range
+                  contains: [": Following error over-range"]
+                  timeout: 1.0
+                i2t_error:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: i2t_error
+                  contains: [": I²T error(Overload)"]
+                  timeout: 1.0
+                speed_following_error_over_range:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: speed_following_error_over_range
+                  contains: [": Speed following error over-range"]
+                  timeout: 1.0
+                motor_temperature_too_high:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: motor_temperature_too_high
+                  contains: [": Motor temperature too high"]
+                  timeout: 1.0
+                searching_motor_failed:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: searching_motor_failed
+                  contains: [": Searching motor failed(Communication encoder)"]
+                  timeout: 1.0
+                communication_failed:
+                  type: diagnostic_aggregator/GenericAnalyzer
+                  path: communication_failed
+                  contains: [": Communication failed"]
+                  timeout: 1.0

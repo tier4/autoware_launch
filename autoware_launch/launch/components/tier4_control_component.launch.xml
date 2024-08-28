@@ -41,5 +41,11 @@
     <arg name="external_cmd_selector_param_path" value="$(find-pkg-share autoware_launch)/config/control/external_cmd_selector/external_cmd_selector.param.yaml"/>
     <arg name="aeb_param_path" value="$(find-pkg-share autoware_launch)/config/control/autonomous_emergency_braking/autonomous_emergency_braking.param.yaml"/>
     <arg name="enable_autonomous_emergency_braking" value="$(var enable_autonomous_emergency_braking)"/>
+
+    <arg name="csv_path_accel_map" value="$(find-pkg-share individual_params)/config/$(var vehicle_id)/control_launch/accel_map.csv"/>
+    <arg name="csv_path_brake_map" value="$(find-pkg-share individual_params)/config/$(var vehicle_id)/control_launch/brake_map.csv"/>
+    <arg name="use_emergency_handling" value="true"/>
+    <arg name="use_start_request" value="true"/>
+    <arg name="initial_selector_mode" value="local"/>
   </include>
 </launch>

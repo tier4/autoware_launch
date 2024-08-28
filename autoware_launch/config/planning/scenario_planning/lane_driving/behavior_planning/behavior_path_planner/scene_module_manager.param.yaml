@@ -36,7 +36,7 @@
       max_module_size: 1
 
     start_planner:
-      enable_module: true
+      enable_module: false
       enable_rtc: true
       enable_simultaneous_execution_as_approved_module: true
       enable_simultaneous_execution_as_candidate_module: false
@@ -67,8 +67,9 @@
       priority: 5
       max_module_size: 1
 
+
     avoidance_by_lc:
-      enable_module: true
+      enable_module: false
       enable_rtc: true
       enable_simultaneous_execution_as_approved_module: false
       enable_simultaneous_execution_as_candidate_module: false

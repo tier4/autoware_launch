@@ -14,4 +14,73 @@
 /**:
   ros__parameters:
     required_diags:
-      dummy_diag_empty: default
+      #control
+      joy_controller_connection: default
+
+      #localization
+      localization_accuracy: default
+      ndt_scan_matcher: default
+
+      #sensing
+      ##hesai
+      hesai_status: default
+      hesai_ptp: default
+      hesai_temperature: default
+      hesai_rpm: default
+      hesai_voltage: default
+      ##imu
+      imu_topic_status: default
+
+      #system
+      bagpacker: default
+      disk_status: default
+      NTP Offset: default
+      CPU Temperature: default
+      CPU Usage: default
+      CPU Thermal Throttling: default
+      CPU Frequency: default
+      CPU Load Average: default
+      GPU Temperature: default
+      GPU Usage: default
+      GPU Memory Usage: default
+      GPU Thermal Throttling: default
+      GPU Frequency: default
+      CMOS Battery Status: default
+      Memory Usage: default
+      Network Usage: default
+      Network Traffic: default
+      Network CRC Error: default
+      IP Packet Reassembles Failed: default
+      HDD Connection: default
+      HDD Temperature: default
+      HDD Usage: default
+      HDD PowerOnHours: default
+      HDD TotalDataWritten: default
+      HDD ReadDataRate: default
+      HDD ReadIOPS: default
+      HDD RecoveredError: default
+      HDD WriteDataRate: default
+      HDD WriteIOPS: default
+      High-load: default
+      High-mem: default
+      Tasks Summary: default
+
+      #vehicle
+      vehicle_errors: default
+      accel_brake_map_calibrator: default
+      #lsdb
+      Internal error: default
+      Encoder ABZ signal error: default
+      Encoder UVW signal error: default
+      Encoder counting error: default
+      Driver temperature too high: default
+      Driver bus voltage too high: default
+      Driver bus voltage too low: default
+      Driver output short-circuit: default
+      Braking resistor temperature too high: default
+      Following error over-range: default
+      I²T error(Overload): default
+      Speed following error over-range: default
+      Motor temperature too high: default
+      Searching motor failed(Communication encoder): default
+      Communication failed: default

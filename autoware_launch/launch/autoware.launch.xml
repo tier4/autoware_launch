@@ -37,7 +37,9 @@
   <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/>
   <!-- Perception -->
   <arg name="perception_mode" default="lidar" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
-  <arg name="traffic_light_recognition/enable_fine_detection" default="true" description="enable traffic light fine detection"/>
+  <arg name="traffic_light_recognition/enable_fine_detection" default="false" description="enable traffic light fine detection"/>
+  <!-- Localization -->
+  <arg name="localization_mode" default="lidar" description="select localization mode. lidar, camera"/>
 
   <!-- Global parameters -->
   <group scoped="false">
@@ -98,7 +100,10 @@
 
   <!-- Control -->
   <group if="$(var launch_control)">
-    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_control_component.launch.xml"/>
+    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_control_component.launch.xml">
+      <arg name="enable_obstacle_collision_checker" value="false"/>
+      <arg name="lateral_controller_mode" value="pure_pursuit"/>
+    </include>
   </group>
 
   <!-- API -->
