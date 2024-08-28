@@ -7,7 +7,7 @@
   <arg name="use_vector_map" default="true" description="use vector map in prediction"/>
   <arg name="use_pointcloud_map" default="true" description="use pointcloud map in detection"/>
   <arg name="use_roi_based_cluster" default="true" description="launch roi_based_cluster in clustering"/>
-  <arg name="use_low_intensity_cluster_filter" default="true" description="launch low_intensity_cluster_filter in clustering"/>
+  <arg name="use_low_intensity_cluster_filter" default="false" description="launch low_intensity_cluster_filter in clustering"/>
   <arg name="use_perception_online_evaluator" default="false" description="launch perception online evaluator"/>
   <arg name="use_detection_by_tracker" default="true" description="launch detection_by_tracker function"/>
   <arg name="use_radar_tracking_fusion" default="true" description="if true, radar objects are merged in tracking module. Otherwise, radar objects are merged in detection module."/>
