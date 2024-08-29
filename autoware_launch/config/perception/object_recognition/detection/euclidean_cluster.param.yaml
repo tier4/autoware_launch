@@ -2,5 +2,6 @@
   ros__parameters:
     max_cluster_size: 1000
     min_cluster_size: 10
-    tolerance: 0.7
+    target_frame: base_link
+    tolerance: 0.5
     use_height: false

@@ -1,0 +1,12 @@
+/**:
+  ros__parameters:
+    filter_field_name: z
+    filter_limit_max: 2.5
+    filter_limit_min: 0.1
+    filter_limit_negative: false
+    input_frame: base_link
+    output_frame: base_link
+    keep_organized: false
+    leaf_size: 0.1
+    min_points_per_voxel: 1
+
