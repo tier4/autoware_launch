@@ -66,9 +66,9 @@
       max_acc: 2.0                            # max longitudinal acceleration in force acceleration mode [m/ss]
       max_jerk: 5.0                           # max longitudinal jerk in force acceleration mode         [m/sss]
       max_lateral_acc: 1.0                    # max lateral acceleration in force acceleration mode       [m/ss]
-      engage_velocity: 0.25                   # engage velocity in force acceleration mode               [m/s]
-      engage_acceleration: 0.5                # engage acceleration in force acceleration mode            [m/ss]
+      engage_velocity: 0.5                    # engage velocity in force acceleration mode               [m/s]
+      engage_acceleration: 1.0                # engage acceleration in force acceleration mode            [m/ss]
 
     # force slow driving from stopping state
     force_slow_driving:
-      velocity: 1.39                          # velocity in slow driving mode [m/s]
+      velocity: 2.78                          # velocity in slow driving mode [m/s]
