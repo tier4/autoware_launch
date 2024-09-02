@@ -17,7 +17,7 @@
   <arg name="detected_objects_filter_method" default="lanelet_filter" description="options: lanelet_filter, position_filter"/>
   <arg name="detected_objects_validation_method" default="obstacle_pointcloud" description="options: obstacle_pointcloud, occupancy_grid (must be used with laserscan_based_occupancy_grid_map)"/>
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
-  <arg name="lidar_detection_model" default="pointpainting" description="options: `centerpoint`, `apollo`, `pointpainting`, `clustering`"/>
+  <arg name="lidar_detection_model" default="pointpainting" description="options: `transfusion`, `centerpoint`, `apollo`, `pointpainting`, `clustering`"/>
 
   <group if="$(eval &quot;'$(var sensor_model)' == 'aip_xx1_gen2'&quot;)">
     <!-- In the Gen2 sensor configuration, the traffic_light_recognition node is launched not through the conventional autoware.universe/launch/tier4_perception_launch but with its own custom launch file.
