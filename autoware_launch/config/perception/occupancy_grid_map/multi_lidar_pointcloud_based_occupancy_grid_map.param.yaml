@@ -1,4 +1,3 @@
-# sample grid map fusion parameters for sample sensor kit
 /**:
     ros__parameters:
       # shared parameters
@@ -12,9 +11,9 @@
         map_length_x: 150.0 # [m]
         map_length_y: 150.0 # [m]
 
-      # downsample input pointcloud
-      downsample_input_pointcloud: true
-      downsample_voxel_size: 0.25 # [m]
+        # downsample input pointcloud
+        downsample_input_pointcloud: true
+        downsample_voxel_size: 0.25 # [m]
 
       # each grid map parameters
       ogm_creation_config:
@@ -49,6 +48,8 @@
         # reliability of each sensor (0.0 ~ 1.0) only work with "log-odds" and "dempster-shafer"
         input_ogm_reliabilities:
           - 1.0
+          - 0.6
+          - 0.6
           - 0.6
           - 0.6
 
