@@ -76,5 +76,4 @@
       average_num: 1000
       steering_offset_limit: 0.02
 
-    debug_publish_predicted_trajectory: true  # publish predicted trajectory for debugging, considering Frenet coordinate system
-    debug_publish_resampled_reference_trajectory: false # publish resampled reference trajectory in world coordinate system
+    publish_debug_trajectories: true # flag to publish predicted trajectory and resampled reference trajectory for debug purpose
