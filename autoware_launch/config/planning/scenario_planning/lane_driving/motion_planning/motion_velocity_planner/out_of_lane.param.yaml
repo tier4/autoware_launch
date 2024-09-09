@@ -30,7 +30,7 @@
 
       ego:
         # extra footprint offsets to calculate out of lane collisions
-        extra_front_offset: 0.0 # [m] extra footprint front distance
+        extra_front_offset: 0.5 # [m] extra footprint front distance
         extra_rear_offset: 0.0 # [m] extra footprint rear distance
         extra_right_offset: 0.0 # [m] extra footprint right distance
         extra_left_offset: 0.0 # [m] extra footprint left distance
