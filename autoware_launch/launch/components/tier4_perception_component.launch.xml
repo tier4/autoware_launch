@@ -5,6 +5,7 @@
     default="pointcloud_based_occupancy_grid_map"
     description="options: pointcloud_based_occupancy_grid_map, laserscan_based_occupancy_grid_map, multi_lidar_pointcloud_based_occupancy_grid_map"
   />
+  <arg name="use_image_segmentation_based_filter" default="false" description="launch image_segmentation_based_filter in clustering"/>
   <arg name="occupancy_grid_map_updater" default="binary_bayes_filter" description="options: binary_bayes_filter"/>
   <arg name="detected_objects_filter_method" default="lanelet_filter" description="options: lanelet_filter, position_filter"/>
   <arg
@@ -21,6 +22,7 @@
     <arg name="pointcloud_container_name" value="$(var pointcloud_container_name)"/>
     <arg name="occupancy_grid_map_method" value="$(var occupancy_grid_map_method)"/>
     <arg name="occupancy_grid_map_updater" value="$(var occupancy_grid_map_updater)"/>
+    <arg name="use_image_segmentation_based_filter" value="$(var use_image_segmentation_based_filter)"/>
     <arg name="objects_filter_method" value="$(var detected_objects_filter_method)"/>
     <arg name="objects_validation_method" value="$(var detected_objects_validation_method)"/>
     <arg name="data_path" value="$(var data_path)"/>
