@@ -1,3 +1,5 @@
+# This is the default setting file of diagnostic_graph_aggregator for vehicle usage
+# We will use autoware.yaml to replace this file for vehicle test in the future
 files:
   - { path: $(find-pkg-share system_diagnostic_monitor)/config/autoware-main.yaml }
 
