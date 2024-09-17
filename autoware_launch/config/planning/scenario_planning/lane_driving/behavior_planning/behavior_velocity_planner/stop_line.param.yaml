@@ -1,8 +1,8 @@
 /**:
   ros__parameters:
     stop_line:
-      stop_margin: 1.4
-      stop_duration_sec: 1.0
+      stop_margin: 0.0
+      stop_duration_sec: 3.0
       use_initialization_stop_line_state: true
       hold_stop_margin_distance: 2.0
 
