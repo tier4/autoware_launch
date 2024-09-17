@@ -9,6 +9,9 @@ units:
       - { type: link, link: /autoware/control/performance_monitoring/lane_departure }
       - { type: link, link: /autoware/control/performance_monitoring/trajectory_deviation }
       - { type: link, link: /autoware/control/performance_monitoring/control_state }
+      - { type: link, link: /control/012-velocity_deviation }
+
+
 
   - path: /autoware/control/local
     type: and
@@ -66,3 +69,9 @@ units:
     type: diag
     node: external_cmd_converter
     name: remote_control_topic_status
+
+  - path: /control/012-velocity_deviation
+    type: diag
+    node: control_validator
+    name: control_validation_velocity_deviation
+    timeout: 1.0
