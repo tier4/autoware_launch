@@ -20,7 +20,7 @@
     emergency_state_traj_rot_dev: 0.7854
 
     # drive state
-    kp: 0.6
+    kp: 0.4
     ki: 0.0
     kd: 0.0
     max_out: 1.0
@@ -31,7 +31,7 @@
     min_i_effort: -0.3
     max_d_effort: 0.0
     min_d_effort: 0.0
-    lpf_vel_error_gain: 0.99
+    lpf_vel_error_gain: 0.98
     enable_integration_at_low_speed: false
     current_vel_threshold_pid_integration: 0.5
     time_threshold_before_pid_integration: 2.0
