@@ -42,6 +42,8 @@
     <arg name="objects_filter_method" value="$(var detected_objects_filter_method)"/>
     <arg name="objects_validation_method" value="$(var detected_objects_validation_method)"/>
     <arg name="data_path" value="$(var data_path)"/>
+    <arg name="transfusion_model_name" value="transfusion_xx1"/>
+    <arg name="transfusion_model_path" value="/opt/autoware/mlmodels/$(var lidar_detection_model)"/>
 
     <arg name="use_traffic_light_recognition" value="$(var use_traffic_light_recognition)"/>
     <arg name="traffic_light_recognition/enable_fine_detection" value="$(var traffic_light_recognition/enable_fine_detection)"/>
