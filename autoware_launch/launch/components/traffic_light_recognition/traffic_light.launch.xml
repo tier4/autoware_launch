@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="use_crosswalk_traffic_light_estimator" default="true" description="output pedestrian's traffic light signals"/>
+
+  <arg name="input/cloud" default="/sensing/lidar/top/pointcloud_raw" description="point cloud for occlusion prediction"/>
+  <arg name="internal/traffic_signals" default="/perception/traffic_light_recognition/internal/traffic_signals"/>
+  <arg name="fusion/traffic_signals" default="/perception/traffic_light_recognition/fusion/traffic_signals"/>
+  <arg name="external/traffic_signals" default="/perception/traffic_light_recognition/external/traffic_signals"/>
+  <arg name="output/traffic_signals" default="/perception/traffic_light_recognition/traffic_signals"/>
+  <arg name="crosswalk_traffic_light_estimator_param_file" default="$(find-pkg-share crosswalk_traffic_light_estimator)/config/crosswalk_traffic_light_estimator.param.yaml"/>
+
+  <group>
+    <push-ros-namespace namespace="perception"/>
+    <push-ros-namespace namespace="traffic_light_recognition"/>
+
+    <!-- traffic light occlusion predictor for some cameras -->
+    <arg name="all_camera_namespaces" default="[camera6, camera5, camera2, camera0]"/>
+    <include file="$(find-pkg-share autoware_launch)/launch/components/traffic_light_recognition/traffic_light_occlusion_predictor.launch.py">
+      <arg name="all_camera_namespaces" value="$(var all_camera_namespaces)"/>
+    </include>
+
+    <!-- traffic light multi camera fusion -->
+    <group>
+      <node pkg="traffic_light_multi_camera_fusion" exec="traffic_light_multi_camera_fusion_node" name="traffic_light_multi_camera_fusion" output="screen">
+        <param name="camera_namespaces" value="$(var all_camera_namespaces)"/>
+        <param name="perform_group_fusion" value="true"/>
+        <remap from="~/input/vector_map" to="/map/vector_map"/>
+        <remap from="~/output/traffic_signals" to="$(var fusion/traffic_signals)"/>
+      </node>
+    </group>
+
+    <!-- crosswalk traffic light estimator -->
+    <group if="$(var use_crosswalk_traffic_light_estimator)">
+      <node pkg="crosswalk_traffic_light_estimator" exec="crosswalk_traffic_light_estimator_node" name="crosswalk_traffic_light_estimator" output="screen">
+        <remap from="~/input/vector_map" to="/map/vector_map"/>
+        <remap from="~/input/route" to="/planning/mission_planning/route"/>
+        <remap from="~/input/classified/traffic_signals" to="$(var fusion/traffic_signals)"/>
+        <remap from="~/output/traffic_signals" to="$(var internal/traffic_signals)"/>
+        <param from="$(var crosswalk_traffic_light_estimator_param_file)"/>
+      </node>
+    </group>
+
+    <!-- topic relay (only when crosswalk traffic light estimator is disabled) -->
+    <group unless="$(var use_crosswalk_traffic_light_estimator)">
+      <node pkg="topic_tools" exec="relay" name="fusion_signals_relay" output="screen">
+        <param name="input_topic" value="$(var fusion/traffic_signals)"/>
+        <param name="output_topic" value="$(var internal/traffic_signals)"/>
+        <param name="type" value="autoware_auto_perception_msgs/msg/TrafficSignalArray"/>
+      </node>
+    </group>
+
+    <!-- V2X fusion -->
+    <group>
+      <include file="$(find-pkg-share traffic_light_arbiter)/launch/traffic_light_arbiter.launch.xml">
+        <arg name="perception_traffic_signals" value="$(var internal/traffic_signals)"/>
+        <arg name="external_traffic_signals" value="$(var external/traffic_signals)"/>
+        <arg name="output_traffic_signals" value="$(var output/traffic_signals)"/>
+      </include>
+    </group>
+
+    <!-- visualizer -->
+    <group>
+      <include file="$(find-pkg-share traffic_light_visualization)/launch/traffic_light_map_visualizer.launch.xml"/>
+    </group>
+  </group>
+</launch>
