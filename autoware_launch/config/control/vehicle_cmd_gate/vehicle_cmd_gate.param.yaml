@@ -23,7 +23,7 @@
       lat_jerk_lim: [7.0, 7.0, 7.0, 6.0]
       actual_steer_diff_lim: [1.0, 1.0, 1.0, 0.8]
     on_transition:
-      vel_lim: 60.0
+      vel_lim: 50.0
       reference_speed_points: [20.0, 30.0]
       steer_lim: [1.0, 0.8]
       steer_rate_lim: [1.0, 0.8]
