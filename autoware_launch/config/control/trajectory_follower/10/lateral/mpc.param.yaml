@@ -5,6 +5,7 @@
     use_steer_prediction: false     # flag for using steer prediction (do not use steer measurement)
     admissible_position_error: 5.0  # stop mpc calculation when error is larger than the following value
     admissible_yaw_error_rad: 1.57  # stop mpc calculation when error is larger than the following value
+    use_delayed_initial_state: true
 
     # -- path smoothing --
     enable_path_smoothing: false    # flag for path smoothing
@@ -74,3 +75,5 @@
       update_steer_threshold: 0.035
       average_num: 1000
       steering_offset_limit: 0.02
+
+    publish_debug_trajectories: true # flag to publish predicted trajectory and resampled reference trajectory for debug purpose
