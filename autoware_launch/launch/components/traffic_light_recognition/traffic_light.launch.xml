@@ -2,12 +2,12 @@
 <launch>
   <arg name="use_crosswalk_traffic_light_estimator" default="true" description="output pedestrian's traffic light signals"/>
 
-  <arg name="input/cloud" default="/sensing/lidar/top/pointcloud_raw" description="point cloud for occlusion prediction"/>
+  <arg name="input/cloud" default="/perception/common/pointcloud" description="point cloud for occlusion prediction"/>
   <arg name="internal/traffic_signals" default="/perception/traffic_light_recognition/internal/traffic_signals"/>
   <arg name="fusion/traffic_signals" default="/perception/traffic_light_recognition/fusion/traffic_signals"/>
   <arg name="external/traffic_signals" default="/perception/traffic_light_recognition/external/traffic_signals"/>
   <arg name="output/traffic_signals" default="/perception/traffic_light_recognition/traffic_signals"/>
-  <arg name="crosswalk_traffic_light_estimator_param_file" default="$(find-pkg-share crosswalk_traffic_light_estimator)/config/crosswalk_traffic_light_estimator.param.yaml"/>
+  <arg name="crosswalk_traffic_light_estimator_param_file" default="$(find-pkg-share autoware_crosswalk_traffic_light_estimator)/config/crosswalk_traffic_light_estimator.param.yaml"/>
 
   <group>
     <push-ros-namespace namespace="perception"/>
@@ -31,7 +31,7 @@
 
     <!-- crosswalk traffic light estimator -->
     <group if="$(var use_crosswalk_traffic_light_estimator)">
-      <node pkg="crosswalk_traffic_light_estimator" exec="crosswalk_traffic_light_estimator_node" name="crosswalk_traffic_light_estimator" output="screen">
+      <node pkg="autoware_crosswalk_traffic_light_estimator" exec="crosswalk_traffic_light_estimator_node" name="crosswalk_traffic_light_estimator" output="screen">
         <remap from="~/input/vector_map" to="/map/vector_map"/>
         <remap from="~/input/route" to="/planning/mission_planning/route"/>
         <remap from="~/input/classified/traffic_signals" to="$(var fusion/traffic_signals)"/>
@@ -45,7 +45,7 @@
       <node pkg="topic_tools" exec="relay" name="fusion_signals_relay" output="screen">
         <param name="input_topic" value="$(var fusion/traffic_signals)"/>
         <param name="output_topic" value="$(var internal/traffic_signals)"/>
-        <param name="type" value="autoware_auto_perception_msgs/msg/TrafficSignalArray"/>
+        <param name="type" value="autoware_perception_msgs/msg/TrafficLightArray"/>
       </node>
     </group>
 
