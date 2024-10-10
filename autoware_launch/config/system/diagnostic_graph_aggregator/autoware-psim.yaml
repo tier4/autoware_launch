@@ -1,6 +1,6 @@
 files:
   # prettier-ignore
-  - { path: $(find-pkg-share autoware_launch)/config/system/diagnostic_graph_aggregator/autoware.yaml }
+  - { path: $(find-pkg-share autoware_launch)/config/system/diagnostic_graph_aggregator/autoware-main.yaml }
 
 edits:
   - { type: remove, path: /autoware/map/topic_rate_check/pointcloud_map }
