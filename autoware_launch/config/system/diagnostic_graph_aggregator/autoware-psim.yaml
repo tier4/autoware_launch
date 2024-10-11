@@ -9,3 +9,9 @@ edits:
   - { type: remove, path: /autoware/localization/sensor_fusion_status }
   - { type: remove, path: /autoware/localization/topic_rate_check/pose_twist_fusion }
   - { type: remove, path: /autoware/perception/topic_rate_check/pointcloud }
+  - { type: remove, path: /autoware/hardware/autonomous_available }
+  - { type: remove, path: /autoware/hardware/pull_over_available }
+  - { type: remove, path: /autoware/hardware/comfortable_stop_available }
+  - { type: remove, path: /autoware/sensing/autonomous_available }
+  - { type: remove, path: /autoware/sensing/pull_over_available }
+  - { type: remove, path: /autoware/sensing/comfortable_stop_available }
