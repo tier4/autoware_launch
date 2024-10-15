@@ -26,7 +26,7 @@
         enable_approaching: false
         additional_safe_distance_margin: 3.0 # [m]
         min_safe_distance_margin: 3.0 # [m]
-      suppress_sudden_obstacle_stop: false
+      suppress_sudden_obstacle_stop: true
 
       stop_obstacle_type:
         unknown: true
@@ -98,7 +98,7 @@
 
       stop:
         max_lat_margin: 0.3 # lateral margin between the obstacles and ego's footprint
-        max_lat_margin_against_unknown: 0.3 # lateral margin between the unknown obstacles and ego's footprint
+        max_lat_margin_against_unknown: -0.3 # lateral margin between the unknown obstacles and ego's footprint
         crossing_obstacle:
           collision_time_margin : 4.0 # time threshold of collision between obstacle adn ego for cruise or stop [s]
 
