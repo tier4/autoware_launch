@@ -62,6 +62,36 @@ units:
       - { type: link, link: /autoware/hardware/process/memory }
       - { type: link, link: /autoware/hardware/cmos_battery }
 
+  - path: /autoware/hardware/logging_ecu/summary
+    type: and
+    list:
+      - { type: link, link: /autoware/hardware/logging_ecu/cpu/temperature }
+      - { type: link, link: /autoware/hardware/logging_ecu/cpu/load_average }
+      - { type: link, link: /autoware/hardware/logging_ecu/cpu/frequency }
+      - { type: link, link: /autoware/hardware/logging_ecu/cpu/usage }
+      # - { type: link, link: /autoware/hardware/logging_ecu/cpu/thermal_throttling }
+      # - { type: link, link: /autoware/hardware/logging_ecu/storage/total_data_written }
+      # - { type: link, link: /autoware/hardware/logging_ecu/storage/power_on_hours }
+      - { type: link, link: /autoware/hardware/logging_ecu/storage/usage }
+      # - { type: link, link: /autoware/hardware/logging_ecu/storage/temperature }
+      - { type: link, link: /autoware/hardware/logging_ecu/storage/connection }
+      # - { type: link, link: /autoware/hardware/logging_ecu/storage/recovered_error }
+      - { type: link, link: /autoware/hardware/logging_ecu/storage/load }
+      - { type: link, link: /autoware/hardware/logging_ecu/clock/clock_offset }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/tasks_summary }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/load }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/memory }
+      - { type: link, link: /autoware/hardware/logging_ecu/memory/usage }
+      # - { type: link, link: /autoware/hardware/logging_ecu/gpu/temperature }   ---> to be confirmed. Probably because the nvidia driver it too old
+      # - { type: link, link: /autoware/hardware/logging_ecu/gpu/gpu_usage }
+      # - { type: link, link: /autoware/hardware/logging_ecu/gpu/memory_usage }
+      # - { type: link, link: /autoware/hardware/logging_ecu/gpu/thermal_throttling }
+      # - { type: link, link: /autoware/hardware/logging_ecu/gpu/frequency }
+      - { type: link, link: /autoware/hardware/logging_ecu/network/network_usage }
+      - { type: link, link: /autoware/hardware/logging_ecu/network/network_traffic }
+      - { type: link, link: /autoware/hardware/logging_ecu/network/network_crc_error }
+      - { type: link, link: /autoware/hardware/logging_ecu/network/ip_packet_reassembles_failed }
+
   # Intermediate paths
 
   - path: /autoware/hardware/storage/load
@@ -89,6 +119,34 @@ units:
       - { type: link, link: /autoware/hardware/process/memory/proc-2 }
       - { type: link, link: /autoware/hardware/process/memory/proc-3 }
       - { type: link, link: /autoware/hardware/process/memory/proc-4 }
+
+  ### logging_ecu monitoring
+  - path: /autoware/hardware/logging_ecu/storage/load
+    type: and
+    list:
+      - { type: link, link: /autoware/hardware/logging_ecu/storage/read_data_rate }
+      - { type: link, link: /autoware/hardware/logging_ecu/storage/read_iops }
+      - { type: link, link: /autoware/hardware/logging_ecu/storage/write_data_rate }
+      - { type: link, link: /autoware/hardware/logging_ecu/storage/write_iops }
+
+  - path: /autoware/hardware/logging_ecu/process/load
+    type: and
+    list:
+      - { type: link, link: /autoware/hardware/logging_ecu/process/load/proc-0 }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/load/proc-1 }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/load/proc-2 }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/load/proc-3 }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/load/proc-4 }
+
+  - path: /autoware/hardware/logging_ecu/process/memory
+    type: and
+    list:
+      - { type: link, link: /autoware/hardware/logging_ecu/process/memory/proc-0 }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/memory/proc-1 }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/memory/proc-2 }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/memory/proc-3 }
+      - { type: link, link: /autoware/hardware/logging_ecu/process/memory/proc-4 }
+  ### logging_ecu monitoring
 
   # Intermediate paths
 
@@ -324,4 +382,230 @@ units:
     type: diag
     node: voltage_monitor
     name: CMOS Battery Status
+    timeout: 3.0
+
+  ### logging_ecu monitoring ###
+
+  - path: /autoware/hardware/logging_ecu/clock/clock_offset
+    type: diag
+    node: ntp_monitor_logging_ecu
+    name: NTP Offset
+    timeout: 10.0
+
+  - path: /autoware/hardware/logging_ecu/cpu/temperature
+    type: diag
+    node: cpu_monitor_logging_ecu
+    name: CPU Temperature
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/cpu/usage
+    type: diag
+    node: cpu_monitor_logging_ecu
+    name: CPU Usage
+    timeout: 3.0
+
+  #   To be confirmed, logging_ecu cannot get thermal_throttling date
+  # - path: /autoware/hardware/logging_ecu/cpu/thermal_throttling
+  #   type: diag
+  #   node: cpu_monitor
+  #   name: CPU Thermal Throttling
+  #   timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/cpu/frequency
+    type: diag
+    node: cpu_monitor_logging_ecu
+    name: CPU Frequency
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/cpu/load_average
+    type: diag
+    node: cpu_monitor_logging_ecu
+    name: CPU Load Average
+    timeout: 3.0
+
+  #  ---> to be confirmed. Probably because the nvidia driver it too old
+  # - path: /autoware/hardware/logging_ecu/gpu/temperature
+  #   type: diag
+  #   node: gpu_monitor
+  #   name: GPU Temperature
+  #   timeout: 3.0
+
+  # - path: /autoware/hardware/logging_ecu/gpu/gpu_usage
+  #   type: diag
+  #   node: gpu_monitor
+  #   name: GPU Usage
+  #   timeout: 3.0
+
+  # - path: /autoware/hardware/logging_ecu/gpu/memory_usage
+  #   type: diag
+  #   node: gpu_monitor
+  #   name: GPU Memory Usage
+  #   timeout: 3.0
+
+  # - path: /autoware/hardware/logging_ecu/gpu/thermal_throttling
+  #   type: diag
+  #   node: gpu_monitor
+  #   name: GPU Thermal Throttling
+  #   timeout: 3.0
+
+  # - path: /autoware/hardware/logging_ecu/gpu/frequency
+  #   type: diag
+  #   node: gpu_monitor
+  #   name: GPU Frequency
+  #   timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/memory/usage
+    type: diag
+    node: mem_monitor_logging_ecu
+    name: Memory Usage
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/network/network_usage
+    type: diag
+    node: net_monitor_logging_ecu
+    name: Network Usage
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/network/network_traffic
+    type: diag
+    node: net_monitor_logging_ecu
+    name: Network Traffic
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/network/network_crc_error
+    type: diag
+    node: net_monitor_logging_ecu
+    name: Network CRC Error
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/network/ip_packet_reassembles_failed
+    type: diag
+    node: net_monitor_logging_ecu
+    name: IP Packet Reassembles Failed
+    timeout: 3.0
+
+  # - path: /autoware/hardware/logging_ecu/storage/temperature
+  #   type: diag
+  #   node: hdd_monitor_logging_ecu
+  #   name: HDD Temperature
+  #   timeout: 3.0
+
+  # - path: /autoware/hardware/logging_ecu/storage/recovered_error
+  #   type: diag
+  #   node: hdd_monitor_logging_ecu
+  #   name: HDD RecoveredError
+  #   timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/storage/read_data_rate
+    type: diag
+    node: hdd_monitor_logging_ecu
+    name: HDD ReadDataRate
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/storage/write_data_rate
+    type: diag
+    node: hdd_monitor_logging_ecu
+    name: HDD WriteDataRate
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/storage/read_iops
+    type: diag
+    node: hdd_monitor_logging_ecu
+    name: HDD ReadIOPS
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/storage/write_iops
+    type: diag
+    node: hdd_monitor_logging_ecu
+    name: HDD WriteIOPS
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/storage/usage
+    type: diag
+    node: hdd_monitor_logging_ecu
+    name: HDD Usage
+    timeout: 3.0
+
+  # - path: /autoware/hardware/logging_ecu/storage/power_on_hours
+  #   type: diag
+  #   node: hdd_monitor_logging_ecu
+  #   name: HDD PowerOnHours
+  #   timeout: 3.0
+
+  # - path: /autoware/hardware/logging_ecu/storage/total_data_written
+  #   type: diag
+  #   node: hdd_monitor_logging_ecu
+  #   name: HDD TotalDataWritten
+  #   timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/storage/connection
+    type: diag
+    node: hdd_monitor_logging_ecu
+    name: HDD Connection
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/memory/proc-0
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-mem Proc[0]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/memory/proc-1
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-mem Proc[1]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/memory/proc-2
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-mem Proc[2]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/memory/proc-3
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-mem Proc[3]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/memory/proc-4
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-mem Proc[4]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/load/proc-0
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-load Proc[0]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/load/proc-1
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-load Proc[1]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/load/proc-2
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-load Proc[2]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/load/proc-3
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-load Proc[3]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/load/proc-4
+    type: diag
+    node: process_monitor_logging_ecu
+    name: High-load Proc[4]
+    timeout: 3.0
+
+  - path: /autoware/hardware/logging_ecu/process/tasks_summary
+    type: diag
+    node: process_monitor_logging_ecu
+    name: Tasks Summary
     timeout: 3.0
