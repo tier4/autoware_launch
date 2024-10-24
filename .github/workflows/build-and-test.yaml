@@ -9,7 +9,7 @@ on:
 jobs:
   build-and-test:
     if: ${{ github.event_name != 'push' || github.ref_name == github.event.repository.default_branch }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     container: ${{ matrix.container }}
     strategy:
       fail-fast: false
@@ -28,14 +28,6 @@ jobs:
 
       - name: Show disk space before the tasks
         run: df -h
-
-      - name: Free disk space (Ubuntu)
-        uses: jlumbroso/free-disk-space@v1.3.1
-        with:
-          tool-cache: false
-          dotnet: false
-          swap-storage: false
-          large-packages: false
 
       - name: Remove exec_depend
         uses: autowarefoundation/autoware-github-actions/remove-exec-depend@v1
