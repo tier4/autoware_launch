@@ -104,7 +104,7 @@ launch:
       default: "true"
   - arg:
       name: launch_obstacle_velocity_limiter_module
-      default: "true"
+      default: "false"
 
   - arg:
       name: motion_stop_planner_type
