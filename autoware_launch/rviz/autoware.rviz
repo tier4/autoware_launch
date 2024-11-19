@@ -273,6 +273,7 @@ Visualization Manager:
           Font Size: 10
           Left: 10
           Max Letter Num: 100
+          Max Line Text Num: 75
           Name: MRM Summary
           Text Color: 25; 255; 240
           Top: 10
