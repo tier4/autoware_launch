@@ -30,6 +30,13 @@
         min_road_shoulder_width: 0.5  # [m]
         th_parked_vehicle_shift_ratio: 0.6
 
+      # delay lane change
+      delay_lane_change:
+        enable: true
+        check_only_parked_vehicle: false
+        min_road_shoulder_width: 0.5  # [m]
+        th_parked_vehicle_shift_ratio: 0.6
+
       # safety check
       safety_check:
         allow_loose_check_for_cancel: true
