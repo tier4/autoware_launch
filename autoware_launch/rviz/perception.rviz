@@ -61,7 +61,7 @@ Panels:
     Name: AutowareDateTimePanel
   - Class: rviz_plugins::AutowareStatePanel
     Name: AutowareStatePanel
-  - Class: AutowareScreenCapturePanel
+  - Class: rviz_plugins/AutowareScreenCapturePanel
     Name: AutowareScreenCapturePanel
   - Class: multi_data_monitor::MultiDataMonitor
     Name: MultiDataMonitor
