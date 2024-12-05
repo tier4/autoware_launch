@@ -44,17 +44,7 @@ units:
     type: ok
 
   - path: /autoware/modes/comfortable_stop
-    type: and
-    list:
-      - { type: link, link: /autoware/map }
-      - { type: link, link: /autoware/localization }
-      - { type: link, link: /autoware/planning }
-      - { type: link, link: /autoware/perception }
-      - { type: link, link: /autoware/control }
-      - { type: link, link: /autoware/vehicle }
-      - { type: link, link: /autoware/system }
-      - { type: link, link: /autoware/sensing/comfortable_stop_available }
-      - { type: link, link: /autoware/hardware/comfortable_stop_available }
+    type: ok
 
   - path: /autoware/modes/pull_over
     type: and
