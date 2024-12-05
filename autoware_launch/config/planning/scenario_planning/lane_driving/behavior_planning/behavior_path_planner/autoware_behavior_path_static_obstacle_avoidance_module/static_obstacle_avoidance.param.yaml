@@ -35,7 +35,7 @@
           longitudinal_margin: 0.0
           lateral_margin:
             soft_margin: 0.7
-            hard_margin: 0.2
+            hard_margin: 0.3
             hard_margin_for_parked_vehicle: 0.7
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.1
@@ -46,7 +46,7 @@
           longitudinal_margin: 0.0
           lateral_margin:
             soft_margin: 0.7
-            hard_margin: 0.2
+            hard_margin: 0.3
             hard_margin_for_parked_vehicle: 0.7
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.1
@@ -57,7 +57,7 @@
           longitudinal_margin: 0.0
           lateral_margin:
             soft_margin: 0.7
-            hard_margin: 0.2
+            hard_margin: 0.3
             hard_margin_for_parked_vehicle: 0.7
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.1
