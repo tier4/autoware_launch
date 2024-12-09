@@ -21,7 +21,8 @@ units:
   # NOTE: Please modify this section according to your environment and requirements.
   # *******************************************************************************
   - path: /sensing/emergency_stop
-    type: and
+    type:
+      and
       # - { type: link, link: /sensing/radar/001-connection }
 
   - path: /sensing/pull_over
@@ -32,4 +33,3 @@ units:
 
   - path: /sensing/none
     type: and
-
