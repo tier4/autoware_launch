@@ -1,5 +1,8 @@
-name: comment-on-pr
+# This file is automatically synced from:
+# https://github.com/autowarefoundation/sync-file-templates
+# To make changes, update the source repository and follow the guidelines in its README.
 
+name: comment-on-pr
 on:
   pull_request:
     types:
@@ -8,8 +11,10 @@ on:
       - beta/v0.[0-9]+.[0-9]+.[0-9]+
 
 jobs:
-  comment:
-    runs-on: ubuntu-latest
+  comment-on-pr:
+    runs-on: ubuntu-22.04
+    permissions:
+      pull-requests: write
     steps:
       - name: Create comments
         run: |
