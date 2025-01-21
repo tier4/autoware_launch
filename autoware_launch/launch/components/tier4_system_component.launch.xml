@@ -9,7 +9,7 @@
     <arg name="launch_dummy_diag_publisher" value="$(var launch_dummy_diag_publisher)"/>
     <arg name="sensor_model" value="$(var sensor_model)"/>
 
-    <arg name="component_state_monitor_topic_path" value="$(find-pkg-share autoware_launch)/config/system/component_state_monitor/topics.yaml"/>
+    <arg name="component_state_monitor_topic_path" value="$(find-pkg-share autoware_launch)/config/system/component_state_monitor/$(var state_monitor_topic_yaml)"/>
     <arg name="duplicated_node_checker_param_path" value="$(find-pkg-share autoware_launch)/config/system/duplicated_node_checker/duplicated_node_checker.param.yaml"/>
     <arg name="processing_time_checker_param_path" value="$(find-pkg-share autoware_launch)/config/system/processing_time_checker/processing_time_checker.param.yaml"/>
     <arg name="mrm_comfortable_stop_operator_param_path" value="$(find-pkg-share autoware_launch)/config/system/mrm_comfortable_stop_operator/mrm_comfortable_stop_operator.param.yaml"/>
