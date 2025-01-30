@@ -1,12 +1,12 @@
 files:
   - { path: $(dirname)/control.yaml }
-  # - { path: $(dirname)/hardware.yaml }
+  - { path: $(dirname)/hardware.yaml }
   - { path: $(dirname)/localization.yaml }
   - { path: $(dirname)/map.yaml }
   - { path: $(dirname)/perception.yaml }
   - { path: $(dirname)/planning.yaml }
   # - { path: $(dirname)/others.yaml }
-  # - { path: $(dirname)/sensing.yaml }
+  - { path: $(dirname)/sensing.yaml }
   - { path: $(dirname)/system.yaml }
   - { path: $(dirname)/vehicle.yaml }
 
