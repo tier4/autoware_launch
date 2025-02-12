@@ -14,7 +14,7 @@
           lateral_weight: 40.0
         prioritize_goals_before_objects: true
         parking_policy: "left_side" # "left_side" or "right_side"
-        forward_goal_search_length: 40.0
+        forward_goal_search_length: 100.0
         backward_goal_search_length: 20.0
         goal_search_interval: 2.0
         longitudinal_margin: 3.0
