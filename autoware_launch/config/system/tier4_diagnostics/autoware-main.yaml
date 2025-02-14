@@ -12,10 +12,10 @@ files:
 
 units:
   - path: /autoware/modes/local
-    type: stale
+    type: ok
 
   - path: /autoware/modes/remote
-    type: stale
+    type: ok
 
   - path: /autoware/modes/stop
     type: ok
