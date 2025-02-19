@@ -20,7 +20,7 @@ Panels:
     Name: AutowareDateTimePanel
   - Class: rviz_plugins::AutowareStatePanel
     Name: AutowareStatePanel
-  - Class: AutowareScreenCapturePanel
+  - Class: rviz_plugins/AutowareScreenCapturePanel
     Name: AutowareScreenCapturePanel
 Visualization Manager:
   Class: ""
