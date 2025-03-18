@@ -38,7 +38,18 @@
   <arg name="system_run_mode" default="online" description="run mode in system"/>
   <arg name="launch_system_monitor" default="true" description="launch system monitor"/>
   <arg name="launch_dummy_diag_publisher" default="false" description="launch dummy diag publisher"/>
-  <arg name="diagnostic_graph_aggregator_graph_path" default="$(find-pkg-share autoware_launch)/config/system/tier4_diagnostics/autoware-main.yaml" description="diagnostic graph config"/>
+
+  <let
+    name="diagnostic_graph_aggregator_graph_path"
+    value="$(find-pkg-share autoware_launch)/config/system/tier4_diagnostics/autoware-main_gen2.yaml"
+    if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"
+  />
+  <let
+    name="diagnostic_graph_aggregator_graph_path"
+    value="$(find-pkg-share autoware_launch)/config/system/tier4_diagnostics/autoware-main.yaml"
+    unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"
+  />
+
   <!-- Tools -->
   <arg name="rviz" default="true" description="launch rviz"/>
   <arg name="rviz_config_name" default="autoware.rviz" description="rviz config name"/>
