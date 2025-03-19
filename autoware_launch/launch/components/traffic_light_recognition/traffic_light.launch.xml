@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="use_crosswalk_traffic_light_estimator" default="true" description="output pedestrian's traffic light signals"/>
-
+  <arg
+    name="traffic_light_multi_camera_fusion_param_path"
+    default="$(find-pkg-share autoware_launch)/config/perception/traffic_light_multi_camera_fusion/traffic_light_multi_camera_fusion.param.yaml"
+  />
   <arg name="input/cloud" default="/perception/common/pointcloud" description="point cloud for occlusion prediction"/>
   <arg name="internal/traffic_signals" default="/perception/traffic_light_recognition/internal/traffic_signals"/>
   <arg name="fusion/traffic_signals" default="/perception/traffic_light_recognition/fusion/traffic_signals"/>
@@ -24,6 +27,7 @@
       <node pkg="autoware_traffic_light_multi_camera_fusion" exec="traffic_light_multi_camera_fusion_node" name="traffic_light_multi_camera_fusion" output="screen">
         <param name="camera_namespaces" value="$(var all_camera_namespaces)"/>
         <param name="perform_group_fusion" value="true"/>
+        <param from="$(var traffic_light_multi_camera_fusion_param_path)"/>
         <remap from="~/input/vector_map" to="/map/vector_map"/>
         <remap from="~/output/traffic_signals" to="$(var fusion/traffic_signals)"/>
       </node>
