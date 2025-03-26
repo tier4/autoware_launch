@@ -26,7 +26,7 @@ def launch_setup(context, *args, **kwargs):
     with open(LaunchConfiguration("cpu_monitor_config_file").perform(context), "r") as f:
         cpu_monitor_config = yaml.safe_load(f)["/**"]["ros__parameters"]
     cpu_monitor = ComposableNode(
-        package="system_monitor",
+        package="autoware_system_monitor",
         plugin="CPUMonitor",
         name="cpu_monitor_logging_ecu",
         parameters=[
@@ -36,7 +36,7 @@ def launch_setup(context, *args, **kwargs):
     with open(LaunchConfiguration("hdd_monitor_config_file").perform(context), "r") as f:
         hdd_monitor_config = yaml.safe_load(f)["/**"]["ros__parameters"]
     hdd_monitor = ComposableNode(
-        package="system_monitor",
+        package="autoware_system_monitor",
         plugin="HddMonitor",
         name="hdd_monitor_logging_ecu",
         parameters=[
@@ -46,7 +46,7 @@ def launch_setup(context, *args, **kwargs):
     with open(LaunchConfiguration("mem_monitor_config_file").perform(context), "r") as f:
         mem_monitor_config = yaml.safe_load(f)["/**"]["ros__parameters"]
     mem_monitor = ComposableNode(
-        package="system_monitor",
+        package="autoware_system_monitor",
         plugin="MemMonitor",
         name="mem_monitor_logging_ecu",
         parameters=[
@@ -56,7 +56,7 @@ def launch_setup(context, *args, **kwargs):
     with open(LaunchConfiguration("net_monitor_config_file").perform(context), "r") as f:
         net_monitor_config = yaml.safe_load(f)["/**"]["ros__parameters"]
     net_monitor = ComposableNode(
-        package="system_monitor",
+        package="autoware_system_monitor",
         plugin="NetMonitor",
         name="net_monitor_logging_ecu",
         parameters=[
@@ -66,7 +66,7 @@ def launch_setup(context, *args, **kwargs):
     with open(LaunchConfiguration("ntp_monitor_config_file").perform(context), "r") as f:
         ntp_monitor_config = yaml.safe_load(f)["/**"]["ros__parameters"]
     ntp_monitor = ComposableNode(
-        package="system_monitor",
+        package="autoware_system_monitor",
         plugin="NTPMonitor",
         name="ntp_monitor_logging_ecu",
         parameters=[
@@ -76,7 +76,7 @@ def launch_setup(context, *args, **kwargs):
     with open(LaunchConfiguration("process_monitor_config_file").perform(context), "r") as f:
         process_monitor_config = yaml.safe_load(f)["/**"]["ros__parameters"]
     process_monitor = ComposableNode(
-        package="system_monitor",
+        package="autoware_system_monitor",
         plugin="ProcessMonitor",
         name="process_monitor_logging_ecu",
         parameters=[
@@ -86,7 +86,7 @@ def launch_setup(context, *args, **kwargs):
     # with open(LaunchConfiguration("gpu_monitor_config_file").perform(context), "r") as f:
     #     gpu_monitor_config = yaml.safe_load(f)["/**"]["ros__parameters"]
     # gpu_monitor = ComposableNode(
-    #     package="system_monitor",
+    #     package="autoware_system_monitor",
     #     plugin="GPUMonitor",
     #     name="gpu_monitor_logging_ecu",
     #     parameters=[
