@@ -35,7 +35,13 @@
   <let name="camera_index2" value="2"/>
   <let name="camera_index3" value="3"/>
   <let name="camera_index4" value="4"/>
+  <let name="camera_index5" value="5"/>
   <let name="image_number" value="6"/>
+  <let
+    name="object_recognition_detection_fusion_sync_param_path"
+    value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/image_projection_based_fusion/fusion_common.param.yaml"
+  />
+
   <!-- NOTE: In the case of Gen2, the camera index is overridden. Gen2 has only 5 cameras for object recognition -->
   <group scoped="false" if="$(eval &quot;'$(var sensor_model)' == 'aip_xx1_gen2'&quot;)">
     <let name="camera_index0" value="0"/>
@@ -44,6 +50,10 @@
     <let name="camera_index3" value="9"/>
     <let name="camera_index4" value="10"/>
     <let name="image_number" value="5"/>
+    <let
+      name="object_recognition_detection_fusion_sync_param_path"
+      value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/image_projection_based_fusion/fusion_common_gen2.param.yaml"
+    />
   </group>
 
   <include file="$(find-pkg-share tier4_perception_launch)/launch/perception.launch.xml">
@@ -107,10 +117,7 @@
       name="object_recognition_detection_pointcloud_map_filter_param_path"
       value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/pointcloud_filter/pointcloud_map_filter.param.yaml"
     />
-    <arg
-      name="object_recognition_detection_fusion_sync_param_path"
-      value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/image_projection_based_fusion/fusion_common.param.yaml"
-    />
+    <arg name="object_recognition_detection_fusion_sync_param_path" value="$(var object_recognition_detection_fusion_sync_param_path)"/>
     <arg
       name="object_recognition_detection_roi_cluster_fusion_param_path"
       value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/image_projection_based_fusion/roi_cluster_fusion.param.yaml"
