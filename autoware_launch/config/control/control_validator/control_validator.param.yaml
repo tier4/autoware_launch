@@ -16,4 +16,4 @@
       nominal_latency: 0.01
 
     vel_lpf_gain: 0.9 # Time constant 0.33
-    hold_velocity_error_until_stop: true
+    hold_velocity_error_until_stop: false

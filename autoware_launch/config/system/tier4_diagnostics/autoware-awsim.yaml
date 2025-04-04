@@ -1,2 +1,9 @@
 files:
   - { path: $(dirname)/autoware-main.yaml }
+
+edits:
+  - path: /sensing/autonomous_available
+    type: remove
+
+  - path: /hardware/autonomous_available
+    type: remove
