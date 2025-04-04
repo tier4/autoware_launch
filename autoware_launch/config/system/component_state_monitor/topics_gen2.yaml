@@ -24,18 +24,18 @@
     error_rate: 1.0
     timeout: 1.0
 
-- module: sensing
-  mode: [online]
-  type: launch
-  args:
-    node_name_suffix: camera1
-    topic: /sensing/camera/camera1/camera_info
-    topic_type: sensor_msgs/msg/CameraInfo
-    best_effort: true
-    transient_local: false
-    warn_rate: 5.0
-    error_rate: 1.0
-    timeout: 1.0
+# - module: sensing
+#   mode: [online]
+#   type: launch
+#   args:
+#     node_name_suffix: camera1
+#     topic: /sensing/camera/camera1/camera_info
+#     topic_type: sensor_msgs/msg/CameraInfo
+#     best_effort: true
+#     transient_local: false
+#     warn_rate: 5.0
+#     error_rate: 1.0
+#     timeout: 1.0
 
 - module: sensing
   mode: [online]
@@ -102,31 +102,31 @@
     error_rate: 1.0
     timeout: 1.0
 
-- module: sensing
-  mode: [online]
-  type: launch
-  args:
-    node_name_suffix: camera7
-    topic: /sensing/camera/camera7/camera_info
-    topic_type: sensor_msgs/msg/CameraInfo
-    best_effort: true
-    transient_local: false
-    warn_rate: 5.0
-    error_rate: 1.0
-    timeout: 1.0
+# - module: sensing
+#   mode: [online]
+#   type: launch
+#   args:
+#     node_name_suffix: camera7
+#     topic: /sensing/camera/camera7/camera_info
+#     topic_type: sensor_msgs/msg/CameraInfo
+#     best_effort: true
+#     transient_local: false
+#     warn_rate: 5.0
+#     error_rate: 1.0
+#     timeout: 1.0
 
-- module: sensing
-  mode: [online]
-  type: launch
-  args:
-    node_name_suffix: camera8
-    topic: /sensing/camera/camera8/camera_info
-    topic_type: sensor_msgs/msg/CameraInfo
-    best_effort: true
-    transient_local: false
-    warn_rate: 5.0
-    error_rate: 1.0
-    timeout: 1.0
+# - module: sensing
+#   mode: [online]
+#   type: launch
+#   args:
+#     node_name_suffix: camera8
+#     topic: /sensing/camera/camera8/camera_info
+#     topic_type: sensor_msgs/msg/CameraInfo
+#     best_effort: true
+#     transient_local: false
+#     warn_rate: 5.0
+#     error_rate: 1.0
+#     timeout: 1.0
 
 - module: sensing
   mode: [online]
