@@ -71,8 +71,8 @@ units:
 
   - path: /sensing/imu/002-connection
     type: diag
-    node: topic_state_monitor_imu_data
-    name: imu_topic_status
+    node: topic_state_monitor_imu
+    name: sensing_topic_status
     timeout: 1.0
 
   - path: /sensing/imu/003-gyro_bias
