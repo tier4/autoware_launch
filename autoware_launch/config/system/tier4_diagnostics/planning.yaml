@@ -124,7 +124,7 @@ units:
     item:
       type: link
       link: /planning/013-trajectory_shift_validation
-  
+
   - path: /planning/014-collision_checker-error
     type: warn-to-ok
     item:
