@@ -26,7 +26,7 @@
         max_longitudinal_acc: 1.0
         th_prepare_length_diff: 1.0
         th_lane_changing_length_diff: 1.0
-        min_lane_changing_velocity: 2.78
+        min_lane_changing_velocity: 2.0
         lon_acc_sampling_num: 5
         lat_acc_sampling_num: 3
         lane_changing_decel_factor: 0.5
