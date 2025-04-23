@@ -18,10 +18,28 @@ jobs:
           echo "Event type: ${{ github.event.action }}"
           echo "---------------------------------------------------"
           echo "Client Payload:"
-          echo "  latest_tag: ${{ github.event.client_payload.latest_tag }}"
-          echo "  branch: ${{ github.event.client_payload.branch }}"
+          echo "  base_branch: ${{ github.event.client_payload.base_branch }}"
+          echo "  upstream_branch: ${{ github.event.client_payload.upstream_branch }}"
           echo "---------------------------------------------------"
 
           # Print the entire payload as JSON for debugging
           echo "Full client_payload (JSON):"
           echo '${{ toJSON(github.event.client_payload) }}'
+      
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+      
+      - name: Trigger sync-tier4-upstream workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: sync-tier4-upstream
+          token: ${{ steps.generate-token.outputs.token }}
+          inputs: |
+            {
+              "base_branch": "${{ github.event.client_payload.base_branch }}",
+              "sync_target_branch": "${{ github.event.client_payload.upstream_branch }}"
+            }
