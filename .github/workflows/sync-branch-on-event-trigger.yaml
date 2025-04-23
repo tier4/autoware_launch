@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-          
+
       - name: Print Client Payload
         run: |
           echo "Received repository dispatch event from pilot-auto.xx1"
@@ -21,7 +21,7 @@ jobs:
           echo "  latest_tag: ${{ github.event.client_payload.latest_tag }}"
           echo "  branch: ${{ github.event.client_payload.branch }}"
           echo "---------------------------------------------------"
-          
+
           # Print the entire payload as JSON for debugging
           echo "Full client_payload (JSON):"
           echo '${{ toJSON(github.event.client_payload) }}'
