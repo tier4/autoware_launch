@@ -100,7 +100,7 @@
 
       # hysteresis for cruise and stop
       obstacle_velocity_threshold_from_cruise_to_stop : 3.0 # stop planning is executed to the obstacle whose velocity is less than this value [m/s]
-      obstacle_velocity_threshold_from_stop_to_cruise : 3.5 # stop planning is executed to the obstacle whose velocity is less than this value [m/s]
+      obstacle_velocity_threshold_from_stop_to_cruise : 1.5 # stop planning is executed to the obstacle whose velocity is less than this value [m/s]
 
       # if crossing vehicle is determined as target obstacles or not
       crossing_obstacle:
@@ -109,7 +109,7 @@
 
       stop:
         max_lat_margin: 0.3 # lateral margin between the obstacles and ego's footprint
-        max_lat_margin_against_unknown: 0.3 # lateral margin between the unknown obstacles and ego's footprint
+        max_lat_margin_against_unknown: -0.3 # lateral margin between the unknown obstacles and ego's footprint
         min_velocity_to_reach_collision_point: 2.0 # minimum velocity margin to calculate time to reach collision [m/s]
         outside_obstacle:
           max_lateral_time_margin: 4.5 # time threshold of lateral margin between the obstacles and ego's footprint [s]
@@ -229,7 +229,6 @@
 
       moving_object_speed_threshold: 0.5 # [m/s] how fast the object needs to move to be considered as "moving"
       moving_object_hysteresis_range: 0.1 # [m/s] hysteresis range used to prevent chattering when obstacle moves close to moving_object_speed_threshold
-
       time_margin_on_target_velocity: 1.5 # [s]
 
       lpf_gain_slow_down_vel: 0.99 # low-pass filter gain for slow down velocity
