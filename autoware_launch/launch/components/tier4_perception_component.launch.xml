@@ -28,7 +28,7 @@
     default="fine_detection"
     description="select high accuracy detector type for traffic light recognition: fine_detection or whole_image_detection"
   />
-  <arg name="lidar_detection_model" default="transfusion" description="If the model name is not declared, the default model in perception.launch.xml will be used"/>
+  <arg name="lidar_detection_model" default="centerpoint" description="If the model name is not declared, the default model in perception.launch.xml will be used"/>
   <arg name="all_traffic_light_camera" default="[camera6]" description="choose camera which use for traffic light recognition"/>
 
   <group if="$(eval &quot;'$(var sensor_model)' == 'aip_xx1_gen2'&quot;)">
