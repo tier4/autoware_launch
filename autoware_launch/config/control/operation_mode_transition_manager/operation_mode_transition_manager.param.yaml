@@ -2,6 +2,7 @@
 
 /**:
   ros__parameters:
+    input_timeout: 3.0
     transition_timeout: 5.0
     frequency_hz: 10.0
 
