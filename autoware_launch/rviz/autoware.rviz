@@ -20,6 +20,8 @@ Panels:
     Name: AutowareDateTimePanel
   - Class: rviz_plugins::AutowareStatePanel
     Name: AutowareStatePanel
+  - Class: rviz_plugins/AutowareScreenCapturePanel
+    Name: AutowareScreenCapturePanel
 Visualization Manager:
   Class: ""
   Displays:
@@ -957,7 +959,7 @@ Visualization Manager:
                 Durability Policy: Volatile
                 History Policy: Keep Last
                 Reliability Policy: Best Effort
-                Value: /perception/traffic_light_recognition/traffic_light/debug/rois
+                Value: /perception/traffic_light_recognition/camera6/debug/rois
               Value: true
             - Class: rviz_default_plugins/MarkerArray
               Enabled: true
@@ -968,7 +970,7 @@ Visualization Manager:
                 Durability Policy: Volatile
                 History Policy: Keep Last
                 Reliability Policy: Best Effort
-                Value: /perception/traffic_light_recognition/traffic_light_map_based_detector/debug/markers
+                Value: /perception/traffic_light_recognition/camera6/detection/traffic_light_map_based_detector/debug/markers
               Value: true
           Enabled: true
           Name: TrafficLight
@@ -4102,6 +4104,8 @@ Visualization Manager:
         X: 0
         Y: 0
 Window Geometry:
+  AutowareScreenCapturePanel:
+    collapsed: false
   AutowareStatePanel:
     collapsed: false
   Displays:

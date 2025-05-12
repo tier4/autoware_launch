@@ -100,7 +100,7 @@
 
       # hysteresis for cruise and stop
       obstacle_velocity_threshold_from_cruise_to_stop : 3.0 # stop planning is executed to the obstacle whose velocity is less than this value [m/s]
-      obstacle_velocity_threshold_from_stop_to_cruise : 3.5 # stop planning is executed to the obstacle whose velocity is less than this value [m/s]
+      obstacle_velocity_threshold_from_stop_to_cruise : 1.5 # stop planning is executed to the obstacle whose velocity is less than this value [m/s]
 
       # if crossing vehicle is determined as target obstacles or not
       crossing_obstacle:
@@ -109,7 +109,7 @@
 
       stop:
         max_lat_margin: 0.3 # lateral margin between the obstacles and ego's footprint
-        max_lat_margin_against_unknown: 0.3 # lateral margin between the unknown obstacles and ego's footprint
+        max_lat_margin_against_unknown: -0.3 # lateral margin between the unknown obstacles and ego's footprint
         min_velocity_to_reach_collision_point: 2.0 # minimum velocity margin to calculate time to reach collision [m/s]
         outside_obstacle:
           max_lateral_time_margin: 4.5 # time threshold of lateral margin between the obstacles and ego's footprint [s]
@@ -125,11 +125,11 @@
           obstacle_velocity_threshold : 1.5 # minimum velocity threshold of obstacles outside the trajectory to cruise or stop [m/s]
           ego_obstacle_overlap_time_threshold : 0.2 #  time threshold to decide cut-in obstacle for cruise or stop [s]
           max_prediction_time_for_collision_check : 10.0 # prediction time to check collision between obstacle and ego
-          max_lateral_time_margin: 5.0 # time threshold of lateral margin between obstacle and trajectory band with ego's width [s]
+          max_lateral_time_margin: 6.5 # time threshold of lateral margin between obstacle and trajectory band with ego's width [s]
           num_of_predicted_paths: 1 # number of the highest confidence predicted path to check collision between obstacle and ego
         yield:
           enable_yield: true
-          lat_distance_threshold: 5.0 # lateral margin between obstacle in neighbor lanes and trajectory band with ego's width for yielding
+          lat_distance_threshold: 6.0 # lateral margin between obstacle in neighbor lanes and trajectory band with ego's width for yielding
           max_lat_dist_between_obstacles: 2.5 # lateral margin between moving obstacle in neighbor lanes and stopped obstacle in front of it
           max_obstacles_collision_time: 10.0 # how far the blocking obstacle
           stopped_obstacle_velocity_threshold: 0.5
@@ -229,7 +229,6 @@
 
       moving_object_speed_threshold: 0.5 # [m/s] how fast the object needs to move to be considered as "moving"
       moving_object_hysteresis_range: 0.1 # [m/s] hysteresis range used to prevent chattering when obstacle moves close to moving_object_speed_threshold
-
       time_margin_on_target_velocity: 1.5 # [s]
 
       lpf_gain_slow_down_vel: 0.99 # low-pass filter gain for slow down velocity

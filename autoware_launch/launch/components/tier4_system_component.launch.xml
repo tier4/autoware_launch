@@ -1,7 +1,20 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="diagnostic_graph_aggregator_param_path" default="$(find-pkg-share autoware_diagnostic_graph_aggregator)/config/default.param.yaml"/>
-  <arg name="diagnostic_graph_aggregator_graph_path" default="$(find-pkg-share autoware_launch)/config/system/tier4_diagnostics/autoware-main.yaml"/>
+  <arg
+    name="diagnostic_graph_aggregator_graph_path"
+    default="$(find-pkg-share autoware_launch)/config/system/tier4_diagnostics/autoware-main_gen2.yaml"
+    if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"
+  />
+  <arg
+    name="diagnostic_graph_aggregator_graph_path"
+    default="$(find-pkg-share autoware_launch)/config/system/tier4_diagnostics/autoware-main.yaml"
+    unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"
+  />
+
+  <!-- Depending on the sensor_model, different topics should be monitored -->
+  <let name="state_monitor_topic_yaml" value="topics_gen2.yaml" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+  <let name="state_monitor_topic_yaml" value="topics.yaml" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
 
   <include file="$(find-pkg-share tier4_system_launch)/launch/system.launch.xml">
     <arg name="run_mode" value="$(var system_run_mode)"/>
@@ -9,7 +22,7 @@
     <arg name="launch_dummy_diag_publisher" value="$(var launch_dummy_diag_publisher)"/>
     <arg name="sensor_model" value="$(var sensor_model)"/>
 
-    <arg name="component_state_monitor_topic_path" value="$(find-pkg-share autoware_launch)/config/system/component_state_monitor/topics.yaml"/>
+    <arg name="component_state_monitor_topic_path" value="$(find-pkg-share autoware_launch)/config/system/component_state_monitor/$(var state_monitor_topic_yaml)"/>
     <arg name="duplicated_node_checker_param_path" value="$(find-pkg-share autoware_launch)/config/system/duplicated_node_checker/duplicated_node_checker.param.yaml"/>
     <arg name="processing_time_checker_param_path" value="$(find-pkg-share autoware_launch)/config/system/processing_time_checker/processing_time_checker.param.yaml"/>
     <arg name="mrm_comfortable_stop_operator_param_path" value="$(find-pkg-share autoware_launch)/config/system/mrm_comfortable_stop_operator/mrm_comfortable_stop_operator.param.yaml"/>

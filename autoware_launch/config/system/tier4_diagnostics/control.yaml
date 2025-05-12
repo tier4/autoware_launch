@@ -27,6 +27,7 @@ units:
       - { type: link, link: /control/004-lane_departure-error }
       - { type: link, link: /control/009-aeb_emergency_stop }
       # - { type: link, link: /control/010-max_distance_deviation-error }
+      # slip_detection is implemented in https://github.com/tier4/l4_toolkit. So it is not used in XX1.
       # - { type: link, link: /control/011-slip_detection }
       - { type: link, link: /control/collision_detector }
       # - { type: link, link: /control/acceleration_error }
@@ -109,11 +110,12 @@ units:
     name: control_validation_max_distance_deviation
     timeout: 1.0
 
-  - path: /control/011-slip_detection
-    type: diag
-    node: slip_detector
-    name: slip_status
-    timeout: 3.0
+  # slip_detection is implemented in https://github.com/tier4/l4_toolkit. So it is not used in XX1.
+  # - path: /control/011-slip_detection
+  #   type: diag
+  #   node: slip_detector
+  #   name: slip_status
+  #   timeout: 3.0
 
   - path: /control/collision_detector
     type: diag

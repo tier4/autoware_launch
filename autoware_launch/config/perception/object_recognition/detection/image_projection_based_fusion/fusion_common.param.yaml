@@ -1,6 +1,6 @@
 /**:
   ros__parameters:
-    # Example of lidar and camera timestamps
+    # Note that this parameters are calculated based on 2025/2 rosbag from taxi2 and taxi7
     # cloud timestamp: 0.009
     # rois timestamp: 0.107, 0.156, 0.087, 0.071, 0.124, 0.141
     rois_timestamp_offsets: [0.098, 0.147, 0.078, 0.062, 0.115, 0.132]

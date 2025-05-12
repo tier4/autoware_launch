@@ -1,7 +1,7 @@
 /**:
   ros__parameters:
     traffic_light:
-      stop_margin: 0.0
+      stop_margin: 2.0
       tl_state_timeout: 1.0
       stop_time_hysteresis: 0.1
       yellow_lamp_period: 2.75
