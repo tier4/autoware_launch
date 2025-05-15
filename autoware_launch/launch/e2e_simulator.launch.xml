@@ -96,7 +96,6 @@
       <arg name="perception_mode" value="lidar"/>
       <arg name="use_traffic_light_recognition" value="true"/>
       <arg name="traffic_light_recognition/enable_fine_detection" value="false"/>
-      <arg name="all_traffic_light_camera" value="$(var traffic_light_namespace)"/>
       <arg name="traffic_light_recognition/fusion_only" value="false"/>
       <arg name="lidar_detection_model" value="centerpoint"/>
       <!-- Tools -->
