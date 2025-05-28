@@ -12,13 +12,19 @@ files:
 
 units:
   - path: /autoware/modes/local
-    type: ok
+    type: and
+    list:
+      - { type: link, link: /adapi/mrm_request/delegate }
 
   - path: /autoware/modes/remote
-    type: ok
+    type: and
+    list:
+      - { type: link, link: /adapi/mrm_request/delegate }
 
   - path: /autoware/modes/stop
-    type: ok
+    type: and
+    list:
+      - { type: link, link: /adapi/mrm_request/delegate }
 
   - path: /autoware/modes/autonomous
     type: and
@@ -32,6 +38,7 @@ units:
       - { type: link, link: /sensing/autonomous_available }
       - { type: link, link: /system/autonomous_available }
       - { type: link, link: /vehicle/autonomous_available }
+      - { type: link, link: /adapi/mrm_request/delegate }
 
   - path: /autoware/modes/pull_over
     type: and
@@ -71,3 +78,8 @@ units:
     type: diag
     node: service_log_checker
     name: response_status
+
+  - path: /adapi/mrm_request/delegate
+    type: diag
+    node: /adapi/node/mrm_request
+    name: delegate
