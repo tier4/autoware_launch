@@ -1,0 +1,31 @@
+me: test
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sync-workflows:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Install Python and Poetry
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Run Python script
+        run: python3 script.py
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
