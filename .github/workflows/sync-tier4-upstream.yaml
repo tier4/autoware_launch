@@ -2,9 +2,16 @@
 name: sync-tier4-upstream
 
 on:
-  schedule:
-    - cron: 0 0 * * *
   workflow_dispatch:
+    inputs:
+      base_branch:
+        description: Base branch in the forked repository to sync to
+        required: true
+        default: tier4/main
+      sync_target_branch:
+        description: Target branch in the upstream repository to sync from
+        required: true
+        default: tier4/main
 
 jobs:
   sync-tier4-upstream:
@@ -21,10 +28,10 @@ jobs:
         uses: autowarefoundation/autoware-github-actions/sync-branches@v1
         with:
           token: ${{ steps.generate-token.outputs.token }}
-          base-branch: tier4/main
-          sync-pr-branch: sync-tier4-upstream
+          base-branch: ${{ github.event.inputs.base_branch}}
+          sync-pr-branch: sync-to-${{ github.event.inputs.base_branch}}
           sync-target-repository: https://github.com/tier4/autoware_launch.git
-          sync-target-branch: tier4/main
+          sync-target-branch: ${{ github.event.inputs.sync_target_branch}}
           pr-title: "chore: sync upstream"
           pr-labels: |
             bot

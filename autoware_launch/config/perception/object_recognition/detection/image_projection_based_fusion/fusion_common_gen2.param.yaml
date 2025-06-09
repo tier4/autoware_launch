@@ -1,0 +1,36 @@
+/**:
+  ros__parameters:
+    # Reference https://tier4.atlassian.net/wiki/spaces/AIP/pages/3644424963/XX1+Gen2+ECU
+    # cloud timestamp: 0.099
+    # rois timestamp: 0.033, 0.019, 0.047, -0.011, 0.077
+    rois_timestamp_offsets: [0.033, 0.019, 0.047, -0.011, 0.077]
+    rois_timeout_sec: 0.5
+    msg3d_timeout_sec: 0.05
+    image_buffer_size: 15
+    # projection setting for each ROI whether unrectify image
+    point_project_to_unrectified_image: [true, true, true, true, true]
+    filter_scope_min_x: -100.0
+    filter_scope_min_y: -100.0
+    filter_scope_min_z: -100.0
+    filter_scope_max_x: 100.0
+    filter_scope_max_y: 100.0
+    filter_scope_max_z: 100.0
+
+    # camera cache setting for each ROI
+    approximate_camera_projection: [true, true, true, true, true]
+    # grid size in pixels
+    approximation_grid_cell_width: 1.0
+    approximation_grid_cell_height: 1.0
+
+    # debug parameters
+    debug_mode: false
+    collector_debug_mode: false
+    publish_processing_time_detail: false
+
+    publish_previous_but_late_output_msg: false
+    rosbag_length: 10.0
+    # matching strategy
+    matching_strategy:
+      type: advanced
+      msg3d_noise_window: 0.02
+      rois_timestamp_noise_window: [0.01, 0.01, 0.01, 0.01, 0.01]
