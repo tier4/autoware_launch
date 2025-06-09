@@ -207,7 +207,7 @@
         # rss parameters
         extended_polygon_policy: "along_path"           # [-] select "rectangle" or "along_path"
         expected_front_deceleration: -1.0               # [m/ss]
-        expected_rear_deceleration: -1.0                # [m/ss]
+        expected_rear_deceleration: -0.9                # [m/ss]
         rear_vehicle_reaction_time: 2.0                 # [s]
         rear_vehicle_safety_time_margin: 1.0            # [s]
         lateral_distance_max_threshold: 2.0             # [m]
