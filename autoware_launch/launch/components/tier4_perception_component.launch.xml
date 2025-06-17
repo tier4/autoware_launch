@@ -31,7 +31,7 @@
   <arg name="traffic_light_recognition/use_high_accuracy_detection" default="true" description="select whether to use high accuracy detector for traffic light recognition"/>
   <arg
     name="traffic_light_recognition/high_accuracy_detection_type"
-    default="whole_image_detection"
+    default="fine_detection"
     description="select high accuracy detector type for traffic light recognition: fine_detection or whole_image_detection"
   />
   <arg name="lidar_detection_model" default="centerpoint" description="If the model name is not declared, the default model in perception.launch.xml will be used"/>
