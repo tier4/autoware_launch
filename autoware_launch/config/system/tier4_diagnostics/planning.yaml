@@ -35,6 +35,7 @@ units:
       - { type: link, link: /planning/010-trajectory_steering_validation-error }
       - { type: link, link: /planning/011-trajectory_steering_rate_validation-error }
       - { type: link, link: /planning/012-trajectory_velocity_deviation_validation-error }
+      - { type: link, link: /planning/013-trajectory_shift_validation }
       - { type: link, link: /planning/014-path_optimizer_emergency_stop-error }
 
   - path: /planning/comfortable_stop
@@ -195,6 +196,11 @@ units:
     node: planning_validator
     name: trajectory_validation_velocity_deviation
     timeout: 1.0
+
+  - path: /planning/013-trajectory_shift_validation
+    type: diag
+    node: planning_validator
+    name: trajectory_validation_trajectory_shift
 
   - path: /planning/014-path_optimizer_emergency_stop
     type: diag
