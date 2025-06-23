@@ -165,4 +165,3 @@ launch:
   - arg:
       name: launch_rear_collision_checker
       default: "true"
-
