@@ -71,8 +71,8 @@
 
   <let name="lidar_detection_model_name" value=""/>
   <!-- override if model name is not pointpainting -->
-  <let name="lidar_detection_model_name" value="centerpoint_xx1" if="$(eval &quot;'$(var lidar_detection_model)' == 'centerpoint'&quot;)"/>
-  <let name="lidar_detection_model_name" value="transfusion_xx1" if="$(eval &quot;'$(var lidar_detection_model)' == 'transfusion'&quot;)"/>
+  <let name="lidar_detection_model_name" value="centerpoint" if="$(eval &quot;'$(var lidar_detection_model)' == 'centerpoint'&quot;)"/>
+  <let name="lidar_detection_model_name" value="transfusion" if="$(eval &quot;'$(var lidar_detection_model)' == 'transfusion'&quot;)"/>
 
   <include file="$(find-pkg-share tier4_perception_launch)/launch/perception.launch.xml">
     <arg name="data_path" value="$(var data_path)"/>
@@ -105,9 +105,7 @@
     <arg name="data_path" value="$(var data_path)"/>
     <arg name="input/pointcloud" value="/sensing/lidar/concatenated/pointcloud"/>
     <arg name="pointpainting_model_path" value="/opt/autoware/mlmodels/pointpainting"/>
-    <arg name="centerpoint_model_name" value="centerpoint_xx1"/>
     <arg name="centerpoint_model_path" value="/opt/autoware/mlmodels/$(var lidar_detection_model)"/>
-    <arg name="transfusion_model_name" value="transfusion_xx1"/>
     <arg name="transfusion_model_path" value="/opt/autoware/mlmodels/$(var lidar_detection_model)"/>
     <arg name="lidar_detection_model_name" value="$(var lidar_detection_model_name)"/>
 
