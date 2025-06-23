@@ -238,9 +238,8 @@ units:
 
   - path: /planning/015-collision_checker
     type: diag
-    node: collision_checker
-    name: collision_check
-    timeout: 1.0
+    node: planning_validator
+    name: trajectory_validation_trajectory_shift
 
   - path: /planning/016-path_optimizer_emergency_stop
     type: diag
