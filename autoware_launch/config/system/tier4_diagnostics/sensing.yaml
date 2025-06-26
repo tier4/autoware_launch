@@ -112,73 +112,73 @@ units:
   #   name: blockage_validation
   #   timeout: 1.0
 
-  - path: /sensing/lidar/velodyne/top/connection
+  - path: /sensing/lidar/top/connection
     type: diag
     node: /sensing/lidar/top/velodyne_ros_wrapper_node
     name: velodyne_status
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/left/connection
+  - path: /sensing/lidar/left/connection
     type: diag
     node: /sensing/lidar/left/velodyne_ros_wrapper_node
     name: velodyne_status
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/right/connection
+  - path: /sensing/lidar/right/connection
     type: diag
     node: /sensing/lidar/right/velodyne_ros_wrapper_node
     name: velodyne_status
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/rear/connection
+  - path: /sensing/lidar/rear/connection
     type: diag
     node: /sensing/lidar/rear/velodyne_ros_wrapper_node
     name: velodyne_status
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/top/temperature
+  - path: /sensing/lidar/top/temperature
     type: diag
     node: /sensing/lidar/top/velodyne_ros_wrapper_node
     name: velodyne_temperature
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/left/temperature
+  - path: /sensing/lidar/left/temperature
     type: diag
     node: /sensing/lidar/left/velodyne_ros_wrapper_node
     name: velodyne_temperature
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/right/temperature
+  - path: /sensing/lidar/right/temperature
     type: diag
     node: /sensing/lidar/right/velodyne_ros_wrapper_node
     name: velodyne_temperature
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/rear/temperature
+  - path: /sensing/lidar/rear/temperature
     type: diag
     node: /sensing/lidar/rear/velodyne_ros_wrapper_node
     name: velodyne_temperature
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/top/rpm
+  - path: /sensing/lidar/top/rpm
     type: diag
     node: /sensing/lidar/top/velodyne_ros_wrapper_node
     name: velodyne_rpm
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/left/rpm
+  - path: /sensing/lidar/left/rpm
     type: diag
     node: /sensing/lidar/left/velodyne_ros_wrapper_node
     name: velodyne_rpm
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/right/rpm
+  - path: /sensing/lidar/right/rpm
     type: diag
     node: /sensing/lidar/right/velodyne_ros_wrapper_node
     name: velodyne_rpm
     timeout: 3.0
 
-  - path: /sensing/lidar/velodyne/rear/rpm
+  - path: /sensing/lidar/rear/rpm
     type: diag
     node: /sensing/lidar/rear/velodyne_ros_wrapper_node
     name: velodyne_rpm
