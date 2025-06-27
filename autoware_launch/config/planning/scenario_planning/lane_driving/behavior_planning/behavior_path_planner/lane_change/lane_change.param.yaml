@@ -51,7 +51,7 @@
         enable_target_lane_bound_check: true
         stopped_object_velocity_threshold: 1.0 # [m/s]
         execution:
-          expected_front_deceleration: -1.0
+          expected_front_deceleration: -1.6
           expected_rear_deceleration: -1.0
           rear_vehicle_reaction_time: 1.5
           rear_vehicle_safety_time_margin: 1.0
