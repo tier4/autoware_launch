@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
       - tier4/main # Branches where the original PRs will be merged
+      - beta/v0.50
       - beta/v0.49
       - beta/v0.48
     types:
@@ -25,6 +26,7 @@ jobs:
       matrix:
         following-branch:
           - tier4/main
+          - beta/v0.50
           - beta/v0.49
           - beta/v0.48
 
