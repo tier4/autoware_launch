@@ -33,7 +33,7 @@ units:
       - { type: link, link: /control/rolling_back }
       - { type: link, link: /control/over_velocity }
       - { type: link, link: /control/overrun_stop_point }
-      - { type: link, link: /control/will_overrun_stop_point }
+      # - { type: link, link: /control/will_overrun_stop_point }
 
   - path: /control/comfortable_stop
     type: and
