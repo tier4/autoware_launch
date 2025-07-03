@@ -154,7 +154,7 @@
 
         velocity_limit_based_planner:
             # PID gains to keep safe distance with the front vehicle
-            kp: 10.0
+            kp: 14.0
             ki: 0.0
             kd: 2.0
 
