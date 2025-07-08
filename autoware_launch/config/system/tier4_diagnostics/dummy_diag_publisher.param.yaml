@@ -14,6 +14,14 @@
 /**:
   ros__parameters:
     required_diags:
+
+      # An example
+      ## "node_A: name_B": default
+
+      # sensing
+      ## sensing monitoring items published by dummy_diag_publisher are saved at
+      ## /src/autoware/aip_launcher/aip_xx1_launch/config/dummy_diag_publisher/sensor_kit.param.yaml
+
       # localization
       ## /localization/001-topic_status/initialpose
       "topic_state_monitor_initialpose3d: localization_topic_status": default
@@ -46,3 +54,43 @@
 
       ## /perception/002-detection_delay
       "multi_object_tracker: Tracker Timing Diagnostics": default
+
+      # hardware
+      "ntp_monitor: NTP Offset": default
+      "cpu_monitor: CPU Temperature": default
+      "cpu_monitor: CPU Usage": default
+      "cpu_monitor: CPU Thermal Throttling": default
+      "cpu_monitor: CPU Frequency": default
+      "cpu_monitor: CPU Load Average": default
+      "gpu_monitor: GPU Temperature": default
+      "gpu_monitor: GPU Usage": default
+      "gpu_monitor: GPU Memory Usage": default
+      "gpu_monitor: GPU Thermal Throttling": default
+      "gpu_monitor: GPU Frequency": default
+      "mem_monitor: Memory Usage": default
+      "net_monitor: Network Usage": default
+      "net_monitor: Network Traffic": default
+      "net_monitor: Network CRC Error": default
+      "net_monitor: IP Packet Reassembles Failed": default
+      "hdd_monitor: HDD Temperature": default
+      "hdd_monitor: HDD RecoveredError": default
+      "hdd_monitor: HDD ReadDataRate": default
+      "hdd_monitor: HDD WriteDataRate": default
+      "hdd_monitor: HDD ReadIOPS": default
+      "hdd_monitor: HDD WriteIOPS": default
+      "hdd_monitor: HDD Usage": default
+      "hdd_monitor: HDD PowerOnHours": default
+      "hdd_monitor: HDD TotalDataWritten": default
+      "hdd_monitor: HDD Connection": default
+      "process_monitor: High-mem Proc[0]": default
+      "process_monitor: High-mem Proc[1]": default
+      "process_monitor: High-mem Proc[2]": default
+      "process_monitor: High-mem Proc[3]": default
+      "process_monitor: High-mem Proc[4]": default
+      "process_monitor: High-load Proc[0]": default
+      "process_monitor: High-load Proc[1]": default
+      "process_monitor: High-load Proc[2]": default
+      "process_monitor: High-load Proc[3]": default
+      "process_monitor: High-load Proc[4]": default
+      "process_monitor: Tasks Summary": default
+      "voltage_monitor: CMOS Battery Status": default

@@ -26,7 +26,7 @@
         max_longitudinal_acc: 1.0
         th_prepare_length_diff: 1.0
         th_lane_changing_length_diff: 1.0
-        min_lane_changing_velocity: 2.78
+        min_lane_changing_velocity: 2.0
         lon_acc_sampling_num: 5
         lat_acc_sampling_num: 3
         lane_changing_decel_factor: 0.5
@@ -51,9 +51,9 @@
         enable_target_lane_bound_check: true
         stopped_object_velocity_threshold: 1.0 # [m/s]
         execution:
-          expected_front_deceleration: -1.0
+          expected_front_deceleration: -1.6
           expected_rear_deceleration: -1.0
-          rear_vehicle_reaction_time: 2.0
+          rear_vehicle_reaction_time: 1.5
           rear_vehicle_safety_time_margin: 1.0
           lateral_distance_max_threshold: 2.0
           longitudinal_distance_min_threshold: 3.0
@@ -71,10 +71,10 @@
         cancel:
           expected_front_deceleration: -1.0
           expected_rear_deceleration: -2.0
-          rear_vehicle_reaction_time: 1.5
-          rear_vehicle_safety_time_margin: 0.8
+          rear_vehicle_reaction_time: 1.0
+          rear_vehicle_safety_time_margin: 1.5
           lateral_distance_max_threshold: 1.0
-          longitudinal_distance_min_threshold: 2.5
+          longitudinal_distance_min_threshold: 3.5
           longitudinal_velocity_delta_time: 0.0
           extended_polygon_policy: "rectangle"
         stuck:
