@@ -297,10 +297,12 @@
       constraints:
         # lateral constraints
         lateral:
-          velocity: [1.39, 4.17, 11.1, 16.7]                  # [m/s]
-          max_accel_values: [0.5, 0.5, 0.5, 0.5]              # [m/ss]
-          min_jerk_values: [0.2, 0.2, 0.2, 0.2]               # [m/sss]
-          max_jerk_values: [1.0, 1.5, 2.5, 4.0]               # [m/sss]
+          velocity: [1.39, 4.17, 11.1, 16.7]            # [m/s]
+          max_accel_values: [0.5, 0.5, 0.5, 0.5]        # [m/ss]
+          min_jerk_values:                              # [m/sss]
+            avoid: [0.2, 0.2, 0.2, 0.2]                 # [m/sss]
+            return: [0.2, 0.2, 0.2, 0.2]                # [m/sss]
+          max_jerk_values: [1.0, 1.5, 2.5, 4.0]         # [m/sss]
 
         # longitudinal constraints
         longitudinal:
