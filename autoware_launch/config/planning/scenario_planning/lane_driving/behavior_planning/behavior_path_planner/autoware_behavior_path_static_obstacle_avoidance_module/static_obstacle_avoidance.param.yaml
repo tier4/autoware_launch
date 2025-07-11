@@ -211,9 +211,9 @@
         expected_front_deceleration: -1.0               # [m/ss]
         expected_rear_deceleration: -0.9                # [m/ss]
         rear_vehicle_reaction_time: 2.0                 # [s]
-        rear_vehicle_safety_time_margin: 1.0            # [s]
+        rear_vehicle_safety_time_margin: 1.2            # [s]
         lateral_distance_max_threshold: 1.0             # [m]
-        longitudinal_distance_min_threshold: 3.0        # [m]
+        longitudinal_distance_min_threshold: 9.0        # [m]
         longitudinal_velocity_delta_time: 0.0           # [s]
 
       # For avoidance maneuver
