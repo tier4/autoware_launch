@@ -2,6 +2,8 @@ files:
   - { path: $(dirname)/autoware-main_gen2.yaml }
 
 edits:
+  - { type: remove, path: /adapi/mrm_request/delegate }
+  - { type: remove, path: /foolproof/main/autoware_node_alive }
   - { type: remove, path: /hardware/cpu/002-usage }
   - { type: remove, path: /hardware/cpu/004-throttling }
   - { type: remove, path: /hardware/storage/001-temperature }

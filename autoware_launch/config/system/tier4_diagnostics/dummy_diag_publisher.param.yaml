@@ -94,3 +94,6 @@
       "process_monitor: High-load Proc[4]": default
       "process_monitor: Tasks Summary": default
       "voltage_monitor: CMOS Battery Status": default
+
+      ## letterbox_monitor
+      "autoware_diagnostics_bridge_node_autoware_ecu: autoware_ecu_autoware_node_alive": default
