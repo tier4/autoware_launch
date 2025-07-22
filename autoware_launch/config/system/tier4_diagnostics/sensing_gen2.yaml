@@ -1,0 +1,287 @@
+units:
+  - path: /sensing/autonomous_available
+    type: and
+    list:
+      - { type: link, link: /sensing/emergency_stop }
+      - { type: link, link: /sensing/pull_over }
+      - { type: link, link: /sensing/comfortable_stop }
+
+  - path: /sensing/pull_over_available
+    type: and
+    list:
+      - { type: link, link: /sensing/emergency_stop }
+      - { type: link, link: /sensing/comfortable_stop }
+
+  - path: /sensing/comfortable_stop_available
+    type: and
+    list:
+      - { type: link, link: /sensing/emergency_stop }
+
+  # ***************************************************
+
+  - path: /sensing/emergency_stop
+    type: and
+    list:
+      - { type: link, link: /sensing/imu/002-connection }
+      - { type: link, link: /sensing/lidar/concat/001-status }
+      - { type: link, link: /sensing/lidar/pandar/001-connection }
+      - { type: link, link: /sensing/lidar/pandar/002-temperature }
+      - { type: link, link: /sensing/lidar/pandar/003-ptp }
+      # - { type: link, link: /sensing/lidar/pandar/004-rpm }        # Not in use
+      # - { type: link, link: /sensing/lidar/pandar/005-voltage }    # Not in use
+      - { type: link, link: /sensing/camera/001-connection }
+
+  - path: /sensing/pull_over
+    type: and
+
+  - path: /sensing/comfortable_stop
+    type: and
+    list:
+      - { type: link, link: /sensing/lidar/pandar/002-temperature }
+
+  - path: /sensing/none
+    type: and
+    list:
+      - { type: link, link: /sensing/imu/003-gyro_bias }
+
+  # ***************************************************
+  # Intermediate paths
+
+  # camera 1, 7 and 8 on the addon ECU are not in use
+  - path: /sensing/camera/001-connection
+    type: and
+    list:
+      - { type: link, link: /sensing/camera/0/connection }
+      # - { type: link, link: /sensing/camera/1/connection }
+      - { type: link, link: /sensing/camera/2/connection }
+      - { type: link, link: /sensing/camera/3/connection }
+      - { type: link, link: /sensing/camera/4/connection }
+      - { type: link, link: /sensing/camera/5/connection }
+      - { type: link, link: /sensing/camera/6/connection }
+      # - { type: link, link: /sensing/camera/7/connection }
+      # - { type: link, link: /sensing/camera/8/connection }
+      - { type: link, link: /sensing/camera/9/connection }
+      - { type: link, link: /sensing/camera/10/connection }
+
+  - path: /sensing/lidar/pandar/001-connection
+    type: and
+    list:
+      - { type: link, link: /sensing/lidar/front_left/connection }
+      - { type: link, link: /sensing/lidar/front_right/connection }
+      - { type: link, link: /sensing/lidar/side_left/connection }
+      - { type: link, link: /sensing/lidar/side_right/connection }
+      - { type: link, link: /sensing/lidar/top/connection }
+      # - { type: link, link: /sensing/lidar/rear/connection }
+
+  - path: /sensing/lidar/pandar/002-temperature
+    type: and
+    list:
+      - { type: link, link: /sensing/lidar/front_left/temperature }
+      - { type: link, link: /sensing/lidar/front_right/temperature }
+      - { type: link, link: /sensing/lidar/side_left/temperature }
+      - { type: link, link: /sensing/lidar/side_right/temperature }
+      - { type: link, link: /sensing/lidar/top/temperature }
+      # - { type: link, link: /sensing/lidar/rear/temperature }
+
+  - path: /sensing/lidar/pandar/003-ptp
+    type: and
+    list:
+      - { type: link, link: /sensing/lidar/front_left/ptp }
+      - { type: link, link: /sensing/lidar/front_right/ptp }
+      - { type: link, link: /sensing/lidar/side_left/ptp }
+      - { type: link, link: /sensing/lidar/side_right/ptp }
+      - { type: link, link: /sensing/lidar/top/ptp }
+      # - { type: link, link: /sensing/lidar/rear/ptp }
+
+  # ***************************************************
+  # Diagnostics paths
+
+  # The error code 001-connection simply follows pilot-auo vanilla's convention
+  # xx1 does not estimate yaw_rate_status
+  # - path: /sensing/imu/001-monitor
+  #   type: diag
+  #   node: imu_monitor
+  #   name: yaw_rate_status
+  #   timeout: 5.0
+
+  - path: /sensing/imu/002-connection
+    type: diag
+    node: topic_state_monitor_imu
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/imu/003-gyro_bias
+    type: diag
+    node: gyro_bias_validator
+    name: gyro_bias_validator
+    timeout: 1.0
+
+  - path: /sensing/camera/0/connection
+    type: diag
+    node: topic_state_monitor_camera0
+    name: sensing_topic_status
+    timeout: 1.0
+
+  # # camera 1, 7 and 8 on the addon ECU are not in use
+  # - path: /sensing/camera/1/connection
+  #   type: diag
+  #   node: topic_state_monitor_camera1
+  #   name: sensing_topic_status
+  #   timeout: 1.0
+
+  - path: /sensing/camera/2/connection
+    type: diag
+    node: topic_state_monitor_camera2
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/3/connection
+    type: diag
+    node: topic_state_monitor_camera3
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/4/connection
+    type: diag
+    node: topic_state_monitor_camera4
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/5/connection
+    type: diag
+    node: topic_state_monitor_camera5
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/6/connection
+    type: diag
+    node: topic_state_monitor_camera6
+    name: sensing_topic_status
+    timeout: 1.0
+
+  # camera 1, 7 and 8 on the addon ECU are not in use
+  # - path: /sensing/camera/7/connection
+  #   type: diag
+  #   node: topic_state_monitor_camera7
+  #   name: sensing_topic_status
+  #   timeout: 1.0
+
+  # - path: /sensing/camera/8/connection
+  #   type: diag
+  #   node: topic_state_monitor_camera8
+  #   name: sensing_topic_status
+  #   timeout: 1.0
+
+  - path: /sensing/camera/9/connection
+    type: diag
+    node: topic_state_monitor_camera9
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/10/connection
+    type: diag
+    node: topic_state_monitor_camera10
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/lidar/concat/001-status
+    type: diag
+    node: concatenate_data
+    name: /sensing/lidar/concatenate_data_status
+    timeout: 1.0
+
+  - path: /sensing/lidar/side_left/connection
+    type: diag
+    node: /sensing/lidar/side_left/hesai_ros_wrapper_node
+    name: hesai_status
+    timeout: 5.0
+  - path: /sensing/lidar/side_left/ptp
+    type: diag
+    node: /sensing/lidar/side_left/hesai_ros_wrapper_node
+    name: hesai_ptp
+    timeout: 5.0
+  - path: /sensing/lidar/side_left/temperature
+    type: diag
+    node: /sensing/lidar/side_left/hesai_ros_wrapper_node
+    name: hesai_temperature
+    timeout: 5.0
+
+  - path: /sensing/lidar/side_right/connection
+    type: diag
+    node: /sensing/lidar/side_right/hesai_ros_wrapper_node
+    name: hesai_status
+    timeout: 5.0
+  - path: /sensing/lidar/side_right/ptp
+    type: diag
+    node: /sensing/lidar/side_right/hesai_ros_wrapper_node
+    name: hesai_ptp
+    timeout: 5.0
+  - path: /sensing/lidar/side_right/temperature
+    type: diag
+    node: /sensing/lidar/side_right/hesai_ros_wrapper_node
+    name: hesai_temperature
+    timeout: 5.0
+
+  - path: /sensing/lidar/front_left/connection
+    type: diag
+    node: /sensing/lidar/front_left/hesai_ros_wrapper_node
+    name: hesai_status
+    timeout: 5.0
+  - path: /sensing/lidar/front_left/ptp
+    type: diag
+    node: /sensing/lidar/front_left/hesai_ros_wrapper_node
+    name: hesai_ptp
+    timeout: 5.0
+  - path: /sensing/lidar/front_left/temperature
+    type: diag
+    node: /sensing/lidar/front_left/hesai_ros_wrapper_node
+    name: hesai_temperature
+    timeout: 5.0
+
+  - path: /sensing/lidar/front_right/connection
+    type: diag
+    node: /sensing/lidar/front_right/hesai_ros_wrapper_node
+    name: hesai_status
+    timeout: 5.0
+  - path: /sensing/lidar/front_right/ptp
+    type: diag
+    node: /sensing/lidar/front_right/hesai_ros_wrapper_node
+    name: hesai_ptp
+    timeout: 5.0
+  - path: /sensing/lidar/front_right/temperature
+    type: diag
+    node: /sensing/lidar/front_right/hesai_ros_wrapper_node
+    name: hesai_temperature
+    timeout: 5.0
+
+  - path: /sensing/lidar/top/connection
+    type: diag
+    node: /sensing/lidar/top/hesai_ros_wrapper_node
+    name: hesai_status
+    timeout: 5.0
+  - path: /sensing/lidar/top/ptp
+    type: diag
+    node: /sensing/lidar/top/hesai_ros_wrapper_node
+    name: hesai_ptp
+    timeout: 5.0
+  - path: /sensing/lidar/top/temperature
+    type: diag
+    node: /sensing/lidar/top/hesai_ros_wrapper_node
+    name: hesai_temperature
+    timeout: 5.0
+
+  # - path: /sensing/lidar/rear/connection
+  #   type: diag
+  #   node: /sensing/lidar/rear/hesai_ros_wrapper_node
+  #   name: hesai_status
+  #   timeout: 5.0
+  # - path: /sensing/lidar/rear/ptp
+  #   type: diag
+  #   node: /sensing/lidar/rear/hesai_ros_wrapper_node
+  #   name: hesai_ptp
+  #   timeout: 5.0
+  # - path: /sensing/lidar/rear/temperature
+  #   type: diag
+  #   node: /sensing/lidar/rear/hesai_ros_wrapper_node
+  #   name: hesai_temperature
+  #   timeout: 5.0
