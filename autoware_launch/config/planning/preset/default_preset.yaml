@@ -161,4 +161,4 @@ launch:
   # other modules
   - arg:
       name: launch_remaining_distance_time_calculator
-      default: "true"
+      default: "false"
