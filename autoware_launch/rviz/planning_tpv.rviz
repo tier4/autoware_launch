@@ -1057,7 +1057,7 @@ Visualization Manager:
               Text Y Offset: 0
               Text Z Offset: 1.3
               Traffic Light Topic: /v2x/traffic_signals
-              Value: true              
+              Value: true
           Enabled: true
           Name: TrafficLight
         - Class: rviz_common/Group
