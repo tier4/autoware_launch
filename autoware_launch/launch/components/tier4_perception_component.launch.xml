@@ -48,6 +48,8 @@
   <arg name="detected_objects_filter_method" default="lanelet_filter" description="options: lanelet_filter, position_filter"/>
   <arg name="detected_objects_validation_method" default="obstacle_pointcloud" description="options: obstacle_pointcloud, occupancy_grid (must be used with laserscan_based_occupancy_grid_map)"/>
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
+  <arg name="lidar_detection_model" default="centerpoint" description="If the model name is not declared, the default model in perception.launch.xml will be used"/>
+  <arg name="ml_camera_lidar_merger_priority_mode" default="0" description="priority mode for ml and camera_lidar merger, options: `0: Object0`, `1: Object1`, `2: ConfidenceBased`, `3: ClassBased`"/>
 
   <!-- NOTE: In the case of Gen2, camera0,2,5,6 are used for traffic light recognition -->
   <let name="default_traffic_light_recognition/camera_namespaces" value="[camera0, camera2, camera5, camera6]" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
@@ -60,7 +62,6 @@
     default="fine_detection"
     description="select high accuracy detector type for traffic light recognition: fine_detection or whole_image_detection"
   />
-  <arg name="lidar_detection_model" default="centerpoint" description="If the model name is not declared, the default model in perception.launch.xml will be used"/>
 
   <!-- NOTE: In the case of Gen2, we use downsampled pointcloud for traffic_light_occlusion_predictor because the default input/cloud, "/sensing/lidar/top/pointcloud_raw_ex", is too large in Gen2.
     If traffic_light_occlusion_predictor is replaced with other nodes, this parameter should be removed. https://github.com/autowarefoundation/autoware_universe/issues/9719
@@ -196,6 +197,10 @@
     <arg
       name="object_recognition_detection_object_merger_data_association_matrix_param_path"
       value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/object_merger/data_association_matrix.param.yaml"
+    />
+    <arg
+      name="ml_camera_lidar_object_association_merger_param_path"
+      value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/object_merger/ml_camera_lidar_object_association_merger.param.yaml"
     />
     <arg
       name="object_recognition_detection_object_merger_distance_threshold_list_path"
