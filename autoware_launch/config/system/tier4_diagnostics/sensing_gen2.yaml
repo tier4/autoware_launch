@@ -187,7 +187,7 @@ units:
   - path: /sensing/lidar/concat/001-status
     type: diag
     node: concatenate_data
-    name: /sensing/lidar/concatenate_data_status
+    name: /sensing/lidar/concatenate_data
     timeout: 1.0
 
   - path: /sensing/lidar/side_left/connection
