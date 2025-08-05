@@ -1,0 +1,61 @@
+units:
+  - path: /foolproof/autonomous_available
+    type: and
+    list:
+      - { type: link, link: /foolproof/emergency_stop }
+      - { type: link, link: /foolproof/pull_over }
+      - { type: link, link: /foolproof/comfortable_stop }
+
+  - path: /foolproof/pull_over_available
+    type: and
+    list:
+      - { type: link, link: /foolproof/emergency_stop }
+      - { type: link, link: /foolproof/comfortable_stop }
+
+  - path: /foolproof/comfortable_stop_available
+    type: and
+    list:
+      - { type: link, link: /foolproof/emergency_stop }
+
+  # *******************************************************************************
+  # NOTE: Please modify this section according to your environment and requirements.
+  # *******************************************************************************
+  - path: /foolproof/emergency_stop
+    type: and
+    list:
+      - { type: link, link: /foolproof/node_alive } # letterbox_monitor
+
+  - path: /foolproof/pull_over
+    type: and
+    # list:
+
+  - path: /foolproof/comfortable_stop
+    type: and
+    # list:
+
+  # letterbox_monitor aggregate
+  - path: /foolproof/node_alive
+    type: and
+    list:
+      - { type: link, link: /foolproof/main/autoware_node_alive }
+      # - { type: link, link:  /foolproof/perception1/recognition_node_alive }
+      # - { type: link, link:  /foolproof/perception2/recognition_node_alive }
+
+  # letterbox_monitor individual
+  - path: /foolproof/main/autoware_node_alive
+    type: diag
+    node: autoware_diagnostics_bridge_node_autoware_ecu
+    name: autoware_ecu_autoware_node_alive
+    timeout: 3.0
+
+  # - path: /foolproof/perception1/recognition_node_alive
+  #   type: diag
+  #   node: autoware_diagnostics_bridge_node_perception1
+  #   name: perception1_recognition_node_alive
+  #   timeout: 3.0
+
+  # - path: /foolproof/perception2/recognition_node_alive
+  #   type: diag
+  #   node: autoware_diagnostics_bridge_node_perception2
+  #   name: perception2_recognition_node_alive
+  #   timeout: 3.0
