@@ -5,7 +5,7 @@ on:
     types:
       - closed
     branches:
-      - "beta/v*"
+      - beta/v*
 
 jobs:
   check-if-merged:
