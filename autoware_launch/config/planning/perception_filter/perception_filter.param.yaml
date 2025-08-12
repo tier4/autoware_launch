@@ -2,9 +2,9 @@
   ros__parameters:
     # Filtering parameters
     enable_object_filtering: true
-    enable_pointcloud_filtering: true
+    enable_pointcloud_filtering: false
     max_filter_distance: 5.0  # [m]
-    pointcloud_safety_distance: 0.5  # [m]
+    pointcloud_safety_distance: 1.0  # [m]
     object_classification_radius: 50.0  # [m]
 
     # RTC recreation on vehicle stop
@@ -13,6 +13,7 @@
     # Object classes to ignore during filtering
     # Available classes: UNKNOWN, CAR, TRUCK, BUS, TRAILER, MOTORCYCLE, BICYCLE, PEDESTRIAN
     # Example: ignore_object_classes: ["PEDESTRIAN", "BICYCLE"]  # Ignore pedestrians and bicycles
-    ignore_object_classes: ["CAR"]  # Empty list means no objects are ignored
+    ignore_object_classes: ["UNKNOWN"]  # Empty list means no objects are ignored
 
-    debug_timer_period: 0.1  # [s] main timer call back function period
+    # Debug parameters
+    processing_rate: 10.0  # [Hz] Processing execution rate
