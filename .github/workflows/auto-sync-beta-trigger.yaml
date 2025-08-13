@@ -23,6 +23,9 @@ jobs:
   sync-beta:
     needs: check-if-merged
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        product: [xx1, xx1.solio]
     steps:
       - name: Generate token
         id: generate-token
@@ -43,7 +46,7 @@ jobs:
             {
               "script_type": "sync_branches",
               "version": "${{ needs.check-if-merged.outputs.beta_version }}",
-              "product": "xx1"
+              "product": "${{ matrix.product }}"
             }
 
       - name: Comment on PR
@@ -53,6 +56,7 @@ jobs:
           script: |
             const prAuthor = context.payload.pull_request.user.login;
             const betaVersion = "${{ needs.check-if-merged.outputs.beta_version }}";
+            const product = "${{ matrix.product }}";
 
             github.rest.issues.createComment({
               issue_number: context.payload.pull_request.number,
@@ -60,7 +64,7 @@ jobs:
               repo: context.repo.repo,
               body: `@${prAuthor} - Your PR has been merged to \`${betaVersion}\`.
 
-              The sync-beta-branches workflow has been triggered in the tier4/autoware-release-scripts repository to synchronize the beta branches with version \`${betaVersion}\` for the product.
+              The sync-beta-branches workflow has been triggered in the tier4/autoware-release-scripts repository to synchronize the beta branches with version \`${betaVersion}\` for product \`${product}\`.
 
-              Please wait and check .`
+              Please wait and check.`
             });
