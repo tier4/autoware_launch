@@ -19,7 +19,7 @@
         update_distance_th: 0.5 # [m] minimum distance threshold to update stop point
 
         hold_stop_velocity_threshold: 0.01 # The maximum ego velocity to hold stopping [m/s]
-        hold_stop_distance_threshold: 0.3 # The ego keeps stopping if the distance to stop changes within the threshold [m]
+        hold_stop_distance_threshold: 0.5 # The ego keeps stopping if the distance to stop changes within the threshold [m]
 
         stop_on_curve:
           enable_approaching: false
@@ -39,7 +39,7 @@
             abandon_to_stop: false # If true, the planner gives up to stop when it cannot avoid to run over while maintaining the deceleration limit.
 
         rss_params:
-          use_rss_stop: true
+          use_rss_stop: false
           two_wheel_objects_deceleration: -3.0 # [m/ss] for BICYCLE, MOTORCYCLE
           vehicle_objects_deceleration: -1.2 # [m/ss] for CAR, TRUCK, etc
           no_wheel_objects_deceleration: -10.0 # [m/ss] for PEDESTRIAN, UNKNOWN
@@ -73,7 +73,7 @@
             pedestrian: true
 
         max_lat_margin: 0.3 # lateral margin between the obstacles except for unknown and ego's footprint
-        max_lat_margin_against_predicted_object_unknown: 0.3 # lateral margin between the unknown obstacles and ego's footprint
+        max_lat_margin_against_predicted_object_unknown: -0.3 # lateral margin between the unknown obstacles and ego's footprint
 
         min_velocity_to_reach_collision_point: 2.0 # minimum velocity margin to calculate time to reach collision [m/s]
         stop_obstacle_hold_time_threshold : 1.0 # maximum time for holding closest stop obstacle

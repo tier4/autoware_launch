@@ -1,0 +1,12 @@
+/**:
+  ros__parameters:
+    devices: [ 'enp3s0f0', 'enp8s0', 'enp9s0', 'logging_bond0' ]
+    traffic_reader_port: 7636
+    monitor_program: "greengrass"
+    enable_traffic_monitor: false
+    crc_error_check_duration: 1
+    crc_error_count_threshold: 1
+    reassembles_failed_check_duration: 20
+    reassembles_failed_check_count: 30000
+    udp_buf_errors_check_duration: 1
+    udp_buf_errors_check_count: 1
