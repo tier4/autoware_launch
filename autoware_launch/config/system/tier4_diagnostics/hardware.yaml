@@ -26,7 +26,7 @@ units:
     list:
       - { type: link, link: /hardware/cpu/002-usage }
       - { type: link, link: /hardware/cpu/004-throttling }
-      - { type: link, link: /hardware/storage/001-temperature }
+      - { type: link, link: /hardware/storage/001-temperature-error }
       - { type: link, link: /hardware/storage/003-connection }
       - { type: link, link: /hardware/storage/006-recovered }
       - { type: link, link: /hardware/storage/007-load }
@@ -248,6 +248,12 @@ units:
     node: net_monitor
     name: IP Packet Reassembles Failed
     timeout: 3.0
+
+  - path: /hardware/storage/001-temperature-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /hardware/storage/001-temperature
 
   - path: /hardware/storage/001-temperature
     type: diag
