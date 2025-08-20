@@ -86,12 +86,12 @@ units:
   - path: /sensing/lidar/pandar/003-ptp
     type: and
     list:
-      - { type: link, link: /sensing/lidar/front_left/ptp }
-      - { type: link, link: /sensing/lidar/front_right/ptp }
-      - { type: link, link: /sensing/lidar/side_left/ptp }
-      - { type: link, link: /sensing/lidar/side_right/ptp }
-      - { type: link, link: /sensing/lidar/top/ptp }
-      # - { type: link, link: /sensing/lidar/rear/ptp }
+      - { type: link, link: /sensing/lidar/front_left/ptp-error }
+      - { type: link, link: /sensing/lidar/front_right/ptp-error }
+      - { type: link, link: /sensing/lidar/side_left/ptp-error }
+      - { type: link, link: /sensing/lidar/side_right/ptp-error }
+      - { type: link, link: /sensing/lidar/top/ptp-error }
+      # - { type: link, link: /sensing/lidar/rear/ptp-error }
 
   # ***************************************************
   # Diagnostics paths
@@ -189,6 +189,42 @@ units:
     node: concatenate_data
     name: /sensing/lidar/concatenate_data
     timeout: 1.0
+
+  - path: /sensing/lidar/front_left/ptp-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /sensing/lidar/front_left/ptp
+
+  - path: /sensing/lidar/front_right/ptp-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /sensing/lidar/front_right/ptp
+
+  - path: /sensing/lidar/side_left/ptp-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /sensing/lidar/side_left/ptp
+
+  - path: /sensing/lidar/side_right/ptp-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /sensing/lidar/side_right/ptp
+
+  - path: /sensing/lidar/top/ptp-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /sensing/lidar/top/ptp
+
+  # - path: /sensing/lidar/rear/ptp-error
+  #   type: warn-to-ok
+  #   item:
+  #     type: link
+  #     link: /sensing/lidar/rear/ptp
 
   - path: /sensing/lidar/side_left/connection
     type: diag
