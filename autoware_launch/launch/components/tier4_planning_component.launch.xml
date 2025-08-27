@@ -22,7 +22,7 @@
     if="$(var use_foa)"
   />
 
-  <arg name="scene_module_manager_param_path" default="default_scene_module_manager_param_path"/>
+  <arg name="scene_module_manager_param_path" default="$(var default_scene_module_manager_param_path)"/>
 
   <!-- Global parameters -->
   <group scoped="false">
