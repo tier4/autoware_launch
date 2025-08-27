@@ -4,12 +4,25 @@
 
   <!-- behavior -->
   <arg name="use_experimental_lane_change_function" default="false"/>
-  <arg name="scene_module_manager_param_path"/>
   <arg name="module_preset" default="default"/>
   <arg name="enable_all_modules_auto_mode" default="false"/>
   <arg name="is_simulation" default="false"/>
   <arg name="use_sim_time" default="false"/>
   <arg name="vehicle_model" default="sample_vehicle"/>
+  <arg name="use_foa" default="false"/>
+
+  <let
+    name="default_scene_module_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/scene_module_manager.param.yaml"
+    unless="$(var use_foa)"
+  />
+  <let
+    name="default_scene_module_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/scene_module_manager_foa.param.yaml"
+    if="$(var use_foa)"
+  />
+
+  <arg name="scene_module_manager_param_path" default="default_scene_module_manager_param_path"/>
 
   <!-- Global parameters -->
   <group scoped="false">
