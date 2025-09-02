@@ -1,11 +1,28 @@
 <?xml version="1.0"?>
 <launch>
   <!-- NOTE: optional parameters are written here -->
+
+  <!-- behavior -->
+  <arg name="use_experimental_lane_change_function" default="false"/>
   <arg name="module_preset" default="default"/>
   <arg name="enable_all_modules_auto_mode" default="false"/>
   <arg name="is_simulation" default="false"/>
   <arg name="use_sim_time" default="false"/>
   <arg name="vehicle_model" default="sample_vehicle"/>
+  <arg name="use_foa" default="false"/>
+
+  <let
+    name="default_scene_module_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/scene_module_manager.param.yaml"
+    unless="$(var use_foa)"
+  />
+  <let
+    name="default_scene_module_manager_param_path"
+    value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/scene_module_manager_foa.param.yaml"
+    if="$(var use_foa)"
+  />
+
+  <arg name="scene_module_manager_param_path" default="$(var default_scene_module_manager_param_path)"/>
 
   <!-- Global parameters -->
   <group scoped="false">
@@ -35,7 +52,7 @@
     <!-- behavior path planner -->
     <arg name="behavior_path_config_path" value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner"/>
     <arg name="behavior_path_planner_common_param_path" value="$(var behavior_path_config_path)/behavior_path_planner.param.yaml"/>
-    <arg name="behavior_path_planner_scene_module_manager_param_path" value="$(var behavior_path_config_path)/scene_module_manager.param.yaml"/>
+    <arg name="behavior_path_planner_scene_module_manager_param_path" value="$(var scene_module_manager_param_path)"/>
     <arg name="behavior_path_planner_side_shift_module_param_path" value="$(var behavior_path_config_path)/side_shift/side_shift.param.yaml"/>
     <arg
       name="behavior_path_planner_static_obstacle_avoidance_module_param_path"
