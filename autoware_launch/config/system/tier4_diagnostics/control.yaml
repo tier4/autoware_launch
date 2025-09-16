@@ -25,7 +25,7 @@ units:
     list:
       - { type: link, link: /control/001-topic_status/control_command-error }
       - { type: link, link: /control/004-lane_departure-error }
-      - { type: link, link: /control/009-aeb_emergency_stop }
+      # - { type: link, link: /control/009-aeb_emergency_stop }
       # - { type: link, link: /control/010-max_distance_deviation-error }
       # slip_detection is implemented in https://github.com/tier4/l4_toolkit. So it is not used in XX1.
       # - { type: link, link: /control/011-slip_detection }
