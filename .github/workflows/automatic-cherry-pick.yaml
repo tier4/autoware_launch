@@ -8,13 +8,14 @@ on:
       - beta/v0.48
     types:
       - opened
+      - reopened
       - closed
       - labeled
 
 jobs:
   auto-add-label:
     runs-on: ubuntu-latest
-    if: github.event.action == 'opened'
+    if: github.event.action == 'opened' || github.event.action == 'reopened'
     name: Auto-add cherry-pick label
     steps:
       - name: Generate token
@@ -58,6 +59,11 @@ jobs:
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
           script: |
+            // Wait for 10 seconds to avoid conflict with the base pr labeler, check https://github.com/actions/labeler/issues/763
+            console.log('Waiting for 10 seconds...');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            console.log('Wait completed');
+
             await github.rest.issues.addLabels({
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
