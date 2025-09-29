@@ -1,0 +1,45 @@
+name: Process Update from Pilot-Auto
+
+on:
+  repository_dispatch:
+    types: [update-from-pilot-auto]
+
+jobs:
+  process-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Print Client Payload
+        run: |
+          echo "Received repository dispatch event from pilot-auto.xx1"
+          echo "---------------------------------------------------"
+          echo "Event type: ${{ github.event.action }}"
+          echo "---------------------------------------------------"
+          echo "Client Payload:"
+          echo "  base_branch: ${{ github.event.client_payload.base_branch }}"
+          echo "  upstream_branch: ${{ github.event.client_payload.upstream_branch }}"
+          echo "---------------------------------------------------"
+
+          # Print the entire payload as JSON for debugging
+          echo "Full client_payload (JSON):"
+          echo '${{ toJSON(github.event.client_payload) }}'
+
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Trigger sync-tier4-upstream workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: sync-tier4-upstream
+          token: ${{ steps.generate-token.outputs.token }}
+          inputs: |
+            {
+              "base_branch": "${{ github.event.client_payload.base_branch }}",
+              "sync_target_branch": "${{ github.event.client_payload.upstream_branch }}"
+            }

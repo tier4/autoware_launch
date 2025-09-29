@@ -9,8 +9,8 @@
   <arg name="simulator_type" default="awsim" description="select the simulator type ('awsim' or 'carla')"/>
 
   <!-- launch module preset -->
-  <arg name="planning_module_preset" default="default" description="planning module preset"/>
-  <arg name="control_module_preset" default="default" description="control module preset"/>
+  <arg name="planning_module_preset" default="xx1" description="planning module preset"/>
+  <arg name="control_module_preset" default="xx1" description="control module preset"/>
 
   <!-- Optional parameters -->
   <!-- Modules to be launched -->
@@ -26,7 +26,7 @@
   <arg name="lanelet2_map_file" default="lanelet2_map.osm" description="lanelet2 map file name"/>
   <arg name="pointcloud_map_file" default="pointcloud_map.pcd" description="pointcloud map file name"/>
   <!-- Perception -->
-  <arg name="traffic_light_namespace" default="[traffic_light]" description="traffic light recognition namespace"/>
+  <arg name="traffic_light_namespace" default="[camera6]" description="traffic light recognition namespace"/>
   <!-- Control -->
   <!-- Vehicle -->
   <arg name="launch_vehicle_interface" default="false"/>
@@ -42,6 +42,22 @@
   <group scoped="false" if="$(eval '\'$(var simulator_type)\' == \'carla\'')">
     <include file="$(find-pkg-share autoware_carla_interface)/autoware_carla_interface.launch.xml"/>
   </group>
+
+  <!-- dummy topic publisher (camera0 ~ camera6)-->
+  <!-- temporary until AWSIM supports object recognition camera -->
+  <arg name="camera0_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera0/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera1_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera1/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera2_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera2/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera3_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera3/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera4_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera4/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+  <arg name="camera5_pub" default="ros2 topic pub --rate 10 /sensing/camera/camera5/camera_info sensor_msgs/msg/CameraInfo '{}'"/>
+
+  <executable cmd="$(var camera0_pub)" name="camera0" shell="true"/>
+  <executable cmd="$(var camera1_pub)" name="camera1" shell="true"/>
+  <executable cmd="$(var camera2_pub)" name="camera2" shell="true"/>
+  <executable cmd="$(var camera3_pub)" name="camera3" shell="true"/>
+  <executable cmd="$(var camera4_pub)" name="camera4" shell="true"/>
+  <executable cmd="$(var camera5_pub)" name="camera5" shell="true"/>
 
   <group scoped="false">
     <include file="$(find-pkg-share autoware_launch)/launch/autoware.launch.xml">
@@ -77,6 +93,11 @@
       <!-- Perception-->
       <arg name="traffic_light_recognition/use_high_accuracy_detection" value="false"/>
       <arg name="traffic_light_recognition/camera_namespaces" value="$(var traffic_light_namespace)"/>
+      <arg name="perception_mode" value="lidar"/>
+      <arg name="use_traffic_light_recognition" value="true"/>
+      <arg name="traffic_light_recognition/enable_fine_detection" value="false"/>
+      <arg name="traffic_light_recognition/fusion_only" value="false"/>
+      <arg name="lidar_detection_model" value="centerpoint"/>
       <!-- Tools -->
       <arg name="rviz" value="$(var rviz)"/>
       <arg name="rviz_config" value="$(var rviz_config)"/>

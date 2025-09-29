@@ -17,19 +17,223 @@ units:
     list:
       - { type: link, link: /sensing/emergency_stop }
 
-  # *******************************************************************************
-  # NOTE: Please modify this section according to your environment and requirements.
-  # *******************************************************************************
+  # ***************************************************
+
   - path: /sensing/emergency_stop
-    type:
-      and
-      # - { type: link, link: /sensing/radar/001-connection }
+    type: and
+    list:
+      - { type: link, link: /sensing/imu/002-connection }
+      - { type: link, link: /sensing/lidar/velodyne/001-connection }
+      - { type: link, link: /sensing/lidar/velodyne/002-temperature }
+      - { type: link, link: /sensing/lidar/velodyne/003-rpm }
+      - { type: link, link: /sensing/camera/001-connection }
 
   - path: /sensing/pull_over
     type: and
+    list:
+      - { type: link, link: /sensing/lidar/velodyne/002-temperature }
 
   - path: /sensing/comfortable_stop
     type: and
 
   - path: /sensing/none
     type: and
+    list:
+      - { type: link, link: /sensing/imu/003-gyro_bias }
+      # - { type: link, link: /sensing/lidar/performance_monitoring/blockage }   ---->To be checked in v0.47.0
+      - { type: link, link: /sensing/gnss/001-connection }
+      - { type: link, link: /sensing/gnss/002-fix }
+
+  # ***************************************************
+  # Intermediate paths
+
+  - path: /sensing/camera/001-connection
+    type: and
+    list:
+      - { type: link, link: /sensing/camera/0/connection }
+      - { type: link, link: /sensing/camera/1/connection }
+      - { type: link, link: /sensing/camera/2/connection }
+      - { type: link, link: /sensing/camera/3/connection }
+      - { type: link, link: /sensing/camera/4/connection }
+      - { type: link, link: /sensing/camera/5/connection }
+      - { type: link, link: /sensing/camera/6/connection }
+
+  - path: /sensing/lidar/velodyne/001-connection
+    type: and
+    list:
+      - { type: link, link: /sensing/lidar/top/connection }
+      - { type: link, link: /sensing/lidar/left/connection }
+      - { type: link, link: /sensing/lidar/right/connection }
+      - { type: link, link: /sensing/lidar/rear/connection }
+
+  - path: /sensing/lidar/velodyne/002-temperature
+    type: and
+    list:
+      - { type: link, link: /sensing/lidar/top/temperature }
+      - { type: link, link: /sensing/lidar/left/temperature }
+      - { type: link, link: /sensing/lidar/right/temperature }
+      - { type: link, link: /sensing/lidar/rear/temperature }
+
+  - path: /sensing/lidar/velodyne/003-rpm
+    type: and
+    list:
+      - { type: link, link: /sensing/lidar/top/rpm }
+      - { type: link, link: /sensing/lidar/left/rpm }
+      - { type: link, link: /sensing/lidar/right/rpm }
+      - { type: link, link: /sensing/lidar/rear/rpm }
+
+  # ***************************************************
+  # Diagnostics paths
+
+  # The error code 001-connection simply follows pilot-auo vanilla's convention
+  # xx1 does not estimate yaw_rate_status
+  # - path: /sensing/imu/001-monitor
+  #   type: diag
+  #   node: imu_monitor
+  #   name: yaw_rate_status
+  #   timeout: 5.0
+
+  - path: /sensing/imu/002-connection
+    type: diag
+    node: topic_state_monitor_imu
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/imu/003-gyro_bias
+    type: diag
+    node: gyro_bias_validator
+    name: gyro_bias_validator
+    timeout: 1.0
+
+  # ---->To be check in v0.47.0
+  # - path: /sensing/lidar/performance_monitoring/blockage
+  #   type: diag
+  #   node: blockage
+  #   name: blockage_validation
+  #   timeout: 1.0
+
+  - path: /sensing/lidar/top/connection
+    type: diag
+    node: /sensing/lidar/top/velodyne_ros_wrapper_node
+    name: velodyne_status
+    timeout: 3.0
+
+  - path: /sensing/lidar/left/connection
+    type: diag
+    node: /sensing/lidar/left/velodyne_ros_wrapper_node
+    name: velodyne_status
+    timeout: 3.0
+
+  - path: /sensing/lidar/right/connection
+    type: diag
+    node: /sensing/lidar/right/velodyne_ros_wrapper_node
+    name: velodyne_status
+    timeout: 3.0
+
+  - path: /sensing/lidar/rear/connection
+    type: diag
+    node: /sensing/lidar/rear/velodyne_ros_wrapper_node
+    name: velodyne_status
+    timeout: 3.0
+
+  - path: /sensing/lidar/top/temperature
+    type: diag
+    node: /sensing/lidar/top/velodyne_ros_wrapper_node
+    name: velodyne_temperature
+    timeout: 3.0
+
+  - path: /sensing/lidar/left/temperature
+    type: diag
+    node: /sensing/lidar/left/velodyne_ros_wrapper_node
+    name: velodyne_temperature
+    timeout: 3.0
+
+  - path: /sensing/lidar/right/temperature
+    type: diag
+    node: /sensing/lidar/right/velodyne_ros_wrapper_node
+    name: velodyne_temperature
+    timeout: 3.0
+
+  - path: /sensing/lidar/rear/temperature
+    type: diag
+    node: /sensing/lidar/rear/velodyne_ros_wrapper_node
+    name: velodyne_temperature
+    timeout: 3.0
+
+  - path: /sensing/lidar/top/rpm
+    type: diag
+    node: /sensing/lidar/top/velodyne_ros_wrapper_node
+    name: velodyne_rpm
+    timeout: 3.0
+
+  - path: /sensing/lidar/left/rpm
+    type: diag
+    node: /sensing/lidar/left/velodyne_ros_wrapper_node
+    name: velodyne_rpm
+    timeout: 3.0
+
+  - path: /sensing/lidar/right/rpm
+    type: diag
+    node: /sensing/lidar/right/velodyne_ros_wrapper_node
+    name: velodyne_rpm
+    timeout: 3.0
+
+  - path: /sensing/lidar/rear/rpm
+    type: diag
+    node: /sensing/lidar/rear/velodyne_ros_wrapper_node
+    name: velodyne_rpm
+    timeout: 3.0
+
+  - path: /sensing/gnss/001-connection
+    type: diag
+    node: ublox
+    name: fix topic status
+    timeout: 3.0
+
+  - path: /sensing/gnss/002-fix
+    type: diag
+    node: ublox
+    name: fix
+    timeout: 3.0
+
+  - path: /sensing/camera/0/connection
+    type: diag
+    node: topic_state_monitor_camera0
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/1/connection
+    type: diag
+    node: topic_state_monitor_camera1
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/2/connection
+    type: diag
+    node: topic_state_monitor_camera2
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/3/connection
+    type: diag
+    node: topic_state_monitor_camera3
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/4/connection
+    type: diag
+    node: topic_state_monitor_camera4
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/5/connection
+    type: diag
+    node: topic_state_monitor_camera5
+    name: sensing_topic_status
+    timeout: 1.0
+
+  - path: /sensing/camera/6/connection
+    type: diag
+    node: topic_state_monitor_camera6
+    name: sensing_topic_status
+    timeout: 1.0
