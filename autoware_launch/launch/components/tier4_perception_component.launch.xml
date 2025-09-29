@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+  <!-- cspell: ignore semseg -->
   <arg
     name="launch_pointcloud_container"
     default="false"
@@ -50,6 +51,14 @@
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
   <arg name="lidar_detection_model" default="centerpoint" description="If the model name is not declared, the default model in perception.launch.xml will be used"/>
   <arg name="ml_camera_lidar_merger_priority_mode" default="0" description="priority mode for ml and camera_lidar merger, options: `0: Object0`, `1: Object1`, `2: ConfidenceBased`, `3: ClassBased`"/>
+
+  <arg
+    name="camera_2d_detector/model_path"
+    default="$(var data_path)/tensorrt_yolox/yolox-sPlus-opt-pseudoV2-T4-960x960-T4-seg16cls.onnx"
+    description="options `yolox-sPlus-T4-960x960-pseudo-finetune.onnx` if only detection is needed, `yolox-sPlus-opt-pseudoV2-T4-960x960-T4-seg16cls.onnx` if sematic segmentation is also needed"
+  />
+  <arg name="camera_2d_detector/label_path" default="$(var data_path)/tensorrt_yolox/label.txt" description="label path"/>
+  <arg name="camera_2d_detector/color_map_path" default="$(var data_path)/tensorrt_yolox/semseg_color_map.csv" description="color map path"/>
 
   <!-- NOTE: In the case of Gen2, camera0,2,5,6 are used for traffic light recognition -->
   <let name="default_traffic_light_recognition/camera_namespaces" value="[camera0, camera2, camera5, camera6]" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
@@ -141,6 +150,10 @@
     <arg name="lidar_detection_model_name" value="$(var lidar_detection_model_name)"/>
 
     <arg name="downsample_perception_common_pointcloud" value="true"/>
+
+    <arg name="camera_2d_detector/model_path" value="$(var camera_2d_detector/model_path)"/>
+    <arg name="camera_2d_detector/label_path" value="$(var camera_2d_detector/label_path)"/>
+    <arg name="camera_2d_detector/color_map_path" value="$(var camera_2d_detector/color_map_path)"/>
 
     <!-- traffic light recognition options to switch launch function/module -->
     <arg name="use_traffic_light_recognition" value="$(var use_traffic_light_recognition)"/>
