@@ -60,7 +60,6 @@
   <arg name="camera_2d_detector/label_path" default="$(var data_path)/tensorrt_yolox/label.txt" description="label path"/>
   <arg name="camera_2d_detector/color_map_path" default="$(var data_path)/tensorrt_yolox/semseg_color_map.csv" description="color map path"/>
 
-
   <!-- NOTE: In the case of Gen2, camera0,2,5,6 are used for traffic light recognition -->
   <let name="default_traffic_light_recognition/camera_namespaces" value="[camera0, camera2, camera5, camera6]" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
   <let name="default_traffic_light_recognition/camera_namespaces" value="[camera6]" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
