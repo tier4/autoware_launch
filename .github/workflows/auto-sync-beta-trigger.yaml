@@ -40,11 +40,10 @@ jobs:
         with:
           token: ${{ steps.generate-token.outputs.token }}
           repo: tier4/autoware-release-scripts
-          workflow: branch-manager-runner.yaml
+          workflow: sync-beta-branches.yaml
           ref: main
           inputs: |
             {
-              "script_type": "sync_branches",
               "version": "${{ needs.check-if-merged.outputs.beta_version }}",
               "product": "${{ matrix.product }}"
             }
