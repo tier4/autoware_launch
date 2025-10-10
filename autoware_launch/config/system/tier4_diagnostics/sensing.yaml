@@ -1173,7 +1173,7 @@ units:
     hysteresis: 0.125
 
   - path: /sensing/visibility_validation
-    type: diag
+    type: ok
     node: polar_voxel_outlier_filter
     name: "/sensing/lidar/right_upper: visibility_validation"
     timeout: 1.0
