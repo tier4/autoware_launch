@@ -13,24 +13,18 @@ files:
 
 units:
   - path: /autoware/modes/local
-    type: and
-    list:
-      - { type: link, link: /adapi/mrm_request/delegate }
+    type: ok
 
   - path: /autoware/modes/remote
-    type: and
-    list:
-      - { type: link, link: /adapi/mrm_request/delegate }
+    type: ok
 
   - path: /autoware/modes/stop
-    type: and
-    list:
-      - { type: link, link: /adapi/mrm_request/delegate }
+    type: ok
 
   - path: /autoware/modes/autonomous
     type: and
     list:
-      - { type: link, link: /adapi/mrm_request/delegate }
+      # - { type: link, link: /adapi/mrm_request/delegate }
       - { type: link, link: /control/autonomous_available }
       - { type: link, link: /foolproof/autonomous_available }
       - { type: link, link: /hardware/autonomous_available }
