@@ -26,9 +26,9 @@
     mpc_weight_lat_jerk: 0.1                     # lateral jerk weight in matrix R
     mpc_weight_steer_rate: 0.0                   # steering rate weight in matrix R
     mpc_weight_steer_acc: 0.000001               # steering angular acceleration weight in matrix R
-    mpc_low_curvature_weight_lat_error: 0.05                   # lateral error weight in matrix Q in low curvature point
-    mpc_low_curvature_weight_heading_error: 0.0                # heading error weight in matrix Q in low curvature point
-    mpc_low_curvature_weight_heading_error_squared_vel: 0.03   # heading error * velocity weight in matrix Q in low curvature point
+    mpc_low_curvature_weight_lat_error: 0.3                    # lateral error weight in matrix Q in low curvature point
+    mpc_low_curvature_weight_heading_error: 0.1                # heading error weight in matrix Q in low curvature point
+    mpc_low_curvature_weight_heading_error_squared_vel: 1.5    # heading error * velocity weight in matrix Q in low curvature point
     mpc_low_curvature_weight_steering_input: 1.0               # steering error weight in matrix R in low curvature point
     mpc_low_curvature_weight_steering_input_squared_vel: 2.00  # steering error * velocity weight in matrix R in low curvature point
     mpc_low_curvature_weight_lat_jerk: 0.0                     # lateral jerk weight in matrix R in low curvature point
@@ -44,7 +44,7 @@
 
     # -- vehicle model --
     vehicle_model_type: "kinematics" # vehicle model type for mpc prediction. option is kinematics, kinematics_no_delay, and dynamics
-    input_delay: 0.25                 # steering input delay time for delay compensation
+    input_delay: 0.3                 # steering input delay time for delay compensation
     vehicle_model_steer_tau: 0.25     # steering dynamics time constant (1d approximation) [s]
     steer_rate_lim_dps_list_by_curvature: [20.0, 20.0, 20.0]            # steering angle rate limit list depending on curvature [deg/s]
     curvature_list_for_steer_rate_lim: [0.001, 0.002, 0.01]              # curvature list for steering angle rate limit interpolation in ascending order [/m]
