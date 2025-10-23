@@ -42,9 +42,6 @@ launch:
   - arg:
       name: launch_bidirectional_traffic_module
       default: "true"
-  - arg:
-      name: use_experimental_lane_change_function
-      default: "true"
 
   # behavior velocity modules
   - arg:
@@ -133,13 +130,6 @@ launch:
   - arg:
       name: launch_road_user_stop_module
       default: "true"
-
-  - arg:
-      name: motion_stop_planner_type
-      default: none
-      # option: obstacle_stop_planner
-      #         obstacle_cruise_planner
-      #         none
 
   - arg:
       name: velocity_smoother_type
