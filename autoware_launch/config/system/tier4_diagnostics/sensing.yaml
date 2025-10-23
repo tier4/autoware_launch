@@ -23,6 +23,7 @@ units:
     type: and
     list:
       - { type: link, link: /sensing/imu/002-connection }
+      - { type: link, link: /sensing/lidar/concat/001-status }
       - { type: link, link: /sensing/lidar/velodyne/001-connection }
       - { type: link, link: /sensing/lidar/velodyne/002-temperature }
       - { type: link, link: /sensing/lidar/velodyne/003-rpm }
@@ -111,6 +112,12 @@ units:
   #   node: blockage
   #   name: blockage_validation
   #   timeout: 1.0
+
+  - path: /sensing/lidar/concat/001-status
+    type: diag
+    node: concatenate_data
+    name: /sensing/lidar/concatenate_data
+    timeout: 1.0
 
   - path: /sensing/lidar/top/connection
     type: diag
