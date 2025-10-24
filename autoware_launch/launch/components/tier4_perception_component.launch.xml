@@ -45,7 +45,7 @@
   <arg name="segmentation_pointcloud_fusion_camera_ids" default="[0,2,4]" description="list of camera ids used for segmentation_pointcloud_fusion node, mainly using front camera"/>
   <arg name="use_multi_channel_tracker_merger" default="true" description="if true, multi channel tracker merger is used. Otherwise, merged object is used."/>
   <arg name="tracker_publish_merged_objects" default="false"/>
-  <arg name="use_cuda_ground_segmentation" value="false"/>
+  <arg name="use_cuda_ground_segmentation" default="false"/>
 
   <arg name="occupancy_grid_map_method" default="pointcloud_based" description="options: pointcloud_based, laserscan_based, multi_lidar_pointcloud_based"/>
   <arg name="occupancy_grid_map_updater" default="binary_bayes_filter" description="options: binary_bayes_filter"/>
