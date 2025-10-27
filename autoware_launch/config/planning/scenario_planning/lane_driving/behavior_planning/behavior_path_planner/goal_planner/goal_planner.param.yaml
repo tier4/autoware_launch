@@ -57,11 +57,11 @@
         minimum_request_length: 0.0
         approximate_pull_over_distance: 20.0
         pull_over_prepare_length: 100.0
-        pull_over_velocity: 3.0
+        pull_over_velocity: 4.5
         pull_over_minimum_velocity: 1.38
         decide_path_distance: 10.0
-        maximum_deceleration: 1.0
-        maximum_jerk: 1.0
+        maximum_deceleration: 0.5
+        maximum_jerk: 0.5
         low_velocity_threshold: 1.38
         stopping_distance_buffer: 2.0
         path_priority: "efficient_path" # "efficient_path" or "close_goal"
@@ -83,7 +83,7 @@
           forward:
             enable_arc_forward_parking: true
             after_forward_parking_straight_distance: 2.0
-            forward_parking_velocity: 1.38
+            forward_parking_velocity: 3.8
             forward_parking_lane_departure_margin: 0.0
             forward_parking_path_interval: 1.0
           backward:
