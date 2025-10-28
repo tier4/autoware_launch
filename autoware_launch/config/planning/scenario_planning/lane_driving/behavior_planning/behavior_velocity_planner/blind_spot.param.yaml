@@ -2,7 +2,7 @@
   ros__parameters:
     blind_spot:
       backward_attention_length: 100.0 # [m]
-      ttc_start_margin: 2.0 # [s]
+      ttc_start_margin: 1.7 # [s]
       ttc_end_margin: 1.0 # [s]
       minimum_default_velocity: 1.388 # [m/s]
       collision_judge_debounce: 0.5 # [s]
