@@ -19,11 +19,11 @@
 
     # drive state
     kp: 1.0
-    ki: 0.02
+    ki: 0.1
     kd: 0.0
     max_out: 1.0
     min_out: -1.0
-    max_p_effort: 0.5
+    max_p_effort: 1.0
     min_p_effort: -5.0
     max_i_effort: 0.3
     min_i_effort: -0.3
@@ -46,8 +46,8 @@
     smooth_stop_min_running_vel: 0.01
     smooth_stop_min_running_acc: 0.01
     smooth_stop_weak_stop_time: 0.8
-    smooth_stop_weak_stop_dist: -0.3
-    smooth_stop_strong_stop_dist: -0.5
+    smooth_stop_weak_stop_dist: 0.8
+    smooth_stop_strong_stop_dist: 0.1
 
     # stopped state
     stopped_vel: 0.0
