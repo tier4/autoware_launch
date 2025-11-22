@@ -34,7 +34,7 @@
   <arg name="use_pointcloud_map" default="true" description="use pointcloud map in detection"/>
   <arg name="use_irregular_object_detector" default="true" description="enable pipeline for small unknown object detection"/>
   <arg name="use_low_intensity_cluster_filter" default="true" description="launch low_intensity_cluster_filter in clustering"/>
-  <arg name="use_image_segmentation_based_filter" default="false" description="launch image_segmentation_based_filter in clustering"/>
+  <arg name="use_image_segmentation_based_filter" default="true" description="launch image_segmentation_based_filter in clustering"/>
   <arg name="use_perception_online_evaluator" default="false" description="launch perception online evaluator"/>
   <arg name="use_perception_analytics_publisher" default="true" description="launch perception analytics publisher"/>
   <arg name="use_detection_by_tracker" default="true" description="launch detection_by_tracker function"/>
@@ -42,7 +42,6 @@
   <arg name="use_object_filter" default="true" description="launch object filter to filter-out detected object"/>
   <arg name="use_obstacle_segmentation_single_frame_filter" default="false" description="use single frame filter at the ground segmentation"/>
   <arg name="use_obstacle_segmentation_time_series_filter" default="true" description="use time series filter at the ground segmentation"/>
-  <arg name="segmentation_pointcloud_fusion_camera_ids" default="[0,2,4]" description="list of camera ids used for segmentation_pointcloud_fusion node, mainly using front camera"/>
   <arg name="use_multi_channel_tracker_merger" default="true" description="if true, multi channel tracker merger is used. Otherwise, merged object is used."/>
   <arg name="tracker_publish_merged_objects" default="false"/>
   <arg name="use_camera_vru_detector" default="false" description="enable pipeline for camera VRU object detection"/>
@@ -64,13 +63,58 @@
   <arg name="camera_2d_detector/label_path" default="$(var data_path)/tensorrt_yolox/label.txt" description="label path"/>
   <arg name="camera_2d_detector/color_map_path" default="$(var data_path)/tensorrt_yolox/semseg_color_map.csv" description="color map path"/>
 
-  <arg name="traffic_light_recognition/camera_namespaces" default="[camera6, camera7]" description="choose camera which use for traffic light recognition"/>
+  <!-- NOTE: In the case of Gen2, camera0,2,5,6 are used for traffic light recognition -->
+  <let name="default_traffic_light_recognition/camera_namespaces" value="[camera0, camera2, camera5, camera6]" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+  <let name="default_traffic_light_recognition/camera_namespaces" value="[camera6]" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+
+  <!-- NOTE: In the case of Gen2, only camera0 is used for segmentation_pointcloud_fusion -->
+  <let name="segmentation_pointcloud_fusion_camera_ids" value="[0]" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+  <let name="segmentation_pointcloud_fusion_camera_ids" value="[0,2,4]" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+
+  <arg name="traffic_light_recognition/camera_namespaces" default="$(var default_traffic_light_recognition/camera_namespaces)" description="choose camera which use for traffic light recognition"/>
   <arg name="traffic_light_recognition/use_high_accuracy_detection" default="true" description="select whether to use high accuracy detector for traffic light recognition"/>
   <arg
     name="traffic_light_recognition/high_accuracy_detection_type"
     default="fine_detection"
     description="select high accuracy detector type for traffic light recognition: fine_detection or whole_image_detection"
   />
+
+  <!-- NOTE: In the case of Gen2, we use downsampled pointcloud for traffic_light_occlusion_predictor because the default input/cloud, "/sensing/lidar/top/pointcloud_raw_ex", is too large in Gen2.
+    If traffic_light_occlusion_predictor is replaced with other nodes, this parameter should be removed. https://github.com/autowarefoundation/autoware_universe/issues/9719
+  -->
+  <let name="traffic_light_occlusion/input/cloud" value="/perception/common/pointcloud" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+  <let name="traffic_light_occlusion/input/cloud" value="/sensing/lidar/top/pointcloud_raw_ex" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+
+  <let name="camera_index0" value="0"/>
+  <let name="camera_index1" value="1"/>
+  <let name="camera_index2" value="2"/>
+  <let name="camera_index3" value="3"/>
+  <let name="camera_index4" value="4"/>
+  <let name="camera_index5" value="5"/>
+  <let name="image_number" value="6"/>
+  <let
+    name="object_recognition_detection_fusion_sync_param_path"
+    value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/image_projection_based_fusion/fusion_common.param.yaml"
+  />
+
+  <!-- NOTE: In the case of Gen2, the camera index is overridden. Gen2 has only 5 cameras for object recognition -->
+  <group scoped="false" if="$(eval &quot;'$(var sensor_model)' == 'aip_xx1_gen2'&quot;)">
+    <let name="camera_index0" value="0"/>
+    <let name="camera_index1" value="3"/>
+    <let name="camera_index2" value="4"/>
+    <let name="camera_index3" value="9"/>
+    <let name="camera_index4" value="10"/>
+    <let name="image_number" value="5"/>
+    <let
+      name="object_recognition_detection_fusion_sync_param_path"
+      value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/image_projection_based_fusion/fusion_common_gen2.param.yaml"
+    />
+  </group>
+
+  <let name="lidar_detection_model_name" value=""/>
+  <!-- override if model name is not pointpainting -->
+  <let name="lidar_detection_model_name" value="centerpoint" if="$(eval &quot;'$(var lidar_detection_model)' == 'centerpoint'&quot;)"/>
+  <let name="lidar_detection_model_name" value="transfusion" if="$(eval &quot;'$(var lidar_detection_model)' == 'transfusion'&quot;)"/>
 
   <include file="$(find-pkg-share tier4_perception_launch)/launch/perception.launch.xml">
     <arg name="data_path" value="$(var data_path)"/>
@@ -104,6 +148,14 @@
     <arg name="segmentation_pointcloud_fusion_camera_ids" value="$(var segmentation_pointcloud_fusion_camera_ids)"/>
     <arg name="use_camera_vru_detector" value="$(var use_camera_vru_detector)"/>
     <arg name="camera_vru_detector_rois_ids" value="$(var camera_vru_detector_rois_ids)"/>
+    <arg name="data_path" value="$(var data_path)"/>
+    <arg name="input/pointcloud" value="/sensing/lidar/concatenated/pointcloud"/>
+    <arg name="pointpainting_model_path" value="/opt/autoware/mlmodels/pointpainting"/>
+    <arg name="centerpoint_model_path" value="/opt/autoware/mlmodels/$(var lidar_detection_model)"/>
+    <arg name="transfusion_model_path" value="/opt/autoware/mlmodels/$(var lidar_detection_model)"/>
+    <arg name="lidar_detection_model_name" value="$(var lidar_detection_model_name)"/>
+
+    <arg name="downsample_perception_common_pointcloud" value="true"/>
 
     <arg name="camera_2d_detector/model_path" value="$(var camera_2d_detector/model_path)"/>
     <arg name="camera_2d_detector/label_path" value="$(var camera_2d_detector/label_path)"/>
@@ -111,12 +163,15 @@
 
     <!-- traffic light recognition options to switch launch function/module -->
     <arg name="use_traffic_light_recognition" value="$(var use_traffic_light_recognition)"/>
-    <arg name="traffic_light_recognition/fusion_only" value="false"/>
     <arg name="traffic_light_recognition/camera_namespaces" value="$(var traffic_light_recognition/camera_namespaces)"/>
     <arg name="traffic_light_recognition/use_high_accuracy_detection" value="$(var traffic_light_recognition/use_high_accuracy_detection)"/>
     <arg name="traffic_light_recognition/high_accuracy_detection_type" value="$(var traffic_light_recognition/high_accuracy_detection_type)"/>
+    <arg name="traffic_light_recognition/fusion_only" value="$(var traffic_light_recognition/fusion_only)"/>
+    <!-- This parameter, "input/cloud", looks very ambiguous, but it is only used to specify the input pointcloud for traffic_light_occlusion_predictor.
+      If traffic_light_occlusion_predictor is replaced with other nodes, this parameter should be removed.  -->
+    <arg name="input/cloud" value="$(var traffic_light_occlusion/input/cloud)"/>
 
-    <!-- object recognition parameters -->
+    <!-- object recognition -->
     <arg
       name="object_recognition_detection_euclidean_cluster_param_path"
       value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/clustering/euclidean_cluster.param.yaml"
@@ -138,10 +193,7 @@
       name="object_recognition_detection_pointcloud_map_filter_param_path"
       value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/pointcloud_filter/pointcloud_map_filter.param.yaml"
     />
-    <arg
-      name="object_recognition_detection_fusion_sync_param_path"
-      value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/image_projection_based_fusion/fusion_common.param.yaml"
-    />
+    <arg name="object_recognition_detection_fusion_sync_param_path" value="$(var object_recognition_detection_fusion_sync_param_path)"/>
     <arg
       name="object_recognition_detection_roi_cluster_fusion_param_path"
       value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/detection/image_projection_based_fusion/roi_cluster_fusion.param.yaml"
@@ -235,6 +287,24 @@
       name="object_recognition_tracking_object_merger_node_param_path"
       value="$(find-pkg-share autoware_launch)/config/perception/object_recognition/tracking/tracking_object_merger/decorative_tracker_merger.param.yaml"
     />
+
+    <!-- camera topics for object recognition -->
+    <arg name="image_raw0" value="/sensing/camera/camera$(var camera_index0)/image_raw"/>
+    <arg name="camera_info0" value="/sensing/camera/camera$(var camera_index0)/camera_info"/>
+    <arg name="detection_rois0" value="/perception/object_recognition/detection/rois$(var camera_index0)"/>
+    <arg name="image_raw1" value="/sensing/camera/camera$(var camera_index1)/image_raw"/>
+    <arg name="camera_info1" value="/sensing/camera/camera$(var camera_index1)/camera_info"/>
+    <arg name="detection_rois1" value="/perception/object_recognition/detection/rois$(var camera_index1)"/>
+    <arg name="image_raw2" value="/sensing/camera/camera$(var camera_index2)/image_raw"/>
+    <arg name="camera_info2" value="/sensing/camera/camera$(var camera_index2)/camera_info"/>
+    <arg name="detection_rois2" value="/perception/object_recognition/detection/rois$(var camera_index2)"/>
+    <arg name="image_raw3" value="/sensing/camera/camera$(var camera_index3)/image_raw"/>
+    <arg name="camera_info3" value="/sensing/camera/camera$(var camera_index3)/camera_info"/>
+    <arg name="detection_rois3" value="/perception/object_recognition/detection/rois$(var camera_index3)"/>
+    <arg name="image_raw4" value="/sensing/camera/camera$(var camera_index4)/image_raw"/>
+    <arg name="camera_info4" value="/sensing/camera/camera$(var camera_index4)/camera_info"/>
+    <arg name="detection_rois4" value="/perception/object_recognition/detection/rois$(var camera_index4)"/>
+    <arg name="image_number" value="$(var image_number)"/>
 
     <!-- obstacle segmentation parameters -->
     <arg
