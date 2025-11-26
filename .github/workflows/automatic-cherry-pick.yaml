@@ -15,7 +15,10 @@ on:
 jobs:
   auto-add-label:
     runs-on: ubuntu-latest
-    if: github.event.action == 'opened' || github.event.action == 'reopened'
+    # Add the label only when the PR is opened or reopened, and the PR is not created by private-bot
+    if: |
+      (github.event.action == 'opened' || github.event.action == 'reopened') &&
+      github.event.pull_request.user.login != 'tier4-autoware-private-bot'
     name: Auto-add cherry-pick label
     steps:
       - name: Generate token
