@@ -24,7 +24,7 @@ units:
     type: and
     list:
       - { type: link, link: /planning/001-topic_status/route-error }
-      - { type: link, link: /planning/001-topic_status/trajectory-error }
+      - { type: link, link: /planning/002-topic_status/trajectory-error }
       - { type: link, link: /planning/003-trajectory_finite_validation-error }
       - { type: link, link: /planning/004-trajectory_interval_validation-error }
       - { type: link, link: /planning/005-trajectory_curvature_validation-error }
@@ -59,11 +59,11 @@ units:
       type: link
       link: /planning/001-topic_status/route
 
-  - path: /planning/001-topic_status/trajectory-error
+  - path: /planning/002-topic_status/trajectory-error
     type: warn-to-ok
     item:
       type: link
-      link: /planning/001-topic_status/trajectory
+      link: /planning/002-topic_status/trajectory
 
   - path: /planning/003-trajectory_finite_validation-error
     type: warn-to-ok
@@ -179,7 +179,7 @@ units:
     name: planning_topic_status
     timeout: 1.0
 
-  - path: /planning/001-topic_status/trajectory
+  - path: /planning/002-topic_status/trajectory
     type: diag
     node: topic_state_monitor_scenario_planning_trajectory
     name: planning_topic_status
