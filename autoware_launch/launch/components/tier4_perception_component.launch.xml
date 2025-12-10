@@ -79,11 +79,7 @@
     description="select high accuracy detector type for traffic light recognition: fine_detection or whole_image_detection"
   />
 
-  <!-- NOTE: In the case of Gen2, we use downsampled pointcloud for traffic_light_occlusion_predictor because the default input/cloud, "/sensing/lidar/top/pointcloud_raw_ex", is too large in Gen2.
-    If traffic_light_occlusion_predictor is replaced with other nodes, this parameter should be removed. https://github.com/autowarefoundation/autoware_universe/issues/9719
-  -->
-  <let name="traffic_light_occlusion/input/cloud" value="/perception/common/pointcloud" if="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
-  <let name="traffic_light_occlusion/input/cloud" value="/sensing/lidar/top/pointcloud_raw_ex" unless="$(eval &quot;'aip_xx1_gen2' == '$(var sensor_model)'&quot;)"/>
+  <let name="traffic_light_occlusion/input/cloud" value="/sensing/lidar/top/pointcloud_raw_ex"/>
 
   <let name="camera_index0" value="0"/>
   <let name="camera_index1" value="1"/>
@@ -155,7 +151,7 @@
     <arg name="transfusion_model_path" value="/opt/autoware/mlmodels/$(var lidar_detection_model)"/>
     <arg name="lidar_detection_model_name" value="$(var lidar_detection_model_name)"/>
 
-    <arg name="downsample_perception_common_pointcloud" value="true"/>
+    <arg name="downsample_perception_common_pointcloud" value="false"/>
 
     <arg name="camera_2d_detector/model_path" value="$(var camera_2d_detector/model_path)"/>
     <arg name="camera_2d_detector/label_path" value="$(var camera_2d_detector/label_path)"/>
