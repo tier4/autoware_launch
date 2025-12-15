@@ -44,8 +44,8 @@
       geometric_pull_out_max_steer_angle_margin_scale: 0.72
 
       # clothoid pull out
-      clothoid_initial_velocity: 2.78 # [m/s] initial velocity for clothoid path
-      clothoid_acceleration: 1.5      # [m/s^2] acceleration for clothoid path
+      clothoid_initial_velocity: 1.0  # [m/s] initial velocity for clothoid path
+      clothoid_acceleration: 1.0      # [m/s^2] acceleration for clothoid path
       clothoid_max_steer_angles_deg: [5.0, 10.0, 20.0]  # [deg] maximum steer angles to try
       clothoid_max_steer_angle_rate_deg_per_sec: 10.0   # [deg/s] maximum steer angle rate
       clothoid_collision_check_distance_from_end: 0.0  # [m] collision check distance from end for clothoid planner
