@@ -35,7 +35,7 @@
           longitudinal_margin: 0.0
           lateral_margin:
             soft_margin: 0.7
-            hard_margin: 0.3
+            hard_margin: 0.2
             hard_margin_for_parked_vehicle: 0.7
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.1
@@ -46,9 +46,9 @@
           longitudinal_margin: 0.0
           lateral_margin:
             soft_margin: 0.7
-            hard_margin: 0.3
+            hard_margin: 0.2
             hard_margin_for_parked_vehicle: 0.7
-          max_expand_ratio: 0.3
+          max_expand_ratio: 0.0
           envelope_buffer_margin: 0.1
           th_error_eclipse_long_radius : 0.6
         trailer:
@@ -57,7 +57,7 @@
           longitudinal_margin: 0.0
           lateral_margin:
             soft_margin: 0.7
-            hard_margin: 0.3
+            hard_margin: 0.2
             hard_margin_for_parked_vehicle: 0.7
           max_expand_ratio: 0.0
           envelope_buffer_margin: 0.1
@@ -131,7 +131,7 @@
         detection_area:
           static: false                                 # [-]
           min_forward_distance: 50.0                    # [m]
-          max_forward_distance: 90.0                   # [m]
+          max_forward_distance: 150.0                   # [m]
           backward_distance: 10.0                       # [m]
 
         # filtering parking objects
@@ -203,12 +203,12 @@
           motorcycle: true                              # [-]
           pedestrian: true                              # [-]
         # safety check configuration
-        enable: true                                     # [-]
-        check_current_lane: false                        # [-]
-        check_shift_side_lane: true                      # [-]
-        check_other_side_lane: false                     # [-]
-        check_unavoidable_object: true                   # [-]
-        check_other_object: true                         # [-]
+        enable: true                                    # [-]
+        check_current_lane: false                       # [-]
+        check_shift_side_lane: true                     # [-]
+        check_other_side_lane: false                    # [-]
+        check_unavoidable_object: false                 # [-]
+        check_other_object: true                        # [-]
         # collision check parameters
         check_all_predicted_path: false                 # [-]
         safety_check_backward_distance: 100.0           # [m]
@@ -225,11 +225,11 @@
         # rss parameters
         extended_polygon_policy: "along_path"           # [-] select "rectangle" or "along_path"
         expected_front_deceleration: -1.0               # [m/ss]
-        expected_rear_deceleration: -0.9                # [m/ss]
+        expected_rear_deceleration: -1.0                # [m/ss]
         rear_vehicle_reaction_time: 2.0                 # [s]
-        rear_vehicle_safety_time_margin: 1.2            # [s]
-        lateral_distance_max_threshold: 1.0             # [m]
-        longitudinal_distance_min_threshold: 9.0        # [m]
+        rear_vehicle_safety_time_margin: 1.0            # [s]
+        lateral_distance_max_threshold: 2.0             # [m]
+        longitudinal_distance_min_threshold: 3.0        # [m]
         longitudinal_velocity_delta_time: 0.0           # [s]
 
       # For avoidance maneuver
@@ -237,8 +237,8 @@
         # avoidance lateral parameters
         lateral:
           th_avoid_execution: 0.09                      # [m] FOR DEVELOPER
-          th_small_shift_length: 0.501                  # [m] FOR DEVELOPER
-          soft_drivable_bound_margin: 0.8               # [m]
+          th_small_shift_length: 0.101                  # [m] FOR DEVELOPER
+          soft_drivable_bound_margin: 0.3               # [m]
           hard_drivable_bound_margin: 0.3               # [m]
           max_right_shift_length: 5.0                   # [m] FOR DEVELOPER
           max_left_shift_length: 5.0                    # [m] FOR DEVELOPER
@@ -313,12 +313,12 @@
       constraints:
         # lateral constraints
         lateral:
-          velocity: [1.39, 4.17, 11.1, 16.7]            # [m/s]
-          max_accel_values: [0.5, 0.5, 0.5, 0.5]        # [m/ss]
-          min_jerk_values:                              # [m/sss]
-            avoid: [0.2, 0.2, 0.2, 0.2]                 # [m/sss]
-            return: [0.2, 0.2, 0.2, 0.2]                # [m/sss]
-          max_jerk_values: [1.0, 1.5, 2.5, 4.0]         # [m/sss]
+          velocity: [1.39, 4.17, 11.1]                  # [m/s]
+          max_accel_values: [0.5, 0.5, 0.5]             # [m/ss]
+          min_jerk_values:
+            avoid: [0.2, 0.2, 0.2]                      # [m/sss]
+            return: [0.2, 0.2, 0.2]                     # [m/sss]
+          max_jerk_values: [1.0, 1.0, 1.0]              # [m/sss]
 
         # longitudinal constraints
         longitudinal:

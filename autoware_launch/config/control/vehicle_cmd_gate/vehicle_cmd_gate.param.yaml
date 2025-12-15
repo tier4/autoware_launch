@@ -14,17 +14,17 @@
     stop_check_duration: 1.0
     nominal:
       vel_lim: 25.0
-      reference_speed_points: [0.1, 1.388, 2.778, 4.167, 5.556, 6.944, 8.333, 9.722, 11.11, 12.5, 13.89, 15.28, 16.8]
-      steer_cmd_lim: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.06, 0.06, 0.025, 0.025, 0.025, 0.025]
-      steer_rate_lim_for_steer_cmd: [0.5 , 0.5 , 0.4 , 0.3 , 0.15  ,0.07 , 0.05, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035]
-      lon_acc_lim_for_lon_vel: [10.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0]
-      lon_jerk_lim_for_lon_acc: [90.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0] # The first element is required for quick pedal changes when stopping and starting.
-      lat_acc_lim_for_steer_cmd: [5.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0]
-      lat_jerk_lim_for_steer_cmd: [0.869, 0.869, 0.869, 1.47, 1.74, 1.36, 1.30, 1.78, 2.32, 2.5, 2.5, 2.5, 2.5]
+      reference_speed_points: [0.1, 0.3, 20.0, 30.0]
+      steer_cmd_lim: [1.0, 1.0, 1.0, 0.8]
+      steer_rate_lim_for_steer_cmd: [1.0, 1.0, 1.0, 0.8]
+      lon_acc_lim_for_lon_vel: [5.0, 5.0, 5.0, 4.0]
+      lon_jerk_lim_for_lon_acc: [80.0, 5.0, 5.0, 4.0]  # The first element is required for quick pedal changes when stopping and starting.
+      lat_acc_lim_for_steer_cmd: [5.0, 5.0, 5.0, 4.0]
+      lat_jerk_lim_for_steer_cmd: [7.0, 7.0, 7.0, 6.0]
       lat_jerk_lim_for_steer_rate: 10.0
-      steer_cmd_diff_lim_from_current_steer: [1.0, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8]
+      steer_cmd_diff_lim_from_current_steer: [1.0, 1.0, 1.0, 0.8]
     on_transition:
-      vel_lim: 60.0
+      vel_lim: 50.0
       reference_speed_points: [20.0, 30.0]
       steer_cmd_lim: [1.0, 0.8]
       steer_rate_lim_for_steer_cmd: [1.0, 0.8]

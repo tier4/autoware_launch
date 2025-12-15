@@ -1,3 +1,4 @@
+# sample grid map fusion parameters for sample sensor kit
 /**:
     ros__parameters:
       # shared parameters
@@ -44,8 +45,8 @@
         # Setting1: tune ogm creation parameters
         raw_pointcloud_topics: # put each sensor's pointcloud topic
           - "/sensing/lidar/top/pointcloud"
-          - "/sensing/lidar/front_left/pointcloud"
-          - "/sensing/lidar/front_right/pointcloud"
+          - "/sensing/lidar/left/pointcloud"
+          - "/sensing/lidar/right/pointcloud"
         fusion_input_ogm_topics:
           - "/perception/occupancy_grid_map/top_lidar/map"
           - "/perception/occupancy_grid_map/left_lidar/map"
