@@ -42,7 +42,7 @@ def generate_launch_description():
         package="autoware_glog_component",
         plugin="autoware::glog_component::GlogComponent",
         name="glog_component",
-        namespace=["/", LaunchConfiguration("container_name")],
+        namespace="pointcloud_container",
     )
 
     pointcloud_container = ComposableNodeContainer(
