@@ -70,19 +70,19 @@ def launch_setup(context, *args, **kwargs):
 
     # Model and make
     sensor_model = LaunchConfiguration("sensor_model").perform(context)
-    sensor_make, sensor_extension = get_lidar_make(sensor_model)
-    nebula_decoders_share_dir = get_package_share_directory("nebula_decoders")
+    sensor_vendor, sensor_extension = get_lidar_make(sensor_model)
+    sensor_vendor_lower = sensor_vendor.lower()
+    nebula_vendor_decoders_share_dir = get_package_share_directory(f"nebula_{sensor_vendor_lower}_decoders")
 
     # Calibration file
     sensor_calib_fp = os.path.join(
-        nebula_decoders_share_dir,
+        nebula_vendor_decoders_share_dir,
         "calibration",
-        sensor_make.lower(),
         sensor_model + sensor_extension,
     )
     assert os.path.exists(
         sensor_calib_fp
-    ), "Sensor calib file under calibration/ was not found: {}".format(sensor_calib_fp)
+    ), "Sensor calibration file under calibration/ was not found: {}".format(sensor_calib_fp)
 
     # Pointcloud preprocessor parameters
     distortion_corrector_node_param = ParameterFile(
@@ -106,9 +106,9 @@ def launch_setup(context, *args, **kwargs):
 
     nodes.append(
         ComposableNode(
-            package="nebula_ros",
-            plugin=sensor_make + "RosWrapper",
-            name=sensor_make.lower() + "_ros_wrapper_node",
+            package="nebula_" + sensor_vendor_lower,
+            plugin=sensor_vendor + "RosWrapper",
+            name=sensor_vendor_lower + "_ros_wrapper_node",
             parameters=[
                 {
                     "calibration_file": sensor_calib_fp,
