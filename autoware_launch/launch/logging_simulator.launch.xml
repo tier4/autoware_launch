@@ -75,7 +75,7 @@
       <!-- Sensing -->
       <arg name="launch_sensing_driver" value="false"/>
       <!-- V2X -->
-      <arg name="launch_v2x" value="false"/>
+      <arg name="launch_v2x" value="$(var launch_v2x)"/>
       <arg name="location" value="$(var location)"/>
     </include>
   </group>
