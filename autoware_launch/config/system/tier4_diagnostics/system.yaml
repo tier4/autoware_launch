@@ -25,6 +25,7 @@ units:
     list:
       - { type: link, link: /system/001-topic_status-error }
       - { type: link, link: /system/002-emergency_stop_operation-error }
+      - { type: link, link: /system/003-duplicated_node_checker }
 
   - path: /system/comfortable_stop
     type: and
@@ -46,6 +47,11 @@ units:
     item:
       type: link
       link: /system/002-emergency_stop_operation
+
+  - path: /system/003-duplicated_node_checker
+    type: diag
+    node: duplicated_node_checker
+    name: duplicated_node_checker
 
   - path: /system/001-topic_status
     type: diag
