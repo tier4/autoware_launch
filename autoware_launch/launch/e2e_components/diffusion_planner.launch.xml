@@ -51,11 +51,6 @@
           </include>
         </group>
       </group>
-
-      <!-- trajectory selector -->
-      <!-- <group>
-        <push-ros-namespace namespace="trajectory_selector"/>
-      </group> -->
     </group>
 
     <!-- mission remaining distance and time calculator -->
