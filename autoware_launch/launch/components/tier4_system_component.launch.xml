@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="use_sim_time" default="false"/>
-  <arg name="planning_setting" default="diffusion_planner" description="planning setting diffusion_planner / rule-based"/>
+  <arg name="planning_setting" default="rule_based" description="planning setting diffusion_planner / rule_based"/>
   <arg name="diagnostic_graph_aggregator_param_path" default="$(find-pkg-share autoware_diagnostic_graph_aggregator)/config/default.param.yaml"/>
   <arg
     name="diagnostic_graph_aggregator_graph_path"

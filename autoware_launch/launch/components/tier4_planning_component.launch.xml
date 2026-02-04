@@ -10,7 +10,7 @@
   <!-- Input topic parameters for planning modules -->
   <arg name="planning_input_objects_topic_name" default="/perception/object_recognition/objects"/>
   <arg name="planning_input_pointcloud_topic_name" default="/perception/obstacle_segmentation/pointcloud"/>
-  <arg name="planning_setting" default="diffusion_planner" description="planning setting diffusion_planner / rule_based"/>
+  <arg name="planning_setting" default="rule_based" description="planning setting diffusion_planner / rule_based"/>
 
   <!-- Global parameters -->
   <group scoped="false">
