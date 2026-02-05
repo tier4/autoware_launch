@@ -17,7 +17,6 @@ units:
     list:
       - { type: link, link: /foolproof/emergency_stop }
 
-
   # *******************************************************************************
   # NOTE: Please modify this section according to your environment and requirements.
   # *******************************************************************************
@@ -25,7 +24,7 @@ units:
     type: and
     list:
       - { type: link, link: /foolproof/main/autoware_node_alive }
-  
+
   - path: /foolproof/pull_over
     type: and
 
