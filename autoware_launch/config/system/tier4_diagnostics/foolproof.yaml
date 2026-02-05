@@ -69,7 +69,6 @@ units:
     timeout: 3.0
     latch: 0.0
 
-
   # Heartbeat, watch other ECU is alive or not
   # - path: /foolproof/logging/heartbeat
   #   type: diag
