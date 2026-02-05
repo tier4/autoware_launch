@@ -9,6 +9,7 @@ files:
   # - { path: $(dirname)/sensing.yaml }
   - { path: $(dirname)/system.yaml }
   - { path: $(dirname)/vehicle.yaml }
+  - { path: $(dirname)/foolproof.yaml }
 
 units:
   - path: /autoware/modes/local
@@ -30,6 +31,7 @@ units:
       - { type: link, link: /control/autonomous_available }
       - { type: link, link: /vehicle/autonomous_available }
       - { type: link, link: /system/autonomous_available }
+      - { type: link, link: /foolproof/autonomous_available }
 
   - path: /autoware/modes/pull_over
     type: and
@@ -41,6 +43,7 @@ units:
       - { type: link, link: /control/pull_over_available }
       - { type: link, link: /vehicle/pull_over_available }
       - { type: link, link: /system/pull_over_available }
+      - { type: link, link: /foolproof/pull_over_available }
 
   - path: /autoware/modes/comfortable_stop
     type: and
@@ -52,6 +55,7 @@ units:
       - { type: link, link: /control/comfortable_stop_available }
       - { type: link, link: /vehicle/comfortable_stop_available }
       - { type: link, link: /system/comfortable_stop_available }
+      - { type: link, link: /foolproof/comfortable_stop_available }
 
   - path: /autoware/modes/emergency_stop
     type: ok
