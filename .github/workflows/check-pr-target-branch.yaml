@@ -40,7 +40,12 @@ jobs:
 
             The `awf-latest` branch is automatically synchronized from the upstream repository and should not receive direct pull requests.
 
-            **Action Required:**
-            Please change the target branch of this PR to `tier4/main` instead.
+            **Action Required - Choose One Option:**
 
-            You can change the target branch by clicking the "Edit" button next to the PR title and selecting `tier4/main` as the base branch.
+            **Option 1: For Pilot.Auto related changes**
+            - Change the target branch of this PR to `tier4/main`
+            - Click the "Edit" button next to the PR title and select `tier4/main` as the base branch
+
+            **Option 2: For AWF version launcher changes**
+            - Close this PR and create a new PR directly to the upstream repository
+            - Target: https://github.com/autowarefoundation/autoware_launch (main branch)
