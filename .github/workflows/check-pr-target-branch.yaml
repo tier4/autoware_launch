@@ -44,5 +44,3 @@ jobs:
             Please change the target branch of this PR to `tier4/main` instead.
 
             You can change the target branch by clicking the "Edit" button next to the PR title and selecting `tier4/main` as the base branch.
-
-            If you have questions, please refer to the [contribution guidelines](https://autowarefoundation.github.io/autoware-documentation/main/contributing/) or contact a maintainer.
