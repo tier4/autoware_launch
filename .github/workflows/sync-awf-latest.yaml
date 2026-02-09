@@ -1,6 +1,7 @@
-name: Mirror AWF latest main to awf-latest branch
+name: Mirror AWF main to awf-latest branch
 
-# TODO: this creates a PR instead of mirroring directly. Change it to direct mirroring if possible.
+# TODO: despite the name, this creates a PR instead of mirroring directly for backward compatibility.
+# Change it to direct mirroring whenever ready.
 
 on:
   schedule:

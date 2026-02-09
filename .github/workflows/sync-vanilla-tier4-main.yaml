@@ -1,6 +1,6 @@
-name: Sync AWF latest main into tier4/main branch (vanilla only)
+name: Sync AWF main into tier4/main branch (vanilla only)
 
-# TODO: when awf-latest becomes a complete mirror, we can use awf-latest instead.
+# TODO: when awf-latest becomes a complete mirror, we can sync from awf-latest instead.
 
 on:
   schedule:
@@ -28,7 +28,7 @@ jobs:
           sync-pr-branch: sync-vanilla-tier4-main
           sync-target-repository: https://github.com/autowarefoundation/autoware_launch.git
           sync-target-branch: main
-          pr-title: "chore: sync tier4/autoware_launch:tier4/main"
+          pr-title: "chore: sync latest AWF main into tier4/main"
           pr-labels: |
             bot
             run:build-and-test-differential
