@@ -1,14 +1,14 @@
-name: Mirror AWF latest main to awf-latest branch
+name: Sync AWF latest main into tier4/main branch (vanilla only)
 
-# TODO: this creates a PR instead of mirroring directly. Change it to direct mirroring if possible.
+# TODO: when awf-latest becomes a complete mirror, we can use awf-latest instead.
 
 on:
   schedule:
-    - cron: 50 */1 * * * # every 1 hour (**:50)
+    - cron: 0 */1 * * *
   workflow_dispatch:
 
 jobs:
-  sync-awf-latest:
+  sync-vanilla-tier4-main:
     runs-on: ubuntu-latest
     # only run on vanilla, not the forked repositories
     if: ${{ github.repository == 'tier4/autoware_launch' }}
@@ -24,11 +24,11 @@ jobs:
         uses: autowarefoundation/autoware-github-actions/sync-branches@v1
         with:
           token: ${{ steps.generate-token.outputs.token }}
-          base-branch: awf-latest
-          sync-pr-branch: sync-awf-latest
+          base-branch: tier4/main
+          sync-pr-branch: sync-vanilla-tier4-main
           sync-target-repository: https://github.com/autowarefoundation/autoware_launch.git
           sync-target-branch: main
-          pr-title: "chore: sync awf-latest"
+          pr-title: "chore: sync tier4/autoware_launch:tier4/main"
           pr-labels: |
             bot
             run:build-and-test-differential
