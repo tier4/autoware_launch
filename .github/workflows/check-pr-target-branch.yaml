@@ -41,6 +41,8 @@ jobs:
             The `awf-latest` branch is automatically synchronized from the upstream repository and should not receive direct pull requests.
 
             **Action Required:**
-            Please close this PR and create a new one targeting the appropriate branch (e.g., `main` or a feature branch).
+            Please change the target branch of this PR to `tier4/main` instead.
 
-            If you have questions about which branch to target, please refer to the [contribution guidelines](https://autowarefoundation.github.io/autoware-documentation/main/contributing/) or contact a maintainer.
+            You can change the target branch by clicking the "Edit" button next to the PR title and selecting `tier4/main` as the base branch.
+
+            If you have questions, please refer to the [contribution guidelines](https://autowarefoundation.github.io/autoware-documentation/main/contributing/) or contact a maintainer.
