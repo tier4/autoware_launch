@@ -1,6 +1,6 @@
-name: Mirror AWF main to awf-latest branch
+name: Sync AWF main to awf-latest (via PR)
 
-# TODO: despite the name, this creates a PR instead of mirroring directly for backward compatibility.
+# TODO: This workflow currently syncs via a PR for backward compatibility.
 # Change it to direct mirroring whenever ready.
 
 on:
