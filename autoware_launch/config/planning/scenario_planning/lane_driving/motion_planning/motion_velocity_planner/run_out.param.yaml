@@ -41,6 +41,9 @@
 
       objects:
         target_labels: ["PEDESTRIAN", "BICYCLE", "MOTORCYCLE"]
+        uncertain_mode:
+          detection_duration_threshold: 1.5
+          minimum_velocity: 1.0
         # for each target labels we can specify the following parameters
         DEFAULT:
           ignore:  # options to ignore some objects
