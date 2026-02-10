@@ -6,7 +6,7 @@ name: Sync AWF main into tier4/main branch (vanilla only)
 
 on:
   schedule:
-    - cron: 50 */1 * * *
+    - cron: 50 */1 * * * # every 1 hour (**:50)
   workflow_dispatch:
 
 jobs:
