@@ -1,10 +1,12 @@
 name: Sync AWF main into tier4/main branch (vanilla only)
 
-# TODO: when awf-latest becomes a complete mirror, we can sync from awf-latest instead.
+# awf-latest branch is no longer maintained and absorbed into tier4/main branch.
+# If we need a complete mirror of AWF main in the future,
+# we can set up a separate workflow to keep awf-latest in sync with AWF main.
 
 on:
   schedule:
-    - cron: 0 */1 * * *
+    - cron: 50 */1 * * *
   workflow_dispatch:
 
 jobs:
