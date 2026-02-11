@@ -29,6 +29,11 @@ on:
         description: Upstream branch to sync from (auto-detected from .github/upstreams.yaml if not provided)
         required: false
         type: string
+    secrets:
+      APP_ID:
+        required: false
+      PRIVATE_KEY:
+        required: false
 
 jobs:
   validate-and-sync:
@@ -83,6 +88,10 @@ jobs:
             UPSTREAM_ID="$DEFAULT_UPSTREAM"
           else
             UPSTREAM_ID="${{ inputs.upstream-id }}"
+            if ! [[ "$UPSTREAM_ID" =~ ^[A-Za-z0-9_-]+$ ]]; then
+              echo "Error: upstream-id ($UPSTREAM_ID) contains invalid characters"
+              exit 1
+            fi
           fi
 
           echo "upstream-id=$UPSTREAM_ID" >> "$GITHUB_OUTPUT"
@@ -104,6 +113,10 @@ jobs:
             fi
           else
             BASE_BRANCH="${{ inputs.base-branch }}"
+            if ! [[ "$BASE_BRANCH" =~ ^[A-Za-z0-9._/-]+$ ]]; then
+              echo "Error: base-branch ($BASE_BRANCH) contains invalid characters"
+              exit 1
+            fi
           fi
           echo "base-branch=$BASE_BRANCH" >> "$GITHUB_OUTPUT"
 
@@ -116,6 +129,10 @@ jobs:
             fi
           else
             UPSTREAM_BRANCH="${{ inputs.upstream-branch }}"
+            if ! [[ "$UPSTREAM_BRANCH" =~ ^[A-Za-z0-9._/-]+$ ]]; then
+              echo "Error: upstream-branch ($UPSTREAM_BRANCH) contains invalid characters"
+              exit 1
+            fi
           fi
           echo "upstream-branch=$UPSTREAM_BRANCH" >> "$GITHUB_OUTPUT"
 
