@@ -12,12 +12,6 @@ jobs:
     outputs:
       syncs: ${{ steps.validate-and-parse.outputs.syncs }}
     steps:
-      - name: Generate token
-        id: generate-token
-        uses: tibdex/github-app-token@v1
-        with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.PRIVATE_KEY }}
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -52,14 +46,16 @@ jobs:
           SYNCS_JSON=$(yq eval -o=json "
             .\"$BASE_REPO\".upstreams
             | to_entries
-            | .[]
-            | .key as \$upstream_id
-            | .value.syncs[]
-            | {
-                \"upstream_id\": \$upstream_id,
-                \"upstream_branch\": .upstream,
-                \"base_branch\": .base
-              }
+            | [
+                .[]
+                | .key as \$upstream_id
+                | .value.syncs[]
+                | {
+                    \"upstream_id\": \$upstream_id,
+                    \"upstream_branch\": .upstream,
+                    \"base_branch\": .base
+                  }
+              ]
           " "$CONFIG_FILE")
 
           echo "Syncs to process:"
