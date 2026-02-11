@@ -31,9 +31,9 @@ on:
         type: string
     secrets:
       APP_ID:
-        required: false
+        required: true
       PRIVATE_KEY:
-        required: false
+        required: true
 
 jobs:
   validate-and-sync:
@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Generate token
         id: generate-token
-        uses: tibdex/github-app-token@v1
+        uses: tibdex/github-app-token@v2
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.PRIVATE_KEY }}
@@ -97,7 +97,7 @@ jobs:
           echo "upstream-id=$UPSTREAM_ID" >> "$GITHUB_OUTPUT"
 
           # Get upstream URL from config
-          UPSTREAM_URL=$(yq eval ".\"$BASE_REPO\".upstreams.$UPSTREAM_ID.url" "$CONFIG_FILE")
+          UPSTREAM_URL=$(yq eval ".\"$BASE_REPO\".upstreams.\"$UPSTREAM_ID\".url" "$CONFIG_FILE")
           if [ "$UPSTREAM_URL" = "null" ] || [ -z "$UPSTREAM_URL" ]; then
             echo "Error: URL for upstream ($UPSTREAM_ID) not found in $CONFIG_FILE"
             exit 1
@@ -122,7 +122,7 @@ jobs:
 
           # Determine upstream branch to use
           if [ -z "${{ inputs.upstream-branch }}" ]; then
-            UPSTREAM_BRANCH=$(yq eval ".\"$BASE_REPO\".upstreams.$UPSTREAM_ID.syncs[] | select(.base == \"$BASE_BRANCH\") | .upstream" "$CONFIG_FILE" | head -n 1)
+            UPSTREAM_BRANCH=$(yq eval ".\"$BASE_REPO\".upstreams.\"$UPSTREAM_ID\".syncs[] | select(.base == \"$BASE_BRANCH\") | .upstream" "$CONFIG_FILE" | head -n 1)
             if [ "$UPSTREAM_BRANCH" = "null" ] || [ -z "$UPSTREAM_BRANCH" ]; then
               echo "Error: upstream-branch was not provided and no syncs entry matches base-branch ($BASE_BRANCH) for upstream ($UPSTREAM_ID)"
               exit 1
