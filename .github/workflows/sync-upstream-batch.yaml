@@ -61,7 +61,8 @@ jobs:
           echo "$SYNCS_JSON" | jq .
 
           # Output as a single-line JSON for matrix
-          echo "syncs=$(echo "$SYNCS_JSON" | jq -c .)" >> "$GITHUB_OUTPUT"
+          COMPACT_SYNCS=$(jq -c . <<< "$SYNCS_JSON")
+          echo "syncs=$COMPACT_SYNCS" >> "$GITHUB_OUTPUT"
 
   sync-all:
     needs: validate-config
