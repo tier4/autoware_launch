@@ -12,7 +12,6 @@ jobs:
     outputs:
       syncs: ${{ steps.validate-and-parse.outputs.syncs }}
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
