@@ -119,12 +119,19 @@ jobs:
           fi
           echo "upstream-branch=$UPSTREAM_BRANCH" >> "$GITHUB_OUTPUT"
 
+          # Create sanitized branch name by replacing slashes with underscores
+          BASE_BRANCH_CLEAN="${BASE_BRANCH//\//_}"
+          UPSTREAM_ID_CLEAN="${UPSTREAM_ID//\//_}"
+          UPSTREAM_BRANCH_CLEAN="${UPSTREAM_BRANCH//\//_}"
+          SYNC_PR_BRANCH="sync_${BASE_BRANCH_CLEAN}_from_${UPSTREAM_ID_CLEAN}_${UPSTREAM_BRANCH_CLEAN}"
+          echo "sync-pr-branch=$SYNC_PR_BRANCH" >> "$GITHUB_OUTPUT"
+
       - name: Run sync-branches
         uses: autowarefoundation/autoware-github-actions/sync-branches@v1
         with:
           token: ${{ steps.generate-token.outputs.token }}
           base-branch: ${{ steps.parse-config.outputs.base-branch }}
-          sync-pr-branch: sync_${{ steps.parse-config.outputs.base-branch }}_from_${{ steps.parse-config.outputs.upstream-id }}_${{ steps.parse-config.outputs.upstream-branch }}
+          sync-pr-branch: ${{ steps.parse-config.outputs.sync-pr-branch }}
           sync-target-repository: ${{ steps.parse-config.outputs.upstream-url }}
           sync-target-branch: ${{ steps.parse-config.outputs.upstream-branch }}
           pr-title: "chore: sync ${{ steps.parse-config.outputs.base-branch }} from ${{ steps.parse-config.outputs.upstream-id }}:${{ steps.parse-config.outputs.upstream-branch }}"
