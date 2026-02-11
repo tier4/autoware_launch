@@ -61,7 +61,7 @@ jobs:
           echo "$SYNCS_JSON" | jq .
 
           # Output as a single-line JSON for matrix
-          echo "syncs=$(echo "$SYNCS_JSON" | jq -c .)" >> $GITHUB_OUTPUT
+          echo "syncs=$(echo "$SYNCS_JSON" | jq -c .)" >> "$GITHUB_OUTPUT"
 
   sync-all:
     needs: validate-config
@@ -75,3 +75,4 @@ jobs:
       base-branch: ${{ matrix.sync.base_branch }}
       upstream-id: ${{ matrix.sync.upstream_id }}
       upstream-branch: ${{ matrix.sync.upstream_branch }}
+    secrets: inherit
