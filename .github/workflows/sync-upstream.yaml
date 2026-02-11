@@ -22,7 +22,7 @@ on:
         required: false
         type: string
       upstream-id:
-        description: Upstream ID from config (defaults to default-upstream-id if not provided)
+        description: Upstream ID from config (defaults to default-upstream-id in .github/upstreams.yaml if not provided)
         required: false
         type: string
       upstream-branch:
