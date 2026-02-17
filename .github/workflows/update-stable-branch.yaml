@@ -67,9 +67,17 @@ jobs:
           git checkout -B stable
           git push origin stable --force-with-lease
 
-  sync-to-tier4-main:
-    needs: update-stable
-    uses: ./.github/workflows/beta-to-tier4-main-sync.yaml
-    with:
-      source_branch: stable
-    secrets: inherit
+      - name: Run sync-branches
+        uses: autowarefoundation/autoware-github-actions/sync-branches@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          base-branch: tier4/main
+          sync-pr-branch: stable-to-tier4-main-sync
+          sync-target-repository: https://github.com/tier4/autoware_launch.git
+          sync-target-branch: stable
+          pr-title: "chore: sync branch stable (${{ steps.determine-tag.outputs.target_tag }}) with tier4/main"
+          pr-reviewers: ${{ github.repository_owner }}
+          pr-labels: |
+            bot
+            sync-latest-stable
+          auto-merge-method: merge
