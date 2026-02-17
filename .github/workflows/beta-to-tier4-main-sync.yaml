@@ -38,7 +38,7 @@ jobs:
           sync-pr-branch: ${{ inputs.source_branch }}-to-tier4-main-sync
           sync-target-repository: https://github.com/tier4/autoware_launch.git
           sync-target-branch: ${{ inputs.source_branch }}
-          pr-title: "chore: sync beta branch ${{ inputs.source_branch }} with tier4/main"
+          pr-title: "chore: sync branch ${{ inputs.source_branch }} with tier4/main"
           pr-labels: |
             bot
             sync-beta-branch
