@@ -66,3 +66,10 @@ jobs:
           git checkout "$TARGET_TAG"
           git checkout -B stable
           git push origin stable --force-with-lease
+
+  sync-to-tier4-main:
+    needs: update-stable
+    uses: ./.github/workflows/beta-to-tier4-main-sync.yaml
+    with:
+      source_branch: stable
+    secrets: inherit
