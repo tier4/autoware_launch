@@ -76,7 +76,7 @@ jobs:
           sync-target-repository: https://github.com/tier4/autoware_launch.git
           sync-target-branch: stable
           pr-title: "chore: sync branch stable (${{ steps.determine-tag.outputs.target_tag }}) with tier4/main"
-          pr-reviewers: ${{ github.repository_owner }}
+          pr-reviewers: rej55 # hard-coded for now; might want to assign a team instead of individuals in the future
           pr-labels: |
             bot
             sync-latest-stable
