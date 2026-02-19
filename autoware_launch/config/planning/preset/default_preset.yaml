@@ -43,7 +43,7 @@ launch:
       default: "true"
   - arg:
       name: launch_traffic_light_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_intersection_module
       default: "true"
