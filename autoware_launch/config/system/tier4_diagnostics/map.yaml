@@ -23,7 +23,6 @@ units:
   - path: /map/emergency_stop
     type: and
     list:
-      - { type: link, link: /map/001-topic_status/vector_map-error }
       - { type: link, link: /map/001-topic_status/pointcloud_map-error }
 
   - path: /map/comfortable_stop
@@ -35,23 +34,11 @@ units:
   - path: /map/none
     type: and
 
-  - path: /map/001-topic_status/vector_map-error
-    type: warn-to-ok
-    item:
-      type: link
-      link: /map/001-topic_status/vector_map
-
   - path: /map/001-topic_status/pointcloud_map-error
     type: warn-to-ok
     item:
       type: link
       link: /map/001-topic_status/pointcloud_map
-
-  - path: /map/001-topic_status/vector_map
-    type: diag
-    node: topic_state_monitor_vector_map
-    name: map_topic_status
-    timeout: 1.0
 
   - path: /map/001-topic_status/pointcloud_map
     type: diag
