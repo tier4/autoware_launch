@@ -296,5 +296,5 @@ units:
   - path: /planning/021-incoming-message-timeout
     type: diag
     node: behavior_path_planner
-    name: inncoming_message_timeout
+    name: incoming_message_timeout
     timeout: 1.0
