@@ -6,7 +6,7 @@ tier4/autoware_launch:
       url: https://github.com/autowarefoundation/autoware_launch.git
       syncs:
         - upstream: main
-          base: tier4/main
+          base: test/feat/auto-merge-upstream
           reviewers: # use actual GitHub users or teams
             - rej55
 
