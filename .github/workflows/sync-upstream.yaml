@@ -158,7 +158,40 @@ jobs:
           SYNC_PR_BRANCH="sync_${BASE_BRANCH_CLEAN}_from_${UPSTREAM_ID_CLEAN}_${UPSTREAM_BRANCH_CLEAN}"
           echo "sync-pr-branch=$SYNC_PR_BRANCH" >> "$GITHUB_OUTPUT"
 
-      - name: Run sync-branches
+      - name: Check for conflicts
+        id: check-conflicts
+        env:
+          BASE_BRANCH: ${{ steps.parse-config.outputs.base-branch }}
+          UPSTREAM_URL: ${{ steps.parse-config.outputs.upstream-url }}
+          UPSTREAM_BRANCH: ${{ steps.parse-config.outputs.upstream-branch }}
+        run: |
+          set -e
+
+          # Configure git
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Fetch the base branch
+          git fetch origin "$BASE_BRANCH"
+          git checkout "$BASE_BRANCH"
+
+          # Add upstream remote and fetch
+          git remote add upstream "$UPSTREAM_URL" || git remote set-url upstream "$UPSTREAM_URL"
+          git fetch upstream "$UPSTREAM_BRANCH"
+
+          # Try to merge upstream branch
+          if git merge --no-edit "upstream/$UPSTREAM_BRANCH"; then
+            echo "✅ No conflicts detected. Pushing directly to $BASE_BRANCH"
+            git push origin "$BASE_BRANCH"
+            echo "has-conflicts=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "⚠️ Conflicts detected. Will create PR for manual resolution"
+            git merge --abort
+            echo "has-conflicts=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create PR for conflicts
+        if: steps.check-conflicts.outputs.has-conflicts == 'true'
         uses: autowarefoundation/autoware-github-actions/sync-branches@v1
         with:
           token: ${{ steps.generate-token.outputs.token }}
