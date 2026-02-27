@@ -5,7 +5,7 @@
     # timeout monitoring
     # The timeout means the time between source timestamp and current time.
     cyclic_timeout: 0.90
-    enable_traffic_signal_timeout: false
+    enable_traffic_signal_timeout: true
 
     planning_hz: 10.0
     backward_path_length: 5.0
