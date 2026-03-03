@@ -6,7 +6,7 @@ on:
     - cron: 0 */1 * * * # every 1 hour (**:00)
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  group: sync-upstream-awf-staging
   cancel-in-progress: true
 
 jobs:
@@ -87,8 +87,8 @@ jobs:
           PR_NUMBER=$(gh pr list --repo "${{ github.repository }}" --state open --head "sync_tier4_main_from_awf_main" --json number --jq '.[0].number // empty')
 
           if [ -z "$PR_NUMBER" ]; then
-            echo "Error: No open PR found with head branch sync_tier4_main_from_awf_main"
-            exit 1
+            echo "No open PR found with head branch sync_tier4_main_from_awf_main. Skipping comment update."
+            exit 0
           fi
 
           echo "Found PR #$PR_NUMBER for branch sync_tier4_main_from_awf_main"
