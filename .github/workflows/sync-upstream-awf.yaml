@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: tier4/main
+          fetch-depth: 0
 
       - name: Generate token
         id: generate-token
@@ -39,8 +40,15 @@ jobs:
 
           # Try to merge upstream branch
           if git merge --no-edit awf/main; then
-            echo "✅ No conflicts detected. Pushing directly to staging branch"
-            git push origin staging --force
+            echo "✅ No conflicts detected. staging branch is updated with awf/main."
+
+            if git rev-parse --verify origin/staging >/dev/null 2>&1 && git diff --quiet origin/staging; then
+                echo "No changes to push to staging branch."
+            else
+                echo "Pushing updated staging branch to origin..."
+                git push origin staging --force
+            fi
+
             echo "had-conflicts=false" >> "$GITHUB_OUTPUT"
           else
             echo "⚠️ Conflicts detected. Not pushing to staging branch."
@@ -55,6 +63,7 @@ jobs:
 
   comment-for-conflicts:
     needs: [try-update-staging, sync-upstream-batch]
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Generate token
@@ -66,6 +75,8 @@ jobs:
 
       - name: Find issue number for PR branch sync_tier4_main_from_awf_main
         id: find-issue
+        env:
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           # Search for open PRs with the specific branch name
           PR_NUMBER=$(gh pr list --repo "${{ github.repository }}" --state open --head "sync_tier4_main_from_awf_main" --json number --jq '.[0].number')
@@ -86,7 +97,7 @@ jobs:
           issue-number: ${{ steps.find-issue.outputs.issue_number }}
           body-includes: "## AWF Conflict Detection Result"
 
-      - name: Comment on PR about conflicts
+      - name: Update the conflict comment on PR about conflicts
         uses: peter-evans/create-or-update-comment@v3
         if: ${{ needs.try-update-staging.outputs.had-conflicts == 'true' }}
         with:
@@ -98,7 +109,7 @@ jobs:
 
             ⚠️ The automatic sync from AWF's main branch to tier4/main branch encountered conflicts. Please resolve the conflicts manually and merge this PR.
 
-      - name: Remove the conflict comment on PR if conflicts are resolved
+      - name: Update the conflict comment on PR if conflicts are resolved
         uses: peter-evans/create-or-update-comment@v3
         if: ${{ needs.try-update-staging.outputs.had-conflicts == 'false' }}
         with:
