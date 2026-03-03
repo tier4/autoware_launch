@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: 0 */1 * * * # every 1 hour (**:00)
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   try-update-staging:
     runs-on: ubuntu-latest
