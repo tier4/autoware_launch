@@ -46,6 +46,7 @@ jobs:
           if git merge --no-edit awf/main; then
             echo "✅ No conflicts detected. staging branch is updated with awf/main."
 
+            git fetch origin
             if git rev-parse --verify origin/staging >/dev/null 2>&1 && git diff --quiet origin/staging; then
                 echo "No changes to push to staging branch."
             else
@@ -67,7 +68,7 @@ jobs:
 
   comment-for-conflicts:
     needs: [try-update-staging, sync-upstream-batch]
-    if: ${{ always() }}
+    if: ${{ always() && github.repository == 'tier4/autoware_launch' }}
     runs-on: ubuntu-latest
     steps:
       - name: Generate token
