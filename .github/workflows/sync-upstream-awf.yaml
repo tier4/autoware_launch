@@ -1,0 +1,111 @@
+name: sync-upstream-awf
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 */1 * * * # every 1 hour (**:00)
+
+jobs:
+  try-update-staging:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'tier4/autoware_launch' }}
+    outputs:
+      had-conflicts: ${{ steps.check-conflicts.outputs.had-conflicts }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: tier4/main
+
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Check for conflicts
+        id: check-conflicts
+        run: |
+          git checkout -B staging
+
+          git remote add awf https://github.com/autowarefoundation/autoware_launch
+          git fetch awf main
+
+          # Try to merge upstream branch
+          if git merge --no-edit awf/main; then
+            echo "✅ No conflicts detected. Pushing directly to staging branch"
+            git push origin staging --force
+            echo "had-conflicts=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "⚠️ Conflicts detected. Not pushing to staging branch."
+            git merge --abort
+            echo "had-conflicts=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  sync-upstream-batch:
+    needs: try-update-staging
+    uses: ./.github/workflows/sync-upstream-batch.yaml
+    secrets: inherit
+
+  comment-for-conflicts:
+    needs: [try-update-staging, sync-upstream-batch]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Find issue number for PR branch sync_tier4_main_from_awf_main
+        id: find-issue
+        run: |
+          # Search for open PRs with the specific branch name
+          PR_NUMBER=$(gh pr list --repo "${{ github.repository }}" --state open --head "sync_tier4_main_from_awf_main" --json number --jq '.[0].number')
+
+          if [ -z "$PR_NUMBER" ]; then
+            echo "Error: No open PR found with head branch sync_tier4_main_from_awf_main"
+            exit 1
+          fi
+
+          echo "Found PR #$PR_NUMBER for branch sync_tier4_main_from_awf_main"
+          echo "issue_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+
+      - name: Find Conflict Warning Comment
+        uses: peter-evans/find-comment@v2
+        id: find-comment
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          issue-number: ${{ steps.find-issue.outputs.issue_number }}
+          body-includes: "## AWF Conflict Detection Result"
+
+      - name: Comment on PR about conflicts
+        uses: peter-evans/create-or-update-comment@v3
+        if: ${{ needs.try-update-staging.outputs.had-conflicts == 'true' }}
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          issue-number: ${{ steps.find-issue.outputs.issue_number }}
+          comment-id: ${{ steps.find-comment.outputs.comment_id }}
+          body: |
+            ## AWF Conflict Detection Result
+
+            ⚠️ The automatic sync from AWF's main branch to tier4/main branch encountered conflicts. Please resolve the conflicts manually and merge this PR.
+
+      - name: Remove the conflict comment on PR if conflicts are resolved
+        uses: peter-evans/create-or-update-comment@v3
+        if: ${{ needs.try-update-staging.outputs.had-conflicts == 'false' }}
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          issue-number: ${{ steps.find-issue.outputs.issue_number }}
+          comment-id: ${{ steps.find-comment.outputs.comment_id }}
+          body: |
+            ## AWF Conflict Detection Result
+
+            ✅ The automatic sync from AWF's main branch to tier4/main branch did not encounter any conflicts and reflected in staging branch. Review carefully for tier4 specific adjustments before merging.
