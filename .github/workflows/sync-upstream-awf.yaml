@@ -83,7 +83,7 @@ jobs:
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           # Search for open PRs with the specific branch name
-          PR_NUMBER=$(gh pr list --repo "${{ github.repository }}" --state open --head "sync_tier4_main_from_awf_main" --json number --jq '.[0].number')
+          PR_NUMBER=$(gh pr list --repo "${{ github.repository }}" --state open --head "sync_tier4_main_from_awf_main" --json number --jq '.[0].number // empty')
 
           if [ -z "$PR_NUMBER" ]; then
             echo "Error: No open PR found with head branch sync_tier4_main_from_awf_main"
