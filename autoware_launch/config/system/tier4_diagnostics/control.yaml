@@ -28,6 +28,7 @@ units:
       - { type: link, link: /control/009-aeb_emergency_stop }
       # - { type: link, link: /control/010-max_distance_deviation-error }
       # - { type: link, link: /control/011-slip_detection }
+      - { type: link, link: /control/012-incoming_message_timeout }
       - { type: link, link: /control/collision_detector }
       # - { type: link, link: /control/acceleration_error }
       - { type: link, link: /control/rolling_back }
@@ -121,6 +122,12 @@ units:
     node: slip_detector
     name: slip_status
     timeout: 3.0
+
+  - path: /control/012-incoming_message_timeout
+    type: diag
+    node: controller_node_exe
+    name: incoming_message_timeout
+    timeout: 1.0
 
   - path: /control/collision_detector
     type: diag
