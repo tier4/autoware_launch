@@ -25,6 +25,7 @@ units:
     list:
       - { type: link, link: /control/001-topic_status/control_command-error }
       - { type: link, link: /control/004-lane_departure-error }
+      - { type: link, link: /control/005-lane_departure-error }
       - { type: link, link: /control/009-aeb_emergency_stop }
       # - { type: link, link: /control/010-max_distance_deviation-error }
       # - { type: link, link: /control/011-slip_detection }
@@ -62,6 +63,12 @@ units:
       type: link
       link: /control/004-lane_departure
 
+  - path: /control/005-lane_departure-error
+    type: warn-to-ok
+    item:
+      type: link
+      link: /control/005-trajectory_deviation
+
   - path: /control/010-max_distance_deviation-error
     type: warn-to-ok
     item:
@@ -90,6 +97,12 @@ units:
     type: diag
     node: lane_departure_checker_node
     name: lane_departure
+    timeout: 1.0
+
+  - path: /control/005-trajectory_deviation
+    type: diag
+    node: lane_departure_checker_node
+    name: trajectory_deviation
     timeout: 1.0
 
   - path: /control/007-external_command_converter_heartbeat
