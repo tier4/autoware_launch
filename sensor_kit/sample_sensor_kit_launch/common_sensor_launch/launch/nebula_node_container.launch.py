@@ -17,10 +17,9 @@ import os
 from ament_index_python.packages import get_package_share_directory
 import launch
 from launch.actions import DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription
 from launch.actions import OpaqueFunction
-from launch.actions import SetLaunchConfiguration
-from launch.conditions import IfCondition
-from launch.conditions import UnlessCondition
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import ComposableNodeContainer
 from launch_ros.descriptions import ComposableNode
@@ -230,7 +229,7 @@ def launch_setup(context, *args, **kwargs):
     container = ComposableNodeContainer(
         name=LaunchConfiguration("container_name"),
         namespace="pointcloud_preprocessor",
-        package="rclcpp_components",
+        package=LaunchConfiguration("container_package"),
         executable=LaunchConfiguration("container_executable"),
         composable_node_descriptions=nodes,
         output="both",
@@ -297,20 +296,19 @@ def generate_launch_description():
     )
     add_launch_arg("udp_only", "False", "use UDP only")
 
-    set_container_executable = SetLaunchConfiguration(
-        "container_executable",
-        "component_container",
-        condition=UnlessCondition(LaunchConfiguration("use_multithread")),
-    )
-
-    set_container_mt_executable = SetLaunchConfiguration(
-        "container_executable",
-        "component_container_mt",
-        condition=IfCondition(LaunchConfiguration("use_multithread")),
+    agnocast_env = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory("autoware_agnocast_wrapper"),
+                "launch",
+                "agnocast_env.launch.py",
+            )
+        ),
+        launch_arguments={"use_multithread": LaunchConfiguration("use_multithread")}.items(),
     )
 
     return launch.LaunchDescription(
         launch_arguments
-        + [set_container_executable, set_container_mt_executable]
+        + [agnocast_env]
         + [OpaqueFunction(function=launch_setup)]
     )

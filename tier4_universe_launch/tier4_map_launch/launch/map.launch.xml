@@ -13,13 +13,14 @@
 
   <!-- select container type -->
   <arg name="use_multithread" default="false"/>
-  <let name="container_type" value="component_container" unless="$(var use_multithread)"/>
-  <let name="container_type" value="component_container_mt" if="$(var use_multithread)"/>
+  <include file="$(find-pkg-share autoware_agnocast_wrapper)/launch/agnocast_env.launch.xml">
+    <arg name="use_multithread" value="$(var use_multithread)"/>
+  </include>
 
   <group>
     <push-ros-namespace namespace="map"/>
 
-    <node_container pkg="rclcpp_components" exec="$(var container_type)" name="map_container" namespace="" output="both">
+    <node_container pkg="$(var container_package)" exec="$(var container_executable)" name="map_container" namespace="" output="both">
       <composable_node pkg="autoware_map_loader" plugin="autoware::map_loader::PointCloudMapLoaderNode" name="pointcloud_map_loader">
         <param from="$(var pointcloud_map_loader_param_path)"/>
         <param name="pcd_paths_or_directory" value="[$(var pointcloud_map_path)]"/>

@@ -1,4 +1,8 @@
 <launch>
+  <include file="$(find-pkg-share autoware_agnocast_wrapper)/launch/agnocast_env.launch.xml">
+    <arg name="use_multithread" value="true"/>
+  </include>
+
   <!-- planning module -->
 
   <!-- mission planner -->
@@ -50,7 +54,8 @@
     <!-- planning validator -->
     <group>
       <include file="$(find-pkg-share autoware_planning_validator)/launch/planning_validator.launch.xml">
-        <arg name="container_type" value="component_container_mt"/>
+        <arg name="container_type" value="$(var container_executable)"/>
+        <arg name="container_package" value="$(var container_package)"/>
         <arg name="input_trajectory" value="/planning/scenario_planning/velocity_smoother/trajectory"/>
         <arg name="output_trajectory" value="/planning/trajectory"/>
         <arg name="input_objects_topic_name" value="$(var input_objects_topic_name)"/>
