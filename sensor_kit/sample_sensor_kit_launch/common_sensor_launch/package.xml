@@ -12,6 +12,7 @@
 
   <exec_depend>autoware_velodyne_monitor</exec_depend>
   <exec_depend>nebula</exec_depend>
+  <exec_depend>autoware_agnocast_wrapper</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>autoware_lint_common</test_depend>
