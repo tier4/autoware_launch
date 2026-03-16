@@ -210,7 +210,7 @@
           motorcycle: true                              # [-]
           pedestrian: true                              # [-]
         # safety check configuration
-        enable: true                                    # [-]
+        enable: false                                    # [-]
         check_current_lane: false                       # [-]
         check_shift_side_lane: true                     # [-]
         check_other_side_lane: false                    # [-]

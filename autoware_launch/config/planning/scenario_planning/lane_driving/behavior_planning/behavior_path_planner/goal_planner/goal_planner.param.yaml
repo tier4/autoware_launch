@@ -187,7 +187,7 @@
         # For safety check
         safety_check_params:
           # safety check configuration
-          enable_safety_check: true
+          enable_safety_check: false
           method: "integral_predicted_polygon"
           keep_unsafe_time: 0.5
           # collision check parameters

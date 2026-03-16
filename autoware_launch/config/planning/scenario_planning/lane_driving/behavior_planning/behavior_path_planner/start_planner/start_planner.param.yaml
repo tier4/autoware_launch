@@ -155,7 +155,7 @@
         # For safety check
         safety_check_params:
           # safety check configuration
-          enable_safety_check: true
+          enable_safety_check: false
           # collision check parameters
           publish_debug_marker: false
           rss_params:

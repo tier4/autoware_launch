@@ -46,7 +46,7 @@ launch:
   # behavior velocity modules
   - arg:
       name: launch_crosswalk_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_walkway_module
       default: "true"
@@ -55,7 +55,7 @@ launch:
       default: "true"
   - arg:
       name: launch_intersection_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_roundabout_module
       default: "false"
@@ -104,7 +104,7 @@ launch:
   # motion velocity planner modules
   - arg:
       name: launch_obstacle_stop_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_obstacle_slow_down_module
       default: "true"
@@ -116,19 +116,19 @@ launch:
       default: "false"
   - arg:
       name: launch_out_of_lane_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_obstacle_velocity_limiter_module
       default: "true"
   - arg:
       name: launch_run_out_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_boundary_departure_prevention_module
       default: "true"
   - arg:
       name: launch_road_user_stop_module
-      default: "true"
+      default: "false"
 
   - arg:
       name: velocity_smoother_type
