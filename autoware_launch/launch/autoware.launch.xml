@@ -167,4 +167,8 @@
       <env name="QT_QPA_PLATFORMTHEME" value="qt5ct"/>
     </node>
   </group>
+
+  <group>
+    <include file="$(find-pkg-share pilot_auto_parameter_server)/launch/pilot_auto_parameter_server.launch.xml"/>
+  </group>
 </launch>
