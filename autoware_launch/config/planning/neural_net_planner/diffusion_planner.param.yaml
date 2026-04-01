@@ -13,6 +13,7 @@
     stopping_threshold: 0.3
     turn_indicator_keep_offset: -1.5
     turn_indicator_hold_duration: 1.0
+    shift_x: false
     delay_step: 0
     line_string_max_step_m: 5.0
     use_time_interpolation: false
