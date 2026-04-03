@@ -57,7 +57,6 @@
     </include>
   </group>
 
-
   <group if="$(eval &quot;'$(var planning_setting)'=='rule_based'&quot;)">
     <include file="$(find-pkg-share autoware_launch)/config/planning/preset/$(var module_preset)_preset.yaml"/>
 
