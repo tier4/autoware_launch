@@ -90,12 +90,24 @@
 
     <!-- planning evaluator -->
     <group>
-      <let name="evaluator_input_reference_trajectory" value="/planning/trajectory_generator/neural_network_based_planner/diffusion_planner_node/output/trajectory" if="$(eval &quot;'$(var planning_setting)'=='diffusion_planner'&quot;)"/>
-      <let name="evaluator_input_reference_trajectory" value="/planning/scenario_planning/lane_driving/motion_planning/path_optimizer/trajectory" if="$(eval &quot;'$(var planning_setting)'=='rule_based'&quot;)"/>
-      
-      <let name="evaluator_input_objects" value="/planning/trajectory_generator/neural_network_based_planner/diffusion_planner_node/output/predicted_objects" if="$(eval &quot;'$(var planning_setting)'=='diffusion_planner'&quot;)"/>
+      <let
+        name="evaluator_input_reference_trajectory"
+        value="/planning/trajectory_generator/neural_network_based_planner/diffusion_planner_node/output/trajectory"
+        if="$(eval &quot;'$(var planning_setting)'=='diffusion_planner'&quot;)"
+      />
+      <let
+        name="evaluator_input_reference_trajectory"
+        value="/planning/scenario_planning/lane_driving/motion_planning/path_optimizer/trajectory"
+        if="$(eval &quot;'$(var planning_setting)'=='rule_based'&quot;)"
+      />
+
+      <let
+        name="evaluator_input_objects"
+        value="/planning/trajectory_generator/neural_network_based_planner/diffusion_planner_node/output/predicted_objects"
+        if="$(eval &quot;'$(var planning_setting)'=='diffusion_planner'&quot;)"
+      />
       <let name="evaluator_input_objects" value="/perception/object_recognition/objects" if="$(eval &quot;'$(var planning_setting)'=='rule_based'&quot;)"/>
-      
+
       <include file="$(find-pkg-share autoware_planning_evaluator)/launch/planning_evaluator.launch.xml">
         <arg name="input/reference_trajectory" value="$(var evaluator_input_reference_trajectory)"/>
         <arg name="input/objects" value="$(var evaluator_input_objects)"/>
