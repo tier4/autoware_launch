@@ -54,7 +54,7 @@
       <include file="$(find-pkg-share autoware_trajectory_optimizer)/launch/trajectory_optimizer.launch.xml">
         <arg name="trajectory_optimizer_param_path" value="$(var trajectory_optimizer_param_path)"/>
         <arg name="input_trajectories" value="/planning/generator/diffusion_planner/modified_candidate_trajectories"/>
-        <arg name="output_traj" value="/planning/trajectory"/>
+        <arg name="output_traj" value="/planning/trajectory_generator/trajectory"/>
         <arg name="output_trajectories" value="/planning/generator/candidate_trajectories"/>
         <arg name="jerk_filtered_smoother_param_path" value="$(var jerk_filtered_smoother_param_path)"/>
         <arg name="velocity_smoother_param_path" value="$(var velocity_smoother_param_path)"/>
@@ -70,4 +70,8 @@
       </include>
     </group>
   </group>
+  <group>
+      <push-ros-namespace namespace="trajectory_selector"/>
+        <!-- TODO: Select a trajectory from candidate trajectories and publish it to planning_validator -->
+    </group>
 </launch>
