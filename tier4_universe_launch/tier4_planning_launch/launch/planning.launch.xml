@@ -49,7 +49,7 @@
 
     <!-- diffusion planner module -->
     <group if="$(eval &quot;'$(var planning_setting)'=='diffusion_planner'&quot;)">
-      <include file="$(find-pkg-share tier4_planning_launch)/launch/e2e_planning/diffusion_planner.launch.xml">
+      <include file="$(find-pkg-share tier4_planning_launch)/launch/learning_based_planning/diffusion_planner.launch.xml">
         <arg name="is_simulation" value="$(var is_simulation)"/>
         <arg name="input_objects_topic_name" value="$(var input_objects_topic_name)"/>
         <arg name="input_pointcloud_topic_name" value="$(var input_pointcloud_topic_name)"/>
