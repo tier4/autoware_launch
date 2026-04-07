@@ -71,7 +71,7 @@
     </group>
   </group>
   <group>
-      <push-ros-namespace namespace="trajectory_selector"/>
-        <!-- TODO: Select a trajectory from candidate trajectories and publish it to planning_validator -->
-    </group>
+    <push-ros-namespace namespace="trajectory_selector"/>
+    <!-- TODO: Select a trajectory from candidate trajectories and publish it to planning_validator -->
+  </group>
 </launch>
