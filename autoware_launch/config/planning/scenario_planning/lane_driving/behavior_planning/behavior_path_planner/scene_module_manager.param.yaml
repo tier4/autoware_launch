@@ -10,10 +10,12 @@
       - slot2
       - slot3
       - slot4
+      - slot5
     slot1:
       - "start_planner"
     slot2:
       - "side_shift"
+    slot3:
       - "avoidance_by_lane_change"
       - "static_obstacle_avoidance"
       - "lane_change_left"
@@ -21,9 +23,9 @@
       - "external_request_lane_change_left"
       - "external_request_lane_change_right"
       - "bidirectional_traffic"
-    slot3:
-      - "goal_planner"
     slot4:
+      - "goal_planner"
+    slot5:
       - "dynamic_obstacle_avoidance"
 
     external_request_lane_change_left:
