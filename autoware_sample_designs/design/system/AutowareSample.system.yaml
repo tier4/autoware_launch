@@ -80,10 +80,10 @@ components:
 
   # PLANNING/CONTROL
   - name: planning
-    entity: Tier4PlanningWrapper.node
+    entity: Planning.module
     compute_unit: main_ecu
   - name: control
-    entity: Tier4ControlWrapper.node
+    entity: Control.module
     compute_unit: main_ecu
 
   # SYSTEM
@@ -156,30 +156,30 @@ connections:
   - - adapi.publisher.localization/initialization_state
     - localization.subscriber.initialization_state
 
-  - - planning.publisher.mission_planning/route
+  - - planning.publisher.route
     - perception.subscriber.route
 
   - - perception.publisher.occupancy_grid_map/map
     - planning.subscriber.occupancy_grid_map
   - - map.publisher.vector_map
-    - planning.subscriber.lanelet_map
+    - planning.subscriber.vector_map
   - - perception.publisher.object_recognition/objects
     - planning.subscriber.objects
   - - perception.publisher.obstacle_segmentation/pointcloud
-    - planning.subscriber.obstacle_pointcloud
+    - planning.subscriber.pointcloud
   - - perception.publisher.traffic_light_recognition/traffic_signals
     - planning.subscriber.traffic_signals
 
   - - planning.publisher.^
     - control.subscriber.^
   - - localization.publisher.kinematic_state
-    - control.subscriber.kinematics
+    - control.subscriber.odometry
   - - localization.publisher.acceleration
     - control.subscriber.acceleration
   - - perception.publisher.object_recognition/objects
     - control.subscriber.objects
   - - perception.publisher.obstacle_segmentation/pointcloud
-    - control.subscriber.obstacle_pointcloud
+    - control.subscriber.pointcloud
   - - sensing.publisher.imu/imu_data
     - control.subscriber.imu
 
@@ -243,13 +243,13 @@ E2ESimulation:
       # control
       - - AWSIM_out.publisher.vehicle/status/velocity_status
         - control.subscriber.velocity_status
-      - - control.publisher.command/control_cmd
+      - - control.publisher.control_cmd
         - AWSIM_in.subscriber.control/command/control_cmd
-      - - control.publisher.command/gear_cmd
+      - - control.publisher.gear_cmd
         - AWSIM_in.subscriber.control/command/gear_cmd
-      - - control.publisher.command/hazard_lights_cmd
+      - - control.publisher.hazard_lights_cmd
         - AWSIM_in.subscriber.control/command/hazard_lights_cmd
-      - - control.publisher.command/turn_indicators_cmd
+      - - control.publisher.turn_indicators_cmd
         - AWSIM_in.subscriber.control/command/turn_indicators_cmd
   remove:
     connections:
@@ -273,6 +273,10 @@ PlanningSimulation:
       - name: occupancy_grid_map
         entity: LaserscanBasedOccupancyGridMap.module
         path: /perception/occupancy_grid_map
+        compute_unit: main_ecu
+      - name: rviz
+        entity: Rviz.node
+        path: /
         compute_unit: main_ecu
       - name: planning_sim_rviz_plugin
         entity: PlanningSimRvizPlugins.module
@@ -303,9 +307,9 @@ PlanningSimulation:
       - - perception.publisher.obstacle_segmentation/pointcloud
         - occupancy_grid_map.subscriber.obstacle_pointcloud
       - - perception.publisher.obstacle_segmentation/pointcloud
-        - planning.subscriber.obstacle_pointcloud
+        - planning.subscriber.pointcloud
       - - perception.publisher.obstacle_segmentation/pointcloud
-        - control.subscriber.obstacle_pointcloud
+        - control.subscriber.pointcloud
       - - map.publisher.vector_map
         - perception.subscriber.vector_map
       - - localization.publisher.localization/initialization_state
@@ -317,9 +321,9 @@ PlanningSimulation:
         - simulator.subscriber.initialpose3d
       - - planning.publisher.trajectory
         - simulator.subscriber.planning/trajectory
-      - - control.publisher.command/control_cmd
+      - - control.publisher.control_cmd
         - simulator.subscriber.control/command/control_cmd
-      - - control.publisher.command/control_cmd
+      - - control.publisher.control_cmd
         - vehicle.subscriber.control_cmd
       - - simulator.publisher.localization/kinematic_state
         - vehicle.subscriber.odometry
@@ -333,11 +337,11 @@ PlanningSimulation:
         - vehicle.subscriber.operation_mode_state
       - - vehicle.publisher.actuation_cmd
         - simulator.subscriber.control/command/actuation_cmd
-      - - control.publisher.command/gear_cmd
+      - - control.publisher.gear_cmd
         - simulator.subscriber.control/command/gear_cmd
-      - - control.publisher.command/turn_indicators_cmd
+      - - control.publisher.turn_indicators_cmd
         - simulator.subscriber.control/command/turn_indicators_cmd
-      - - control.publisher.command/hazard_lights_cmd
+      - - control.publisher.hazard_lights_cmd
         - simulator.subscriber.control/command/hazard_lights_cmd
       - - simulator.publisher.^
         - adapi.subscriber.^
@@ -346,7 +350,7 @@ PlanningSimulation:
       - - simulator.publisher.vehicle/status/velocity_status
         - control.subscriber.velocity_status
       - - simulator.publisher.localization/kinematic_state
-        - control.subscriber.kinematics
+        - control.subscriber.odometry
 
       # - - simulator.publisher.localization/acceleration
       #   - control.subscriber.acceleration

@@ -1,7 +1,7 @@
 <launch>
   <!-- planning module -->
   <!-- diffusion planner -->
-  <arg name="data_path"/>
+  <arg name="data_path" default="$(env HOME)/autoware_data/ml_models"/>
   <arg name="diffusion_planner_param_path"/>
 
   <!-- trajectory modifier -->
