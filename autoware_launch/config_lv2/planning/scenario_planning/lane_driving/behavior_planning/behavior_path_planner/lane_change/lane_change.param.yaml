@@ -21,12 +21,12 @@
       trajectory:
         max_prepare_duration: 4.0
         min_prepare_duration: 2.0
-        lateral_jerk: 0.5
+        lateral_jerk: 1.5
         min_longitudinal_acc: -1.0
         max_longitudinal_acc: 1.0
         th_prepare_length_diff: 1.0
         th_lane_changing_length_diff: 1.0
-        min_lane_changing_velocity: 2.78
+        min_lane_changing_velocity: 3.5
         lon_acc_sampling_num: 5
         lat_acc_sampling_num: 3
         lane_changing_decel_factor: 0.5
