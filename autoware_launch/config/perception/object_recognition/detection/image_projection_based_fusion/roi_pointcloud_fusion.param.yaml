@@ -3,7 +3,7 @@
 # 'reason' can be any single-line text without braces.
 # To keep local changes, annotate fields with '# {OVERRIDE}' or '# {OVERRIDE: reason}'.
 #
-# Source: https://github.com/autowarefoundation/autoware_universe/blob/bbe8062f7ac4a520a20034ff0f35cc9e11e96a06/perception/autoware_image_projection_based_fusion/config/roi_pointcloud_fusion.param.yaml
+# Source: https://github.com/autowarefoundation/autoware_universe/blob/53ff0ea008c9aad37848191584ee5af968fbb0b3/perception/autoware_image_projection_based_fusion/config/roi_pointcloud_fusion.param.yaml
 
 /**:
   ros__parameters:

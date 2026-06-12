@@ -3,7 +3,7 @@
 # 'reason' can be any single-line text without braces.
 # To keep local changes, annotate fields with '# {OVERRIDE}' or '# {OVERRIDE: reason}'.
 #
-# Source: https://github.com/autowarefoundation/autoware_universe/blob/7f5a7f06318cda64ba53782f9b53ad949c05656b/perception/autoware_detected_object_validation/config/tracked_object_lanelet_filter.param.yaml
+# Source: https://github.com/autowarefoundation/autoware_universe/blob/70063a1aa8a47de548f200b7eb13c0ec351fe1be/perception/autoware_detected_object_validation/config/tracked_object_lanelet_filter.param.yaml
 
 /**:
   ros__parameters:
@@ -16,6 +16,8 @@
       MOTORCYCLE : true # {OVERRIDE}
       BICYCLE : true # {OVERRIDE}
       PEDESTRIAN : true # {OVERRIDE}
+      ANIMAL : false
+      HAZARD : false
 
     filter_settings:
       # polygon overlap based filter

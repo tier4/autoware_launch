@@ -3,7 +3,7 @@
 # 'reason' can be any single-line text without braces.
 # To keep local changes, annotate fields with '# {OVERRIDE}' or '# {OVERRIDE: reason}'.
 #
-# Source: https://github.com/autowarefoundation/autoware_universe/blob/7bbfa925fc756fb8f550772cde962c49daa8d3e6/perception/autoware_detected_object_validation/config/object_lanelet_filter.param.yaml
+# Source: https://github.com/autowarefoundation/autoware_universe/blob/70063a1aa8a47de548f200b7eb13c0ec351fe1be/perception/autoware_detected_object_validation/config/object_lanelet_filter.param.yaml
 
 /**:
   ros__parameters:
