@@ -3,7 +3,7 @@
 # 'reason' can be any single-line text without braces.
 # To keep local changes, annotate fields with '# {OVERRIDE}' or '# {OVERRIDE: reason}'.
 #
-# Source: https://github.com/autowarefoundation/autoware_universe/blob/f2f7a2849b691fc82d8835cdb1c95a23a4aa8f35/perception/autoware_object_merger/config/object_association_merger.param.yaml
+# Source: https://github.com/autowarefoundation/autoware_universe/blob/30e368dbe266685aa07de4ef0f0b56d410c59073/perception/autoware_object_merger/config/object_association_merger.param.yaml
 
 /**:
   ros__parameters:
@@ -21,9 +21,9 @@
        0,       0,   0,     0,    0,       0,         0,       0,          0,      0,      #TRUCK
        0,       0,   0,     0,    0,       0,         0,       0,          0,      0,      #BUS
        0,       0,   0,     0,    0,       0,         0,       0,          0,      0,      #TRAILER
-       0,       0,   0,     0,    0,       0,         1,       1,          1,      1,      #MOTORBIKE
-       0,       0,   0,     0,    0,       0,         0,       1,          1,      1,      #BICYCLE
-       0,       0,   0,     0,    0,       0,         0,       0,          0,      0,      #PEDESTRIAN
+       0,       0,   0,     0,    0,       0,         1,       1,          1,      0,      #MOTORBIKE
+       0,       0,   0,     0,    0,       0,         0,       1,          1,      0,      #BICYCLE
+       0,       0,   0,     0,    0,       0,         0,       0,          1,      0,      #PEDESTRIAN
        0,       0,   0,     0,    0,       0,         0,       0,          0,      0,      #ANIMAL
        0,       0,   0,     0,    0,       0,         0,       0,          0,      0]      #HAZARD -> object1
     message_timeout_sec: 1.0

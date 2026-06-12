@@ -3,7 +3,7 @@
 # 'reason' can be any single-line text without braces.
 # To keep local changes, annotate fields with '# {OVERRIDE}' or '# {OVERRIDE: reason}'.
 #
-# Source: https://github.com/autowarefoundation/autoware_universe/blob/682bd2ea2df48d232d8243400c7e1f24583aaef1/perception/autoware_multi_object_tracker/config/multi_object_tracker_node.param.yaml
+# Source: https://github.com/autowarefoundation/autoware_universe/blob/3c50b3662c6918ffe076e1fc6172fa407863d15e/perception/autoware_multi_object_tracker/config/multi_object_tracker_node.param.yaml
 
 /**:
   ros__parameters:

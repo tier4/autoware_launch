@@ -3,7 +3,7 @@
 # 'reason' can be any single-line text without braces.
 # To keep local changes, annotate fields with '# {OVERRIDE}' or '# {OVERRIDE: reason}'.
 #
-# Source: https://github.com/autowarefoundation/autoware_universe/blob/a595b365d4e4fa7184f6d104d6ef1802285f6bbb/perception/autoware_detected_object_validation/config/object_position_filter.param.yaml
+# Source: https://github.com/autowarefoundation/autoware_universe/blob/70063a1aa8a47de548f200b7eb13c0ec351fe1be/perception/autoware_detected_object_validation/config/object_position_filter.param.yaml
 
 /**:
   ros__parameters:
