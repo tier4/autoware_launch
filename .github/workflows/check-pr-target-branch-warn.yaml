@@ -1,0 +1,43 @@
+name: check-pr-target-branch-warn
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  check-target-branch-warn:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Check target branch
+        id: check-branch
+        run: |
+          TARGET_BRANCH="${{ github.event.pull_request.base.ref }}"
+          echo "Target branch is: $TARGET_BRANCH"
+
+          if [[ "$TARGET_BRANCH" == "tier4/main" || "$TARGET_BRANCH" == "staging" || "$TARGET_BRANCH" == "main" ]]; then
+            echo "is_invalid_target=true" >> $GITHUB_OUTPUT
+            echo "ERROR: Pull requests targeting tier4/main, staging, or main branch is not allowed."
+            exit 1
+          else
+            echo "is_invalid_target=false" >> $GITHUB_OUTPUT
+            echo "Target branch is acceptable."
+          fi
+
+      - name: Comment on PR
+        if: failure() && steps.check-branch.outputs.is_invalid_target == 'true'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            ⚠️ **WARNING: You might not want to merge to this branch** ⚠️
+
+            Merging to this branch does not automatically propagates to TIER IV internal products.
+
+            This repository is obsolete and only opened for backwards compatibility for existing releases.
+
+            Try pushing directly to X2.
