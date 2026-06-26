@@ -13,6 +13,7 @@
 
 /**:
   ros__parameters:
+    trajectory_reference_mode: "spatial"
     ctrl_period: 0.03
     timeout_thr_sec: 0.5
     cyclic_message_timeout_thr_sec: 0.9
