@@ -15,8 +15,8 @@
   ros__parameters:
     # Enable feature
     will_out_of_lane_checker: false
-    out_of_lane_checker: false
-    boundary_departure_checker: true
+    out_of_lane_checker: true
+    boundary_departure_checker: false
 
     # Node
     update_rate: 10.0

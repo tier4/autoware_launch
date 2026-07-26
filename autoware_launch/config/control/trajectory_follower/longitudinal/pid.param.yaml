@@ -13,16 +13,16 @@
 
 /**:
   ros__parameters:
-    delay_compensation_time: 0.1 # {OVERRIDE}
+    delay_compensation_time: 0.5
 
-    enable_smooth_stop: true
-    enable_overshoot_emergency: false # {OVERRIDE}
+    enable_smooth_stop: false
+    enable_overshoot_emergency: true
     enable_large_tracking_error_emergency: true
     enable_slope_compensation: true
     enable_keep_stopped_until_steer_convergence: true
 
     # state transition
-    drive_state_stop_dist: 0.5
+    drive_state_stop_dist: 0.3
     drive_state_offset_stop_dist: 1.0
     stopping_state_stop_dist: 0.49 # {OVERRIDE}
     stopped_state_entry_duration_time: 0.1

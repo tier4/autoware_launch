@@ -45,14 +45,14 @@
       obstacle_filtering:
         object_type:
           unknown: false
-          car: true
-          truck: true
-          bus: true
-          trailer: true
-          motorcycle: true
-          bicycle: true
-          pedestrian: true
-          pointcloud: false
+          car: false
+          truck: false
+          bus: false
+          trailer: false
+          motorcycle: false
+          bicycle: false
+          pedestrian: false
+          pointcloud: true
 
         # Previously and ideally, the min_lat_margin was 0.
         # However, the objects whose lateral margin is between 0 and 'wheel_off_track_scale times wheel_off_track' are ignored by the obstacle_slow_down module unexpectedly due to the current implementation.

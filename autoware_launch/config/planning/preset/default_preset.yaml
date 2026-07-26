@@ -1,14 +1,14 @@
 launch:
   - arg:
       name: behavior_path_planner_type
-      default: behavior_path_planner
+      default: path_generator
     # option: behavior_path_planner
     #         path_generator
 
   # behavior path modules
   - arg:
       name: launch_static_obstacle_avoidance
-      default: "true"
+      default: "false"
   - arg:
       name: launch_avoidance_by_lane_change_module
       default: "false"
@@ -20,10 +20,10 @@ launch:
       default: "false" # Warning, experimental module, use only in simulations
   - arg:
       name: launch_lane_change_right_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_lane_change_left_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_external_request_lane_change_right_module
       default: "false"
@@ -32,13 +32,13 @@ launch:
       default: "false"
   - arg:
       name: launch_goal_planner_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_start_planner_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_side_shift_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_bidirectional_traffic_module
       default: "true"
@@ -49,16 +49,16 @@ launch:
   # behavior velocity modules
   - arg:
       name: launch_crosswalk_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_walkway_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_traffic_light_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_intersection_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_roundabout_module
       default: "false"
@@ -67,7 +67,7 @@ launch:
       default: "false"
   - arg:
       name: launch_blind_spot_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_detection_area_module
       default: "true"
@@ -76,7 +76,7 @@ launch:
       default: "true"
   - arg:
       name: launch_no_stopping_area_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_stop_line_module
       default: "true"
@@ -113,7 +113,7 @@ launch:
       default: "true"
   - arg:
       name: launch_obstacle_cruise_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_dynamic_obstacle_stop_module
       default: "false"
@@ -125,10 +125,10 @@ launch:
       default: "true"
   - arg:
       name: launch_run_out_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_boundary_departure_prevention_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_road_user_stop_module
       default: "true"
@@ -159,10 +159,10 @@ launch:
       default: "true"
   - arg:
       name: launch_intersection_collision_checker
-      default: "true"
+      default: "false"
   - arg:
       name: launch_rear_collision_checker
-      default: "true"
+      default: "false"
 
   # other modules
   - arg:

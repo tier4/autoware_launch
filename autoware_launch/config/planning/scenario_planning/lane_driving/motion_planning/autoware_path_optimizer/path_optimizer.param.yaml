@@ -3,7 +3,7 @@
     option:
       enable_skip_optimization: false                              # skip elastic band and model predictive trajectory
       enable_reset_prev_optimization: false                        # If true, optimization has no fix constraint to the previous result.
-      enable_outside_drivable_area_stop: false                     # stop if the ego's trajectory footprint is outside the drivable area
+      enable_outside_drivable_area_stop: true
       use_footprint_polygon_for_outside_drivable_area_check: false # If false, only the footprint's corner points are considered.
 
       debug:
@@ -61,7 +61,7 @@
         # if collision_free_constraints.option.hard_constraint is true
         hard_clearance_from_road: 0.0 # clearance from road boundary[m]
         # if collision_free_constraints.option.soft_constraint is true
-        soft_clearance_from_road: 0.1 # clearance from road boundary[m]
+        soft_clearance_from_road: 0.3
 
       # weight parameter for optimization
       weight:

@@ -21,12 +21,12 @@
 
     # -- curve parameters  --
     # common parameters
-    curvature_calculation_distance: 2.0         # distance of points while curvature is calculating for the steer rate and lateral acceleration limit [m]
+    curvature_calculation_distance: 5.0
     # lateral acceleration limit parameters
     enable_lateral_acc_limit: true     # To toggle the lateral acc filter on and off. You can switch it dynamically at runtime.
     lateral_acceleration_limits: [1.0, 1.0, 1.0, 1.0] # {OVERRIDE} max lateral acceleration at varying velocity limits [m/ss]
-    min_curve_velocity: 2.0            # min velocity at lateral acceleration limit and steering angle rate limit [m/s]
-    decel_distance_before_curve: 3.5   # slow speed distance before a curve for lateral acceleration limit
+    min_curve_velocity: 0.50
+    decel_distance_before_curve: 2.0
     decel_distance_after_curve: 2.0    # slow speed distance after a curve for lateral acceleration limit
     min_decel_for_lateral_acc_lim_filter: -2.5  # deceleration limit applied in the lateral acceleration filter to avoid sudden braking [m/ss]
     # steering angle rate limit parameters
@@ -37,15 +37,15 @@
     curvature_threshold: 0.02                # if curvature > curvature_threshold, steeringRateLimit is triggered [1/m]
 
     # engage & replan parameters
-    replan_vel_deviation: 5.53         # velocity deviation to replan initial velocity [m/s]
-    engage_velocity: 0.25              # engage velocity threshold [m/s] (if the trajectory velocity is higher than this value, use this velocity for engage vehicle speed)
-    engage_acceleration: 0.5           # engage acceleration [m/ss] (use this acceleration when engagement)
-    engage_exit_ratio: 0.5             # exit engage sequence to normal velocity planning when the velocity exceeds engage_exit_ratio x engage_velocity.
-    stop_dist_to_prohibit_engage: 0.5  # if the stop point is in this distance, the speed is set to 0 not to move the vehicle [m]
+    replan_vel_deviation: 1.0
+    engage_velocity: 0.27
+    engage_acceleration: 0.1
+    engage_exit_ratio: 0.95
+    stop_dist_to_prohibit_engage: 0.3
 
     # stop velocity
-    stopping_velocity: 2.778  # change target velocity to this value before v=0 point [m/s]
-    stopping_distance: 0.0    # distance for the stopping_velocity [m]. 0 means the stopping velocity is not applied.
+    stopping_velocity: 0.4
+    stopping_distance: 3.0
 
     # path extraction parameters
     extract_ahead_dist: 200.0         # forward trajectory distance used for planning [m]

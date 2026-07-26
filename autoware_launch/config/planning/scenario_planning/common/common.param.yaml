@@ -13,13 +13,13 @@
 
 /**:
   ros__parameters:
-    max_vel: 11.1           # max velocity limit [m/s]
+    max_vel: 2.78
 
     # constraints param for normal driving
     normal:
-      min_acc: -1.0         # min deceleration [m/ss]
-      max_acc: 1.0          # max acceleration [m/ss]
-      min_jerk: -1.0        # min jerk [m/sss]
+      min_acc: -0.2
+      max_acc: 0.5
+      min_jerk: -0.5
       max_jerk: 1.0         # max jerk [m/sss]
 
     # constraints to be observed
