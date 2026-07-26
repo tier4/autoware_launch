@@ -58,7 +58,7 @@ launch:
       default: "true"
   - arg:
       name: launch_intersection_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_roundabout_module
       default: "false"
@@ -67,7 +67,7 @@ launch:
       default: "false"
   - arg:
       name: launch_blind_spot_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_detection_area_module
       default: "true"
@@ -107,13 +107,13 @@ launch:
   # motion velocity planner modules
   - arg:
       name: launch_obstacle_stop_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_obstacle_slow_down_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_obstacle_cruise_module
-      default: "true"
+      default: "false"
   - arg:
       name: launch_dynamic_obstacle_stop_module
       default: "false"

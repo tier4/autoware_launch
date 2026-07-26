@@ -111,14 +111,14 @@
 
       # target object
       target_object:
-        car: true
-        truck: true
-        bus: true
-        trailer: true
+        car: false
+        truck: false
+        bus: false
+        trailer: false
         unknown: false
-        bicycle: true
-        motorcycle: true
-        pedestrian: true
+        bicycle: false
+        motorcycle: false
+        pedestrian: false
 
       # collision check
       collision_check:
